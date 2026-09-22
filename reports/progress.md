@@ -35,3 +35,17 @@
 - Evidence class: fixture/local cross-language validation.
 - Source/architecture decisions: money accepts exactly two decimal places until P0.2 proves another source policy; numeric-looking IDs remain verbatim; source timestamps remain dataset-local and are never converted with browser timezone.
 - Next unblocked task: P1.3 controlled ports/test evidence classes, then P5 fixture policy lane while live/source gates remain blocked.
+
+## P1.3 - Create controlled test ports and enforce test evidence classes
+
+- Commit: be6b507
+- Files: controlled clock/port contracts; source-shaped fixtures; deterministic harness with fault injection and secret redaction; Vitest configs; offline CI workflow.
+- Commands:
+  - `pnpm exec vitest run tests/testkit.test.ts` - PASS, 1 file / 5 tests.
+  - `pnpm test:unit` - PASS, 3 files / 27 tests.
+  - `uv run --project pipelines pytest pipelines/tests -q` - PASS, 1 test.
+  - `pnpm typecheck` - PASS.
+  - `pnpm test:live` without `APPROVED_LIVE_TARGET` - BLOCKED as designed, nonzero.
+- Evidence class: fixture/local tooling. Live-provider and deployed evidence remain distinct and cannot be skipped green.
+- Source/architecture decisions: fixture ports are explicitly labeled and will be adapted to the real Worker/DO runtime as P6 lands; no separate fake production policy engine was added.
+- Next unblocked task: P5.1 deterministic policy using the frozen contracts; P0.2/P0.3 remain blocked on source files and live services.
