@@ -61,3 +61,15 @@
 - Evidence class: fixture/local deterministic policy.
 - Source/architecture decisions: action routing matches the dataset policy; exposure comparisons use cents; unknown settlement/shared origin/recurring identity remain missing premises rather than false facts; obligations and prohibitions are separate.
 - Next unblocked task: P5.2 conflict resolution and stopping.
+
+## P5.2 - Resolve explicit conflicts and enforce defensible stopping
+
+- Commit: 5947f09
+- Files: transparent policy evaluator; R2/R7 interpretation record; evidence-family deduplication; stop decision logic; conflict/stop tests.
+- Commands:
+  - `pnpm exec vitest run tests/policy-conflicts-stop.test.ts` - PASS, 1 file / 6 tests.
+  - `pnpm test:unit` - PASS, 6 files / 44 tests.
+  - `pnpm typecheck` - PASS.
+- Evidence class: fixture/local deterministic policy.
+- Source/architecture decisions: R7 is the specific exception when a customer denial conflicts with a supported recurring pattern; contradiction stays visible. Two paraphrases cannot satisfy the two-evidence stop. Budget/timeouts remain operational blocks.
+- Next unblocked task: P5.3 answer compiler and provenance validator.
