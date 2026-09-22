@@ -49,3 +49,15 @@
 - Evidence class: fixture/local tooling. Live-provider and deployed evidence remain distinct and cannot be skipped green.
 - Source/architecture decisions: fixture ports are explicitly labeled and will be adapted to the real Worker/DO runtime as P6 lands; no separate fake production policy engine was added.
 - Next unblocked task: P5.1 deterministic policy using the frozen contracts; P0.2/P0.3 remain blocked on source files and live services.
+
+## P5.1 - Implement policy predicates and exact approval routing
+
+- Commit: 39dd8c5
+- Files: all-14-action approval router; explicit-unknown fact helpers; R1-R10 finding engine; monetary/probability/unknown boundary tests.
+- Commands:
+  - `pnpm exec vitest run tests/policy-boundaries.test.ts` - PASS, 1 file / 7 tests.
+  - `pnpm test:unit` - PASS, 5 files / 38 tests.
+  - `pnpm typecheck` - PASS.
+- Evidence class: fixture/local deterministic policy.
+- Source/architecture decisions: action routing matches the dataset policy; exposure comparisons use cents; unknown settlement/shared origin/recurring identity remain missing premises rather than false facts; obligations and prohibitions are separate.
+- Next unblocked task: P5.2 conflict resolution and stopping.

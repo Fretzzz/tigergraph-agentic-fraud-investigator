@@ -1,0 +1,1 @@
+{"name":"@graphsentinel/policy","version":"0.0.0","private":true,"type":"module","exports":{"./routes":"./src/routes.ts","./rules":"./src/rules.ts"}}
