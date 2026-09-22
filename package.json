@@ -15,7 +15,8 @@
     "test:e2e": "vitest run --passWithNoTests tests/e2e",
     "test:live": "tsx scripts/require-live-target.ts",
     "build": "tsc --noEmit",
-    "verify:release": "tsx scripts/verify-release.ts"
+    "verify:release": "tsx scripts/verify-release.ts",
+    "probe:providers": "tsx scripts/probe-providers.ts"
   },
   "devDependencies": {
     "@types/node": "22.18.6",

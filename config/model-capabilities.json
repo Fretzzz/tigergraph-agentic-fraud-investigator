@@ -1,0 +1,7 @@
+{
+  "status": "blocked",
+  "nim": {"model": null, "tool_round_trip_observed": false, "usage_observed": false},
+  "tigergraph_mcp": {"version": null, "initialize_observed": false, "allowed_query_observed": false},
+  "tigergraph_vector": {"insertion_observed": false, "search_observed": false},
+  "durable_object_sqlite": {"restart_observed": false}
+}

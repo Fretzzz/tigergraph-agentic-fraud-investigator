@@ -98,3 +98,16 @@
 - Evidence class: actual organizer source files plus local fixture tests. Raw CSVs are not committed.
 - Source decisions: observed counts/header/null/date/hash profile replaces assumptions. D01 canonical card mapping remains blocked by evidence; D04 merchant/recipient identity and D05 authorization status remain unknown rather than invented.
 - Next unblocked task: request organizer mapping clarification; proceed with independent runtime durability work. P2 canonical graph construction cannot truthfully pass yet.
+
+## P0.3 - Provider capability report logic (live gate blocked)
+
+- Commit: 3d6b5bf
+- Files: capability observation validator/tests; explicit live probe gate; blocked model/MCP/vector/DO capability manifest; intentionally unpinned MCP blocker receipt.
+- Commands:
+  - `pnpm exec vitest run tests/capabilities.test.ts` - PASS, 1 file / 3 tests.
+  - `pnpm test:unit` - PASS, 8 files / 53 tests.
+  - `pnpm typecheck` - PASS.
+  - `pnpm probe:providers --live` without approved target/config - BLOCKED as designed, nonzero.
+- Evidence class: fixture/report logic only. This is not completion of P0.3.
+- Blocker: no approved isolated TigerGraph/Cloudflare/NVIDIA resources, exact provider identities, or live credentials are available. No MCP version is guessed or pinned and no live capability is claimed.
+- Next: run and capture the six real observations after resources are approved; only then mark P0.3 complete.
