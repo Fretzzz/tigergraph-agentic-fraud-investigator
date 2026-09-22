@@ -23,3 +23,15 @@
 - Evidence class: fixture/local contract validation.
 - Source/architecture decisions: every S2 field and exact enum is transcribed; canonical objects reject extra operational fields; policy predicates use explicit `true | false | unknown` plus evidence/request refs; internal runtime state remains separate.
 - Next unblocked task: P1.2 exact money, ID and dataset-local time primitives.
+
+## P1.2 - Implement exact money, ID and temporal primitives
+
+- Commit: 3edec34
+- Files: exact USD-cent parser and absolute sum; verbatim transaction-ID primitive; strict dataset-local timestamp parser/comparator; shared TypeScript/Python fixtures and Python 3.12 `uv` lock.
+- Commands:
+  - `pnpm exec vitest run tests/primitives.test.ts` - PASS, 1 file / 11 tests.
+  - `uv run --project pipelines pytest pipelines/tests/test_primitives.py -q` - PASS, 1 test.
+  - `pnpm typecheck` - PASS.
+- Evidence class: fixture/local cross-language validation.
+- Source/architecture decisions: money accepts exactly two decimal places until P0.2 proves another source policy; numeric-looking IDs remain verbatim; source timestamps remain dataset-local and are never converted with browser timezone.
+- Next unblocked task: P1.3 controlled ports/test evidence classes, then P5 fixture policy lane while live/source gates remain blocked.

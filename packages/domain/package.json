@@ -1,0 +1,1 @@
+{"name":"@graphsentinel/domain","version":"0.0.0","private":true,"type":"module","exports":{"./money":"./src/money.ts","./ids":"./src/ids.ts","./time":"./src/time.ts"}}

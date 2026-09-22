@@ -1,0 +1,1 @@
+export function normalizeTransactionId(text:string):string{if(typeof text!=="string")throw new TypeError("Transaction ID must be a string");if(text.length===0||text.trim()!==text||/[\x00-\x1f\x7f]/.test(text))throw new Error("Transaction ID must be a nonempty verbatim source string");return text;}
