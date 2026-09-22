@@ -12,3 +12,14 @@
 - Evidence class: fixture/local tooling. No cloud write and no live-provider claim.
 - Source/architecture decisions: the governing Cloudflare CaseAgent + NVIDIA NIM + official TigerGraph MCP + TigerGraph graph/vector architecture is unchanged. D01-D10 are transcribed into `docs/references/decisions.md`; source semantics and entitlements remain explicitly blocked where evidence is absent.
 - Next unblocked task: P1.1 contracts can proceed independently. P0.2 requires actual organizer CSVs; P0.3 requires approved live provider resources and credentials.
+
+## P1.1 - Define the exact benchmark and domain contracts
+
+- Commit: a9b182a
+- Files: canonical answer schema/types; domain, policy-fact and tool receipt contracts; committed generated JSON Schema; synthetic valid fixture; contract tests.
+- Commands:
+  - `pnpm exec vitest run tests/contracts.test.ts` - PASS, 1 file / 11 tests.
+  - `pnpm typecheck` - PASS.
+- Evidence class: fixture/local contract validation.
+- Source/architecture decisions: every S2 field and exact enum is transcribed; canonical objects reject extra operational fields; policy predicates use explicit `true | false | unknown` plus evidence/request refs; internal runtime state remains separate.
+- Next unblocked task: P1.2 exact money, ID and dataset-local time primitives.
