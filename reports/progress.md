@@ -73,3 +73,15 @@
 - Evidence class: fixture/local deterministic policy.
 - Source/architecture decisions: R7 is the specific exception when a customer denial conflicts with a supported recurring pattern; contradiction stays visible. Two paraphrases cannot satisfy the two-evidence stop. Budget/timeouts remain operational blocks.
 - Next unblocked task: P5.3 answer compiler and provenance validator.
+
+## P5.3 - Build the answer compiler and semantic/provenance validator
+
+- Commit: e71cea2
+- Files: trusted-record compiler; schema and cross-field validator; source/history/projection receipt checks; narrative helpers; exporter tests.
+- Commands:
+  - `pnpm exec vitest run tests/exporter.test.ts` - PASS, 1 file / 6 tests.
+  - `pnpm test:unit` - PASS, 7 files / 50 tests.
+  - `pnpm typecheck` - PASS.
+- Evidence class: fixture/local compiler validation. Live episode-query integration remains P7.3.
+- Source/architecture decisions: canonical export contains no runtime metadata; FILE_REPORT/SAR, legitimate-case, no-request and graph-write invariants are enforced; source and prior-case IDs need trusted indexes and receipts.
+- Next unblocked task: prepare P6 durable execution, while live/source-dependent P2-P4/P7 stay blocked.

@@ -1,0 +1,1 @@
+const sentenceEnd=/[.!?](?:["')\]]+)?(?:\s+|$)/g;export function approximateSentenceCount(text:string):number{return [...text.matchAll(sentenceEnd)].length}export function referencedIds(text:string):string[]{return [...new Set(text.match(/\b(?:TEST-[A-Z0-9-]+|C\d{5}(?:-K\d+)?|CC-\d+)\b/g)??[])]}
