@@ -1,0 +1,1 @@
+import type{FactRef,TruthValue}from"../../contracts/src/domain.js";export function truth(f:FactRef):TruthValue{return f.fact}export function anyTrue(...facts:FactRef[]):boolean{return facts.some(f=>f.fact==="true")}export function unknownNames(entries:Record<string,FactRef>):string[]{return Object.entries(entries).filter(([,v])=>v.fact==="unknown").map(([k])=>k)}

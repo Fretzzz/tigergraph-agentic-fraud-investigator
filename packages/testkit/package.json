@@ -1,0 +1,1 @@
+{"name":"@graphsentinel/testkit","version":"0.0.0","private":true,"type":"module","exports":{"./fixtures":"./src/fixtures.ts","./ports":"./src/ports.ts","./harness":"./src/harness.ts"}}

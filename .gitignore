@@ -1,0 +1,13 @@
+node_modules/
+.env
+.env.*
+!.env.example
+artifacts/
+coverage/
+.dev.vars
+.wrangler/
+*.log
+__pycache__/
+.venv/
+
+*.egg-info/

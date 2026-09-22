@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "graphsentinel-agent",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-22",
+  "durable_objects": {
+    "bindings": [
+      { "name": "CASE_AGENTS", "class_name": "CaseAgent" }
+    ]
+  },
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["CaseAgent"] }
+  ]
+}

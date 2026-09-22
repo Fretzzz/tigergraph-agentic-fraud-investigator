@@ -1,0 +1,23 @@
+{
+  "generatedAt": "2026-09-22T17:19:34.828Z",
+  "ready": false,
+  "checks": {
+    "nim": {
+      "status": "blocked",
+      "reason": "Missing configuration names: NVIDIA_API_KEY, NIM_BASE_URL, NIM_MODEL"
+    },
+    "mcp": {
+      "status": "blocked",
+      "reason": "Missing configuration names: MCP_SERVICE_TOKEN, TG_MCP_URL"
+    },
+    "vectors": {
+      "status": "blocked",
+      "reason": "Missing configuration names: TIGERGRAPH_HOST, TIGERGRAPH_GRAPH"
+    }
+  },
+  "sourceHashes": {
+    "docs/sources/hackathon-brief.md": "a8f929eb8ee8f98e10db67c27887b23b4a5f171830818be78b7a64c0c7db9436",
+    "docs/sources/dataset-readme.md": "57e6dd7c7766b4efe3e903f111be2f4237d058d53e3b1738d6e56dcd6cecda59"
+  },
+  "note": "This command reports configuration names only. It never prints secret values and does not perform cloud writes."
+}

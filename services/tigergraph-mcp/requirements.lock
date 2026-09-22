@@ -1,0 +1,3 @@
+# P0.3 blocker receipt: pin the exact official TigerGraph MCP release only after its
+# installed --help, transport initialization, tool listing, and query execution are observed.
+# An empty lock is intentional and must not be treated as a completed capability proof.

@@ -1,0 +1,4 @@
+const DATASET_TIME=/^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})$/;
+export interface DatasetTime{raw:string;sortKey:string;components:{year:number;month:number;day:number;hour:number;minute:number;second:number}}
+export function parseDatasetTime(raw:string):DatasetTime{const m=DATASET_TIME.exec(raw);if(!m)throw new Error("Dataset time must use YYYY-MM-DD HH:mm:ss");const nums=m.slice(1).map(Number);const [year,month,day,hour,minute,second]=nums as [number,number,number,number,number,number];if(month<1||month>12||hour>23||minute>59||second>59)throw new Error("Invalid dataset-local time");const days=new Date(Date.UTC(year,month,0)).getUTCDate();if(day<1||day>days)throw new Error("Invalid dataset-local date");return{raw,sortKey:raw,components:{year,month,day,hour,minute,second}};}
+export function compareDatasetTime(a:string,b:string):number{return parseDatasetTime(a).sortKey.localeCompare(parseDatasetTime(b).sortKey);}

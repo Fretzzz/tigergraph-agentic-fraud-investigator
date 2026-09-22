@@ -1,0 +1,1 @@
+import{writeFile}from"node:fs/promises";import{z}from"zod";import{AnswerSchema}from"../packages/contracts/src/answer.js";const schema=z.toJSONSchema(AnswerSchema,{target:"draft-2020-12"})as Record<string,unknown>;schema.$id="https://graphsentinel.local/schema/answer.schema.json";await writeFile("packages/contracts/schema/answer.schema.json",`${JSON.stringify(schema,null,2)}\n`);
