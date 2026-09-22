@@ -1,0 +1,164 @@
+{
+  "kind": "documentation_package_verification_only",
+  "date": "2026-09-22",
+  "application_tests_run": false,
+  "live_integrations_run": false,
+  "required_tasks": 38,
+  "optional_tasks": 2,
+  "checks": [
+    {
+      "check": "40 unique task IDs",
+      "passed": true,
+      "detail": "40"
+    },
+    {
+      "check": "38 required tasks",
+      "passed": true,
+      "detail": "38"
+    },
+    {
+      "check": "12 required phases and one optional phase",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "All tasks retain five unchecked test/implementation steps",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "No tasks falsely checked complete",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Source brief copied exactly",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Source README copied exactly",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "README snapshot expected byte count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "All source answer fields present in build design",
+      "passed": true,
+      "detail": "activity_dates, affected_txn_ids, case, case_id, connected_card_ids, connected_device_profiles, evidence, evidence_requests, exposure_usd, file, final, first_suspicious_txn_id, fraud_probability, graph_case_id, initial, latency_s, narrative, next_best_actions, pattern, pattern_description, reason, sar, similar_prior_cases, status, stop_reason, subjects, summary, tokens, tool_calls, total_amount_usd, verdict, what_changed, written_to_graph"
+    },
+    {
+      "check": "All 14 source actions present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "All source R1-R10 policy rows present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "All dataset ambiguity IDs retained",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Required new-case memory test specified",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Unimplemented application status disclosed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "No unsupported placeholder markers",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Balanced fenced blocks: HANDOFF.md",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Balanced fenced blocks: README.md",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Balanced fenced blocks: docs/references/SOURCES.md",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Balanced fenced blocks: docs/superpowers/plans/2026-09-22-fraud-investigation-implementation-plan.md",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Balanced fenced blocks: docs/superpowers/specs/2026-09-22-fraud-investigation-design.md",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "All authored relative links resolve",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "No unknown or forward task dependencies",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "files": [
+    {
+      "path": "HANDOFF.md",
+      "bytes": 5137,
+      "sha256": "87de7c6543d01f84d8b70a61461b3c29abfda5ef5ad9ceffbc40fd720a43ee59",
+      "words": 682
+    },
+    {
+      "path": "README.md",
+      "bytes": 3571,
+      "sha256": "93eb9272b36998303c20aa3330cd160219cb43ec8558db9c869b10b8c67aeb04",
+      "words": 460
+    },
+    {
+      "path": "docs/references/SOURCES.md",
+      "bytes": 8267,
+      "sha256": "8f28a9f26f621045e7d015adf6012e4c06be4625683d5c6b41020c4423f319af",
+      "words": 955
+    },
+    {
+      "path": "docs/sources/dataset-readme.md",
+      "bytes": 38663,
+      "sha256": "57e6dd7c7766b4efe3e903f111be2f4237d058d53e3b1738d6e56dcd6cecda59",
+      "words": 5789
+    },
+    {
+      "path": "docs/sources/hackathon-brief.md",
+      "bytes": 11333,
+      "sha256": "a8f929eb8ee8f98e10db67c27887b23b4a5f171830818be78b7a64c0c7db9436",
+      "words": 1607
+    },
+    {
+      "path": "docs/superpowers/plans/2026-09-22-fraud-investigation-implementation-plan.md",
+      "bytes": 102553,
+      "sha256": "8cb63995809c29bae2f400212f587904d50e713a4936f1086ce0b5c69656e994",
+      "words": 11932
+    },
+    {
+      "path": "docs/superpowers/specs/2026-09-22-fraud-investigation-design.md",
+      "bytes": 61470,
+      "sha256": "294fca36bca0bbddc9d71c49f6564c7729b33dad29d977d65308d855074ff965",
+      "words": 8083
+    }
+  ]
+}
