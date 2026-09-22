@@ -85,3 +85,16 @@
 - Evidence class: fixture/local compiler validation. Live episode-query integration remains P7.3.
 - Source/architecture decisions: canonical export contains no runtime metadata; FILE_REPORT/SAR, legitimate-case, no-request and graph-write invariants are enforced; source and prior-case IDs need trusted indexes and receipts.
 - Next unblocked task: prepare P6 durable execution, while live/source-dependent P2-P4/P7 stay blocked.
+
+## P0.2 - Inspect the actual CSVs and resolve source semantics
+
+- Commit: 03d2716
+- Files: streaming profiler/auditor; synthetic inspection tests; actual data profile with source hashes; dataset decision record.
+- Commands:
+  - `uv run --project pipelines pytest pipelines/tests/test_inspect.py -q` - PASS.
+  - `uv run --project pipelines python -m fraud_data.inspect /downloads/hhgoa --output reports/data-profile.json` - PASS on all actual organizer CSVs.
+  - `pnpm test:unit` - PASS, 7 files / 50 tests.
+  - `pnpm typecheck` - PASS.
+- Evidence class: actual organizer source files plus local fixture tests. Raw CSVs are not committed.
+- Source decisions: observed counts/header/null/date/hash profile replaces assumptions. D01 canonical card mapping remains blocked by evidence; D04 merchant/recipient identity and D05 authorization status remain unknown rather than invented.
+- Next unblocked task: request organizer mapping clarification; proceed with independent runtime durability work. P2 canonical graph construction cannot truthfully pass yet.

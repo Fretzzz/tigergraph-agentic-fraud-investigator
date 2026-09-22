@@ -14,7 +14,7 @@ wheels = [
 [[package]]
 name = "graphsentinel-pipelines"
 version = "0.0.0"
-source = { virtual = "." }
+source = { editable = "." }
 
 [package.dev-dependencies]
 dev = [
