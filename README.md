@@ -33,3 +33,23 @@ The plan intentionally does not select an unverified model ID, invent the card-I
 These are planning documents, not an implemented application. No application repository, CSV dataset, cloud deployment or model was tested here. Source documents were reviewed and preserved; official platform references were checked for architectural feasibility, with unresolved retrieval/version differences disclosed in the source register. The included `PACK_CHECKS.json` validates this document package only; it is not an application test report.
 
 Required source deliverables also include a recorded demo video, blog and social post. The task list differentiates a script/draft from actual recording/publication so an agent cannot incorrectly mark those complete.
+
+## Demo: HHG-003 on a local graph
+
+This is a one-case demo. It runs on a local in-memory graph built from the organizer CSVs. It does not use TigerGraph, NVIDIA NIM or Cloudflare, because no credentials were available before the deadline. The screen and the run report say so.
+
+```bash
+pnpm install
+# 1. Build the case slice from the organizer CSVs (download them from the organizer Drive folder first)
+pnpm case:slice /path/to/organizer-csvs HHG-003 data/slices/HHG-003.json
+# 2. Investigate: graph queries -> policy -> canonical answer (writes cases/HHG-003.json)
+RUN_ID=demo pnpm case:run HHG-003
+# 3. Open the analyst view at http://localhost:8765/
+pnpm web
+```
+
+A committed slice (`data/slices/HHG-003.json`) lets steps 2 and 3 run without the 700 MB CSVs.
+
+What it shows: the flagged transaction, eight graph queries with receipts, the evidence for and against fraud, the case subgraph, prior cases on the card, initial and final actions with approval routes, and the reason no SAR is filed.
+
+Limits: 1 of 20 cases. The K1/K2/K3 card-suffix rule is not documented by the organizers, so only the flagged transaction and closed-case transactions are tied to a card. Merchant identity and settlement status are not in the data. Customer replies use one fixed default (no reply within 24 hours). The probability weights are a visible rule, not a trained model. `written_to_graph` is false.
