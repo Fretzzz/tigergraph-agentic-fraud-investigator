@@ -1,0 +1,160 @@
+{
+  "case_id": "HHG-003",
+  "case": {
+    "status": "escalated",
+    "verdict": "uncertain",
+    "fraud_probability": 0.55,
+    "pattern": "none",
+    "pattern_description": "",
+    "affected_txn_ids": [
+      "3530164"
+    ],
+    "first_suspicious_txn_id": "3530164",
+    "connected_card_ids": [],
+    "connected_device_profiles": [],
+    "exposure_usd": 49,
+    "evidence": [
+      {
+        "claim": "Flagged 3530164: $49.00 in_person, region 330, 2016-12-10 13:01:21, no device record; bank risk score 0.4 used only as an input.",
+        "source": "graph",
+        "ref": "Q01-seed_context",
+        "entity_ids": [
+          "3530164",
+          "C08623-K2"
+        ]
+      },
+      {
+        "claim": "Customer C08623 denies 3530164. In organizer history, 4656 of 4656 cardholder-reported closed cases were confirmed fraud (history only contains closed outcomes, so this is a prior, not proof).",
+        "source": "customer",
+        "ref": "trigger:case_pack",
+        "entity_ids": [
+          "3530164",
+          "C08623"
+        ]
+      },
+      {
+        "claim": "Region 330 is established for C08623: 42 prior transactions since 2016-07-09 23:53:35. This is not out-of-region use.",
+        "source": "graph",
+        "ref": "Q02-region_history",
+        "entity_ids": [
+          "3530164"
+        ]
+      },
+      {
+        "claim": "Purchaser email domain me.com was never used by C08623 before 2016-12-10, then appears on 3530164 and 3530056 the same day. Email domain is not merchant or purchaser identity (D04), so this is a weak signal.",
+        "source": "graph",
+        "ref": "Q03-email_domain_history",
+        "entity_ids": [
+          "3530164",
+          "3530056"
+        ]
+      },
+      {
+        "claim": "$49.00 in person is routine for C08623: 62 prior in-person purchases within $1.00. Merchant identity is absent from the data (D04), so a same-merchant recurring match cannot be confirmed.",
+        "source": "graph",
+        "ref": "Q04-amount_profile",
+        "entity_ids": [
+          "3530164"
+        ]
+      },
+      {
+        "claim": "6 prior closed cases on C08623-K2; confirmed patterns: out_of_region_use, account_takeover. No prior confirmed fraud transaction was billed in region 330 (prior fraud regions: 126, 387, 226, 158, 299, 272).",
+        "source": "graph",
+        "ref": "Q07-historical_cases",
+        "entity_ids": [
+          "CC-1589",
+          "CC-2817",
+          "CC-2935",
+          "CC-3327",
+          "CC-3682",
+          "CC-4957"
+        ]
+      },
+      {
+        "claim": "No other customer shares region 330 and email domain me.com in the 48h window, and no other customer's fraud case links to this card.",
+        "source": "graph",
+        "ref": "Q08-shared_origin",
+        "entity_ids": [
+          "3530164"
+        ]
+      }
+    ],
+    "similar_prior_cases": [
+      "CC-1589",
+      "CC-2817",
+      "CC-2935",
+      "CC-3327",
+      "CC-3682",
+      "CC-4957"
+    ],
+    "summary": "C08623 disputes 3530164, a $49.00 card-present purchase in billing region 330. The region and amount fit the customer's own history, but the purchaser email domain me.com is new that day and also sits on 3530056. Evidence conflicts, so the verdict is uncertain at 0.55. The card block is recommended under R2 and waits for L1 approval; the case is escalated under R8.",
+    "written_to_graph": false,
+    "graph_case_id": ""
+  },
+  "evidence_requests": [
+    {
+      "type": "customer_validation",
+      "asked_after_step": 8,
+      "assumed_response": "Did you make 3530056 ($116.93 at 12:12) on 2016-12-10, and do you still have the card? Assumed: No reply within 24 hours. Fixed simulator default applied to every customer request in this build; it is not chosen per case and carries no hidden label."
+    }
+  ],
+  "next_best_actions": {
+    "initial": [
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "R2 and section 3a: customer disputes a charge"
+      },
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "Policy section 5 and R8: evidence conflicts; ask the customer: Did you make 3530056 ($116.93 at 12:12) on 2016-12-10, and do you still have the card?"
+      },
+      {
+        "action": "BLOCK_CARD",
+        "route": "L1",
+        "reason": "R2: customer denied the transaction; exposure $49.00 is at most $2,500, so L1 approval"
+      },
+      {
+        "action": "ESCALATE_TO_ANALYST",
+        "route": "auto",
+        "reason": "R8: verdict uncertain and the evidence conflicts"
+      }
+    ],
+    "final": [
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "R2 and section 3a: customer disputes a charge"
+      },
+      {
+        "action": "MONITOR_CARD",
+        "route": "auto",
+        "reason": "R4: no customer reply within 24 hours (simulated)"
+      },
+      {
+        "action": "BLOCK_CARD",
+        "route": "L1",
+        "reason": "R2: customer denied the transaction; exposure $49.00 is at most $2,500, so L1 approval"
+      },
+      {
+        "action": "ESCALATE_TO_ANALYST",
+        "route": "auto",
+        "reason": "R8: verdict uncertain and the evidence conflicts"
+      }
+    ],
+    "what_changed": "The customer was asked (REQ-1); the fixed simulator assumed no reply within 24 hours, so R4 adds MONITOR_CARD. No DECLINE_TRANSACTION because pending-authorization status is not in the data (D05); exposure $49.00 is under the R4 $500 escalation threshold."
+  },
+  "sar": {
+    "file": false,
+    "reason": "No FILE_REPORT: exposure $49.00 is under $1,000, no shared device, region cluster or other customer's fraud was found, and fraud is not confirmed or strongly suspected (R2, section 3a).",
+    "narrative": "",
+    "subjects": [],
+    "total_amount_usd": 0,
+    "activity_dates": []
+  },
+  "stop_reason": "Further graph steps are unlikely to change the decision: region, amount, email-domain, device, history and shared-origin checks are done and the remaining questions (customer's answer, merchant identity) are not in the data. Escalated to an analyst with the conflict visible (R8).",
+  "tool_calls": 8,
+  "tokens": 0,
+  "latency_s": 0.024
+}
