@@ -111,3 +111,16 @@
 - Evidence class: fixture/report logic only. This is not completion of P0.3.
 - Blocker: no approved isolated TigerGraph/Cloudflare/NVIDIA resources, exact provider identities, or live credentials are available. No MCP version is guessed or pinned and no live capability is claimed.
 - Next: run and capture the six real observations after resources are approved; only then mark P0.3 complete.
+
+## Deadline demo slice - HHG-003 end to end on a local graph (not a plan task; scoped deviation)
+
+- Branch: feat/hhg-003-demo-slice. Commits: 3da7142 (lockfile), 8b0f153 (case slice), d6a29af (local graph + investigator + canonical answer), plus the analyst view commit.
+- Why: submission deadline Sept 24, 2026 11:59 PM IST; no TigerGraph, NVIDIA or Cloudflare credentials; D01 suffix rule undocumented. The team chose a one-case demo anchored on HHG-003's case-pack IDs, clearly labeled as local.
+- What runs:
+  - `pnpm case:slice /downloads/hhgoa HHG-003 data/slices/HHG-003.json` - strict-replay slice from the organizer CSVs (986 customer transactions up to case open, 49 identity rows, 6 visible closed cases, source SHA-256s in the manifest). No K-suffix inference: only the seed and closed-case transactions carry canonical card IDs.
+  - `RUN_ID=demo pnpm case:run HHG-003` - 8 local-graph queries with receipts, deterministic assessment, existing P5 policy/compiler/validator; writes `cases/HHG-003.json` and `reports/runs/demo/HHG-003.run.json`; validator PASS.
+  - `pnpm web` then open http://localhost:8765/ - static analyst view (steps, evidence, subgraph, initial/final actions with routes, memory, limitations). Screenshot: docs/demo/hhg-003-analyst-view.png, visually checked in headless Chrome.
+- Tests: `pnpm test:unit` PASS 10 files / 68 tests; `uv run --project pipelines pytest pipelines/tests -q` PASS 5 tests; `pnpm typecheck` PASS.
+- Evidence class: actual organizer source data on a local in-memory graph. NOT live TigerGraph, NOT NVIDIA NIM (tokens = 0), NOT Cloudflare. written_to_graph=false.
+- Deviations from the plan, stated openly: static HTML/JS view instead of React/Vite; deterministic code instead of the NIM-driven loop; local graph instead of TigerGraph/MCP. Customer replies use one fixed disclosed default (no reply in 24h). Probability weights are a transparent heuristic.
+- HHG-003 result: uncertain, p=0.55, escalated; initial CREATE_CASE, VERIFY_WITH_CUSTOMER, BLOCK_CARD (L1), ESCALATE_TO_ANALYST; final swaps VERIFY for MONITOR_CARD (R4); no SAR. Only 1 of 20 cases is produced; this is not the all-20 deliverable.

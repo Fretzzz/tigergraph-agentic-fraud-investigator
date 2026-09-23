@@ -16,7 +16,10 @@
     "test:live": "tsx scripts/require-live-target.ts",
     "build": "tsc --noEmit",
     "verify:release": "tsx scripts/verify-release.ts",
-    "probe:providers": "tsx scripts/probe-providers.ts"
+    "probe:providers": "tsx scripts/probe-providers.ts",
+    "case:slice": "uv run --project pipelines python -m fraud_data.case_slice",
+    "case:run": "tsx scripts/run-case.ts",
+    "web": "python3 -m http.server 8765 --directory apps/web"
   },
   "devDependencies": {
     "@types/node": "22.18.6",
