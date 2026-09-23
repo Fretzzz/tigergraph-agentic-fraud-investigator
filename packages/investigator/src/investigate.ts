@@ -4,7 +4,7 @@ import { evaluatePolicy } from "../../policy/src/evaluate.js";
 import { compileAnswer } from "../../exporter/src/compile.js";
 import { validateAnswer, type ValidationReport } from "../../exporter/src/validate.js";
 import { buildGraph, type LocalGraph } from "../../graph-local/src/graph.js";
-import { GraphQueries, type QueryReceipt } from "../../graph-local/src/queries.js";
+import { GraphQueries, type InvestigationQueries, type QueryReceipt } from "../../graph-local/src/queries.js";
 import type { CaseSlice } from "../../graph-local/src/slice.js";
 
 // Deterministic, source-grounded investigation over a local case graph.
@@ -19,6 +19,7 @@ export interface InvestigationRun {
   facts: { initial: PolicyFacts; final: PolicyFacts }; assessment: Assessment;
   decisions: { initial: DecisionAction[]; final: DecisionAction[]; initialConflicts: string[]; missingPremises: string[] };
   simulated: SimulatedReply[]; localCaseWrite: { vertexId: string; readbackVerified: boolean; backend: "local-graph" };
+  graphBackend: "local-graph" | "tigergraph";
   answer: Answer; validation: ValidationReport;
   limitations: string[];
   graph: { nodes: { id: string; type: string; label: string }[]; edges: { from: string; to: string; type: string }[] };
@@ -38,12 +39,13 @@ function orderActions(a: DecisionAction[]): DecisionAction[] {
   return [...a].sort((x, y) => ACTION_ORDER.indexOf(x.action) - ACTION_ORDER.indexOf(y.action));
 }
 
-export function investigate(slice: CaseSlice, opts: { runId: string; startedAtMs?: number; nowMs?: () => number }): InvestigationRun {
+export function investigate(slice: CaseSlice, opts: { runId: string; startedAtMs?: number; nowMs?: () => number; queries?: InvestigationQueries }): InvestigationRun {
   const now = opts.nowMs ?? (() => Date.now());
   const started = opts.startedAtMs ?? now();
   const c = slice.case;
   const g: LocalGraph = buildGraph(slice);
-  const q = new GraphQueries(g, c.opened_at);
+  const q: InvestigationQueries = opts.queries ?? new GraphQueries(g, c.opened_at);
+  const live = q.receipts !== undefined && !(q instanceof GraphQueries);
   const steps: Step[] = [];
   const factors: Factor[] = [];
   const step = (question: string, r: QueryReceipt, finding: string) => steps.push({ n: steps.length + 1, question, receiptId: r.receiptId, finding });
@@ -220,9 +222,12 @@ export function investigate(slice: CaseSlice, opts: { runId: string; startedAtMs
     facts: { initial: baseFacts, final: finalFacts }, assessment,
     decisions: { initial, final, initialConflicts: initialPolicy.conflicts, missingPremises: finalPolicy.missingPremises },
     simulated, localCaseWrite: { vertexId, readbackVerified, backend: "local-graph" },
+    graphBackend: live ? "tigergraph" : "local-graph",
     answer, validation,
     limitations: [
-      "Graph backend is a local in-memory graph built from the organizer CSVs, not TigerGraph (no TigerGraph instance connected).",
+      live
+        ? "Graph queries ran live on TigerGraph Savanna (graph GraphSentinel, 8 installed GSQL queries). The case subgraph drawing and prior-fraud regions still come from the local slice, and the case record is written to the local graph only."
+        : "Graph backend is a local in-memory graph built from the organizer CSVs, not TigerGraph (no TigerGraph instance connected).",
       "No LLM is used in this path; reasoning is deterministic code over graph query results (tokens = 0).",
       "Card links: only the flagged transaction (case_pack) and closed-case transactions carry canonical card IDs. The K1/K2/K3 suffix rule is not documented by the organizers (D01), so other transactions attach to the customer only.",
       "Merchant identity (D04) and settlement/authorization status (D05) are not in the data and stay unknown.",

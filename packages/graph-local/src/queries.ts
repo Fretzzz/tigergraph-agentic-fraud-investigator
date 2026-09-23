@@ -4,11 +4,25 @@ import type { SliceClosedCase, SliceTransaction } from "./slice.js";
 export interface QueryReceipt<T = unknown> {
   receiptId: string; query: string; params: Record<string, unknown>; result: T;
   coverage: { complete: boolean; returned: number };
-  backend: "local-graph"; // never "tigergraph": no TigerGraph instance is connected
+  backend: "local-graph" | "tigergraph"; // local in-memory graph, or installed GSQL query on TigerGraph
+  endpoint?: string; graph?: string; // set only for TigerGraph-backed receipts
+}
+
+// The eight investigation queries, served by the local graph (GraphQueries) or TigerGraph (TigerGraphQueries).
+export interface InvestigationQueries {
+  readonly receipts: QueryReceipt[];
+  seedContext(txnId: string): QueryReceipt<{ txn: SliceTransaction; cards: string[]; device: string | null }>;
+  customerTimeline(customerId: string, from: string, to: string): QueryReceipt<SliceTransaction[]>;
+  regionHistory(customerId: string, region: string, before: string): QueryReceipt<{ priorTransactions: number; inRegion: number; distinctRegions: number; regionRank: number | null; firstSeen: string | null; lastSeen: string | null; sampleIds: string[] }>;
+  emailDomainHistory(customerId: string, domain: string, before: string, sameDayFrom: string): QueryReceipt<{ priorUses: number; sameDay: { id: string; ts: string; amount_cents: number; region: string | null; risk_score: number | null; channel: string }[] }>;
+  amountProfile(customerId: string, cents: number, before: string, toleranceCents: number): QueryReceipt<{ priorTransactions: number; withinTolerance: number; inPersonWithinTolerance: number; medianCents: number | null; channels: Record<string, number>; sameRegionExamples: { id: string; amount_cents: number; region: string | null; ts: string }[] }>;
+  deviceContext(customerId: string, before: string): QueryReceipt<{ onlineWithIdentity: number; distinctProfiles: number; sharedWithOtherCustomersInSlice: { device: string; otherCustomers: string[] }[] }>;
+  historicalCases(cardId: string, customerId: string): QueryReceipt<SliceClosedCase[]>;
+  sharedOrigin(txnId: string): QueryReceipt<{ otherCustomerTxnsSharingRegionAndEmail: string[]; otherCustomerFraudCases: string[] }>;
 }
 
 // Every call is logged so tool_calls in the answer is a real count, not an estimate.
-export class GraphQueries {
+export class GraphQueries implements InvestigationQueries {
   readonly receipts: QueryReceipt[] = [];
   constructor(private readonly g: LocalGraph, private readonly asOf: string) {}
 

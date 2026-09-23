@@ -33,6 +33,9 @@ async function main() {
   const a = d.answer, c = a.case, k = d.case;
   const seedKey = `Transaction:${k.flagged_txn_id}`;
   document.title = `${k.id} - GraphSentinel`;
+  const tg = d.graphBackend === "tigergraph" && d.tigergraph;
+  const bb = document.getElementById("backend-badge");
+  if (bb) { bb.textContent = tg ? "TigerGraph (live run)" : "Local graph (not TigerGraph)"; bb.className = tg ? "badge live" : "badge warn"; bb.title = tg ? `Queries ran on TigerGraph Savanna at ${d.tigergraph.fetchedAt}. This page shows that saved run; the browser does not call TigerGraph.` : "Queries ran on the in-memory local graph."; }
   document.getElementById("app").innerHTML = `
   <section class="panel full"><div class="casehead">
     <div><div class="id">${esc(k.id)}</div><div class="muted">${esc(k.trigger_type.replace("_", " "))} · opened ${esc(k.opened_at)} (dataset-local time)</div></div>
@@ -47,7 +50,7 @@ async function main() {
 
   <section class="panel"><h2>Investigation steps</h2><ol class="steps">${d.steps.map(s => `<li><div class="q">${esc(s.question)}</div><div>${esc(s.finding)}</div><span class="ref">${esc(s.receiptId)}</span></li>`).join("")}</ol></section>
 
-  <section class="panel"><h2>Case graph (local)</h2>${graphSvg(d.graph, seedKey)}
+  <section class="panel"><h2>Case graph <span class="muted">(drawn from the local slice)</span></h2>${graphSvg(d.graph, seedKey)}
     <h2 style="margin-top:14px">Evidence weighed</h2>${d.factors.map(f => `<div class="factor"><span class="dir ${f.direction}">${f.direction === "supports_fraud" ? "FRAUD +" : "LEGIT −"}${f.weight}</span><div>${esc(f.claim)} <span class="ref">${esc(f.receiptId)}</span></div></div>`).join("")}</section>
 
   <section class="panel full"><h2>Next best actions</h2><div class="cols">
@@ -59,6 +62,10 @@ async function main() {
 
   <section class="panel"><h2>Similar prior cases (memory)</h2><table><tr><th>Case</th><th>Outcome</th><th>Pattern</th></tr>${(d.receipts.find(r => r.query === "historical_cases")?.result || []).map(h => `<tr><td>${esc(h.id)}</td><td>${esc(h.outcome)}</td><td>${esc(h.pattern)}</td></tr>`).join("")}</table></section>
 
+  ${tg ? `<section class="panel full"><h2>TigerGraph run</h2>
+    <p>The 8 graph queries ran as installed GSQL queries on TigerGraph Savanna (graph <b>${esc(d.tigergraph.graph)}</b>) at ${esc(d.tigergraph.fetchedAt)} (${d.tigergraph.fetchMs} ms). This page replays that saved run; your browser does not call TigerGraph. Each result was checked against the local graph: <b>${d.tigergraph.parity.filter(p => p.match).length}/${d.tigergraph.parity.length} match</b>.</p>
+    <table><tr><th>Receipt</th><th>Installed query</th><th>Matches local</th></tr>${d.tigergraph.parity.map((p, i) => `<tr><td>${esc(p.receiptId)}</td><td><code>${esc((d.tigergraph.queries[i] || "").split("/").pop())}</code></td><td>${p.match ? "yes" : "NO"}</td></tr>`).join("")}</table>
+    <p class="muted">Not in TigerGraph (kept local): ${d.tigergraph.fieldsNotInTigerGraph.map(esc).join(", ")}. Case record write-back stays local.</p></section>` : ""}
   <section class="panel"><h2>Limitations of this run</h2><ul class="lim">${d.limitations.map(l => `<li>${esc(l)}</li>`).join("")}</ul>
     <p class="muted">Local case write ${esc(d.localCaseWrite.vertexId)}: readback ${d.localCaseWrite.readbackVerified ? "verified" : "FAILED"} (local graph only; written_to_graph=false).</p></section>`;
 }
