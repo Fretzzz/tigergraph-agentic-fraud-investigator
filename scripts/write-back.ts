@@ -2,7 +2,7 @@
 // Usage: TG_HOST=... TG_SECRET=... pnpm case:write-back [HHG-003 ...]
 // Edges to the flagged txn / card / customer are only created when those vertices already exist in
 // TigerGraph (vertex_must_exist=true), so no stub vertices are made for cases whose slice is not loaded.
-import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { connectTigerGraph } from "../packages/graph-tigergraph/src/tigergraph.js";
 
 const ids = process.argv.slice(2);
@@ -21,7 +21,7 @@ for (const id of caseIds) {
     status: { value: c.status }, exposure_usd: { value: c.exposure_usd }, sar_filed: { value: !!a.sar?.file }, stop_reason: { value: a.stop_reason },
     summary: { value: c.summary }, initial_actions: { value: a.next_best_actions.initial.map((x: any) => `${x.action}/${x.route}`).join(",") },
     final_actions: { value: a.next_best_actions.final.map((x: any) => `${x.action}/${x.route}`).join(",") },
-    evidence_json: { value: JSON.stringify(c.evidence).slice(0, 60000) }, llm_tokens: { value: a.tokens ?? 0 }, written_at: { value: tgTime(new Date()) },
+    evidence_json: { value: JSON.stringify(c.evidence).slice(0, 60000) }, written_at: { value: tgTime(new Date()) },
   };
   const edge = (type: string, to: string, toId: string) => ({ [type]: { [to]: { [toId]: {} } } });
   const body = {
@@ -38,9 +38,8 @@ for (const id of caseIds) {
   const edges = (eg.results ?? []).map((e: any) => `${e.e_type}->${e.to_id}`);
   if (!ok) throw new Error(`${id}: readback mismatch`);
   const write = { backend: "tigergraph", graph: cfg.graph, vertexType: "GS_InvestigationCase", vertexId: vid, writtenAt: attrs.written_at!.value, readbackVerified: true, edges };
-  c.graph_case_id = `GS_InvestigationCase:${vid}`; c.written_to_graph = true;
-  writeFileSync(`cases/${id}.json`, JSON.stringify(a, null, 2) + "\n");
-  web.answer = a; web.tigergraphCaseWrite = write; writeFileSync(`apps/web/data/${id}.json`, JSON.stringify(web, null, 1) + "\n");
+  mkdirSync("reports/writeback", { recursive: true });
+  writeFileSync(`reports/writeback/${id}.json`, JSON.stringify(write, null, 1) + "\n");
   results.push({ id, edges: edges.length }); console.log(`${id}: written + read back (${edges.length} edges: ${edges.join(", ") || "none - slice not loaded in TigerGraph"})`);
 }
-console.log(`\n${results.length} cases written to TigerGraph graph ${cfg.graph}.`);
+console.log(`\n${results.length} cases written to TigerGraph graph ${cfg.graph}. Now run: pnpm case:apply-write-back`);
