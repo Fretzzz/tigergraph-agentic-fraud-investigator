@@ -36,7 +36,7 @@ jobs:
           NIM_MODEL: ${{ vars.NIM_MODEL }}
         run: |
           set -o pipefail
-          pnpm narrate 2>&1 | tee narratives/run.txt
+          pnpm narrate $(grep -o "HHG-[0-9]*" narratives/REQUEST | sort -u || true) 2>&1 | tee narratives/run.txt
       - name: Commit results
         if: always()
         run: |

@@ -88,7 +88,7 @@ async function callNim(system: string, user: string) {
   for (let i = 0; i < 4; i++) {
     res = await fetch(`${endpoint}/chat/completions`, {
       method: "POST", headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({ model, temperature: 0.2, max_tokens: 3000, messages: [{ role: "system", content: system }, { role: "user", content: user }] }),
+      body: JSON.stringify({ model, temperature: 0.2, max_tokens: 6000, messages: [{ role: "system", content: system }, { role: "user", content: user }] }),
     });
     if (res.status !== 429 && res.status < 500) break;
     await new Promise(r => setTimeout(r, 5000 * (i + 1)));
@@ -144,7 +144,7 @@ async function main() {
       output: result.out,
     };
     writeFileSync(`narratives/${id}.json`, JSON.stringify(narrative, null, 1) + "\n");
-    d.narrative = narrative; if (d.answer) d.answer.tokens = used; writeFileSync(webPath, JSON.stringify(d, null, 1) + "\n");
+    d.narrative = narrative; if (Array.isArray(d.limitations)) d.limitations = d.limitations.map((l: string) => l.startsWith("No LLM is used in this path") ? `Decisions use no LLM: the reasoning is deterministic code over graph query results. After the decision, an LLM (NVIDIA NIM, ${String(narrative.model).split("/").pop()}) writes the case narrative only; the token count is from that step.` : l); if (d.answer) d.answer.tokens = used; writeFileSync(webPath, JSON.stringify(d, null, 1) + "\n");
     const casePath = `cases/${id}.json`; const ans = JSON.parse(readFileSync(casePath, "utf8")); ans.tokens = used; writeFileSync(casePath, JSON.stringify(ans, null, 2) + "\n");
     console.log(`${id}: ok (${used} tokens)`); ok++;
     };
