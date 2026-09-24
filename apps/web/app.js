@@ -98,6 +98,8 @@ async function main() {
   const seedKey = `Transaction:${k.flagged_txn_id}`;
   document.title = `${k.id} - GraphSentinel`;
   const tg = d.graphBackend === "tigergraph" && d.tigergraph;
+  const lb = document.getElementById("llm-badge");
+  if (lb && d.narrative) { lb.textContent = `LLM narrative: ${d.narrative.model.split("/").pop()} (decisions rule-based)`; lb.className = "badge live"; lb.title = `${d.narrative.tokens} tokens via ${d.narrative.provider}`; }
   const bb = document.getElementById("backend-badge");
   if (bb) { bb.textContent = tg ? (d.tigergraph.via === "mcp" ? "TigerGraph via MCP (live run)" : "TigerGraph (live run)") : "Local graph (not TigerGraph)"; bb.className = tg ? "badge live" : "badge warn"; bb.title = tg ? `Queries ran on TigerGraph Savanna at ${d.tigergraph.fetchedAt}. This page shows that saved run; the browser does not call TigerGraph.` : "Queries ran on the in-memory local graph."; }
   document.getElementById("app").innerHTML = `
@@ -125,6 +127,14 @@ async function main() {
     <p><b>What changed:</b> ${esc(a.next_best_actions.what_changed)}</p>
     <p><b>SAR:</b> ${esc(a.sar.reason)}</p><p><b>Stop reason:</b> ${esc(a.stop_reason)}</p></section>
 
+  ${d.narrative ? `<section class="panel full"><h2>Case narrative (LLM-written)</h2>
+    <p class="muted">${esc(d.narrative.label)} Model: ${esc(d.narrative.model)} via ${esc(d.narrative.provider)}, ${d.narrative.tokens} tokens, ${esc(d.narrative.generatedAt)}. Context: ${esc(d.narrative.retrieval.method)}. Every citation was checked against that context.</p>
+    <p>${esc(d.narrative.output.summary)}</p>
+    <h3>Why these actions</h3><ul>${(d.narrative.output.why_these_actions || []).map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+    <div class="cols"><div><h3>Evidence for fraud</h3><ul>${(d.narrative.output.evidence_for || []).map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>
+    <div><h3>Evidence against</h3><ul>${(d.narrative.output.evidence_against || []).map(x => `<li>${esc(x)}</li>`).join("")}</ul></div></div>
+    <p><b>Still uncertain:</b> ${esc(d.narrative.output.uncertainty)}</p>
+    <p><b>Case memory:</b> ${esc(d.narrative.output.memory)}</p></section>` : ""}
   <section class="panel"><h2>Similar prior cases (memory)</h2><table><tr><th>Case</th><th>Outcome</th><th>Pattern</th></tr>${(d.receipts.find(r => r.query === "historical_cases")?.result || []).map(h => `<tr><td>${esc(h.id)}</td><td>${esc(h.outcome)}</td><td>${esc(h.pattern)}</td></tr>`).join("")}</table></section>
 
   ${tg ? `<section class="panel full"><h2>TigerGraph run</h2>
