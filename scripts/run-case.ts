@@ -30,7 +30,7 @@ if (backend === "tigergraph") {
   try {
     const planned = await prefetchEvidence(mcp.cfg, slice);
     queries = new TigerGraphQueries(planned, mcp.cfg.graph);
-    tigergraph = { via: "mcp", host: new URL(mcp.cfg.host).host, graph: mcp.cfg.graph, queries: planned.map(p => p.endpoint), fetchedAt: new Date().toISOString(), fetchMs: Date.now() - t0, fieldsNotInTigerGraph: FIELDS_NOT_IN_TIGERGRAPH,
+    tigergraph = { via: "mcp", host: new URL(mcp.cfg.host).host, graph: mcp.cfg.graph, queries: planned.map(p => p.endpoint.split("?")[0]), fetchedAt: new Date().toISOString(), fetchMs: Date.now() - t0, fieldsNotInTigerGraph: FIELDS_NOT_IN_TIGERGRAPH,
       mcp: { server: "tigergraph-mcp (official, stdio)", allowedTools: [...MCP_ALLOWED_TOOLS], exposedTools: mcp.tools, calls: mcp.calls } };
   } finally { await mcp.close(); }
 }

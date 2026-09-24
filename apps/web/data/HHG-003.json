@@ -65,7 +65,7 @@
    "n": 8,
    "question": "Does this connect to other customers or cards?",
    "receiptId": "Q08-shared_origin",
-   "finding": "0 other-customer transactions share region 330 and email domain me.com in the 48h window (255 region transactions from 115 other customers overall); other-customer closed fraud cases linked: 0."
+   "finding": "0 other-customer transactions share region 330 and share email domain me.com in the 48h window (255 region transactions from 115 other customers overall); other-customer closed fraud cases linked: 0."
   }
  ],
  "factors": [
@@ -131,7 +131,7 @@
     "returned": 1
    },
    "backend": "tigergraph",
-   "endpoint": "/restpp/query/GraphSentinel/gs_seed_context?txn=3530164",
+   "endpoint": "mcp:tigergraph__run_installed_query/GraphSentinel/gs_seed_context?txn=3530164",
    "graph": "GraphSentinel"
   },
   {
@@ -162,7 +162,7 @@
     "returned": 42
    },
    "backend": "tigergraph",
-   "endpoint": "/restpp/query/GraphSentinel/gs_region_history?customer=C08623&region=330&before_ts=2016-12-10+13%3A01%3A21",
+   "endpoint": "mcp:tigergraph__run_installed_query/GraphSentinel/gs_region_history?customer=C08623&region=330&before_ts=2016-12-10+13%3A01%3A21",
    "graph": "GraphSentinel"
   },
   {
@@ -200,7 +200,7 @@
     "returned": 2
    },
    "backend": "tigergraph",
-   "endpoint": "/restpp/query/GraphSentinel/gs_email_domain_history?customer=C08623&domain=me.com&before_ts=2016-12-10+15%3A01%3A21&same_day_from=2016-12-10+00%3A00%3A00",
+   "endpoint": "mcp:tigergraph__run_installed_query/GraphSentinel/gs_email_domain_history?customer=C08623&domain=me.com&before_ts=2016-12-10+15%3A01%3A21&same_day_from=2016-12-10+00%3A00%3A00",
    "graph": "GraphSentinel"
   },
   {
@@ -253,7 +253,7 @@
     "returned": 68
    },
    "backend": "tigergraph",
-   "endpoint": "/restpp/query/GraphSentinel/gs_amount_profile?customer=C08623&amount_usd=49&before_ts=2016-12-10+13%3A01%3A21&tolerance_usd=1",
+   "endpoint": "mcp:tigergraph__run_installed_query/GraphSentinel/gs_amount_profile?customer=C08623&amount_usd=49&before_ts=2016-12-10+13%3A01%3A21&tolerance_usd=1",
    "graph": "GraphSentinel"
   },
   {
@@ -466,7 +466,7 @@
     "returned": 13
    },
    "backend": "tigergraph",
-   "endpoint": "/restpp/query/GraphSentinel/gs_customer_timeline?customer=C08623&from_ts=2016-12-08+13%3A01%3A21&to_ts=2016-12-10+15%3A01%3A21",
+   "endpoint": "mcp:tigergraph__run_installed_query/GraphSentinel/gs_customer_timeline?customer=C08623&from_ts=2016-12-08+13%3A01%3A21&to_ts=2016-12-10+15%3A01%3A21",
    "graph": "GraphSentinel"
   },
   {
@@ -486,7 +486,7 @@
     "returned": 33
    },
    "backend": "tigergraph",
-   "endpoint": "/restpp/query/GraphSentinel/gs_device_context?customer=C08623&before_ts=2016-12-10+15%3A01%3A21",
+   "endpoint": "mcp:tigergraph__run_installed_query/GraphSentinel/gs_device_context?customer=C08623&before_ts=2016-12-10+15%3A01%3A21",
    "graph": "GraphSentinel"
   },
   {
@@ -633,7 +633,7 @@
     "returned": 6
    },
    "backend": "tigergraph",
-   "endpoint": "/restpp/query/GraphSentinel/gs_historical_cases?card=C08623-K2&customer=C08623",
+   "endpoint": "mcp:tigergraph__run_installed_query/GraphSentinel/gs_historical_cases?card=C08623-K2&customer=C08623",
    "graph": "GraphSentinel"
   },
   {
@@ -651,7 +651,7 @@
     "returned": 0
    },
    "backend": "tigergraph",
-   "endpoint": "/restpp/query/GraphSentinel/gs_shared_origin?txn=3530164",
+   "endpoint": "mcp:tigergraph__run_installed_query/GraphSentinel/gs_shared_origin?txn=3530164",
    "graph": "GraphSentinel"
   }
  ],
@@ -1114,7 +1114,7 @@
   "stop_reason": "Further graph steps are unlikely to change the decision: region, amount, email-domain, device, history and shared-origin checks are done and the remaining questions (customer's answer, merchant identity) are not in the data. Escalated to an analyst with the conflict visible (R8).",
   "tool_calls": 8,
   "tokens": 0,
-  "latency_s": 0.011
+  "latency_s": 0.009
  },
  "validation": {
   "valid": true,
@@ -1276,26 +1276,85 @@
   ]
  },
  "tigergraph": {
+  "via": "mcp",
   "host": "tg-caab0265-16e1-4d3e-a79b-db79b897c9d8.tg-2635877100.i.tgcloud.io",
   "graph": "GraphSentinel",
   "queries": [
-   "/restpp/query/GraphSentinel/gs_seed_context",
-   "/restpp/query/GraphSentinel/gs_region_history",
-   "/restpp/query/GraphSentinel/gs_email_domain_history",
-   "/restpp/query/GraphSentinel/gs_amount_profile",
-   "/restpp/query/GraphSentinel/gs_customer_timeline",
-   "/restpp/query/GraphSentinel/gs_device_context",
-   "/restpp/query/GraphSentinel/gs_historical_cases",
-   "/restpp/query/GraphSentinel/gs_shared_origin"
+   "mcp:tigergraph__run_installed_query/GraphSentinel/gs_seed_context",
+   "mcp:tigergraph__run_installed_query/GraphSentinel/gs_region_history",
+   "mcp:tigergraph__run_installed_query/GraphSentinel/gs_email_domain_history",
+   "mcp:tigergraph__run_installed_query/GraphSentinel/gs_amount_profile",
+   "mcp:tigergraph__run_installed_query/GraphSentinel/gs_customer_timeline",
+   "mcp:tigergraph__run_installed_query/GraphSentinel/gs_device_context",
+   "mcp:tigergraph__run_installed_query/GraphSentinel/gs_historical_cases",
+   "mcp:tigergraph__run_installed_query/GraphSentinel/gs_shared_origin"
   ],
-  "fetchedAt": "2026-09-23T20:02:06.460Z",
-  "fetchMs": 915,
+  "fetchedAt": "2026-09-24T14:10:55.286Z",
+  "fetchMs": 2669,
   "fieldsNotInTigerGraph": [
    "transaction.card_fields",
    "transaction.dist1",
    "closed_case.first_fraud_txn_id",
    "closed_case.connected_card_ids"
   ],
+  "mcp": {
+   "server": "tigergraph-mcp (official, stdio)",
+   "allowedTools": [
+    "tigergraph__get_graph_schema",
+    "tigergraph__run_installed_query"
+   ],
+   "exposedTools": [
+    "tigergraph__get_graph_schema",
+    "tigergraph__run_installed_query"
+   ],
+   "calls": [
+    {
+     "tool": "tigergraph__get_graph_schema",
+     "query": "GraphSentinel",
+     "ms": 494
+    },
+    {
+     "tool": "tigergraph__run_installed_query",
+     "query": "gs_seed_context",
+     "ms": 145
+    },
+    {
+     "tool": "tigergraph__run_installed_query",
+     "query": "gs_region_history",
+     "ms": 156
+    },
+    {
+     "tool": "tigergraph__run_installed_query",
+     "query": "gs_email_domain_history",
+     "ms": 152
+    },
+    {
+     "tool": "tigergraph__run_installed_query",
+     "query": "gs_amount_profile",
+     "ms": 215
+    },
+    {
+     "tool": "tigergraph__run_installed_query",
+     "query": "gs_customer_timeline",
+     "ms": 152
+    },
+    {
+     "tool": "tigergraph__run_installed_query",
+     "query": "gs_device_context",
+     "ms": 148
+    },
+    {
+     "tool": "tigergraph__run_installed_query",
+     "query": "gs_historical_cases",
+     "ms": 144
+    },
+    {
+     "tool": "tigergraph__run_installed_query",
+     "query": "gs_shared_origin",
+     "ms": 144
+    }
+   ]
+  },
   "parity": [
    {
     "query": "seed_context",

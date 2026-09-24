@@ -60,7 +60,8 @@ export async function connectTigerGraphMcp(env: NodeJS.ProcessEnv = process.env)
       const body = await call("tigergraph__run_installed_query", { query_name: name, params, graph_name: graph }, name);
       const results = body.data?.result;
       if (!Array.isArray(results)) throw new Error(`MCP run_installed_query ${name}: no result array`);
-      return { endpoint: `mcp:tigergraph__run_installed_query/${graph}/${name}`, results };
+      const qs = new URLSearchParams(Object.entries(params).map(([k, v]) => [k, String(v)])).toString();
+      return { endpoint: `mcp:tigergraph__run_installed_query/${graph}/${name}${qs ? `?${qs}` : ""}`, results };
     },
   };
   return { cfg, tools, schemaSummary, calls, close: () => client.close() };

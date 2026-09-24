@@ -51,7 +51,7 @@ Mapped line by line to the [official brief](docs/sources/hackathon-brief.md). **
 |---|---|---|
 | TigerGraph Savanna or Community Edition | **Partial** | Savanna graph `GraphSentinel` holds the HHG-003 case slice; the other 19 cases run on the local in-memory graph with the same queries. Vector storage is not used. |
 | GSQL and graph algorithms | **Partial** | 8 installed GSQL queries ([`graph/queries/investigation_queries.gsql`](graph/queries/investigation_queries.gsql)). No library graph algorithms (community detection, PageRank) yet. |
-| TigerGraph MCP | **Planned** | Not built. Queries are called over REST. |
+| TigerGraph MCP | **Built (HHG-003)** | HHG-003's live run calls the 8 installed queries through the official tigergraph-mcp server (stdio), with a read-only tool allowlist; 8/8 match the local graph. `GRAPH_BACKEND=tigergraph-mcp`. The other 19 cases run on the local graph. |
 | GraphRAG | **Planned** | Not built. No vector search, no policy-document retrieval. |
 | User interface | **Built** | Static analyst view ([`apps/web`](apps/web)): case picker for all 20 cases, evidence, uncertainty, investigation steps, case graph, actions with approval routes, SAR, and a backend badge. |
 | LLM (optional) | **Planned** | Not in this build. Every run uses 0 LLM tokens and the page says "No LLM in this run". |
@@ -164,7 +164,7 @@ organizer CSVs ──> case slice (one per case) ──> graph
 
 The graph can be either:
 
-- **TigerGraph Savanna** (graph `GraphSentinel`): the HHG-003 slice is loaded there, and the 8 queries are installed GSQL queries called over REST. Use `GRAPH_BACKEND=tigergraph`.
+- **TigerGraph Savanna** (graph `GraphSentinel`): the HHG-003 slice is loaded there, and the 8 queries are installed GSQL queries, called through the official tigergraph-mcp server (or directly over REST). Use `GRAPH_BACKEND=tigergraph`.
 - **Local in-memory graph**: the same queries in TypeScript over the same slice. This is the default and the fallback, and it produced the other 19 case runs.
 
 Every query result is saved as a receipt, and every claim in the case file points to a receipt ID.
@@ -194,12 +194,13 @@ What is true today:
 
 - **Live on TigerGraph Savanna:** the HHG-003 case data is loaded into graph `GraphSentinel`, and all 8 queries above are installed and valid there.
 - **`GRAPH_BACKEND=tigergraph`:** `pnpm case:run` runs all 8 queries on Savanna over REST, then re-runs each one on the local graph and compares. The run fails if any result differs. The committed run matches 8/8.
+- **`GRAPH_BACKEND=tigergraph-mcp`:** the same 8 installed queries, called through the official [tigergraph-mcp](https://github.com/tigergraph/tigergraph-mcp) server over stdio (tool `tigergraph__run_installed_query`). The server is started with a tool allowlist (`tigergraph__get_graph_schema`, `tigergraph__run_installed_query`), so the agent cannot write data, change the schema or run ad-hoc GSQL; the run fails if the server exposes any other tool. Parity with the local graph is checked the same way. The saved HHG-003 run on the live site used this path.
 - **The public demo page** shows that saved TigerGraph run. Your browser does not call TigerGraph; the badge at the top of the page says which backend produced the run.
 - **Still local, even in TigerGraph mode:** the case subgraph drawing, prior-fraud regions, and the case write-back (`written_to_graph` is `false`). A few fields are not stored in TigerGraph: card fields, `dist1`, and two closed-case fields.
 - **Default:** without `GRAPH_BACKEND=tigergraph`, everything runs on the local graph.
 - **The other 19 cases** ran on the local graph. Their pages say "Local graph (not TigerGraph)" at the top, and the case picker marks only HHG-003 with `TG`.
 
-What is **not** in this build: no LLM (every run uses 0 tokens; the page shows a "No LLM in this run" badge), no MCP server, no GraphRAG or vector search, no case write-back to TigerGraph. These are on the [roadmap](#roadmap), not built.
+What is **not** in this build: no LLM (every run uses 0 tokens; the page shows a "No LLM in this run" badge), no GraphRAG or vector search, no case write-back to TigerGraph. These are on the [roadmap](#roadmap), not built.
 
 ## Run it locally
 
@@ -215,6 +216,10 @@ npx tsx scripts/build-web-index.ts
 # Or investigate on TigerGraph Savanna (needs your own Savanna host and database secret)
 TG_HOST=https://<your-savanna-host> TG_SECRET=<database-secret> \
   GRAPH_BACKEND=tigergraph RUN_ID=demo pnpm case:run HHG-003
+
+# Same queries through the official tigergraph-mcp server (pip install tigergraph-mcp)
+TG_HOST=https://<your-savanna-host> TG_SECRET=<database-secret> \
+  GRAPH_BACKEND=tigergraph-mcp RUN_ID=demo pnpm case:run HHG-003
 
 # Open the analyst view at http://localhost:8765/
 pnpm web
@@ -249,7 +254,7 @@ The TigerGraph tests run offline against saved responses.
 
 Planned, **not built**:
 
-- **TigerGraph MCP:** call the installed queries through the official [tigergraph-mcp](https://github.com/tigergraph/tigergraph-mcp) server instead of direct REST.
+- **TigerGraph MCP for all 20 cases:** load the other 19 case slices into TigerGraph and run them through [tigergraph-mcp](https://github.com/tigergraph/tigergraph-mcp) too (today only HHG-003 runs on TigerGraph).
 - **LLM narrative:** an LLM writes the plain-language case summary from the computed evidence receipts; code keeps the verdict and actions.
 - **GraphRAG:** retrieve policy sections and similar closed cases as grounded context.
 - **Case write-back:** write each finished case to TigerGraph so later investigations can reach it.
