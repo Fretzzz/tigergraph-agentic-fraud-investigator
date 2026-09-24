@@ -33,7 +33,10 @@ jobs:
       - name: Narrate all 20 cases
         env:
           NIM_API_KEY: ${{ secrets.NIM_API_KEY }}
-        run: pnpm narrate 2>&1 | tee narratives/run.log
+          NIM_MODEL: ${{ vars.NIM_MODEL }}
+        run: |
+          set -o pipefail
+          pnpm narrate 2>&1 | tee narratives/run.txt
       - name: Commit results
         if: always()
         run: |

@@ -21,7 +21,12 @@ const dryRun = args.includes("--dry-run");
 const ids = args.filter(a => !a.startsWith("--"));
 const caseIds = ids.length ? ids : readdirSync("cases").filter(f => /^HHG-\d{3}\.json$/.test(f)).map(f => f.replace(".json", "")).sort();
 const endpoint = process.env.NIM_BASE_URL ?? "https://integrate.api.nvidia.com/v1";
-const model = process.env.NIM_MODEL ?? "nvidia/llama-3.1-nemotron-70b-instruct";
+// The public model list includes retired models, so try candidates in order and use the first that answers.
+const MODEL_CANDIDATES = (process.env.NIM_MODEL ? [process.env.NIM_MODEL] : []).concat([
+  "nvidia/nemotron-3-super-120b-a12b", "mistralai/mistral-large-2-instruct", "openai/gpt-oss-20b",
+  "deepseek-ai/deepseek-v4.1-flash", "nvidia/nemotron-nano-3-30b-a3b", "nvidia/llama-3.1-nemotron-ultra-253b-v1", "nvidia/llama-3.1-nemotron-70b-instruct",
+]);
+let model = MODEL_CANDIDATES[0]!;
 const key = process.env.NIM_API_KEY ?? "";
 
 const readme = readFileSync("docs/sources/dataset-readme.md", "utf8");
@@ -81,11 +86,11 @@ async function callNim(system: string, user: string) {
   const t0 = Date.now();
   const res = await fetch(`${endpoint}/chat/completions`, {
     method: "POST", headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json", Accept: "application/json" },
-    body: JSON.stringify({ model, temperature: 0.2, max_tokens: 1200, messages: [{ role: "system", content: system }, { role: "user", content: user }] }),
+    body: JSON.stringify({ model, temperature: 0.2, max_tokens: 3000, messages: [{ role: "system", content: system }, { role: "user", content: user }] }),
   });
   if (!res.ok) throw new Error(`NIM ${res.status}: ${(await res.text()).slice(0, 300)}`);
   const body: any = await res.json();
-  const content: string = body.choices?.[0]?.message?.content ?? "";
+  const content: string = String(body.choices?.[0]?.message?.content ?? "").replace(/<think>[\s\S]*?<\/think>/g, "");
   const json = content.match(/\{[\s\S]*\}/)?.[0];
   if (!json) throw new Error(`NIM returned no JSON: ${content.slice(0, 200)}`);
   return { out: JSON.parse(json), usage: body.usage ?? null, ms: Date.now() - t0, servedModel: body.model ?? model };
@@ -94,6 +99,17 @@ async function callNim(system: string, user: string) {
 async function main() {
   if (!dryRun && !key) { console.error("Set NIM_API_KEY in your shell (never commit it)."); process.exit(1); }
   mkdirSync("narratives", { recursive: true });
+  if (!dryRun) {
+    let picked = "";
+    for (const m of MODEL_CANDIDATES) {
+      const r = await fetch(`${endpoint}/chat/completions`, { method: "POST", headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" }, body: JSON.stringify({ model: m, max_tokens: 5, messages: [{ role: "user", content: "Reply OK" }] }) });
+      console.log(`probe ${m}: ${r.status}`);
+      if (r.status === 401 || r.status === 403) { console.error("NIM rejected the key (" + r.status + ")"); process.exit(1); }
+      if (r.ok) { picked = m; break; }
+    }
+    if (!picked) { console.error("No candidate NIM model answered; set NIM_MODEL to a model your key can use."); process.exit(1); }
+    model = picked;
+  }
   let ok = 0, failed = 0, tokens = 0;
   for (const id of caseIds) {
     const webPath = `apps/web/data/${id}.json`;
