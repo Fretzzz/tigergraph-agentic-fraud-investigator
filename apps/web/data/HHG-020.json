@@ -810,7 +810,7 @@
   },
   "stop_reason": "Further graph steps are unlikely to change the decision.",
   "tool_calls": 8,
-  "tokens": 0,
+  "tokens": 6819,
   "latency_s": 0.012
  },
  "validation": {
@@ -921,5 +921,76 @@
     "type": "INVESTIGATES"
    }
   ]
+ },
+ "narrative": {
+  "caseId": "HHG-020",
+  "label": "LLM-written narrative. Verdict, probability and actions are rule-based; the model only explains them.",
+  "provider": "NVIDIA NIM",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "generatedAt": "2026-09-24T15:06:54.270Z",
+  "tokens": 6819,
+  "attempts": [
+   {
+    "attempt": 1,
+    "error": "NIM returned no JSON: {\n  \"summary\": \"Transaction 3509359 for $125.08 online was flagged with a model risk score of 0.52. The graph shows an established region (264) with 83 prior transactions, limited online usage, a devi"
+   },
+   {
+    "attempt": 2,
+    "usage": {
+     "prompt_tokens": 4273,
+     "completion_tokens": 2546,
+     "total_tokens": 6819
+    },
+    "ms": 41026
+   }
+  ],
+  "retrieval": {
+   "method": "GraphRAG-lite: graph query receipts + similar closed cases from the graph + cited policy sections (no vector index)",
+   "receipts": [
+    "Q01-seed_context",
+    "Q02-region_history",
+    "Q03-email_domain_history",
+    "Q04-amount_profile",
+    "Q05-customer_timeline",
+    "Q06-device_context",
+    "Q07-historical_cases",
+    "Q08-shared_origin"
+   ],
+   "similarCases": [
+    "CC-2277",
+    "CC-2447"
+   ],
+   "policy": [
+    "R1",
+    "R2",
+    "R4",
+    "3a",
+    "5",
+    "6"
+   ]
+  },
+  "promptSha256": "f78c3bd75be2da0a738260e6921cc769a6abaee04dfa686e6b5613824b2f8e1f",
+  "validation": "passed: all citations exist in the retrieved context; verdict and probability unchanged",
+  "output": {
+   "summary": "Transaction 3509359 for $125.08 online was flagged with a model risk score of 0.52. The graph shows an established region (264) with 83 prior transactions, limited online usage, a shared device profile with another customer, and prior confirmed fraud cases on the same card. The verdict is uncertain with a fraud probability of 0.35. The next steps are to verify with the customer and, if no reply, monitor the card.",
+   "why_these_actions": [
+    "VERIFY_WITH_CUSTOMER: per R1 because the case relies on a weak signal (risk score alone) and fraud probability is below 0.70. [R1]",
+    "MONITOR_CARD: per R4 because no customer reply within 24 hours (simulated) and exposure is under the $500 escalation threshold. [R4]"
+   ],
+   "evidence_for": [
+    "Established region 264 with 83 prior transactions, indicating normal behavior. [Q02-region_history]",
+    "Model score prior shows alerts like this are usually legitimate (0 of 900 similar alerts were fraud). [trigger:case_pack]",
+    "Low online usage: only 4 of 83 transactions are online, suggesting this transaction fits the usual channel mix. [Q04-amount_profile]",
+    "Email domain yahoo.com has been used 20 times before, showing no new or anomalous email. [Q03-email_domain_history]"
+   ],
+   "evidence_against": [
+    "Shared device profile with other customer C10390, raising possibility of credential sharing. [Q06-device_context]",
+    "Prior confirmed fraud cases on the same card (CC-2277, CC-2447) showing a pattern of account takeover. [CC-2277] [CC-2447]",
+    "Model risk score of 0.52 indicates moderate suspicion. [trigger:case_pack]",
+    "Transaction amount $125.08 exceeds the median historical amount of $107.90. [Q04-amount_profile]"
+   ],
+   "uncertainty": "Whether the customer still possesses the card and authorized the transaction remains unknown; a customer reply to the verification request would settle the question.",
+   "memory": "Similar closed cases (CC-2277, CC-2447) show prior confirmed fraud on this card with account takeover pattern, suggesting elevated risk, though each case was resolved by blocking and reissuing the card."
+  }
  }
 }

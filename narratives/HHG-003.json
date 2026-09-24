@@ -1,0 +1,78 @@
+{
+ "caseId": "HHG-003",
+ "label": "LLM-written narrative. Verdict, probability and actions are rule-based; the model only explains them.",
+ "provider": "NVIDIA NIM",
+ "model": "nvidia/nemotron-3-super-120b-a12b",
+ "generatedAt": "2026-09-24T15:00:06.824Z",
+ "tokens": 14059,
+ "attempts": [
+  {
+   "attempt": 1,
+   "usage": {
+    "prompt_tokens": 4991,
+    "completion_tokens": 2803,
+    "total_tokens": 7794
+   },
+   "ms": 29783
+  },
+  {
+   "attempt": 2,
+   "usage": {
+    "prompt_tokens": 5034,
+    "completion_tokens": 1231,
+    "total_tokens": 6265
+   },
+   "ms": 19497
+  }
+ ],
+ "retrieval": {
+  "method": "GraphRAG-lite: graph query receipts + similar closed cases from the graph + cited policy sections (no vector index)",
+  "receipts": [
+   "Q01-seed_context",
+   "Q02-region_history",
+   "Q03-email_domain_history",
+   "Q04-amount_profile",
+   "Q05-customer_timeline",
+   "Q06-device_context",
+   "Q07-historical_cases",
+   "Q08-shared_origin"
+  ],
+  "similarCases": [
+   "CC-1589",
+   "CC-2817",
+   "CC-2935",
+   "CC-3327",
+   "CC-3682",
+   "CC-4957"
+  ],
+  "policy": [
+   "R2",
+   "R4",
+   "R8",
+   "3a",
+   "5",
+   "6"
+  ]
+ },
+ "promptSha256": "3404b54b321f5d7e3433be9afe059ae7740a2674214710c8e1a11acc49afea53",
+ "validation": "passed: all citations exist in the retrieved context; verdict and probability unchanged",
+ "output": {
+  "summary": "Customer C08623 denied a $49.00 in-person transaction (3530164) on card C08623-K2. The graph shows the transaction occurred in an established region (330) and matches the customer's typical in-person amount, but the email domain me.com was new for the customer that day. The agent returned an uncertain verdict with fraud probability 0.55. The next steps are to create a case, monitor the card for lack of reply, block the card at L1 approval, and escalate to an analyst due to the uncertain verdict and conflicting evidence.",
+  "why_these_actions": [
+   "CREATE_CASE: based on R2 and section 3a because the customer disputed a charge",
+   "MONITOR_CARD: based on R4 because no customer reply was received within 24 hours (simulated)",
+   "BLOCK_CARD: based on R2 because the customer denied the transaction and exposure is under the L1 threshold",
+   "ESCALATE_TO_ANALYST: based on R8 because the verdict is uncertain and the evidence conflicts"
+  ],
+  "evidence_for": [
+   "Customer denial of transaction supports fraud [trigger:case_pack]",
+   "New email domain me.com appears same day on two transactions, a weak fraud signal [Q03-email_domain_history]"
+  ],
+  "evidence_against": [
+   "Region 330 is established for the customer with many prior transactions, supporting legitimacy [Q02-region_history]",
+   "Amount $49.00 matches typical in-person spending pattern, supporting legitimacy [Q04-amount_profile]"
+  ],
+  "uncertainty": "Merchant identity and whether the customer still possesses the card are unknown; obtaining merchant details or a definitive customer response would settle the case [section 5]",
+  "memory": "Similar closed cases show mixed outcomes: CC-1589 was cleared despite a high model score, while CC-2817, CC-2935, CC-3682, and CC-4957 were confirmed fraud, mostly out-of-region use; the present case's established region and typical amount make it ambiguous, so past cases do not give a clear prediction"
+ }
+}

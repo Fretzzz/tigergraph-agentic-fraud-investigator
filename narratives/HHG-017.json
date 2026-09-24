@@ -1,0 +1,64 @@
+{
+ "caseId": "HHG-017",
+ "label": "LLM-written narrative. Verdict, probability and actions are rule-based; the model only explains them.",
+ "provider": "NVIDIA NIM",
+ "model": "nvidia/nemotron-3-super-120b-a12b",
+ "generatedAt": "2026-09-24T15:05:18.834Z",
+ "tokens": 6416,
+ "attempts": [
+  {
+   "attempt": 1,
+   "usage": {
+    "prompt_tokens": 3768,
+    "completion_tokens": 2648,
+    "total_tokens": 6416
+   },
+   "ms": 26268
+  }
+ ],
+ "retrieval": {
+  "method": "GraphRAG-lite: graph query receipts + similar closed cases from the graph + cited policy sections (no vector index)",
+  "receipts": [
+   "Q01-seed_context",
+   "Q02-region_history",
+   "Q03-email_domain_history",
+   "Q04-amount_profile",
+   "Q05-customer_timeline",
+   "Q06-device_context",
+   "Q07-historical_cases",
+   "Q08-shared_origin"
+  ],
+  "similarCases": [
+   "CC-1383"
+  ],
+  "policy": [
+   "R1",
+   "R2",
+   "R4",
+   "3a",
+   "5",
+   "6"
+  ]
+ },
+ "promptSha256": "2e2e8dc8f26d4e35e2f2369ac5f6260ca66c5968d0d46fa0c601426615de081a",
+ "validation": "passed: all citations exist in the retrieved context; verdict and probability unchanged",
+ "output": {
+  "summary": "The agent reviewed transaction 3450629 ($100.09, online) scored 0.57 by the real‑time model. Graph queries showed the card’s typical behavior in region 204, similar low‑risk same‑day emails, amount within the customer’s tolerance, no shared device, and no linked fraud from other customers. With a fraud probability of 0.45 and exposure under $1,000, the verdict is uncertain and no SAR is filed. The next steps are to verify the transaction with the customer and, if no reply is received within 24 hours, to monitor the card.",
+  "why_these_actions": [
+   "VERIFY_WITH_CUSTOMER: R1 recommends verification when fraud probability <0.70 and the case rests on a weak signal.",
+   "MONITOR_CARD: R4 recommends monitoring when no customer reply is received within 24 hours."
+  ],
+  "evidence_for": [
+   "[trigger:case_pack]"
+  ],
+  "evidence_against": [
+   "[Q03-email_domain_history]",
+   "[Q04-amount_profile]",
+   "[Q06-device_context]",
+   "[Q08-shared_origin]",
+   "[CC-1383]"
+  ],
+  "uncertainty": "Whether the cardholder actually authorized the three similar transactions; a clear customer reply would settle the question.",
+  "memory": "The similar closed case CC-1383 was cleared after customer verification, suggesting that verification often resolves such low‑score alerts."
+ }
+}

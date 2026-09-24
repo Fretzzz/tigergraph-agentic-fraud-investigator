@@ -892,7 +892,7 @@
   },
   "stop_reason": "Further graph steps are unlikely to change the decision: region, amount, email-domain, device, history and shared-origin checks are done and the remaining questions (customer's answer, merchant identity) are not in the data. Escalated to an analyst with the conflict visible (R8).",
   "tool_calls": 8,
-  "tokens": 0,
+  "tokens": 6557,
   "latency_s": 0.014
  },
  "validation": {
@@ -1023,5 +1023,73 @@
     "type": "INVESTIGATES"
    }
   ]
+ },
+ "narrative": {
+  "caseId": "HHG-019",
+  "label": "LLM-written narrative. Verdict, probability and actions are rule-based; the model only explains them.",
+  "provider": "NVIDIA NIM",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "generatedAt": "2026-09-24T15:06:25.771Z",
+  "tokens": 6557,
+  "attempts": [
+   {
+    "attempt": 1,
+    "usage": {
+     "prompt_tokens": 4337,
+     "completion_tokens": 2220,
+     "total_tokens": 6557
+    },
+    "ms": 66937
+   }
+  ],
+  "retrieval": {
+   "method": "GraphRAG-lite: graph query receipts + similar closed cases from the graph + cited policy sections (no vector index)",
+   "receipts": [
+    "Q01-seed_context",
+    "Q02-region_history",
+    "Q03-email_domain_history",
+    "Q04-amount_profile",
+    "Q05-customer_timeline",
+    "Q06-device_context",
+    "Q07-historical_cases",
+    "Q08-shared_origin"
+   ],
+   "similarCases": [
+    "CC-2011",
+    "CC-2087",
+    "CC-2860",
+    "CC-5026"
+   ],
+   "policy": [
+    "R2",
+    "R4",
+    "R6",
+    "R8",
+    "3a",
+    "5",
+    "6"
+   ]
+  },
+  "promptSha256": "9391302a1a727932a71aa317092c6adc0566571a1b6957059d81698792c2126b",
+  "validation": "passed: all citations exist in the retrieved context; verdict and probability unchanged",
+  "output": {
+   "summary": "On 2016-12-01, transaction 3503878 ($99.92, online) on card C07987-K2 received a 0.9 risk score, triggering review. The graph shows the transaction occurred in region 264 with email domain verizon.net and shares that region and domain with another customer's transaction (3504742), while historical model alerts of this score are usually legitimate. The agent's verdict is uncertain with a fraud probability of 0.6, reflecting conflicting evidence. Next steps are to create a case, monitor the card and connected cards, escalate to an analyst, and file a report.",
+   "why_these_actions": [
+    "CREATE_CASE – R6 requires creating a case when shared origin is observed. [R6]",
+    "MONITOR_CARD – R4 advises monitoring the card when no customer reply within 24 hours. [R4]",
+    "MONITOR_CONNECTED_CARDS – R6 requires monitoring all cards sharing the shared origin. [R6]",
+    "ESCALATE_TO_ANALYST – R8 mandates escalation when verdict is uncertain and evidence conflicts. [R8]",
+    "FILE_REPORT – R6 obliges filing a report due to shared origin. [R6]"
+   ],
+   "evidence_for": [
+    "Shared origin with another customer's transaction in region 264 and email domain verizon.net suggests coordinated fraud [Q08-shared_origin]"
+   ],
+   "evidence_against": [
+    "Model alerts of this score are usually legitimate: 0 of 900 similar model-scored cases were confirmed fraud [trigger:case_pack]",
+    "Historical case CC-2087 with a similar high score was cleared after customer confirmation [CC-2087]"
+   ],
+   "uncertainty": "Unknown whether the customer still possesses the card and recognizes the recent purchases; a customer response would settle the legitimacy. [section 5]",
+   "memory": "Similar closed cases show mixed outcomes: CC-2011 and CC-5026 were confirmed fraud (out‑of‑region use), CC-2860 was confirmed fraud (card‑not‑present), while CC-2087 was cleared after customer validation, indicating that customer verification is key. [CC-2011] [CC-5026] [CC-2860] [CC-2087]"
+  }
  }
 }

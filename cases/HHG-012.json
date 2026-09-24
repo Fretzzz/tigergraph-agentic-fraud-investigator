@@ -112,6 +112,6 @@
   },
   "stop_reason": "Further graph steps are unlikely to change the decision.",
   "tool_calls": 8,
-  "tokens": 0,
+  "tokens": 5895,
   "latency_s": 0.023
 }

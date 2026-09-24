@@ -1025,7 +1025,7 @@
   },
   "stop_reason": "Further graph steps are unlikely to change the decision.",
   "tool_calls": 8,
-  "tokens": 0,
+  "tokens": 5895,
   "latency_s": 0.023
  },
  "validation": {
@@ -1126,5 +1126,72 @@
     "type": "INVESTIGATES"
    }
   ]
+ },
+ "narrative": {
+  "caseId": "HHG-012",
+  "label": "LLM-written narrative. Verdict, probability and actions are rule-based; the model only explains them.",
+  "provider": "NVIDIA NIM",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "generatedAt": "2026-09-24T15:03:23.506Z",
+  "tokens": 5895,
+  "attempts": [
+   {
+    "attempt": 1,
+    "error": "NIM 503: {\"error\":{\"message\":\"Service temporarily overloaded\",\"type\":\"Service Unavailable\",\"code\":503}}"
+   },
+   {
+    "attempt": 2,
+    "usage": {
+     "prompt_tokens": 4085,
+     "completion_tokens": 1810,
+     "total_tokens": 5895
+    },
+    "ms": 18968
+   }
+  ],
+  "retrieval": {
+   "method": "GraphRAG-lite: graph query receipts + similar closed cases from the graph + cited policy sections (no vector index)",
+   "receipts": [
+    "Q01-seed_context",
+    "Q02-region_history",
+    "Q03-email_domain_history",
+    "Q04-amount_profile",
+    "Q05-customer_timeline",
+    "Q06-device_context",
+    "Q07-historical_cases",
+    "Q08-shared_origin"
+   ],
+   "similarCases": [
+    "CC-0003",
+    "CC-2370"
+   ],
+   "policy": [
+    "R1",
+    "R2",
+    "R4",
+    "3a",
+    "5",
+    "6"
+   ]
+  },
+  "promptSha256": "b64293e3b9604a46a16fbe332dd9c747e869e03f0af65d4ed61a856112777fa2",
+  "validation": "passed: all citations exist in the retrieved context; verdict and probability unchanged",
+  "output": {
+   "summary": "The transaction 3553342 for $30.91 in region 494 triggered a risk score of 0.55 [trigger:case_pack]. Graph evidence shows the region is established for the customer [Q02-region_history] and the amount matches typical in-person spending [Q04-amount_profile]. No shared device or other fraud links were found [Q06-device_context][Q08-shared_origin]. The verdict is uncertain with fraud probability 0.3, leading to verification and monitoring.",
+   "why_these_actions": [
+    "VERIFY_WITH_CUSTOMER: follow R1 because the case relies on a single weak signal and fraud probability is below 0.70 [R1]",
+    "MONITOR_CARD: apply R4 as no customer reply was received within 24 hours [R4]"
+   ],
+   "evidence_for": [
+    "Risk score 0.55 indicates some suspicion [trigger:case_pack]"
+   ],
+   "evidence_against": [
+    "Model alerts of this score are usually legitimate (0 of 900 similar alerts were fraud) [trigger:case_pack]",
+    "Region 494 is established for the customer with 21 prior transactions [Q02-region_history]",
+    "Amount $30.91 matches typical in-person spending (34 prior within $1) [Q04-amount_profile]"
+   ],
+   "uncertainty": "Whether the customer authorized the transaction remains unknown; a customer reply would clarify the legitimacy [section 5]",
+   "memory": "Similar closed cases show that verification can clear alerts (CC-0003) while lack of reply leads to monitoring, and fraud was confirmed only when the customer reported unrecognized activity (CC-2370) [CC-0003] [CC-2370]"
+  }
  }
 }

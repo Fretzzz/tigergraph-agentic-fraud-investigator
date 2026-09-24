@@ -1,0 +1,86 @@
+{
+ "caseId": "HHG-011",
+ "label": "LLM-written narrative. Verdict, probability and actions are rule-based; the model only explains them.",
+ "provider": "NVIDIA NIM",
+ "model": "nvidia/nemotron-3-super-120b-a12b",
+ "generatedAt": "2026-09-24T15:04:52.564Z",
+ "tokens": 18932,
+ "attempts": [
+  {
+   "attempt": 1,
+   "usage": {
+    "prompt_tokens": 6885,
+    "completion_tokens": 2888,
+    "total_tokens": 9773
+   },
+   "ms": 97129
+  },
+  {
+   "attempt": 2,
+   "error": "NIM returned no JSON: {\n  \"summary\": \"Customer C11923 denied making a $131.30 online purchase (txn 3583368) on their Visa debit card C11923-K2, triggering the investigation. Graph evidence shows the denial, a shared device"
+  },
+  {
+   "attempt": 3,
+   "usage": {
+    "prompt_tokens": 6974,
+    "completion_tokens": 2185,
+    "total_tokens": 9159
+   },
+   "ms": 32622
+  }
+ ],
+ "retrieval": {
+  "method": "GraphRAG-lite: graph query receipts + similar closed cases from the graph + cited policy sections (no vector index)",
+  "receipts": [
+   "Q01-seed_context",
+   "Q02-email_domain_history",
+   "Q03-amount_profile",
+   "Q04-customer_timeline",
+   "Q05-device_context",
+   "Q06-historical_cases",
+   "Q07-shared_origin"
+  ],
+  "similarCases": [
+   "CC-0031",
+   "CC-0290",
+   "CC-1056",
+   "CC-2247",
+   "CC-2673",
+   "CC-2799",
+   "CC-3039",
+   "CC-3206",
+   "CC-3905",
+   "CC-4501",
+   "CC-4743"
+  ],
+  "policy": [
+   "R2",
+   "R4",
+   "R6",
+   "R8",
+   "3a",
+   "5",
+   "6"
+  ]
+ },
+ "promptSha256": "eb43b7140ba1a98ed0ab7494c36dc854f204b9afa7ad92019057c8130d28128f",
+ "validation": "passed: all citations exist in the retrieved context; verdict and probability unchanged",
+ "output": {
+  "summary": "Customer C11923 reported not making a $131.30 online purchase (txn 3583368) on Visa debit card C11923-K2, triggering the investigation. Graph evidence shows the customer denial, a shared device profile (SM-G610F) with other customers, and a history of similar high‑amount online transactions. The agent returned an uncertain verdict with a fraud probability of 0.8. Next steps are to create a case, monitor the card and connected cards, block the card, and file a suspicious activity report.",
+  "why_these_actions": [
+   "CREATE_CASE: customer denied the transaction, per R2 and section 3a [R2] [section 3a]",
+   "MONITOR_CARD: no customer reply within 24 hours, per R4 [R4]",
+   "BLOCK_CARD: customer denied the transaction and exposure under $2,500, per R2 [R2]",
+   "MONITOR_CONNECTED_CARDS: shared device profile triggers monitoring per R6 [R6]",
+   "FILE_REPORT: exposure exceeds $1,000 and shared device per R2 [R2]"
+  ],
+  "evidence_for": [
+   "Customer denial of txn 3583368 supports fraud [trigger:case_pack]",
+   "Shared device profile (SM-G610F) with other customers supports fraud [Q07-shared_origin]",
+   "Historical closed cases for same customer show confirmed fraud patterns [CC-0031] [CC-0290] [CC-1056]"
+  ],
+  "evidence_against": [],
+  "uncertainty": "Unknown whether the customer actually authorized txn 3583368 or if the device was compromised; a customer reply or step‑up authentication would settle the question [section 5]",
+  "memory": "Similar closed cases (CC-0031, CC-0290, CC-1056, etc.) were confirmed fraud, suggesting a high likelihood of fraud in this case."
+ }
+}

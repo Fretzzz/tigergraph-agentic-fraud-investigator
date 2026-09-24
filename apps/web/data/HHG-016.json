@@ -896,7 +896,7 @@
   },
   "stop_reason": "Further graph steps are unlikely to change the decision.",
   "tool_calls": 7,
-  "tokens": 0,
+  "tokens": 12037,
   "latency_s": 0.012
  },
  "validation": {
@@ -977,5 +977,79 @@
     "type": "INVESTIGATES"
    }
   ]
+ },
+ "narrative": {
+  "caseId": "HHG-016",
+  "label": "LLM-written narrative. Verdict, probability and actions are rule-based; the model only explains them.",
+  "provider": "NVIDIA NIM",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "generatedAt": "2026-09-24T15:05:28.738Z",
+  "tokens": 12037,
+  "attempts": [
+   {
+    "attempt": 1,
+    "error": "NIM returned no JSON: We need to produce JSON with keys: summary, why_these_actions, evidence_for, evidence_against, uncertainty, memory.\n\nWe must use only context given. Must cite sources inline in square brackets using e"
+   },
+   {
+    "attempt": 2,
+    "usage": {
+     "prompt_tokens": 3620,
+     "completion_tokens": 2569,
+     "total_tokens": 6189
+    },
+    "ms": 23396
+   },
+   {
+    "attempt": 3,
+    "usage": {
+     "prompt_tokens": 3590,
+     "completion_tokens": 2258,
+     "total_tokens": 5848
+    },
+    "ms": 31248
+   }
+  ],
+  "retrieval": {
+   "method": "GraphRAG-lite: graph query receipts + similar closed cases from the graph + cited policy sections (no vector index)",
+   "receipts": [
+    "Q01-seed_context",
+    "Q02-email_domain_history",
+    "Q03-amount_profile",
+    "Q04-customer_timeline",
+    "Q05-device_context",
+    "Q06-historical_cases",
+    "Q07-shared_origin"
+   ],
+   "similarCases": [],
+   "policy": [
+    "R2",
+    "R4",
+    "R8",
+    "3a",
+    "5",
+    "6"
+   ]
+  },
+  "promptSha256": "320d401edeab4157531677420535e1bf1c9b78325fc302f3bb894d8beabb8c56",
+  "validation": "passed: all citations exist in the retrieved context; verdict and probability unchanged",
+  "output": {
+   "summary": "Customer C09988 reported not making a $59.67 online purchase (transaction 3534820) on card C09988-K1. The graph shows the transaction details, a typical online spending pattern for the customer, and no prior fraud history. The customer denial supports fraud, but the lack of shared device, region cluster, or prior cases leaves the case uncertain with a fraud probability of 0.65. The next steps are to create a case, monitor the card for no reply, and block the card pending further evidence.",
+   "why_these_actions": [
+    "CREATE_CASE: per R2 and section 3a because the customer disputed a charge. [R2] [section 3a]",
+    "MONITOR_CARD: per R4 as there was no customer reply within 24 hours. [R4]",
+    "BLOCK_CARD: per R2 because the customer denied the transaction and exposure is under $2,500. [R2]"
+   ],
+   "evidence_for": [
+    "Customer denies the transaction (trigger:case_pack) [trigger:case_pack]",
+    "Transaction is online with no prior in‑person tolerance (Q03-amount_profile shows inPersonWithinTolerance:0) [Q03-amount_profile]"
+   ],
+   "evidence_against": [
+    "No historical fraud cases for this customer (Q06-historical_cases empty) [Q06-historical_cases]",
+    "Transaction amount within typical tolerance for the customer (Q03-amount_profile withinTolerance:1) [Q03-amount_profile]",
+    "No shared region or email cluster beyond normal usage (Q02-email_domain_history priorUses 16, sameDay only this transaction) [Q02-email_domain_history]"
+   ],
+   "uncertainty": "Unknown whether the customer still possesses the card and whether other recent purchases are recognized; a customer reply to the verification request would settle the question.",
+   "memory": "No similar closed cases were found (similar_closed_cases empty), so there is no relevant historical precedent."
+  }
  }
 }

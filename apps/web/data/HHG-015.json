@@ -809,7 +809,7 @@
   },
   "stop_reason": "Further graph steps are unlikely to change the decision: region, amount, email-domain, device, history and shared-origin checks are done and the remaining questions (customer's answer, merchant identity) are not in the data. Escalated to an analyst with the conflict visible (R8).",
   "tool_calls": 8,
-  "tokens": 0,
+  "tokens": 6220,
   "latency_s": 0.011
  },
  "validation": {
@@ -930,5 +930,83 @@
     "type": "INVESTIGATES"
    }
   ]
+ },
+ "narrative": {
+  "caseId": "HHG-015",
+  "label": "LLM-written narrative. Verdict, probability and actions are rule-based; the model only explains them.",
+  "provider": "NVIDIA NIM",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "generatedAt": "2026-09-24T15:05:13.646Z",
+  "tokens": 6220,
+  "attempts": [
+   {
+    "attempt": 1,
+    "error": "NIM returned no JSON: {\n  \"summary\": \"Transaction 3464869 ($599.94 online) on card C03042-K1 triggered a risk score of 0.77. [Q01-seed_context] [trigger:case_pack] Graph checks show no prior transactions in region 327, the"
+   },
+   {
+    "attempt": 2,
+    "error": "NIM returned no JSON: We need to output JSON with required keys. Must cite only allowed IDs. Use only those IDs inside square brackets. Must not include other IDs. Must not invent IDs. Must be concrete and short. Provide s"
+   },
+   {
+    "attempt": 3,
+    "usage": {
+     "prompt_tokens": 3969,
+     "completion_tokens": 2251,
+     "total_tokens": 6220
+    },
+    "ms": 24444
+   }
+  ],
+  "retrieval": {
+   "method": "GraphRAG-lite: graph query receipts + similar closed cases from the graph + cited policy sections (no vector index)",
+   "receipts": [
+    "Q01-seed_context",
+    "Q02-region_history",
+    "Q03-email_domain_history",
+    "Q04-amount_profile",
+    "Q05-customer_timeline",
+    "Q06-device_context",
+    "Q07-historical_cases",
+    "Q08-shared_origin"
+   ],
+   "similarCases": [
+    "CC-0615",
+    "CC-1313",
+    "CC-3886"
+   ],
+   "policy": [
+    "R1",
+    "R2",
+    "R4",
+    "R8",
+    "3a",
+    "5",
+    "6"
+   ]
+  },
+  "promptSha256": "c9ed1573dbaa3a789ed146e13a67eff34cf8b269670689009dfc33824a109158",
+  "validation": "passed: all citations exist in the retrieved context; verdict and probability unchanged",
+  "output": {
+   "summary": "Transaction 3464869 ($599.94, online) triggered a risk score of 0.77. The graph shows the amount is far above the customer’s typical online spend, the region has never been used before, the email domain is anonymous but frequently used, and the device is not shared with other customers, while the same customer has prior confirmed fraud cases involving a new device. The verdict is uncertain with a fraud probability of 0.45, and the next steps are to verify with the customer, monitor the card for no reply, and escalate to an analyst.",
+   "why_these_actions": [
+    "VERIFY_WITH_CUSTOMER: R1 – verify before blocking on a weak signal when fraud probability is below 0.70. [R1]",
+    "MONITOR_CARD: R4 – no customer reply within 24 hours and exposure exceeds $500, so monitor the card. [R4]",
+    "ESCALATE_TO_ANALYST: R8 – uncertain verdict with exposure over $500 and conflicting evidence warrants analyst escalation. [R8]"
+   ],
+   "evidence_for": [
+    "High risk score 0.77 suggests fraud [trigger:case_pack]",
+    "Transaction amount $599.94 exceeds the customer’s typical online spend (median $99.96) [Q04-amount_profile]",
+    "Region 327 has not appeared in the prior 68 transactions [Q02-region_history]",
+    "Prior confirmed fraud cases on the same card with a new‑device pattern [CC-0615][CC-3886]"
+   ],
+   "evidence_against": [
+    "Model alerts with this score are usually cleared (0 of 900 scored cases were fraud) [trigger:case_pack]",
+    "No prior use of this region or device sharing with other fraud cases [Q02-region_history][Q06-device_context]",
+    "Email domain anonymous.com is used frequently in legitimate transactions [Q03-email_domain_history]",
+    "Exposure under $1,000, no shared device or region cluster, so no SAR is required per policy [section 3a][R2]"
+   ],
+   "uncertainty": "We do not know whether the customer authorized the transaction, the true merchant identity, or if the device has been compromised. A customer reply confirming or denying the charge, merchant details, or additional device fingerprint evidence would settle the uncertainty.",
+   "memory": "Similar closed cases show both outcomes: CC-0615 and CC-3886 resulted in confirmed fraud with a new device, while CC-1313 was cleared after the customer confirmed travel. This indicates that customer verification is critical to distinguish fraud from legitimate activity."
+  }
  }
 }

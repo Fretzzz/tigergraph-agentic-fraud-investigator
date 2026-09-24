@@ -1,0 +1,30 @@
+
+> graphsentinel@0.0.0 narrate /home/runner/work/tigergraph-agentic-fraud-investigator/tigergraph-agentic-fraud-investigator
+> tsx scripts/narrate.ts
+
+probe nvidia/nemotron-3-super-120b-a12b: 200
+HHG-001: ok (6933 tokens)
+HHG-003: ok (14059 tokens)
+HHG-004: ok (6897 tokens)
+HHG-005: ok (6369 tokens)
+HHG-006: ok (6704 tokens)
+HHG-002: FAILED (NIM returned no JSON: We need to output JSON with keys: summary, why_these_actions, evidence_for, evidence_against, uncertainty, memory.
+
+We must cite only allowed IDs inside square brackets. Allowed IDs list: [Q01-seed_co)
+HHG-007: ok (10211 tokens)
+HHG-010: ok (6093 tokens)
+HHG-009: ok (9901 tokens)
+HHG-008: ok (11058 tokens)
+HHG-013: ok (7659 tokens)
+HHG-012: ok (5895 tokens)
+HHG-014: ok (5781 tokens)
+HHG-011: ok (18932 tokens)
+HHG-015: ok (6220 tokens)
+HHG-017: ok (6416 tokens)
+HHG-016: ok (12037 tokens)
+HHG-018: ok (17235 tokens)
+HHG-019: ok (6557 tokens)
+HHG-020: ok (6819 tokens)
+
+Done: 19 ok, 1 failed, 171776 tokens total, model nvidia/nemotron-3-super-120b-a12b. Re-run the failed IDs: pnpm narrate HHG-0xx
+ ELIFECYCLE  Command failed with exit code 1.

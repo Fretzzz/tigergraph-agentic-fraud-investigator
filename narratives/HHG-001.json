@@ -1,0 +1,67 @@
+{
+ "caseId": "HHG-001",
+ "label": "LLM-written narrative. Verdict, probability and actions are rule-based; the model only explains them.",
+ "provider": "NVIDIA NIM",
+ "model": "nvidia/nemotron-3-super-120b-a12b",
+ "generatedAt": "2026-09-24T14:59:55.451Z",
+ "tokens": 6933,
+ "attempts": [
+  {
+   "attempt": 1,
+   "usage": {
+    "prompt_tokens": 4194,
+    "completion_tokens": 2739,
+    "total_tokens": 6933
+   },
+   "ms": 37910
+  }
+ ],
+ "retrieval": {
+  "method": "GraphRAG-lite: graph query receipts + similar closed cases from the graph + cited policy sections (no vector index)",
+  "receipts": [
+   "Q01-seed_context",
+   "Q02-region_history",
+   "Q03-amount_profile",
+   "Q04-customer_timeline",
+   "Q05-device_context",
+   "Q06-historical_cases",
+   "Q07-shared_origin"
+  ],
+  "similarCases": [
+   "CC-1066",
+   "CC-1673",
+   "CC-2964",
+   "CC-3587"
+  ],
+  "policy": [
+   "R1",
+   "R2",
+   "R4",
+   "3a",
+   "5",
+   "6"
+  ]
+ },
+ "promptSha256": "ffc10e9c5778800fc75570086281cb3999713f5397a771c7b2612c22aeaa6642",
+ "validation": "passed: all citations exist in the retrieved context; verdict and probability unchanged",
+ "output": {
+  "summary": "Transaction 3514030 for $77.07 in region 444 triggered a risk score of 0.61. The graph shows the customer has a stable region history (10 prior transactions in region 444) and typical in-person amount patterns, with no shared device or linked fraud. The model score alone is a weak signal, and historical cases show fraud usually involves out-of-region use or new devices. Consequently the verdict is uncertain with a fraud probability of 0.3, and the next steps are to verify with the customer and monitor the card.",
+  "why_these_actions": [
+   "VERIFY_WITH_CUSTOMER: R1 advises verification before blocking on a weak signal when fraud probability <0.70. [R1]",
+   "MONITOR_CARD: R4 recommends monitoring when there is no customer reply within 24 hours. [R4]"
+  ],
+  "evidence_for": [
+   "Model score prior indicates alerts like this are usually legitimate (0 of 900 model-scored cases were fraud). [trigger:case_pack]",
+   "Region 444 is established for the customer with 10 prior transactions since Sep 2016. [Q02-region_history]",
+   "Amount $77.07 matches typical in-person spending (10 prior within $1.00). [Q03-amount_profile]",
+   "No shared device profiles detected. [Q05-device_context]",
+   "No shared origin with other customers' fraud or email. [Q07-shared_origin]"
+  ],
+  "evidence_against": [
+   "The transaction’s risk score of 0.61 exceeds the baseline but is insufficient alone to cross the 0.70 block threshold. [Q01-seed_context] [R1]",
+   "No customer verification has been obtained yet; the assumed response is no reply within 24 hours. [section 5]"
+  ],
+  "uncertainty": "Whether the customer actually authorized the transaction, whether the card remains in their possession, and whether any undisclosed device sharing exists remain unknown. A customer reply to the verification request or step-up authentication result would settle the question.",
+  "memory": "Similar closed cases (CC-1066, CC-2964, CC-3587) show fraud often involves out-of-region use, while CC-1673 involves card‑not‑present on a new device. Since this transaction is in‑region with no new device, those patterns are absent, lowering suspicion."
+ }
+}

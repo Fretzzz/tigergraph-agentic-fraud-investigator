@@ -651,7 +651,7 @@
   },
   "stop_reason": "Further graph steps are unlikely to change the decision.",
   "tool_calls": 7,
-  "tokens": 0,
+  "tokens": 9901,
   "latency_s": 0.01
  },
  "validation": {
@@ -722,5 +722,76 @@
     "type": "INVESTIGATES"
    }
   ]
+ },
+ "narrative": {
+  "caseId": "HHG-009",
+  "label": "LLM-written narrative. Verdict, probability and actions are rule-based; the model only explains them.",
+  "provider": "NVIDIA NIM",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "generatedAt": "2026-09-24T15:02:13.428Z",
+  "tokens": 9901,
+  "attempts": [
+   {
+    "attempt": 1,
+    "usage": {
+     "prompt_tokens": 2795,
+     "completion_tokens": 2332,
+     "total_tokens": 5127
+    },
+    "ms": 38300
+   },
+   {
+    "attempt": 2,
+    "usage": {
+     "prompt_tokens": 2832,
+     "completion_tokens": 1942,
+     "total_tokens": 4774
+    },
+    "ms": 28205
+   }
+  ],
+  "retrieval": {
+   "method": "GraphRAG-lite: graph query receipts + similar closed cases from the graph + cited policy sections (no vector index)",
+   "receipts": [
+    "Q01-seed_context",
+    "Q02-region_history",
+    "Q03-amount_profile",
+    "Q04-customer_timeline",
+    "Q05-device_context",
+    "Q06-historical_cases",
+    "Q07-shared_origin"
+   ],
+   "similarCases": [],
+   "policy": [
+    "R2",
+    "R4",
+    "R8",
+    "3a",
+    "5",
+    "6"
+   ]
+  },
+  "promptSha256": "64ee84c4b9688d86364a5b25f649734b2b3ff00a6795b3c17a781e36ad32bfe7",
+  "validation": "passed: all citations exist in the retrieved context; verdict and probability unchanged",
+  "output": {
+   "summary": "Customer C08299 reported not making a $30.02 online transaction (txn 3581141). The graph shows a low risk score of 0.28, the amount is below the customer’s typical median, and there is no shared device, region cluster, or linked fraud. With a fraud probability of 0.65 and the verdict uncertain, the agent created a case, will monitor the card for 24 hours, and blocked the card pending further evidence.",
+   "why_these_actions": [
+    "CREATE_CASE: customer disputed a charge, per R2 and section 3a [R2] [section 3a]",
+    "MONITOR_CARD: no customer reply within 24 hours, per R4 [R4]",
+    "BLOCK_CARD: customer denied the transaction and exposure is under $2,500, per R2 [R2]"
+   ],
+   "evidence_for": [
+    "Customer denies the transaction, supporting fraud [trigger:case_pack]"
+   ],
+   "evidence_against": [
+    "Low risk score of 0.28 indicates low fraud likelihood [Q01-seed_context]",
+    "Transaction amount ($30.02) is below the customer’s typical median of $49.98 [Q03-amount_profile]",
+    "No shared device profiles detected [Q05-device_context]",
+    "No historical fraud cases for this customer [Q06-historical_cases]",
+    "No linked fraud via region or email [Q07-shared_origin]"
+   ],
+   "uncertainty": "Unknown whether the customer still possesses the card or recognizes other recent purchases; a customer reply to the verification request would settle the question.",
+   "memory": "No similar closed cases were found, so there is no historical precedent to guide the decision."
+  }
  }
 }

@@ -1934,7 +1934,7 @@
   },
   "stop_reason": "Further graph steps are unlikely to change the decision.",
   "tool_calls": 8,
-  "tokens": 0,
+  "tokens": 10211,
   "latency_s": 0.036
  },
  "validation": {
@@ -2225,5 +2225,90 @@
     "type": "INVESTIGATES"
    }
   ]
+ },
+ "narrative": {
+  "caseId": "HHG-007",
+  "label": "LLM-written narrative. Verdict, probability and actions are rule-based; the model only explains them.",
+  "provider": "NVIDIA NIM",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "generatedAt": "2026-09-24T15:01:25.774Z",
+  "tokens": 10211,
+  "attempts": [
+   {
+    "attempt": 1,
+    "usage": {
+     "prompt_tokens": 7502,
+     "completion_tokens": 2709,
+     "total_tokens": 10211
+    },
+    "ms": 40756
+   }
+  ],
+  "retrieval": {
+   "method": "GraphRAG-lite: graph query receipts + similar closed cases from the graph + cited policy sections (no vector index)",
+   "receipts": [
+    "Q01-seed_context",
+    "Q02-region_history",
+    "Q03-email_domain_history",
+    "Q04-amount_profile",
+    "Q05-customer_timeline",
+    "Q06-device_context",
+    "Q07-historical_cases",
+    "Q08-shared_origin"
+   ],
+   "similarCases": [
+    "CC-0104",
+    "CC-0657",
+    "CC-0765",
+    "CC-1228",
+    "CC-1524",
+    "CC-1682",
+    "CC-2565",
+    "CC-2834",
+    "CC-2986",
+    "CC-3136",
+    "CC-3439",
+    "CC-3821",
+    "CC-4196",
+    "CC-4277",
+    "CC-4455",
+    "CC-4597",
+    "CC-4787",
+    "CC-5092",
+    "CC-5521"
+   ],
+   "policy": [
+    "R1",
+    "R2",
+    "R4",
+    "3a",
+    "5",
+    "6"
+   ]
+  },
+  "promptSha256": "23704d9f068e56cbf093308277a7e29b278601a771422cdb0e9673a730040b85",
+  "validation": "passed: all citations exist in the retrieved context; verdict and probability unchanged",
+  "output": {
+   "summary": "On 2016-12-05 transaction 3514948 ($111.92, region 264) was flagged with a risk score of 0.87. The graph shows the region is well‑established for the customer, the amount is within the customer's typical tolerance, and the same email domain was used for a later low‑risk transaction that day. Historical model alerts of this score are usually legitimate, but the high score alone raises suspicion, leading to an uncertain verdict with a fraud probability of 0.35. The next steps are to verify the transaction with the customer and, if no reply is received, to monitor the card.",
+   "why_these_actions": [
+    "VERIFY_WITH_CUSTOMER: R1 requires verification before blocking on a weak signal when fraud probability <0.70. [R1]",
+    "MONITOR_CARD: R4 advises monitoring when no customer reply is received within 24 hours. [R4]"
+   ],
+   "evidence_for": [
+    "Region 264 is established with 2221 prior transactions for this customer. [Q02-region_history]",
+    "Amount $111.92 falls within the customer's typical in‑person tolerance band. [Q04-amount_profile]",
+    "Same email domain used for a later low‑risk transaction (risk 0.26) on the same day. [Q03-email_domain_history]",
+    "Historical model alerts of this score are usually cleared (0 of 900 were fraud). [trigger:case_pack]",
+    "Prior customer timeline shows many low‑risk in‑person transactions. [Q05-customer_timeline]"
+   ],
+   "evidence_against": [
+    "The transaction received a high risk score of 0.87. [Q01-seed_context]",
+    "Amount exceeds the median of prior in‑person transactions (median $77.04 vs $111.92). [Q04-amount_profile]",
+    "No shared device or region cluster was found, but the high score alone cannot be dismissed. [Q01-seed_context] [section 3a]",
+    "SAR not filed because exposure < $1,000 and no corroborating fraud signals. [section 3a]"
+   ],
+   "uncertainty": "It is unknown whether the customer actually authorized transaction 3514948 and still possesses the card, and whether any compromised credentials or device misuse occurred. A definitive customer reply to the verification request or further transaction patterns would settle the question.",
+   "memory": "Similar cases show mixed outcomes: high‑score alerts with established regions often clear after customer verification (e.g., CC-0657), while out‑of‑region or account‑takeover patterns led to fraud (e.g., CC-0104, CC-0765). Thus, the outcome hinges on the customer response; verification tends to resolve as legitimate, but lack of reply leaves risk. [CC-0657] [CC-0104] [CC-0765]"
+  }
  }
 }

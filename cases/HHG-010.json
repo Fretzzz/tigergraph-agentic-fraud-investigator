@@ -112,6 +112,6 @@
   },
   "stop_reason": "Further graph steps are unlikely to change the decision: region, amount, email-domain, device, history and shared-origin checks are done and the remaining questions (customer's answer, merchant identity) are not in the data. Escalated to an analyst with the conflict visible (R8).",
   "tool_calls": 8,
-  "tokens": 0,
+  "tokens": 6093,
   "latency_s": 0.011
 }

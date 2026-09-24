@@ -1004,7 +1004,7 @@
   },
   "stop_reason": "Further graph steps are unlikely to change the decision: region, amount, email-domain, device, history and shared-origin checks are done and the remaining questions (customer's answer, merchant identity) are not in the data. Escalated to an analyst with the conflict visible (R8).",
   "tool_calls": 8,
-  "tokens": 0,
+  "tokens": 6704,
   "latency_s": 0.013
  },
  "validation": {
@@ -1145,5 +1145,65 @@
     "type": "INVESTIGATES"
    }
   ]
+ },
+ "narrative": {
+  "caseId": "HHG-006",
+  "label": "LLM-written narrative. Verdict, probability and actions are rule-based; the model only explains them.",
+  "provider": "NVIDIA NIM",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "generatedAt": "2026-09-24T15:00:57.088Z",
+  "tokens": 6704,
+  "attempts": [
+   {
+    "attempt": 1,
+    "usage": {
+     "prompt_tokens": 4124,
+     "completion_tokens": 2580,
+     "total_tokens": 6704
+    },
+    "ms": 32622
+   }
+  ],
+  "retrieval": {
+   "method": "GraphRAG-lite: graph query receipts + similar closed cases from the graph + cited policy sections (no vector index)",
+   "receipts": [
+    "Q01-seed_context",
+    "Q02-region_history",
+    "Q03-email_domain_history",
+    "Q04-amount_profile",
+    "Q05-customer_timeline",
+    "Q06-device_context",
+    "Q07-historical_cases",
+    "Q08-shared_origin"
+   ],
+   "similarCases": [],
+   "policy": [
+    "R2",
+    "R4",
+    "R8",
+    "3a",
+    "5",
+    "6"
+   ]
+  },
+  "promptSha256": "2cad67a2cee9965dd3f431f0e9a42c90490803405c71631c39a2a27048fb3236",
+  "validation": "passed: all citations exist in the retrieved context; verdict and probability unchanged",
+  "output": {
+   "summary": "Customer C07297 reported not making a $482.12 online transaction (3476682) on 2016-11-21 [trigger:case_pack] [Q01-seed_context]. The transaction occurs in the customer's established region 264 and uses their usual gmail.com domain, but the amount far exceeds the median online spend of $62.93 seen in history [Q02-region_history] [Q03-email_domain_history] [Q04-amount_profile]. These conflicting signals lead to an uncertain verdict with a fraud probability of 0.55. Accordingly, the agent creates a case, monitors the card, blocks it at L1 approval, and escalates to an analyst.",
+   "why_these_actions": [
+    "CREATE_CASE: per R2 and section 3a for customer dispute [R2] [section 3a]",
+    "MONITOR_CARD: per R4 due to no customer reply within 24 hours [R4]",
+    "BLOCK_CARD: per R2 because customer denied the transaction and exposure is under $2,500 [R2]",
+    "ESCALATE_TO_ANALYST: per R8 because verdict is uncertain and evidence conflicts [R8]"
+   ],
+   "evidence_for": [
+    "Customer denial of transaction 3476682 supports fraud [trigger:case_pack]"
+   ],
+   "evidence_against": [
+    "Region 264 is established for the customer, indicating legitimate use [Q02-region_history]"
+   ],
+   "uncertainty": "Unsettled: whether the customer authorized the transaction and the merchant's identity; a customer reply or merchant details would resolve it.",
+   "memory": "No similar closed cases were found [Q07-historical_cases]"
+  }
  }
 }
