@@ -26,7 +26,7 @@ for (const id of caseIds) {
   const edge = (type: string, to: string, toId: string) => ({ [type]: { [to]: { [toId]: {} } } });
   const body = {
     vertices: { GS_InvestigationCase: { [vid]: attrs } },
-    edges: { GS_InvestigationCase: { [vid]: { ...edge("GS_CASE_ON_TXN", "GS_Txn", String(trig.flagged_txn_id)), ...edge("GS_CASE_ON_CARD", "GS_Card", String(trig.card_id)), ...edge("GS_CASE_ON_CUSTOMER", "GS_Customer", String(trig.customer_id)) } } },
+    edges: { GS_InvestigationCase: { [vid]: { ...edge("GS_INV_ON_TXN", "GS_Txn", String(trig.flagged_txn_id)), ...edge("GS_INV_ON_CARD", "GS_Card", String(trig.card_id)), ...edge("GS_INV_ON_CUSTOMER", "GS_Customer", String(trig.customer_id)) } } },
   };
   const up = await fetch(`${cfg.host}/restpp/graph/${cfg.graph}?vertex_must_exist=true`, { method: "POST", headers: H, body: JSON.stringify(body) });
   const upBody: any = await up.json();
