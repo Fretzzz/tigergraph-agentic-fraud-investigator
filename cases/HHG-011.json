@@ -73,8 +73,8 @@
       "CC-4743"
     ],
     "summary": "C11923 disputes 3583368, a $131.30 online purchase. For fraud: Customer C11923 denies 3583368; The flagged transaction's specific device profile is shared with other in-scope customers: SM-G610F Build/NRD90M (C05595, C03938). The evidence leans toward fraud but is not strong enough to confirm it, so the verdict is uncertain at 0.8. The card block is recommended under R2 and waits for L1 approval.",
-    "written_to_graph": false,
-    "graph_case_id": ""
+    "written_to_graph": true,
+    "graph_case_id": "GS_InvestigationCase:HHG-011"
   },
   "evidence_requests": [
     {

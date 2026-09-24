@@ -1522,8 +1522,8 @@
     "CC-4294"
    ],
    "summary": "The bank model scored 3526826 ($35.66 online) at 0.76 for C07671. Against: Model alerts like this one (score 0.76) are usually cleared: 0 of 900 model-scored closed cases in organizer history were confirmed fraud. The evidence leans legitimate but is not strong enough to clear the alert, so the verdict is uncertain at 0.45. The customer is asked to confirm.",
-   "written_to_graph": false,
-   "graph_case_id": ""
+   "written_to_graph": true,
+   "graph_case_id": "GS_InvestigationCase:HHG-013"
   },
   "evidence_requests": [
    {
@@ -1803,5 +1803,14 @@
    "uncertainty": "It is still unknown whether the customer actually authorized the online transaction, whether they still possess the card, and whether the device is compromised. A definitive customer response to the validation request would settle the question.",
    "memory": "Similar closed cases on this card include both confirmed fraud (CC-1475, CC-3216, CC-4294) and a cleared case after verification (CC-3761), showing that verification can change the outcome and that prior fraud history raises suspicion but does not guarantee fraud."
   }
+ },
+ "tigergraphCaseWrite": {
+  "backend": "tigergraph",
+  "graph": "GraphSentinel",
+  "vertexType": "GS_InvestigationCase",
+  "vertexId": "HHG-013",
+  "writtenAt": "2026-09-24 14:31:53",
+  "readbackVerified": true,
+  "edges": []
  }
 }

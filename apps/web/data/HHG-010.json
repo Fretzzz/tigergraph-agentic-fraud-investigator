@@ -654,8 +654,8 @@
     "CC-0873"
    ],
    "summary": "The bank model scored 3506725 ($1000.03 online, billing region 469) at 0.9 for C10434. Against: Model alerts like this one (score 0.9) are usually cleared: 0 of 900 model-scored closed cases in organizer history were confirmed fraud; Region 469 is established for C10434: 24 prior transactions since 2016-07-06 23:54:46. The evidence leans legitimate but is not strong enough to clear the alert, so the verdict is uncertain at 0.35. The case is escalated under R8; the customer is asked to confirm.",
-   "written_to_graph": false,
-   "graph_case_id": ""
+   "written_to_graph": true,
+   "graph_case_id": "GS_InvestigationCase:HHG-010"
   },
   "evidence_requests": [
    {
@@ -873,5 +873,14 @@
    "uncertainty": "Unknown whether the customer authorized the transaction and the merchant’s legitimacy; a customer reply or merchant details would settle the question.",
    "memory": "The similar closed case CC-0873 was cleared after verification, suggesting that a customer response often resolves such alerts (CC-0873)."
   }
+ },
+ "tigergraphCaseWrite": {
+  "backend": "tigergraph",
+  "graph": "GraphSentinel",
+  "vertexType": "GS_InvestigationCase",
+  "vertexId": "HHG-010",
+  "writtenAt": "2026-09-24 14:31:52",
+  "readbackVerified": true,
+  "edges": []
  }
 }

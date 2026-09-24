@@ -1046,8 +1046,8 @@
     "CC-4957"
    ],
    "summary": "C08623 disputes 3530164, a $49.00 card-present purchase in billing region 330. The region and amount fit the customer's own history, but the purchaser email domain me.com is new that day and also sits on 3530056. Evidence conflicts, so the verdict is uncertain at 0.55. The card block is recommended under R2 and waits for L1 approval; the case is escalated under R8.",
-   "written_to_graph": false,
-   "graph_case_id": ""
+   "written_to_graph": true,
+   "graph_case_id": "GS_InvestigationCase:HHG-003"
   },
   "evidence_requests": [
    {
@@ -1475,5 +1475,18 @@
    "uncertainty": "Merchant identity and whether the customer still possesses the card are unknown; obtaining merchant details or a definitive customer response would settle the case [section 5]",
    "memory": "Similar closed cases show mixed outcomes: CC-1589 was cleared despite a high model score, while CC-2817, CC-2935, CC-3682, and CC-4957 were confirmed fraud, mostly out-of-region use; the present case's established region and typical amount make it ambiguous, so past cases do not give a clear prediction"
   }
+ },
+ "tigergraphCaseWrite": {
+  "backend": "tigergraph",
+  "graph": "GraphSentinel",
+  "vertexType": "GS_InvestigationCase",
+  "vertexId": "HHG-003",
+  "writtenAt": "2026-09-24 14:31:49",
+  "readbackVerified": true,
+  "edges": [
+   "GS_INV_ON_TXN->3530164",
+   "GS_INV_ON_CARD->C08623-K2",
+   "GS_INV_ON_CUSTOMER->C08623"
+  ]
  }
 }

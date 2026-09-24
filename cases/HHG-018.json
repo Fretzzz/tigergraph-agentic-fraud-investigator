@@ -107,8 +107,8 @@
       "CC-5558"
     ],
     "summary": "C02354 disputes 3491361, a $39.08 card-present purchase in billing region 126. For fraud: Customer C02354 denies 3491361. Against: Region 126 is established for C02354: 565 prior transactions since 2016-07-02 14:10:52; $39.08 in person is routine for C02354: 160 prior in-person purchases within $1.00. Evidence conflicts, so the verdict is uncertain at 0.5. The card block is recommended under R2 and waits for L1 approval; the case is escalated under R8.",
-    "written_to_graph": false,
-    "graph_case_id": ""
+    "written_to_graph": true,
+    "graph_case_id": "GS_InvestigationCase:HHG-018"
   },
   "evidence_requests": [
     {

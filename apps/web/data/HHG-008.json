@@ -1767,8 +1767,8 @@
     "CC-5010"
    ],
    "summary": "C13171 disputes 3558054, a $55.68 online purchase. For fraud: Customer C13171 denies 3558054. The evidence leans toward fraud but is not strong enough to confirm it, so the verdict is uncertain at 0.65. The card block is recommended under R2 and waits for L1 approval.",
-   "written_to_graph": false,
-   "graph_case_id": ""
+   "written_to_graph": true,
+   "graph_case_id": "GS_InvestigationCase:HHG-008"
   },
   "evidence_requests": [
    {
@@ -2249,5 +2249,14 @@
    "uncertainty": "We lack a customer reply to verify the disputed charge and to confirm whether the device is compromised; a customer validation would settle the question.",
    "memory": "Similar closed cases for this customer consistently resulted in confirmed fraud, indicating a high likelihood that the current denial reflects fraudulent activity."
   }
+ },
+ "tigergraphCaseWrite": {
+  "backend": "tigergraph",
+  "graph": "GraphSentinel",
+  "vertexType": "GS_InvestigationCase",
+  "vertexId": "HHG-008",
+  "writtenAt": "2026-09-24 14:31:51",
+  "readbackVerified": true,
+  "edges": []
  }
 }

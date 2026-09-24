@@ -74,8 +74,8 @@
       "CC-3587"
     ],
     "summary": "The bank model scored 3514030 ($77.07 card-present, billing region 444) at 0.61 for C12382. Against: Model alerts like this one (score 0.61) are usually cleared: 0 of 900 model-scored closed cases in organizer history were confirmed fraud; Region 444 is established for C12382: 10 prior transactions since 2016-09-13 19:28:42; $77.07 in person is routine for C12382: 10 prior in-person purchases within $1.00. The evidence leans legitimate but is not strong enough to clear the alert, so the verdict is uncertain at 0.3. The customer is asked to confirm.",
-    "written_to_graph": false,
-    "graph_case_id": ""
+    "written_to_graph": true,
+    "graph_case_id": "GS_InvestigationCase:HHG-001"
   },
   "evidence_requests": [
     {

@@ -96,8 +96,8 @@
       "CC-5521"
     ],
     "summary": "The bank model scored 3514948 ($111.92 card-present, billing region 264) at 0.87 for C09933. Against: Model alerts like this one (score 0.87) are usually cleared: 0 of 900 model-scored closed cases in organizer history were confirmed fraud; Region 264 is established for C09933: 2221 prior transactions since 2016-07-03 00:57:14. The evidence leans legitimate but is not strong enough to clear the alert, so the verdict is uncertain at 0.35. The customer is asked to confirm.",
-    "written_to_graph": false,
-    "graph_case_id": ""
+    "written_to_graph": true,
+    "graph_case_id": "GS_InvestigationCase:HHG-007"
   },
   "evidence_requests": [
     {

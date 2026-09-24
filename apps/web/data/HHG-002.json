@@ -773,8 +773,8 @@
     "CC-4160"
    ],
    "summary": "The bank model scored 3478782 ($292.36 online) at 0.79 for C11891. Against: Model alerts like this one (score 0.79) are usually cleared: 0 of 900 model-scored closed cases in organizer history were confirmed fraud. The evidence leans legitimate but is not strong enough to clear the alert, so the verdict is uncertain at 0.45. The customer is asked to confirm.",
-   "written_to_graph": false,
-   "graph_case_id": ""
+   "written_to_graph": true,
+   "graph_case_id": "GS_InvestigationCase:HHG-002"
   },
   "evidence_requests": [
    {
@@ -896,5 +896,14 @@
     "type": "INVESTIGATES"
    }
   ]
+ },
+ "tigergraphCaseWrite": {
+  "backend": "tigergraph",
+  "graph": "GraphSentinel",
+  "vertexType": "GS_InvestigationCase",
+  "vertexId": "HHG-002",
+  "writtenAt": "2026-09-24 14:31:49",
+  "readbackVerified": true,
+  "edges": []
  }
 }

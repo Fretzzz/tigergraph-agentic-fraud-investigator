@@ -946,8 +946,8 @@
     "CC-3778"
    ],
    "summary": "C08106 disputes 3583227, a $128.33 online purchase. For fraud: Customer C08106 denies 3583227. The evidence leans toward fraud but is not strong enough to confirm it, so the verdict is uncertain at 0.65. The card block is recommended under R2 and waits for L1 approval.",
-   "written_to_graph": false,
-   "graph_case_id": ""
+   "written_to_graph": true,
+   "graph_case_id": "GS_InvestigationCase:HHG-004"
   },
   "evidence_requests": [
    {
@@ -1191,5 +1191,14 @@
    "uncertainty": "It is unknown whether the customer still possesses the card and recognizes other recent purchases; a customer reply would settle the case.",
    "memory": "Similar closed cases show both cleared (CC-0696) and confirmed fraud (CC-1736, CC-2121, CC-3778) outcomes for similar denials, indicating that further evidence is needed to reach a definitive conclusion."
   }
+ },
+ "tigergraphCaseWrite": {
+  "backend": "tigergraph",
+  "graph": "GraphSentinel",
+  "vertexType": "GS_InvestigationCase",
+  "vertexId": "HHG-004",
+  "writtenAt": "2026-09-24 14:31:49",
+  "readbackVerified": true,
+  "edges": []
  }
 }

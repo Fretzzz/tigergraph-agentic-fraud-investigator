@@ -51,8 +51,8 @@
     ],
     "similar_prior_cases": [],
     "summary": "C07297 disputes 3476682, a $482.12 online purchase in billing region 264. For fraud: Customer C07297 denies 3476682. Against: Region 264 is established for C07297: 28 prior transactions since 2016-07-06 00:29:46. Evidence conflicts, so the verdict is uncertain at 0.55. The card block is recommended under R2 and waits for L1 approval; the case is escalated under R8.",
-    "written_to_graph": false,
-    "graph_case_id": ""
+    "written_to_graph": true,
+    "graph_case_id": "GS_InvestigationCase:HHG-006"
   },
   "evidence_requests": [
     {

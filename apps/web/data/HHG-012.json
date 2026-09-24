@@ -983,8 +983,8 @@
     "CC-2370"
    ],
    "summary": "The bank model scored 3553342 ($30.91 card-present, billing region 494) at 0.55 for C05876. Against: Model alerts like this one (score 0.55) are usually cleared: 0 of 900 model-scored closed cases in organizer history were confirmed fraud; Region 494 is established for C05876: 21 prior transactions since 2016-07-05 01:43:06; $30.91 in person is routine for C05876: 34 prior in-person purchases within $1.00. The evidence leans legitimate but is not strong enough to clear the alert, so the verdict is uncertain at 0.3. The customer is asked to confirm.",
-   "written_to_graph": false,
-   "graph_case_id": ""
+   "written_to_graph": true,
+   "graph_case_id": "GS_InvestigationCase:HHG-012"
   },
   "evidence_requests": [
    {
@@ -1193,5 +1193,14 @@
    "uncertainty": "Whether the customer authorized the transaction remains unknown; a customer reply would clarify the legitimacy [section 5]",
    "memory": "Similar closed cases show that verification can clear alerts (CC-0003) while lack of reply leads to monitoring, and fraud was confirmed only when the customer reported unrecognized activity (CC-2370) [CC-0003] [CC-2370]"
   }
+ },
+ "tigergraphCaseWrite": {
+  "backend": "tigergraph",
+  "graph": "GraphSentinel",
+  "vertexType": "GS_InvestigationCase",
+  "vertexId": "HHG-012",
+  "writtenAt": "2026-09-24 14:31:52",
+  "readbackVerified": true,
+  "edges": []
  }
 }

@@ -757,8 +757,8 @@
     "CC-3886"
    ],
    "summary": "The bank model scored 3464869 ($599.94 online, billing region 327) at 0.77 for C03042. Against: Model alerts like this one (score 0.77) are usually cleared: 0 of 900 model-scored closed cases in organizer history were confirmed fraud. The evidence leans legitimate but is not strong enough to clear the alert, so the verdict is uncertain at 0.45. The case is escalated under R8; the customer is asked to confirm.",
-   "written_to_graph": false,
-   "graph_case_id": ""
+   "written_to_graph": true,
+   "graph_case_id": "GS_InvestigationCase:HHG-015"
   },
   "evidence_requests": [
    {
@@ -1008,5 +1008,14 @@
    "uncertainty": "We do not know whether the customer authorized the transaction, the true merchant identity, or if the device has been compromised. A customer reply confirming or denying the charge, merchant details, or additional device fingerprint evidence would settle the uncertainty.",
    "memory": "Similar closed cases show both outcomes: CC-0615 and CC-3886 resulted in confirmed fraud with a new device, while CC-1313 was cleared after the customer confirmed travel. This indicates that customer verification is critical to distinguish fraud from legitimate activity."
   }
+ },
+ "tigergraphCaseWrite": {
+  "backend": "tigergraph",
+  "graph": "GraphSentinel",
+  "vertexType": "GS_InvestigationCase",
+  "vertexId": "HHG-015",
+  "writtenAt": "2026-09-24 14:31:53",
+  "readbackVerified": true,
+  "edges": []
  }
 }
