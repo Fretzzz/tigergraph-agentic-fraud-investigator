@@ -249,7 +249,7 @@ export function investigate(slice: CaseSlice, opts: { runId: string; startedAtMs
     next_best_actions: { initial: reasons(initial), final: reasons(final), what_changed: whatChanged },
     sar: files
       ? { file: true, reason: "R2/R6", narrative: "", subjects: [c.customer_id, c.card_id], total_amount_usd: exposureCents / 100, activity_dates: [day(seed.ts), day(seed.ts)] }
-      : { file: false, reason: `No FILE_REPORT: exposure ${usd(exposureCents)} is under $1,000, no shared device, region cluster or other customer's fraud was found, and fraud is not confirmed or strongly suspected (R2, section 3a).`, narrative: "", subjects: [], total_amount_usd: 0, activity_dates: [] },
+      : { file: false, reason: exposureCents > 100000 ? `No FILE_REPORT: exposure ${usd(exposureCents)} exceeds $1,000, but a report also needs fraud to be confirmed or strongly suspected, and it is not; no shared device, region cluster or other customer's fraud was found (R2, section 3a).` : `No FILE_REPORT: exposure ${usd(exposureCents)} is under $1,000, no shared device, region cluster or other customer's fraud was found, and fraud is not confirmed or strongly suspected (R2, section 3a).`, narrative: "", subjects: [], total_amount_usd: 0, activity_dates: [] },
     stop_reason: `Further graph steps are unlikely to change the decision: ${[seed.region ? "region" : "", "amount", seed.purchaser_email_domain ? "email-domain" : "", "device", "history", "shared-origin"].filter(Boolean).join(", ").replace(/, ([^,]*)$/, " and $1")} checks are done and the remaining questions (customer's answer, merchant identity) are not in the data. Escalated to an analyst with the conflict visible (R8).`,
     tool_calls: 0, tokens: 0, latency_s: 0,
   };

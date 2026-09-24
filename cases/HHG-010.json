@@ -104,7 +104,7 @@
   },
   "sar": {
     "file": false,
-    "reason": "No FILE_REPORT: exposure $1000.03 is under $1,000, no shared device, region cluster or other customer's fraud was found, and fraud is not confirmed or strongly suspected (R2, section 3a).",
+    "reason": "No FILE_REPORT: exposure $1000.03 exceeds $1,000, but a report also needs fraud to be confirmed or strongly suspected, and it is not; no shared device, region cluster or other customer's fraud was found (R2, section 3a).",
     "narrative": "",
     "subjects": [],
     "total_amount_usd": 0,
