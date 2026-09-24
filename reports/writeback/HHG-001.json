@@ -1,0 +1,9 @@
+{
+ "backend": "tigergraph",
+ "graph": "GraphSentinel",
+ "vertexType": "GS_InvestigationCase",
+ "vertexId": "HHG-001",
+ "writtenAt": "2026-09-24 14:31:48",
+ "readbackVerified": true,
+ "edges": []
+}

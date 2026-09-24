@@ -1,0 +1,67 @@
+{
+ "caseId": "HHG-005",
+ "label": "LLM-written narrative. Verdict, probability and actions are rule-based; the model only explains them.",
+ "provider": "NVIDIA NIM",
+ "model": "nvidia/nemotron-3-super-120b-a12b",
+ "generatedAt": "2026-09-24T15:00:45.017Z",
+ "tokens": 6369,
+ "attempts": [
+  {
+   "attempt": 1,
+   "usage": {
+    "prompt_tokens": 3852,
+    "completion_tokens": 2517,
+    "total_tokens": 6369
+   },
+   "ms": 38186
+  }
+ ],
+ "retrieval": {
+  "method": "GraphRAG-lite: graph query receipts + similar closed cases from the graph + cited policy sections (no vector index)",
+  "receipts": [
+   "Q01-seed_context",
+   "Q02-region_history",
+   "Q03-email_domain_history",
+   "Q04-amount_profile",
+   "Q05-customer_timeline",
+   "Q06-device_context",
+   "Q07-historical_cases",
+   "Q08-shared_origin"
+  ],
+  "similarCases": [
+   "CC-2400",
+   "CC-2717",
+   "CC-2857"
+  ],
+  "policy": [
+   "R1",
+   "R2",
+   "R4",
+   "3a",
+   "5",
+   "6"
+  ]
+ },
+ "promptSha256": "910fa712397f9a9c1b32927c7d209997ef03185f54e38210cf672bf74f8c10d5",
+ "validation": "passed: all citations exist in the retrieved context; verdict and probability unchanged",
+ "output": {
+  "summary": "Transaction 3523199 ($100.07, online) triggered a risk score of 0.54. The graph shows the customer has an established region (330) with typical transaction amounts, no shared device, and no prior use of the email domain, but historical cases reveal prior confirmed fraud on the same card. The agent assessed fraud probability at 0.35 and deemed the case uncertain, opting to verify with the customer and monitor the card pending response.",
+  "why_these_actions": [
+   "VERIFY_WITH_CUSTOMER: the case rests on a weak signal (risk score alone) and fraud probability is below 0.70, per R1. [R1]",
+   "MONITOR_CARD: no customer reply was assumed within 24 hours, per R4. [R4]"
+  ],
+  "evidence_for": [
+   "Model score history indicates such alerts are usually legitimate [trigger:case_pack]",
+   "Region 330 is well‑established for the customer with 85 of 90 prior transactions in‑region [Q02-region_history]",
+   "Transaction amount fits the customer’s typical spending pattern (median ≈ $117, within tolerance) [Q04-amount_profile]",
+   "Device context shows no shared device profiles with other customers [Q06-device_context]",
+   "Email domain (icloud.com) has no prior use, reducing likelihood of credential reuse [Q03-email_domain_history]"
+  ],
+  "evidence_against": [
+   "Historical closed cases show the same customer suffered confirmed account‑takeover fraud on this card (CC‑2400, CC‑2717, CC‑2857) [Q07-historical_cases] [CC-2400] [CC-2717] [CC-2857]",
+   "The transaction occurred online, a channel used in prior fraud cases for this customer [Q07-historical_cases]"
+  ],
+  "uncertainty": "Still unknown whether the customer authorized the transaction or if the device/credentials are compromised; a definitive customer reply or step‑up authentication result would settle the question.",
+  "memory": "Similar closed cases (CC‑2400, CC‑2717, CC‑2857) indicate a pattern of account takeover for this customer, suggesting prior fraud risk, but the current transaction lacks the shared‑device, high‑exposure, or region‑cluster signals that triggered those cases, leaving the situation ambiguous."
+ }
+}

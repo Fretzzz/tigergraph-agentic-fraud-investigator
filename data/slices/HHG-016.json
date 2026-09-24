@@ -1,0 +1,7042 @@
+{
+ "case": {
+  "card_id": "C09988-K1",
+  "customer_id": "C09988",
+  "flagged_txn_id": "3534820",
+  "id": "HHG-016",
+  "opened_at": "2016-12-12 01:39:08",
+  "risk_score": null,
+  "trigger_text": "Customer C09988 message: 'I never made this $59.67 purchase. Please check my card.' Refers to 3534820.",
+  "trigger_type": "customer_report"
+ },
+ "closed_cases": [],
+ "customer_transactions": [
+  {
+   "amount_cents": 8578,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3015139",
+   "product_cd": "C",
+   "purchaser_email_domain": "gmail.com",
+   "recipient_email_domain": "gmail.com",
+   "region": null,
+   "risk_score": 0.15,
+   "ts": "2016-07-06 19:02:49"
+  },
+  {
+   "amount_cents": 7978,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": "31",
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3032208",
+   "product_cd": "C",
+   "purchaser_email_domain": "anonymous.com",
+   "recipient_email_domain": "anonymous.com",
+   "region": "100",
+   "risk_score": 0.31,
+   "ts": "2016-07-11 03:01:32"
+  },
+  {
+   "amount_cents": 8929,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": "31",
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3036519",
+   "product_cd": "C",
+   "purchaser_email_domain": "gmail.com",
+   "recipient_email_domain": "gmail.com",
+   "region": "382",
+   "risk_score": 0.13,
+   "ts": "2016-07-12 11:07:41"
+  },
+  {
+   "amount_cents": 6994,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3099865",
+   "product_cd": "C",
+   "purchaser_email_domain": "gmail.com",
+   "recipient_email_domain": "gmail.com",
+   "region": null,
+   "risk_score": 0.06,
+   "ts": "2016-07-25 08:43:16"
+  },
+  {
+   "amount_cents": 4517,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3105149",
+   "product_cd": "C",
+   "purchaser_email_domain": "yahoo.com",
+   "recipient_email_domain": "yahoo.com",
+   "region": null,
+   "risk_score": 0.11,
+   "ts": "2016-07-26 05:54:43"
+  },
+  {
+   "amount_cents": 9470,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3128905",
+   "product_cd": "C",
+   "purchaser_email_domain": "gmail.com",
+   "recipient_email_domain": "gmail.com",
+   "region": null,
+   "risk_score": 0.08,
+   "ts": "2016-07-31 18:27:04"
+  },
+  {
+   "amount_cents": 1023,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3164170",
+   "product_cd": "C",
+   "purchaser_email_domain": "gmail.com",
+   "recipient_email_domain": "gmail.com",
+   "region": null,
+   "risk_score": 0.09,
+   "ts": "2016-08-11 05:11:38"
+  },
+  {
+   "amount_cents": 7711,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3174800",
+   "product_cd": "C",
+   "purchaser_email_domain": "anonymous.com",
+   "recipient_email_domain": "anonymous.com",
+   "region": null,
+   "risk_score": 0.1,
+   "ts": "2016-08-14 22:37:45"
+  },
+  {
+   "amount_cents": 1162,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3191366",
+   "product_cd": "C",
+   "purchaser_email_domain": "anonymous.com",
+   "recipient_email_domain": "anonymous.com",
+   "region": null,
+   "risk_score": 0.16,
+   "ts": "2016-08-20 18:07:37"
+  },
+  {
+   "amount_cents": 7874,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3244254",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.19,
+   "ts": "2016-09-06 23:15:29"
+  },
+  {
+   "amount_cents": 7303,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3266021",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.09,
+   "ts": "2016-09-14 12:15:20"
+  },
+  {
+   "amount_cents": 3576,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3266022",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.22,
+   "ts": "2016-09-14 12:18:43"
+  },
+  {
+   "amount_cents": 916,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3281953",
+   "product_cd": "C",
+   "purchaser_email_domain": "gmail.com",
+   "recipient_email_domain": "gmail.com",
+   "region": null,
+   "risk_score": 0.17,
+   "ts": "2016-09-19 18:54:58"
+  },
+  {
+   "amount_cents": 1107,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3282178",
+   "product_cd": "C",
+   "purchaser_email_domain": "gmail.com",
+   "recipient_email_domain": "gmail.com",
+   "region": null,
+   "risk_score": 0.1,
+   "ts": "2016-09-19 20:07:48"
+  },
+  {
+   "amount_cents": 6451,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3285143",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.26,
+   "ts": "2016-09-20 20:39:50"
+  },
+  {
+   "amount_cents": 6449,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3285152",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.1,
+   "ts": "2016-09-20 20:43:42"
+  },
+  {
+   "amount_cents": 6460,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3285177",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.08,
+   "ts": "2016-09-20 20:49:07"
+  },
+  {
+   "amount_cents": 6455,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3285211",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.05,
+   "ts": "2016-09-20 20:58:22"
+  },
+  {
+   "amount_cents": 856,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3289577",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.fr",
+   "recipient_email_domain": "hotmail.fr",
+   "region": null,
+   "risk_score": 0.1,
+   "ts": "2016-09-22 14:36:11"
+  },
+  {
+   "amount_cents": 2494,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3295579",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.08,
+   "ts": "2016-09-24 16:34:10"
+  },
+  {
+   "amount_cents": 4269,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3305566",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.fr",
+   "recipient_email_domain": "hotmail.fr",
+   "region": null,
+   "risk_score": 0.12,
+   "ts": "2016-09-27 20:10:56"
+  },
+  {
+   "amount_cents": 3754,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3305634",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.fr",
+   "recipient_email_domain": "hotmail.fr",
+   "region": null,
+   "risk_score": 0.09,
+   "ts": "2016-09-27 20:26:14"
+  },
+  {
+   "amount_cents": 2495,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3309431",
+   "product_cd": "C",
+   "purchaser_email_domain": "gmail.com",
+   "recipient_email_domain": "gmail.com",
+   "region": null,
+   "risk_score": 0.09,
+   "ts": "2016-09-28 23:32:51"
+  },
+  {
+   "amount_cents": 4370,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3309839",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.01,
+   "ts": "2016-09-29 01:09:42"
+  },
+  {
+   "amount_cents": 4367,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3309908",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.03,
+   "ts": "2016-09-29 01:33:00"
+  },
+  {
+   "amount_cents": 3992,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3313487",
+   "product_cd": "C",
+   "purchaser_email_domain": "yahoo.fr",
+   "recipient_email_domain": "yahoo.fr",
+   "region": null,
+   "risk_score": 0.05,
+   "ts": "2016-09-30 01:40:00"
+  },
+  {
+   "amount_cents": 1699,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3316685",
+   "product_cd": "C",
+   "purchaser_email_domain": "anonymous.com",
+   "recipient_email_domain": "anonymous.com",
+   "region": null,
+   "risk_score": 0.06,
+   "ts": "2016-09-30 22:47:33"
+  },
+  {
+   "amount_cents": 1690,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3316755",
+   "product_cd": "C",
+   "purchaser_email_domain": "anonymous.com",
+   "recipient_email_domain": "anonymous.com",
+   "region": null,
+   "risk_score": 0.14,
+   "ts": "2016-09-30 23:03:29"
+  },
+  {
+   "amount_cents": 2132,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3322019",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.fr",
+   "recipient_email_domain": "hotmail.fr",
+   "region": null,
+   "risk_score": 0.15,
+   "ts": "2016-10-02 03:43:34"
+  },
+  {
+   "amount_cents": 2899,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3322692",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.fr",
+   "recipient_email_domain": "hotmail.fr",
+   "region": null,
+   "risk_score": 0.34,
+   "ts": "2016-10-02 14:34:15"
+  },
+  {
+   "amount_cents": 2771,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3322716",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.fr",
+   "recipient_email_domain": "hotmail.fr",
+   "region": null,
+   "risk_score": 0.15,
+   "ts": "2016-10-02 14:43:55"
+  },
+  {
+   "amount_cents": 1685,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3324490",
+   "product_cd": "C",
+   "purchaser_email_domain": "anonymous.com",
+   "recipient_email_domain": "anonymous.com",
+   "region": null,
+   "risk_score": 0.03,
+   "ts": "2016-10-02 20:58:54"
+  },
+  {
+   "amount_cents": 3068,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3330430",
+   "product_cd": "C",
+   "purchaser_email_domain": "gmail.com",
+   "recipient_email_domain": "gmail.com",
+   "region": null,
+   "risk_score": 0.13,
+   "ts": "2016-10-04 07:17:27"
+  },
+  {
+   "amount_cents": 3797,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3347315",
+   "product_cd": "C",
+   "purchaser_email_domain": "anonymous.com",
+   "recipient_email_domain": "anonymous.com",
+   "region": null,
+   "risk_score": 0.06,
+   "ts": "2016-10-09 01:22:17"
+  },
+  {
+   "amount_cents": 2019,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3357070",
+   "product_cd": "C",
+   "purchaser_email_domain": null,
+   "recipient_email_domain": null,
+   "region": null,
+   "risk_score": 0.44,
+   "ts": "2016-10-12 03:14:26"
+  },
+  {
+   "amount_cents": 4033,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3357075",
+   "product_cd": "C",
+   "purchaser_email_domain": null,
+   "recipient_email_domain": null,
+   "region": null,
+   "risk_score": 0.17,
+   "ts": "2016-10-12 03:15:44"
+  },
+  {
+   "amount_cents": 3688,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3357102",
+   "product_cd": "C",
+   "purchaser_email_domain": null,
+   "recipient_email_domain": null,
+   "region": null,
+   "risk_score": 0.08,
+   "ts": "2016-10-12 03:27:18"
+  },
+  {
+   "amount_cents": 829,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3364287",
+   "product_cd": "C",
+   "purchaser_email_domain": "anonymous.com",
+   "recipient_email_domain": "anonymous.com",
+   "region": null,
+   "risk_score": 0.29,
+   "ts": "2016-10-14 17:52:30"
+  },
+  {
+   "amount_cents": 5880,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3368735",
+   "product_cd": "C",
+   "purchaser_email_domain": "gmail.com",
+   "recipient_email_domain": "gmail.com",
+   "region": null,
+   "risk_score": 0.13,
+   "ts": "2016-10-16 01:12:11"
+  },
+  {
+   "amount_cents": 1964,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3368736",
+   "product_cd": "C",
+   "purchaser_email_domain": "gmail.com",
+   "recipient_email_domain": "gmail.com",
+   "region": null,
+   "risk_score": 0.26,
+   "ts": "2016-10-16 01:13:17"
+  },
+  {
+   "amount_cents": 5865,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3368763",
+   "product_cd": "C",
+   "purchaser_email_domain": "gmail.com",
+   "recipient_email_domain": "gmail.com",
+   "region": null,
+   "risk_score": 0.06,
+   "ts": "2016-10-16 01:19:08"
+  },
+  {
+   "amount_cents": 4320,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3374563",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.36,
+   "ts": "2016-10-18 00:49:51"
+  },
+  {
+   "amount_cents": 886,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3374623",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.21,
+   "ts": "2016-10-18 01:07:10"
+  },
+  {
+   "amount_cents": 892,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3374642",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.04,
+   "ts": "2016-10-18 01:15:31"
+  },
+  {
+   "amount_cents": 4081,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3374650",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.29,
+   "ts": "2016-10-18 01:18:25"
+  },
+  {
+   "amount_cents": 893,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3374700",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.15,
+   "ts": "2016-10-18 01:37:19"
+  },
+  {
+   "amount_cents": 698,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3396976",
+   "product_cd": "C",
+   "purchaser_email_domain": "gmail.com",
+   "recipient_email_domain": "gmail.com",
+   "region": null,
+   "risk_score": 0.32,
+   "ts": "2016-10-25 17:53:03"
+  },
+  {
+   "amount_cents": 5713,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3474173",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.13,
+   "ts": "2016-11-20 21:05:21"
+  },
+  {
+   "amount_cents": 5967,
+   "card_fields": {
+    "card1": "11242",
+    "card2": "228.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09988",
+   "dist1": null,
+   "id": "3534820",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.37,
+   "ts": "2016-12-11 22:39:08"
+  }
+ ],
+ "history_stats": {
+  "cardholder_reported": {
+   "cleared": 0,
+   "confirmed_fraud": 4656
+  },
+  "model_scored": {
+   "cleared": 900,
+   "confirmed_fraud": 0
+  },
+  "visible_closed_cases": 5565
+ },
+ "identity": {
+  "3015139": {
+   "device_profile": null,
+   "device_type": null
+  },
+  "3032208": {
+   "device_profile": "SM-J510FN|?|chrome 62.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3036519": {
+   "device_profile": "?|?|safari generic|?",
+   "device_type": "desktop"
+  },
+  "3099865": {
+   "device_profile": "Windows|?|chrome 63.0|?",
+   "device_type": "desktop"
+  },
+  "3105149": {
+   "device_profile": "Windows|?|chrome 63.0|?",
+   "device_type": "desktop"
+  },
+  "3128905": {
+   "device_profile": "Windows|?|chrome 63.0|?",
+   "device_type": "desktop"
+  },
+  "3164170": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3174800": {
+   "device_profile": "Windows|?|chrome 63.0|?",
+   "device_type": "desktop"
+  },
+  "3191366": {
+   "device_profile": "Windows|?|chrome 63.0|?",
+   "device_type": "desktop"
+  },
+  "3244254": {
+   "device_profile": "?|?|chrome 63.0|?",
+   "device_type": "desktop"
+  },
+  "3266021": {
+   "device_profile": "Windows|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3266022": {
+   "device_profile": "Windows|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3281953": {
+   "device_profile": "SM-G950F Build/NRD90M|?|chrome 64.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3282178": {
+   "device_profile": "SM-G950F Build/NRD90M|?|chrome 64.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3285143": {
+   "device_profile": "Windows|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3285152": {
+   "device_profile": "Windows|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3285177": {
+   "device_profile": "Windows|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3285211": {
+   "device_profile": "Windows|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3289577": {
+   "device_profile": "?|?|mobile safari generic|?",
+   "device_type": "mobile"
+  },
+  "3295579": {
+   "device_profile": "?|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3305566": {
+   "device_profile": "SAMSUNG SM-G900F Build/MMB29M|?|samsung browser 6.2|?",
+   "device_type": "mobile"
+  },
+  "3305634": {
+   "device_profile": "SAMSUNG SM-G900F Build/MMB29M|?|samsung browser 6.2|?",
+   "device_type": "mobile"
+  },
+  "3309431": {
+   "device_profile": "SM-G950F Build/NRD90M|?|chrome 64.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3309839": {
+   "device_profile": "?|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3309908": {
+   "device_profile": "?|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3313487": {
+   "device_profile": "?|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3316685": {
+   "device_profile": "Windows|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3316755": {
+   "device_profile": "Windows|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3322019": {
+   "device_profile": "?|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3322692": {
+   "device_profile": "?|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3322716": {
+   "device_profile": "?|?|chrome 63.0|?",
+   "device_type": "desktop"
+  },
+  "3324490": {
+   "device_profile": "Windows|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3330430": {
+   "device_profile": "SM-G950F Build/NRD90M|?|chrome 64.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3347315": {
+   "device_profile": "Windows|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3357070": {
+   "device_profile": "?|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3357075": {
+   "device_profile": "?|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3357102": {
+   "device_profile": "?|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3364287": {
+   "device_profile": "Windows|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3368735": {
+   "device_profile": "?|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3368736": {
+   "device_profile": "?|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3368763": {
+   "device_profile": "?|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3374563": {
+   "device_profile": "Windows|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3374623": {
+   "device_profile": "Windows|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3374642": {
+   "device_profile": "Windows|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3374650": {
+   "device_profile": "Windows|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3374700": {
+   "device_profile": "Windows|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3396976": {
+   "device_profile": "Moto G (4) Build/NPJS25.93-14-13|?|chrome generic|?",
+   "device_type": "desktop"
+  },
+  "3474173": {
+   "device_profile": "SAMSUNG SM-A310F Build/NRD90M|?|samsung browser 6.4|?",
+   "device_type": "mobile"
+  },
+  "3529510": {
+   "device_profile": "Windows|?|chrome generic|?",
+   "device_type": "desktop"
+  },
+  "3529511": {
+   "device_profile": "Windows|?|edge 16.0|?",
+   "device_type": "desktop"
+  },
+  "3529521": {
+   "device_profile": "LG-X230 Build/MRA58K|?|chrome generic for android|?",
+   "device_type": "mobile"
+  },
+  "3529526": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3529577": {
+   "device_profile": "SM-J700M Build/LMY48B|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3529589": {
+   "device_profile": "?|?|safari 11.0|?",
+   "device_type": "desktop"
+  },
+  "3529656": {
+   "device_profile": "Moto G (4) Build/NPJ25.93-14.7|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3529657": {
+   "device_profile": "Moto G (4) Build/NPJ25.93-14.7|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3529658": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3529668": {
+   "device_profile": "LG-X180g Build/LMY47I|?|chrome 64.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3529680": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3529694": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3529699": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3529711": {
+   "device_profile": "Windows|?|chrome 65.0|?",
+   "device_type": "desktop"
+  },
+  "3529712": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3529723": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3529740": {
+   "device_profile": null,
+   "device_type": null
+  },
+  "3529757": {
+   "device_profile": "LG-D693n Build/LRX22G|?|chrome 49.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3529761": {
+   "device_profile": "Moto G (4) Build/NPJ25.93-14.7|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3529766": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3529779": {
+   "device_profile": "Hisense F23 Build/NRD90M|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3529797": {
+   "device_profile": "Moto G (4) Build/NPJ25.93-14.7|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3529812": {
+   "device_profile": "?|?|chrome 66.0 for ios|?",
+   "device_type": "mobile"
+  },
+  "3529826": {
+   "device_profile": "BLADE V8 SE Build/NRD90M|?|chrome 65.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3529829": {
+   "device_profile": "SAMSUNG SM-G930F Build/NRD90M|?|samsung browser 6.4|?",
+   "device_type": "mobile"
+  },
+  "3529846": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3529856": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3529860": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3529865": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3529871": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3529878": {
+   "device_profile": "SM-A720F Build/NRD90M|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3529889": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3529898": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3529926": {
+   "device_profile": "Windows|?|edge 16.0|?",
+   "device_type": "desktop"
+  },
+  "3529938": {
+   "device_profile": "Windows|?|edge 16.0|?",
+   "device_type": "desktop"
+  },
+  "3529966": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3529993": {
+   "device_profile": "SM-G531H Build/LMY48B|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3530030": {
+   "device_profile": "SM-G928G Build/NRD90M|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3530032": {
+   "device_profile": "?|?|mobile safari 9.0|?",
+   "device_type": "mobile"
+  },
+  "3530044": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3530050": {
+   "device_profile": "LG-X230 Build/MRA58K|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3530107": {
+   "device_profile": "SM-G935F Build/NRD90M|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3530108": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3530221": {
+   "device_profile": null,
+   "device_type": null
+  },
+  "3530235": {
+   "device_profile": null,
+   "device_type": null
+  },
+  "3530269": {
+   "device_profile": "SM-J510MN Build/MMB29M|?|chrome 50.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3530298": {
+   "device_profile": "SAMSUNG SM-A310F/A310FXXU4CRB1 Build/NRD90M|?|samsung browser 6.4|?",
+   "device_type": "mobile"
+  },
+  "3530451": {
+   "device_profile": "Windows|?|firefox 59.0|?",
+   "device_type": "desktop"
+  },
+  "3530490": {
+   "device_profile": "Trident/7.0|?|ie 11.0 for desktop|?",
+   "device_type": "desktop"
+  },
+  "3530522": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3530527": {
+   "device_profile": "Trident/7.0|?|ie 11.0 for desktop|?",
+   "device_type": "desktop"
+  },
+  "3530602": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3530641": {
+   "device_profile": "Windows|?|firefox 59.0|?",
+   "device_type": "desktop"
+  },
+  "3530648": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3530668": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3530674": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3530692": {
+   "device_profile": "BLADE V8 SE Build/NRD90M|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3530698": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3530755": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3530782": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3530795": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3530811": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3530826": {
+   "device_profile": "Trident/7.0|?|ie 11.0 for desktop|?",
+   "device_type": "desktop"
+  },
+  "3530846": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3530865": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3530921": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3531015": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3531046": {
+   "device_profile": "LG-X230 Build/MRA58K|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3531056": {
+   "device_profile": "Trident/7.0|?|ie 11.0 for desktop|?",
+   "device_type": "desktop"
+  },
+  "3531154": {
+   "device_profile": "Lenovo TB3-710F Build/LRX21M|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3531168": {
+   "device_profile": "Lenovo TB3-710F Build/LRX21M|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3531197": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3531222": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3531325": {
+   "device_profile": "Blade V6 Plus Build/MRA58K|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3531368": {
+   "device_profile": "rv:11.0|?|ie 11.0 for desktop|?",
+   "device_type": "desktop"
+  },
+  "3531440": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3531451": {
+   "device_profile": "Windows|?|edge 16.0|?",
+   "device_type": "desktop"
+  },
+  "3531452": {
+   "device_profile": "Windows|?|edge 16.0|?",
+   "device_type": "desktop"
+  },
+  "3531483": {
+   "device_profile": "Hisense F23 Build/NRD90M|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3531485": {
+   "device_profile": "LG-M700 Build/NMF26X|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3531522": {
+   "device_profile": "Windows|?|edge 16.0|?",
+   "device_type": "desktop"
+  },
+  "3531624": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3531851": {
+   "device_profile": "8050G Build/LMY47I|?|chrome 46.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3531903": {
+   "device_profile": "Trident/7.0|?|ie 11.0 for desktop|?",
+   "device_type": "desktop"
+  },
+  "3531912": {
+   "device_profile": "Trident/7.0|?|ie 11.0 for desktop|?",
+   "device_type": "desktop"
+  },
+  "3531921": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3531954": {
+   "device_profile": "Trident/7.0|?|ie 11.0 for desktop|?",
+   "device_type": "desktop"
+  },
+  "3531975": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3531984": {
+   "device_profile": "HUAWEI G7-L03 Build/HuaweiG7-L03|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3532001": {
+   "device_profile": "EML-L29 Build/HUAWEIEML-L29|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3532012": {
+   "device_profile": "HUAWEI G7-L03 Build/HuaweiG7-L03|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3532014": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3532042": {
+   "device_profile": "SM-G920T|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3532047": {
+   "device_profile": "Blade V6 Plus Build/MRA58K|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3532095": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3532165": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3532175": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3532205": {
+   "device_profile": "Moto G (4) Build/NPJS25.93-14-15|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3532242": {
+   "device_profile": "SAMSUNG SM-J530F Build/NRD90M|?|samsung browser 6.4|?",
+   "device_type": "mobile"
+  },
+  "3532281": {
+   "device_profile": "Windows|?|chrome 65.0|?",
+   "device_type": "desktop"
+  },
+  "3532307": {
+   "device_profile": "SM-G950F Build/R16NW|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3532313": {
+   "device_profile": "HUAWEI VNS-L23 Build/HUAWEIVNS-L23|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3532332": {
+   "device_profile": "rv:59.0|?|firefox 59.0|?",
+   "device_type": "desktop"
+  },
+  "3532383": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3532387": {
+   "device_profile": "rv:59.0|?|firefox 59.0|?",
+   "device_type": "desktop"
+  },
+  "3532388": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3532392": {
+   "device_profile": "rv:59.0|?|firefox 59.0|?",
+   "device_type": "desktop"
+  },
+  "3532393": {
+   "device_profile": "Moto G (4) Build/NPJS25.93-14-8|?|chrome 65.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3532397": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3532418": {
+   "device_profile": "Windows|?|edge 16.0|?",
+   "device_type": "desktop"
+  },
+  "3532422": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3532439": {
+   "device_profile": "SM-J700M Build/MMB29K|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3532486": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3532492": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3532503": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3532519": {
+   "device_profile": "HUAWEI VNS-L53 Build/HUAWEIVNS-L53|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3532539": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3532547": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3532550": {
+   "device_profile": "HUAWEI VNS-L53 Build/HUAWEIVNS-L53|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3532554": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3532599": {
+   "device_profile": "SM-A730F Build/NMF26X|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3532600": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3532610": {
+   "device_profile": "Android 7.0|?|android webview 4.0|?",
+   "device_type": "mobile"
+  },
+  "3532611": {
+   "device_profile": "?|?|chrome 64.0|?",
+   "device_type": "desktop"
+  },
+  "3532616": {
+   "device_profile": "Moto G (4) Build/NPJ25.93-14.7|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3532618": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3532627": {
+   "device_profile": "SAMSUNG SM-A710M Build/NRD90M|?|samsung browser 6.4|?",
+   "device_type": "mobile"
+  },
+  "3532629": {
+   "device_profile": "Moto G (4) Build/NPJ25.93-14.7|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3532644": {
+   "device_profile": "rv:11.0|?|ie 11.0 for desktop|?",
+   "device_type": "desktop"
+  },
+  "3532646": {
+   "device_profile": "SAMSUNG SM-A710M Build/NRD90M|?|samsung browser 6.4|?",
+   "device_type": "mobile"
+  },
+  "3532657": {
+   "device_profile": "Moto G (5) Plus Build/NPN25.137-92|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3532665": {
+   "device_profile": "?|?|chrome 65.0 for ios|?",
+   "device_type": "mobile"
+  },
+  "3532685": {
+   "device_profile": "Moto G (5) Plus Build/NPN25.137-92|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3532688": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3532692": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3532696": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3532717": {
+   "device_profile": "LG-K200 Build/MXB48T|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3532754": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3532782": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3532786": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3532789": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3532792": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3532795": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3533013": {
+   "device_profile": "M4 SS4456 Build/LMY47V|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3533108": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3533224": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3533233": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3533276": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3533279": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3533313": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3533339": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3533344": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3533361": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3533371": {
+   "device_profile": "LG-H500 Build/LRX21Y|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3533523": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3533539": {
+   "device_profile": "SAMSUNG SM-G531H Build/LMY48B|?|samsung browser 3.3|?",
+   "device_type": "mobile"
+  },
+  "3533563": {
+   "device_profile": "XT1096|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3533564": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3533615": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3533675": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3533677": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3533710": {
+   "device_profile": null,
+   "device_type": null
+  },
+  "3533794": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3533797": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3533835": {
+   "device_profile": "BLL-L23 Build/HUAWEIBLL-L23|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3533860": {
+   "device_profile": "Moto G (4) Build/NPJS25.93-14-15|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3533870": {
+   "device_profile": null,
+   "device_type": null
+  },
+  "3533872": {
+   "device_profile": "Moto G (5) Plus Build/NPNS25.137-92-8|?|chrome 65.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3533873": {
+   "device_profile": "SM-G930F Build/NRD90M|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3533877": {
+   "device_profile": "LGMS550 Build/MXB48T|?|chrome 55.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3533889": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3534023": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3534033": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3534094": {
+   "device_profile": "SM-G935F Build/NRD90M|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3534117": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3534153": {
+   "device_profile": "?|?|chrome 66.0 for ios|?",
+   "device_type": "mobile"
+  },
+  "3534166": {
+   "device_profile": "LG-H840 Build/NRD90U|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3534200": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3534375": {
+   "device_profile": "SM-G570M Build/NRD90M|?|chrome 65.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3534382": {
+   "device_profile": "SAMSUNG SM-G925I Build/NRD90M|?|samsung browser 6.4|?",
+   "device_type": "mobile"
+  },
+  "3534386": {
+   "device_profile": "Windows|?|edge 16.0|?",
+   "device_type": "desktop"
+  },
+  "3534446": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3534526": {
+   "device_profile": "LG-M250 Build/NRD90U|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3534531": {
+   "device_profile": "?|?|chrome 65.0 for ios|?",
+   "device_type": "mobile"
+  },
+  "3534579": {
+   "device_profile": "?|?|mobile safari 10.0|?",
+   "device_type": "mobile"
+  },
+  "3534646": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3534705": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3534708": {
+   "device_profile": "Moto G (5) Build/NPP25.137-82|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3534730": {
+   "device_profile": "TRT-L53 Build/HUAWEITRT-L53|?|chrome 63.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3534746": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3534791": {
+   "device_profile": "SM-J320M Build/LMY47V|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3534820": {
+   "device_profile": "Windows|?|edge 16.0|?",
+   "device_type": "desktop"
+  },
+  "3534843": {
+   "device_profile": "SM-J700M Build/LMY48B|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3534852": {
+   "device_profile": "LG-H320 Build/LRX21Y|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3534906": {
+   "device_profile": "?|?|chrome 66.0 for ios|?",
+   "device_type": "mobile"
+  },
+  "3534969": {
+   "device_profile": "SM-G950F Build/R16NW|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3535034": {
+   "device_profile": "?|?|mobile safari 11.0|?",
+   "device_type": "mobile"
+  },
+  "3535136": {
+   "device_profile": "Ilium|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3535160": {
+   "device_profile": "SM-E700M|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3535177": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3535178": {
+   "device_profile": "rv:59.0|?|firefox|?",
+   "device_type": "mobile"
+  },
+  "3535197": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3535203": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3535214": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3535224": {
+   "device_profile": "M4 SS4453 Build/MMB29M|?|chrome 65.0 for android|?",
+   "device_type": "mobile"
+  },
+  "3535228": {
+   "device_profile": "Trident/7.0|?|ie 11.0 for desktop|?",
+   "device_type": "desktop"
+  },
+  "3535232": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3535271": {
+   "device_profile": "?|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3535283": {
+   "device_profile": "Trident/7.0|?|ie 11.0 for desktop|?",
+   "device_type": "desktop"
+  },
+  "3535304": {
+   "device_profile": "Windows|?|chrome 66.0|?",
+   "device_type": "desktop"
+  },
+  "3535310": {
+   "device_profile": "SM-G955F Build/NRD90M|?|chrome 66.0 for android|?",
+   "device_type": "mobile"
+  }
+ },
+ "manifest": {
+  "card_link_rule": "Only the seed transaction (case_pack) and closed-case transactions carry canonical card IDs; no K-suffix inference (D01 unresolved).",
+  "closed_cases_hidden_as_future": 0,
+  "quarantined_rows": 0,
+  "sources": {
+   "case_pack.csv": {
+    "bytes": 3548,
+    "sha256": "353494638b6ec2f07af67257b90ab85a1f1d537a0f015089abd9b54cfc7596e4"
+   },
+   "closed_cases_history.csv": {
+    "bytes": 2706417,
+    "sha256": "840613948d023fc3ddbfcb3291d5be250ee328e6eba1d2810b010fca5a757854"
+   },
+   "identity.csv": {
+    "bytes": 26716154,
+    "sha256": "9ebd6740ecb7e2afd392b5082a6f349907e871144659f622f5302ecd4ca39fad"
+   },
+   "transactions.csv": {
+    "bytes": 707936515,
+    "sha256": "dd084e58d7c33e7fd5a59c7b992ba9d6f62b0bd443fb19d4a5d5212e0246bb2b"
+   }
+  }
+ },
+ "neighbor_transactions": [
+  {
+   "amount_cents": 2620,
+   "card_fields": {
+    "card1": "19468",
+    "card2": "408.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C08962",
+   "dist1": null,
+   "id": "3529510",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.16,
+   "ts": "2016-12-10 01:39:43"
+  },
+  {
+   "amount_cents": 15415,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3529511",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.14,
+   "ts": "2016-12-10 01:39:46"
+  },
+  {
+   "amount_cents": 4068,
+   "card_fields": {
+    "card1": "13864",
+    "card2": "500.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C02147",
+   "dist1": null,
+   "id": "3529521",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.06,
+   "ts": "2016-12-10 01:44:46"
+  },
+  {
+   "amount_cents": 6140,
+   "card_fields": {
+    "card1": "22782",
+    "card2": "142.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C07220",
+   "dist1": null,
+   "id": "3529526",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.19,
+   "ts": "2016-12-10 01:46:58"
+  },
+  {
+   "amount_cents": 3403,
+   "card_fields": {
+    "card1": "20655",
+    "card2": null,
+    "card3": null,
+    "card4": null,
+    "card5": null,
+    "card6": null
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05307",
+   "dist1": null,
+   "id": "3529577",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.57,
+   "ts": "2016-12-10 02:05:30"
+  },
+  {
+   "amount_cents": 15602,
+   "card_fields": {
+    "card1": "10363",
+    "card2": null,
+    "card3": null,
+    "card4": null,
+    "card5": null,
+    "card6": null
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C02181",
+   "dist1": null,
+   "id": "3529589",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.07,
+   "ts": "2016-12-10 02:11:55"
+  },
+  {
+   "amount_cents": 245,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3529656",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.01,
+   "ts": "2016-12-10 02:43:04"
+  },
+  {
+   "amount_cents": 262,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3529657",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.18,
+   "ts": "2016-12-10 02:44:11"
+  },
+  {
+   "amount_cents": 7334,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3529658",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.08,
+   "ts": "2016-12-10 02:44:42"
+  },
+  {
+   "amount_cents": 1569,
+   "card_fields": {
+    "card1": "18605",
+    "card2": "324.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C12028",
+   "dist1": null,
+   "id": "3529668",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.18,
+   "ts": "2016-12-10 02:48:12"
+  },
+  {
+   "amount_cents": 2490,
+   "card_fields": {
+    "card1": "23208",
+    "card2": null,
+    "card3": null,
+    "card4": null,
+    "card5": null,
+    "card6": null
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05031",
+   "dist1": null,
+   "id": "3529680",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.17,
+   "ts": "2016-12-10 02:55:15"
+  },
+  {
+   "amount_cents": 3032,
+   "card_fields": {
+    "card1": "20655",
+    "card2": null,
+    "card3": null,
+    "card4": null,
+    "card5": null,
+    "card6": null
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05307",
+   "dist1": null,
+   "id": "3529694",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.17,
+   "ts": "2016-12-10 03:01:21"
+  },
+  {
+   "amount_cents": 4572,
+   "card_fields": {
+    "card1": "19526",
+    "card2": "103.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C06663",
+   "dist1": null,
+   "id": "3529699",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.51,
+   "ts": "2016-12-10 03:03:56"
+  },
+  {
+   "amount_cents": 14352,
+   "card_fields": {
+    "card1": "11260",
+    "card2": null,
+    "card3": null,
+    "card4": null,
+    "card5": null,
+    "card6": null
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C00294",
+   "dist1": null,
+   "id": "3529711",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.13,
+   "ts": "2016-12-10 03:09:55"
+  },
+  {
+   "amount_cents": 2116,
+   "card_fields": {
+    "card1": "20724",
+    "card2": "177.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05736",
+   "dist1": null,
+   "id": "3529712",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.07,
+   "ts": "2016-12-10 03:11:18"
+  },
+  {
+   "amount_cents": 4190,
+   "card_fields": {
+    "card1": "22900",
+    "card2": "408.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05381",
+   "dist1": null,
+   "id": "3529723",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.01,
+   "ts": "2016-12-10 03:16:49"
+  },
+  {
+   "amount_cents": 1385,
+   "card_fields": {
+    "card1": "12100",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09657",
+   "dist1": null,
+   "id": "3529740",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.19,
+   "ts": "2016-12-10 03:22:21"
+  },
+  {
+   "amount_cents": 966,
+   "card_fields": {
+    "card1": "20270",
+    "card2": "177.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C04034",
+   "dist1": null,
+   "id": "3529757",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.68,
+   "ts": "2016-12-10 03:28:05"
+  },
+  {
+   "amount_cents": 260,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3529761",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.63,
+   "ts": "2016-12-10 03:29:58"
+  },
+  {
+   "amount_cents": 1238,
+   "card_fields": {
+    "card1": "11735",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C07562",
+   "dist1": null,
+   "id": "3529766",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.06,
+   "ts": "2016-12-10 03:33:31"
+  },
+  {
+   "amount_cents": 101,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3529779",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.02,
+   "ts": "2016-12-10 03:44:45"
+  },
+  {
+   "amount_cents": 94,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3529797",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.28,
+   "ts": "2016-12-10 03:55:21"
+  },
+  {
+   "amount_cents": 1944,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3529812",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.24,
+   "ts": "2016-12-10 04:02:40"
+  },
+  {
+   "amount_cents": 1501,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3529826",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.07,
+   "ts": "2016-12-10 04:10:16"
+  },
+  {
+   "amount_cents": 2080,
+   "card_fields": {
+    "card1": "14160",
+    "card2": "555.0",
+    "card3": "147.0",
+    "card4": "mastercard",
+    "card5": "134.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C00510",
+   "dist1": null,
+   "id": "3529829",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.32,
+   "ts": "2016-12-10 04:11:15"
+  },
+  {
+   "amount_cents": 1830,
+   "card_fields": {
+    "card1": "20270",
+    "card2": "177.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C04034",
+   "dist1": null,
+   "id": "3529846",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.18,
+   "ts": "2016-12-10 04:28:23"
+  },
+  {
+   "amount_cents": 2924,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3529856",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.03,
+   "ts": "2016-12-10 04:39:13"
+  },
+  {
+   "amount_cents": 3682,
+   "card_fields": {
+    "card1": "21126",
+    "card2": "341.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05423",
+   "dist1": null,
+   "id": "3529860",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.03,
+   "ts": "2016-12-10 04:45:13"
+  },
+  {
+   "amount_cents": 3250,
+   "card_fields": {
+    "card1": "21126",
+    "card2": "341.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05423",
+   "dist1": null,
+   "id": "3529865",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.16,
+   "ts": "2016-12-10 04:51:34"
+  },
+  {
+   "amount_cents": 3688,
+   "card_fields": {
+    "card1": "21126",
+    "card2": "341.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05423",
+   "dist1": null,
+   "id": "3529871",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.03,
+   "ts": "2016-12-10 04:58:58"
+  },
+  {
+   "amount_cents": 1832,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3529878",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.22,
+   "ts": "2016-12-10 05:02:19"
+  },
+  {
+   "amount_cents": 3685,
+   "card_fields": {
+    "card1": "21126",
+    "card2": "341.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05423",
+   "dist1": null,
+   "id": "3529889",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.17,
+   "ts": "2016-12-10 05:15:30"
+  },
+  {
+   "amount_cents": 3628,
+   "card_fields": {
+    "card1": "20475",
+    "card2": "500.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "197.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09939",
+   "dist1": null,
+   "id": "3529898",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.4,
+   "ts": "2016-12-10 05:38:40"
+  },
+  {
+   "amount_cents": 13925,
+   "card_fields": {
+    "card1": "15517",
+    "card2": "202.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C01002",
+   "dist1": null,
+   "id": "3529926",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.04,
+   "ts": "2016-12-10 06:49:19"
+  },
+  {
+   "amount_cents": 13924,
+   "card_fields": {
+    "card1": "15517",
+    "card2": "202.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C01002",
+   "dist1": null,
+   "id": "3529938",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.02,
+   "ts": "2016-12-10 07:58:55"
+  },
+  {
+   "amount_cents": 2881,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3529966",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.06,
+   "ts": "2016-12-10 10:21:30"
+  },
+  {
+   "amount_cents": 4742,
+   "card_fields": {
+    "card1": "20264",
+    "card2": "408.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C07761",
+   "dist1": null,
+   "id": "3529993",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.16,
+   "ts": "2016-12-10 11:14:31"
+  },
+  {
+   "amount_cents": 3425,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3530030",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.25,
+   "ts": "2016-12-10 11:50:43"
+  },
+  {
+   "amount_cents": 660,
+   "card_fields": {
+    "card1": "13864",
+    "card2": "500.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C02147",
+   "dist1": null,
+   "id": "3530032",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.02,
+   "ts": "2016-12-10 11:51:51"
+  },
+  {
+   "amount_cents": 2739,
+   "card_fields": {
+    "card1": "19526",
+    "card2": "103.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C06663",
+   "dist1": null,
+   "id": "3530044",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.09,
+   "ts": "2016-12-10 12:07:01"
+  },
+  {
+   "amount_cents": 4068,
+   "card_fields": {
+    "card1": "13864",
+    "card2": "500.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C02147",
+   "dist1": null,
+   "id": "3530050",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.15,
+   "ts": "2016-12-10 12:08:28"
+  },
+  {
+   "amount_cents": 3136,
+   "card_fields": {
+    "card1": "12548",
+    "card2": "177.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C06464",
+   "dist1": null,
+   "id": "3530107",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.03,
+   "ts": "2016-12-10 12:40:31"
+  },
+  {
+   "amount_cents": 6113,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3530108",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.1,
+   "ts": "2016-12-10 12:40:46"
+  },
+  {
+   "amount_cents": 3962,
+   "card_fields": {
+    "card1": "20270",
+    "card2": "177.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C04034",
+   "dist1": null,
+   "id": "3530221",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.02,
+   "ts": "2016-12-10 13:28:07"
+  },
+  {
+   "amount_cents": 3967,
+   "card_fields": {
+    "card1": "20270",
+    "card2": "177.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C04034",
+   "dist1": null,
+   "id": "3530235",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.05,
+   "ts": "2016-12-10 13:39:33"
+  },
+  {
+   "amount_cents": 3796,
+   "card_fields": {
+    "card1": "23208",
+    "card2": "130.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05031",
+   "dist1": null,
+   "id": "3530269",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.08,
+   "ts": "2016-12-10 13:56:04"
+  },
+  {
+   "amount_cents": 8715,
+   "card_fields": {
+    "card1": "15636",
+    "card2": "149.0",
+    "card3": "147.0",
+    "card4": "mastercard",
+    "card5": "219.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C03102",
+   "dist1": null,
+   "id": "3530298",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.08,
+   "ts": "2016-12-10 14:05:04"
+  },
+  {
+   "amount_cents": 1181,
+   "card_fields": {
+    "card1": "20610",
+    "card2": "238.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "102.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11642",
+   "dist1": null,
+   "id": "3530451",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.03,
+   "ts": "2016-12-10 14:56:12"
+  },
+  {
+   "amount_cents": 2318,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3530490",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.12,
+   "ts": "2016-12-10 15:12:43"
+  },
+  {
+   "amount_cents": 6908,
+   "card_fields": {
+    "card1": "22900",
+    "card2": "408.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05381",
+   "dist1": null,
+   "id": "3530522",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.1,
+   "ts": "2016-12-10 15:26:32"
+  },
+  {
+   "amount_cents": 2325,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3530527",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.1,
+   "ts": "2016-12-10 15:28:17"
+  },
+  {
+   "amount_cents": 7267,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3530602",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.02,
+   "ts": "2016-12-10 15:50:24"
+  },
+  {
+   "amount_cents": 3086,
+   "card_fields": {
+    "card1": "19468",
+    "card2": "408.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C08962",
+   "dist1": null,
+   "id": "3530641",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.12,
+   "ts": "2016-12-10 16:03:03"
+  },
+  {
+   "amount_cents": 7258,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3530648",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.24,
+   "ts": "2016-12-10 16:05:55"
+  },
+  {
+   "amount_cents": 7268,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3530668",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.16,
+   "ts": "2016-12-10 16:12:55"
+  },
+  {
+   "amount_cents": 13929,
+   "card_fields": {
+    "card1": "22900",
+    "card2": "408.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05381",
+   "dist1": null,
+   "id": "3530674",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.18,
+   "ts": "2016-12-10 16:16:19"
+  },
+  {
+   "amount_cents": 3932,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3530692",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.09,
+   "ts": "2016-12-10 16:24:03"
+  },
+  {
+   "amount_cents": 13077,
+   "card_fields": {
+    "card1": "22782",
+    "card2": "142.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C07220",
+   "dist1": null,
+   "id": "3530698",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.58,
+   "ts": "2016-12-10 16:25:34"
+  },
+  {
+   "amount_cents": 1354,
+   "card_fields": {
+    "card1": "22374",
+    "card2": "500.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "219.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11919",
+   "dist1": null,
+   "id": "3530755",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.28,
+   "ts": "2016-12-10 16:43:59"
+  },
+  {
+   "amount_cents": 1349,
+   "card_fields": {
+    "card1": "10114",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "102.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C13171",
+   "dist1": null,
+   "id": "3530782",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.09,
+   "ts": "2016-12-10 16:52:35"
+  },
+  {
+   "amount_cents": 3054,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3530795",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.03,
+   "ts": "2016-12-10 16:58:44"
+  },
+  {
+   "amount_cents": 12385,
+   "card_fields": {
+    "card1": "19468",
+    "card2": "408.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C08962",
+   "dist1": null,
+   "id": "3530811",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.22,
+   "ts": "2016-12-10 17:01:45"
+  },
+  {
+   "amount_cents": 1416,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3530826",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.07,
+   "ts": "2016-12-10 17:05:34"
+  },
+  {
+   "amount_cents": 12741,
+   "card_fields": {
+    "card1": "22900",
+    "card2": "408.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05381",
+   "dist1": null,
+   "id": "3530846",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.01,
+   "ts": "2016-12-10 17:13:19"
+  },
+  {
+   "amount_cents": 1097,
+   "card_fields": {
+    "card1": "22900",
+    "card2": "408.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05381",
+   "dist1": null,
+   "id": "3530865",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.36,
+   "ts": "2016-12-10 17:18:33"
+  },
+  {
+   "amount_cents": 11221,
+   "card_fields": {
+    "card1": "18042",
+    "card2": "176.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05595",
+   "dist1": null,
+   "id": "3530921",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.13,
+   "ts": "2016-12-10 17:43:00"
+  },
+  {
+   "amount_cents": 1598,
+   "card_fields": {
+    "card1": "20804",
+    "card2": "555.0",
+    "card3": "111.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C02416",
+   "dist1": null,
+   "id": "3531015",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.23,
+   "ts": "2016-12-10 18:11:14"
+  },
+  {
+   "amount_cents": 4077,
+   "card_fields": {
+    "card1": "13864",
+    "card2": "500.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C02147",
+   "dist1": null,
+   "id": "3531046",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.28,
+   "ts": "2016-12-10 18:21:10"
+  },
+  {
+   "amount_cents": 2500,
+   "card_fields": {
+    "card1": "11260",
+    "card2": "103.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C00294",
+   "dist1": null,
+   "id": "3531056",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.11,
+   "ts": "2016-12-10 18:25:09"
+  },
+  {
+   "amount_cents": 4777,
+   "card_fields": {
+    "card1": "20671",
+    "card2": "202.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C04248",
+   "dist1": null,
+   "id": "3531099",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.06,
+   "ts": "2016-12-10 18:39:08"
+  },
+  {
+   "amount_cents": 5801,
+   "card_fields": {
+    "card1": "20671",
+    "card2": "202.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C04248",
+   "dist1": null,
+   "id": "3531130",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.08,
+   "ts": "2016-12-10 18:48:36"
+  },
+  {
+   "amount_cents": 4074,
+   "card_fields": {
+    "card1": "10792",
+    "card2": "103.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11844",
+   "dist1": null,
+   "id": "3531154",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.11,
+   "ts": "2016-12-10 18:55:13"
+  },
+  {
+   "amount_cents": 4087,
+   "card_fields": {
+    "card1": "10792",
+    "card2": "103.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11844",
+   "dist1": null,
+   "id": "3531168",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.46,
+   "ts": "2016-12-10 19:00:04"
+  },
+  {
+   "amount_cents": 7250,
+   "card_fields": {
+    "card1": "23208",
+    "card2": "130.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05031",
+   "dist1": null,
+   "id": "3531197",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.03,
+   "ts": "2016-12-10 19:09:51"
+  },
+  {
+   "amount_cents": 3983,
+   "card_fields": {
+    "card1": "19430",
+    "card2": "204.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C06744",
+   "dist1": null,
+   "id": "3531222",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.15,
+   "ts": "2016-12-10 19:18:03"
+  },
+  {
+   "amount_cents": 5911,
+   "card_fields": {
+    "card1": "13864",
+    "card2": "500.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C02147",
+   "dist1": null,
+   "id": "3531253",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.05,
+   "ts": "2016-12-10 19:28:15"
+  },
+  {
+   "amount_cents": 8796,
+   "card_fields": {
+    "card1": "23208",
+    "card2": "130.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05031",
+   "dist1": null,
+   "id": "3531325",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.11,
+   "ts": "2016-12-10 19:47:04"
+  },
+  {
+   "amount_cents": 2860,
+   "card_fields": {
+    "card1": "23208",
+    "card2": "130.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05031",
+   "dist1": null,
+   "id": "3531368",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.23,
+   "ts": "2016-12-10 20:01:26"
+  },
+  {
+   "amount_cents": 3191,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3531440",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.15,
+   "ts": "2016-12-10 20:24:30"
+  },
+  {
+   "amount_cents": 5966,
+   "card_fields": {
+    "card1": "15058",
+    "card2": "170.0",
+    "card3": "150.0",
+    "card4": "mastercard",
+    "card5": "102.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C00854",
+   "dist1": null,
+   "id": "3531451",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.2,
+   "ts": "2016-12-10 20:27:24"
+  },
+  {
+   "amount_cents": 5960,
+   "card_fields": {
+    "card1": "11494",
+    "card2": "490.0",
+    "card3": "150.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09251",
+   "dist1": null,
+   "id": "3531452",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.2,
+   "ts": "2016-12-10 20:27:42"
+  },
+  {
+   "amount_cents": 8418,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3531483",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.02,
+   "ts": "2016-12-10 20:36:07"
+  },
+  {
+   "amount_cents": 1896,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3531485",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.08,
+   "ts": "2016-12-10 20:36:25"
+  },
+  {
+   "amount_cents": 5971,
+   "card_fields": {
+    "card1": "17503",
+    "card2": "583.0",
+    "card3": "150.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C06224",
+   "dist1": null,
+   "id": "3531522",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.13,
+   "ts": "2016-12-10 20:48:52"
+  },
+  {
+   "amount_cents": 1664,
+   "card_fields": {
+    "card1": "10923",
+    "card2": "555.0",
+    "card3": "200.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11881",
+   "dist1": null,
+   "id": "3531624",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.06,
+   "ts": "2016-12-10 21:19:09"
+  },
+  {
+   "amount_cents": 4828,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3531837",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.16,
+   "ts": "2016-12-10 22:23:44"
+  },
+  {
+   "amount_cents": 3362,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3531851",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.16,
+   "ts": "2016-12-10 22:27:50"
+  },
+  {
+   "amount_cents": 8628,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3531852",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.19,
+   "ts": "2016-12-10 22:28:08"
+  },
+  {
+   "amount_cents": 8633,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3531897",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.17,
+   "ts": "2016-12-10 22:44:16"
+  },
+  {
+   "amount_cents": 1522,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3531903",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.22,
+   "ts": "2016-12-10 22:46:22"
+  },
+  {
+   "amount_cents": 1523,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3531912",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.02,
+   "ts": "2016-12-10 22:49:26"
+  },
+  {
+   "amount_cents": 833,
+   "card_fields": {
+    "card1": "13864",
+    "card2": "500.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C02147",
+   "dist1": null,
+   "id": "3531921",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.04,
+   "ts": "2016-12-10 22:51:42"
+  },
+  {
+   "amount_cents": 1524,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3531954",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.11,
+   "ts": "2016-12-10 23:02:56"
+  },
+  {
+   "amount_cents": 4840,
+   "card_fields": {
+    "card1": "23208",
+    "card2": "130.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05031",
+   "dist1": null,
+   "id": "3531975",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.27,
+   "ts": "2016-12-10 23:07:27"
+  },
+  {
+   "amount_cents": 2345,
+   "card_fields": {
+    "card1": "19468",
+    "card2": "408.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C08962",
+   "dist1": null,
+   "id": "3531984",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.06,
+   "ts": "2016-12-10 23:09:45"
+  },
+  {
+   "amount_cents": 1313,
+   "card_fields": {
+    "card1": "13004",
+    "card2": "138.0",
+    "card3": "200.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C04839",
+   "dist1": null,
+   "id": "3532001",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.16,
+   "ts": "2016-12-10 23:16:58"
+  },
+  {
+   "amount_cents": 2341,
+   "card_fields": {
+    "card1": "19468",
+    "card2": "408.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C08962",
+   "dist1": null,
+   "id": "3532012",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.03,
+   "ts": "2016-12-10 23:18:31"
+  },
+  {
+   "amount_cents": 12022,
+   "card_fields": {
+    "card1": "15620",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C00259",
+   "dist1": null,
+   "id": "3532014",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.05,
+   "ts": "2016-12-10 23:18:52"
+  },
+  {
+   "amount_cents": 5776,
+   "card_fields": {
+    "card1": "22904",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C04597",
+   "dist1": null,
+   "id": "3532042",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.13,
+   "ts": "2016-12-10 23:27:57"
+  },
+  {
+   "amount_cents": 2599,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3532047",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.12,
+   "ts": "2016-12-10 23:29:52"
+  },
+  {
+   "amount_cents": 648,
+   "card_fields": {
+    "card1": "20655",
+    "card2": "142.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05307",
+   "dist1": null,
+   "id": "3532095",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.04,
+   "ts": "2016-12-10 23:44:57"
+  },
+  {
+   "amount_cents": 455,
+   "card_fields": {
+    "card1": "20655",
+    "card2": "142.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05307",
+   "dist1": null,
+   "id": "3532165",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.06,
+   "ts": "2016-12-11 00:09:55"
+  },
+  {
+   "amount_cents": 4436,
+   "card_fields": {
+    "card1": "23208",
+    "card2": "130.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05031",
+   "dist1": null,
+   "id": "3532175",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.93,
+   "ts": "2016-12-11 00:13:27"
+  },
+  {
+   "amount_cents": 3739,
+   "card_fields": {
+    "card1": "11735",
+    "card2": null,
+    "card3": null,
+    "card4": null,
+    "card5": null,
+    "card6": null
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C07562",
+   "dist1": null,
+   "id": "3532205",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.06,
+   "ts": "2016-12-11 00:23:47"
+  },
+  {
+   "amount_cents": 1934,
+   "card_fields": {
+    "card1": "14123",
+    "card2": "540.0",
+    "card3": "106.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C06036",
+   "dist1": null,
+   "id": "3532242",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.13,
+   "ts": "2016-12-11 00:35:15"
+  },
+  {
+   "amount_cents": 1138,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3532281",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.13,
+   "ts": "2016-12-11 00:48:37"
+  },
+  {
+   "amount_cents": 5596,
+   "card_fields": {
+    "card1": "12100",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09657",
+   "dist1": null,
+   "id": "3532307",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.14,
+   "ts": "2016-12-11 00:58:37"
+  },
+  {
+   "amount_cents": 2436,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3532313",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.02,
+   "ts": "2016-12-11 01:02:08"
+  },
+  {
+   "amount_cents": 4121,
+   "card_fields": {
+    "card1": "12100",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09657",
+   "dist1": null,
+   "id": "3532332",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.06,
+   "ts": "2016-12-11 01:10:00"
+  },
+  {
+   "amount_cents": 2920,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3532383",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.07,
+   "ts": "2016-12-11 01:24:16"
+  },
+  {
+   "amount_cents": 4128,
+   "card_fields": {
+    "card1": "12100",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09657",
+   "dist1": null,
+   "id": "3532387",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.06,
+   "ts": "2016-12-11 01:25:23"
+  },
+  {
+   "amount_cents": 2205,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3532388",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.1,
+   "ts": "2016-12-11 01:25:27"
+  },
+  {
+   "amount_cents": 4116,
+   "card_fields": {
+    "card1": "12100",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09657",
+   "dist1": null,
+   "id": "3532392",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.01,
+   "ts": "2016-12-11 01:26:31"
+  },
+  {
+   "amount_cents": 1150,
+   "card_fields": {
+    "card1": "19468",
+    "card2": "408.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C08962",
+   "dist1": null,
+   "id": "3532393",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.01,
+   "ts": "2016-12-11 01:26:51"
+  },
+  {
+   "amount_cents": 3033,
+   "card_fields": {
+    "card1": "21245",
+    "card2": "408.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "102.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C13407",
+   "dist1": null,
+   "id": "3532397",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.05,
+   "ts": "2016-12-11 01:28:40"
+  },
+  {
+   "amount_cents": 15415,
+   "card_fields": {
+    "card1": "22351",
+    "card2": "440.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C01525",
+   "dist1": null,
+   "id": "3532418",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.47,
+   "ts": "2016-12-11 01:34:54"
+  },
+  {
+   "amount_cents": 5071,
+   "card_fields": {
+    "card1": "16182",
+    "card2": null,
+    "card3": null,
+    "card4": null,
+    "card5": null,
+    "card6": null
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11597",
+   "dist1": null,
+   "id": "3532422",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.25,
+   "ts": "2016-12-11 01:36:06"
+  },
+  {
+   "amount_cents": 4594,
+   "card_fields": {
+    "card1": "12153",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "137.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C10760",
+   "dist1": null,
+   "id": "3532439",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.05,
+   "ts": "2016-12-11 01:42:12"
+  },
+  {
+   "amount_cents": 4820,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3532486",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.07,
+   "ts": "2016-12-11 02:01:16"
+  },
+  {
+   "amount_cents": 2707,
+   "card_fields": {
+    "card1": "11246",
+    "card2": "266.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "102.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C02639",
+   "dist1": null,
+   "id": "3532492",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.08,
+   "ts": "2016-12-11 02:02:48"
+  },
+  {
+   "amount_cents": 246,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3532503",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.61,
+   "ts": "2016-12-11 02:08:17"
+  },
+  {
+   "amount_cents": 4582,
+   "card_fields": {
+    "card1": "23127",
+    "card2": "289.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C10114",
+   "dist1": null,
+   "id": "3532519",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.93,
+   "ts": "2016-12-11 02:16:52"
+  },
+  {
+   "amount_cents": 2924,
+   "card_fields": {
+    "card1": "11246",
+    "card2": "266.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "102.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C02639",
+   "dist1": null,
+   "id": "3532539",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.06,
+   "ts": "2016-12-11 02:25:48"
+  },
+  {
+   "amount_cents": 6140,
+   "card_fields": {
+    "card1": "13596",
+    "card2": "407.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C08290",
+   "dist1": null,
+   "id": "3532547",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.15,
+   "ts": "2016-12-11 02:28:50"
+  },
+  {
+   "amount_cents": 4576,
+   "card_fields": {
+    "card1": "13864",
+    "card2": "500.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C02147",
+   "dist1": null,
+   "id": "3532550",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.69,
+   "ts": "2016-12-11 02:30:44"
+  },
+  {
+   "amount_cents": 3340,
+   "card_fields": {
+    "card1": "22904",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C04597",
+   "dist1": null,
+   "id": "3532554",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.26,
+   "ts": "2016-12-11 02:33:16"
+  },
+  {
+   "amount_cents": 2603,
+   "card_fields": {
+    "card1": "22904",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C04597",
+   "dist1": null,
+   "id": "3532599",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.47,
+   "ts": "2016-12-11 03:01:53"
+  },
+  {
+   "amount_cents": 5760,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3532600",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.25,
+   "ts": "2016-12-11 03:02:04"
+  },
+  {
+   "amount_cents": 1626,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3532610",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.03,
+   "ts": "2016-12-11 03:06:13"
+  },
+  {
+   "amount_cents": 3550,
+   "card_fields": {
+    "card1": "11735",
+    "card2": null,
+    "card3": null,
+    "card4": null,
+    "card5": null,
+    "card6": null
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C07562",
+   "dist1": null,
+   "id": "3532611",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.15,
+   "ts": "2016-12-11 03:07:19"
+  },
+  {
+   "amount_cents": 135,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3532616",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.12,
+   "ts": "2016-12-11 03:09:15"
+  },
+  {
+   "amount_cents": 2681,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3532618",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.05,
+   "ts": "2016-12-11 03:09:52"
+  },
+  {
+   "amount_cents": 1917,
+   "card_fields": {
+    "card1": "11241",
+    "card2": "459.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C10957",
+   "dist1": null,
+   "id": "3532627",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.06,
+   "ts": "2016-12-11 03:16:36"
+  },
+  {
+   "amount_cents": 135,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3532629",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.15,
+   "ts": "2016-12-11 03:16:50"
+  },
+  {
+   "amount_cents": 623,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3532644",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.01,
+   "ts": "2016-12-11 03:26:05"
+  },
+  {
+   "amount_cents": 1758,
+   "card_fields": {
+    "card1": "11241",
+    "card2": "459.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C10957",
+   "dist1": null,
+   "id": "3532646",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.18,
+   "ts": "2016-12-11 03:27:30"
+  },
+  {
+   "amount_cents": 8002,
+   "card_fields": {
+    "card1": "14517",
+    "card2": "177.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "102.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C06855",
+   "dist1": null,
+   "id": "3532657",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.03,
+   "ts": "2016-12-11 03:34:00"
+  },
+  {
+   "amount_cents": 5958,
+   "card_fields": {
+    "card1": "19274",
+    "card2": "555.0",
+    "card3": "119.0",
+    "card4": "visa",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C08655",
+   "dist1": null,
+   "id": "3532665",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.49,
+   "ts": "2016-12-11 03:40:29"
+  },
+  {
+   "amount_cents": 8002,
+   "card_fields": {
+    "card1": "14517",
+    "card2": "177.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "102.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C06855",
+   "dist1": null,
+   "id": "3532685",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.04,
+   "ts": "2016-12-11 03:59:19"
+  },
+  {
+   "amount_cents": 2108,
+   "card_fields": {
+    "card1": "11735",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C07562",
+   "dist1": null,
+   "id": "3532688",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.05,
+   "ts": "2016-12-11 04:01:12"
+  },
+  {
+   "amount_cents": 5148,
+   "card_fields": {
+    "card1": "20283",
+    "card2": "555.0",
+    "card3": "212.0",
+    "card4": "visa",
+    "card5": "166.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C10475",
+   "dist1": null,
+   "id": "3532692",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.15,
+   "ts": "2016-12-11 04:08:22"
+  },
+  {
+   "amount_cents": 1514,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3532696",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.03,
+   "ts": "2016-12-11 04:12:54"
+  },
+  {
+   "amount_cents": 1765,
+   "card_fields": {
+    "card1": "23208",
+    "card2": "130.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05031",
+   "dist1": null,
+   "id": "3532717",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.69,
+   "ts": "2016-12-11 04:31:32"
+  },
+  {
+   "amount_cents": 1157,
+   "card_fields": {
+    "card1": "19963",
+    "card2": "177.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C00466",
+   "dist1": null,
+   "id": "3532754",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.04,
+   "ts": "2016-12-11 05:17:31"
+  },
+  {
+   "amount_cents": 3472,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3532782",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.06,
+   "ts": "2016-12-11 06:18:04"
+  },
+  {
+   "amount_cents": 3469,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3532786",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.15,
+   "ts": "2016-12-11 06:23:10"
+  },
+  {
+   "amount_cents": 3472,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3532789",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.36,
+   "ts": "2016-12-11 06:23:55"
+  },
+  {
+   "amount_cents": 3467,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3532792",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.31,
+   "ts": "2016-12-11 06:29:14"
+  },
+  {
+   "amount_cents": 3469,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3532795",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.2,
+   "ts": "2016-12-11 06:35:38"
+  },
+  {
+   "amount_cents": 3168,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3533013",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.14,
+   "ts": "2016-12-11 12:50:34"
+  },
+  {
+   "amount_cents": 7802,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3533108",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.01,
+   "ts": "2016-12-11 13:39:20"
+  },
+  {
+   "amount_cents": 2158,
+   "card_fields": {
+    "card1": "19430",
+    "card2": "204.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C06744",
+   "dist1": null,
+   "id": "3533224",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.14,
+   "ts": "2016-12-11 14:22:36"
+  },
+  {
+   "amount_cents": 3947,
+   "card_fields": {
+    "card1": "19691",
+    "card2": "500.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C06630",
+   "dist1": null,
+   "id": "3533233",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.02,
+   "ts": "2016-12-11 14:23:58"
+  },
+  {
+   "amount_cents": 858,
+   "card_fields": {
+    "card1": "19468",
+    "card2": "408.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C08962",
+   "dist1": null,
+   "id": "3533276",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.04,
+   "ts": "2016-12-11 14:37:55"
+  },
+  {
+   "amount_cents": 2221,
+   "card_fields": {
+    "card1": "22904",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C04597",
+   "dist1": null,
+   "id": "3533279",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.07,
+   "ts": "2016-12-11 14:39:13"
+  },
+  {
+   "amount_cents": 843,
+   "card_fields": {
+    "card1": "19691",
+    "card2": "500.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C06630",
+   "dist1": null,
+   "id": "3533313",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.09,
+   "ts": "2016-12-11 14:50:35"
+  },
+  {
+   "amount_cents": 15832,
+   "card_fields": {
+    "card1": "18478",
+    "card2": "266.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05996",
+   "dist1": null,
+   "id": "3533339",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.07,
+   "ts": "2016-12-11 14:58:23"
+  },
+  {
+   "amount_cents": 10137,
+   "card_fields": {
+    "card1": "23208",
+    "card2": "130.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05031",
+   "dist1": null,
+   "id": "3533344",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.06,
+   "ts": "2016-12-11 15:00:36"
+  },
+  {
+   "amount_cents": 15832,
+   "card_fields": {
+    "card1": "18478",
+    "card2": "266.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05996",
+   "dist1": null,
+   "id": "3533361",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.09,
+   "ts": "2016-12-11 15:07:12"
+  },
+  {
+   "amount_cents": 3283,
+   "card_fields": {
+    "card1": "19430",
+    "card2": "204.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C06744",
+   "dist1": null,
+   "id": "3533371",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.13,
+   "ts": "2016-12-11 15:12:49"
+  },
+  {
+   "amount_cents": 3471,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3533434",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.26,
+   "ts": "2016-12-11 15:30:35"
+  },
+  {
+   "amount_cents": 2341,
+   "card_fields": {
+    "card1": "10114",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "102.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C13171",
+   "dist1": null,
+   "id": "3533520",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.11,
+   "ts": "2016-12-11 16:01:21"
+  },
+  {
+   "amount_cents": 450,
+   "card_fields": {
+    "card1": "12507",
+    "card2": "555.0",
+    "card3": "119.0",
+    "card4": "visa",
+    "card5": "102.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C06856",
+   "dist1": null,
+   "id": "3533523",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.03,
+   "ts": "2016-12-11 16:02:39"
+  },
+  {
+   "amount_cents": 1080,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3533539",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.39,
+   "ts": "2016-12-11 16:08:08"
+  },
+  {
+   "amount_cents": 3196,
+   "card_fields": {
+    "card1": "19430",
+    "card2": "204.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C06744",
+   "dist1": null,
+   "id": "3533563",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.16,
+   "ts": "2016-12-11 16:16:34"
+  },
+  {
+   "amount_cents": 9965,
+   "card_fields": {
+    "card1": "11735",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C07562",
+   "dist1": null,
+   "id": "3533564",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.23,
+   "ts": "2016-12-11 16:16:43"
+  },
+  {
+   "amount_cents": 1348,
+   "card_fields": {
+    "card1": "12831",
+    "card2": "130.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "195.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C13364",
+   "dist1": null,
+   "id": "3533615",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.68,
+   "ts": "2016-12-11 16:39:29"
+  },
+  {
+   "amount_cents": 1900,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3533675",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.1,
+   "ts": "2016-12-11 16:56:53"
+  },
+  {
+   "amount_cents": 1355,
+   "card_fields": {
+    "card1": "12100",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09657",
+   "dist1": null,
+   "id": "3533677",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.49,
+   "ts": "2016-12-11 16:58:25"
+  },
+  {
+   "amount_cents": 3696,
+   "card_fields": {
+    "card1": "19430",
+    "card2": "204.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C06744",
+   "dist1": null,
+   "id": "3533710",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.16,
+   "ts": "2016-12-11 17:10:57"
+  },
+  {
+   "amount_cents": 5293,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3533794",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.02,
+   "ts": "2016-12-11 17:36:19"
+  },
+  {
+   "amount_cents": 1331,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3533797",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.17,
+   "ts": "2016-12-11 17:36:52"
+  },
+  {
+   "amount_cents": 439,
+   "card_fields": {
+    "card1": "19950",
+    "card2": "500.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C07508",
+   "dist1": null,
+   "id": "3533835",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.15,
+   "ts": "2016-12-11 17:45:35"
+  },
+  {
+   "amount_cents": 2362,
+   "card_fields": {
+    "card1": "11735",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C07562",
+   "dist1": null,
+   "id": "3533860",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.21,
+   "ts": "2016-12-11 17:52:33"
+  },
+  {
+   "amount_cents": 10453,
+   "card_fields": {
+    "card1": "19468",
+    "card2": "408.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C08962",
+   "dist1": null,
+   "id": "3533870",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.21,
+   "ts": "2016-12-11 17:53:58"
+  },
+  {
+   "amount_cents": 2659,
+   "card_fields": {
+    "card1": "19392",
+    "card2": "304.0",
+    "card3": "146.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C08924",
+   "dist1": null,
+   "id": "3533872",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.25,
+   "ts": "2016-12-11 17:54:51"
+  },
+  {
+   "amount_cents": 780,
+   "card_fields": {
+    "card1": "17090",
+    "card2": "223.0",
+    "card3": "117.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11627",
+   "dist1": null,
+   "id": "3533873",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.37,
+   "ts": "2016-12-11 17:55:29"
+  },
+  {
+   "amount_cents": 4007,
+   "card_fields": {
+    "card1": "11735",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C07562",
+   "dist1": null,
+   "id": "3533874",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.12,
+   "ts": "2016-12-11 17:55:43"
+  },
+  {
+   "amount_cents": 2852,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3533877",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.03,
+   "ts": "2016-12-11 17:56:51"
+  },
+  {
+   "amount_cents": 3990,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3533889",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.03,
+   "ts": "2016-12-11 17:59:49"
+  },
+  {
+   "amount_cents": 1694,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3533937",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.03,
+   "ts": "2016-12-11 18:12:35"
+  },
+  {
+   "amount_cents": 7998,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3534023",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.07,
+   "ts": "2016-12-11 18:39:12"
+  },
+  {
+   "amount_cents": 612,
+   "card_fields": {
+    "card1": "20655",
+    "card2": "142.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05307",
+   "dist1": null,
+   "id": "3534033",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.11,
+   "ts": "2016-12-11 18:42:50"
+  },
+  {
+   "amount_cents": 8160,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3534094",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.14,
+   "ts": "2016-12-11 18:56:16"
+  },
+  {
+   "amount_cents": 2741,
+   "card_fields": {
+    "card1": "22374",
+    "card2": "500.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "219.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11919",
+   "dist1": null,
+   "id": "3534117",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.12,
+   "ts": "2016-12-11 19:03:11"
+  },
+  {
+   "amount_cents": 1956,
+   "card_fields": {
+    "card1": "12100",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09657",
+   "dist1": null,
+   "id": "3534153",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.25,
+   "ts": "2016-12-11 19:12:25"
+  },
+  {
+   "amount_cents": 2236,
+   "card_fields": {
+    "card1": "22103",
+    "card2": "130.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "102.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C07981",
+   "dist1": null,
+   "id": "3534166",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.15,
+   "ts": "2016-12-11 19:16:00"
+  },
+  {
+   "amount_cents": 4122,
+   "card_fields": {
+    "card1": "22233",
+    "card2": "555.0",
+    "card3": "162.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C06236",
+   "dist1": null,
+   "id": "3534200",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.02,
+   "ts": "2016-12-11 19:30:28"
+  },
+  {
+   "amount_cents": 2515,
+   "card_fields": {
+    "card1": "23208",
+    "card2": "130.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05031",
+   "dist1": null,
+   "id": "3534375",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.21,
+   "ts": "2016-12-11 20:20:45"
+  },
+  {
+   "amount_cents": 679,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3534382",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.03,
+   "ts": "2016-12-11 20:22:48"
+  },
+  {
+   "amount_cents": 5963,
+   "card_fields": {
+    "card1": "19489",
+    "card2": "463.0",
+    "card3": "144.0",
+    "card4": "visa",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C05630",
+   "dist1": null,
+   "id": "3534386",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.1,
+   "ts": "2016-12-11 20:23:34"
+  },
+  {
+   "amount_cents": 2818,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3534425",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.05,
+   "ts": "2016-12-11 20:34:24"
+  },
+  {
+   "amount_cents": 2496,
+   "card_fields": {
+    "card1": "10114",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "102.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C13171",
+   "dist1": null,
+   "id": "3534446",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.9,
+   "ts": "2016-12-11 20:41:21"
+  },
+  {
+   "amount_cents": 2030,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3534526",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.02,
+   "ts": "2016-12-11 21:03:26"
+  },
+  {
+   "amount_cents": 685,
+   "card_fields": {
+    "card1": "20270",
+    "card2": "177.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C04034",
+   "dist1": null,
+   "id": "3534531",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.16,
+   "ts": "2016-12-11 21:04:42"
+  },
+  {
+   "amount_cents": 4974,
+   "card_fields": {
+    "card1": "19468",
+    "card2": "408.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C08962",
+   "dist1": null,
+   "id": "3534579",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.04,
+   "ts": "2016-12-11 21:20:42"
+  },
+  {
+   "amount_cents": 4634,
+   "card_fields": {
+    "card1": "19950",
+    "card2": "500.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C07508",
+   "dist1": null,
+   "id": "3534646",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.06,
+   "ts": "2016-12-11 21:41:54"
+  },
+  {
+   "amount_cents": 3064,
+   "card_fields": {
+    "card1": "11735",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "137.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C07562",
+   "dist1": null,
+   "id": "3534705",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.37,
+   "ts": "2016-12-11 21:59:52"
+  },
+  {
+   "amount_cents": 4352,
+   "card_fields": {
+    "card1": "11260",
+    "card2": "103.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C00294",
+   "dist1": null,
+   "id": "3534708",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.35,
+   "ts": "2016-12-11 22:00:20"
+  },
+  {
+   "amount_cents": 1868,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3534730",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.05,
+   "ts": "2016-12-11 22:05:53"
+  },
+  {
+   "amount_cents": 1958,
+   "card_fields": {
+    "card1": "19468",
+    "card2": "408.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C08962",
+   "dist1": null,
+   "id": "3534746",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.37,
+   "ts": "2016-12-11 22:13:33"
+  },
+  {
+   "amount_cents": 5055,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3534791",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.28,
+   "ts": "2016-12-11 22:27:16"
+  },
+  {
+   "amount_cents": 5462,
+   "card_fields": {
+    "card1": "13864",
+    "card2": null,
+    "card3": null,
+    "card4": null,
+    "card5": null,
+    "card6": null
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C02147",
+   "dist1": null,
+   "id": "3534843",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.31,
+   "ts": "2016-12-11 22:43:52"
+  },
+  {
+   "amount_cents": 3399,
+   "card_fields": {
+    "card1": "13864",
+    "card2": null,
+    "card3": null,
+    "card4": null,
+    "card5": null,
+    "card6": null
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C02147",
+   "dist1": null,
+   "id": "3534852",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.63,
+   "ts": "2016-12-11 22:46:11"
+  },
+  {
+   "amount_cents": 11603,
+   "card_fields": {
+    "card1": "14147",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "147.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C06598",
+   "dist1": null,
+   "id": "3534906",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.26,
+   "ts": "2016-12-11 23:03:31"
+  },
+  {
+   "amount_cents": 2315,
+   "card_fields": {
+    "card1": "19468",
+    "card2": null,
+    "card3": null,
+    "card4": null,
+    "card5": null,
+    "card6": null
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C08962",
+   "dist1": null,
+   "id": "3534969",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.04,
+   "ts": "2016-12-11 23:21:57"
+  },
+  {
+   "amount_cents": 3972,
+   "card_fields": {
+    "card1": "18177",
+    "card2": "555.0",
+    "card3": "151.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C03058",
+   "dist1": null,
+   "id": "3535034",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.23,
+   "ts": "2016-12-11 23:42:00"
+  },
+  {
+   "amount_cents": 3602,
+   "card_fields": {
+    "card1": "22782",
+    "card2": "142.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C07220",
+   "dist1": null,
+   "id": "3535136",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.22,
+   "ts": "2016-12-12 00:13:26"
+  },
+  {
+   "amount_cents": 1715,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3535160",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.03,
+   "ts": "2016-12-12 00:24:00"
+  },
+  {
+   "amount_cents": 10389,
+   "card_fields": {
+    "card1": "12100",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09657",
+   "dist1": null,
+   "id": "3535177",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.17,
+   "ts": "2016-12-12 00:32:45"
+  },
+  {
+   "amount_cents": 2621,
+   "card_fields": {
+    "card1": "12100",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "226.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C09657",
+   "dist1": null,
+   "id": "3535178",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.38,
+   "ts": "2016-12-12 00:32:49"
+  },
+  {
+   "amount_cents": 2170,
+   "card_fields": {
+    "card1": "13027",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C08391",
+   "dist1": null,
+   "id": "3535197",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.84,
+   "ts": "2016-12-12 00:40:12"
+  },
+  {
+   "amount_cents": 2414,
+   "card_fields": {
+    "card1": "13027",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C08391",
+   "dist1": null,
+   "id": "3535203",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.42,
+   "ts": "2016-12-12 00:42:50"
+  },
+  {
+   "amount_cents": 2163,
+   "card_fields": {
+    "card1": "13027",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C08391",
+   "dist1": null,
+   "id": "3535214",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.9,
+   "ts": "2016-12-12 00:45:58"
+  },
+  {
+   "amount_cents": 745,
+   "card_fields": {
+    "card1": "19468",
+    "card2": null,
+    "card3": null,
+    "card4": null,
+    "card5": null,
+    "card6": null
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C08962",
+   "dist1": null,
+   "id": "3535224",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.07,
+   "ts": "2016-12-12 00:50:10"
+  },
+  {
+   "amount_cents": 1528,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3535228",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.29,
+   "ts": "2016-12-12 00:50:41"
+  },
+  {
+   "amount_cents": 465,
+   "card_fields": {
+    "card1": "19468",
+    "card2": null,
+    "card3": null,
+    "card4": null,
+    "card5": null,
+    "card6": null
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C08962",
+   "dist1": null,
+   "id": "3535232",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.04,
+   "ts": "2016-12-12 00:52:10"
+  },
+  {
+   "amount_cents": 1853,
+   "card_fields": {
+    "card1": "21363",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "138.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11923",
+   "dist1": null,
+   "id": "3535271",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.31,
+   "ts": "2016-12-12 01:08:19"
+  },
+  {
+   "amount_cents": 1519,
+   "card_fields": {
+    "card1": "17499",
+    "card2": "375.0",
+    "card3": "185.0",
+    "card4": "mastercard",
+    "card5": "224.0",
+    "card6": "debit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C11509",
+   "dist1": null,
+   "id": "3535283",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.13,
+   "ts": "2016-12-12 01:12:11"
+  },
+  {
+   "amount_cents": 3518,
+   "card_fields": {
+    "card1": "13864",
+    "card2": null,
+    "card3": null,
+    "card4": null,
+    "card5": null,
+    "card6": null
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C02147",
+   "dist1": null,
+   "id": "3535304",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.03,
+   "ts": "2016-12-12 01:23:20"
+  },
+  {
+   "amount_cents": 2161,
+   "card_fields": {
+    "card1": "10114",
+    "card2": "545.0",
+    "card3": "185.0",
+    "card4": "visa",
+    "card5": "102.0",
+    "card6": "credit"
+   },
+   "channel": "online",
+   "country": null,
+   "customer_id": "C13171",
+   "dist1": null,
+   "id": "3535310",
+   "product_cd": "C",
+   "purchaser_email_domain": "hotmail.com",
+   "recipient_email_domain": "hotmail.com",
+   "region": null,
+   "risk_score": 0.06,
+   "ts": "2016-12-12 01:25:14"
+  }
+ ],
+ "region_window": {
+  "other_customers": 174,
+  "region": null,
+  "transactions": 664
+ },
+ "schema": "graphsentinel.case-slice/v1",
+ "scope": {
+  "effective_as_of": "2016-12-12 01:39:08",
+  "mode": "strict_replay",
+  "neighborhood_hours": 48,
+  "neighborhood_start": "2016-12-10 01:39:08",
+  "time_semantics": "dataset-local timestamps without timezone (D03)"
+ }
+}

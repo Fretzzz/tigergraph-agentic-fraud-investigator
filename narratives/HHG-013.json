@@ -1,0 +1,68 @@
+{
+ "caseId": "HHG-013",
+ "label": "LLM-written narrative. Verdict, probability and actions are rule-based; the model only explains them.",
+ "provider": "NVIDIA NIM",
+ "model": "nvidia/nemotron-3-super-120b-a12b",
+ "generatedAt": "2026-09-24T15:03:14.246Z",
+ "tokens": 7659,
+ "attempts": [
+  {
+   "attempt": 1,
+   "usage": {
+    "prompt_tokens": 4984,
+    "completion_tokens": 2675,
+    "total_tokens": 7659
+   },
+   "ms": 36380
+  }
+ ],
+ "retrieval": {
+  "method": "GraphRAG-lite: graph query receipts + similar closed cases from the graph + cited policy sections (no vector index)",
+  "receipts": [
+   "Q01-seed_context",
+   "Q02-email_domain_history",
+   "Q03-amount_profile",
+   "Q04-customer_timeline",
+   "Q05-device_context",
+   "Q06-historical_cases",
+   "Q07-shared_origin"
+  ],
+  "similarCases": [
+   "CC-1475",
+   "CC-3216",
+   "CC-3761",
+   "CC-4294"
+  ],
+  "policy": [
+   "R1",
+   "R2",
+   "R4",
+   "3a",
+   "5",
+   "6"
+  ]
+ },
+ "promptSha256": "a688fc86299d088434fecec418d46928e4bf5f0df4e475984c82d4da0a790e4d",
+ "validation": "passed: all citations exist in the retrieved context; verdict and probability unchanged",
+ "output": {
+  "summary": "On 2016-12-09 transaction 3526826 for $35.66 online was flagged with a model risk score of 0.76. The graph showed the customer’s email domain has extensive prior use, the same day included two low‑risk in‑person transactions, the amount is near the customer’s median, and the device profile is shared with many other cards. Historical cases on the same card include prior confirmed fraud (account takeover and card‑not‑present new device) but also a cleared case after customer verification. The agent returned an uncertain verdict with a fraud probability of 0.45 and recommends verifying with the customer and then monitoring the card.",
+  "why_these_actions": [
+   "VERIFY_WITH_CUSTOMER: per R1 because the case relies on a single risk‑score signal and fraud probability is below 0.70. [R1]",
+   "MONITOR_CARD: per R4 as no customer reply was received within 24 hours. [R4]"
+  ],
+  "evidence_for": [
+   "Elevated model risk score of 0.76 on the flagged transaction. [Q01-seed_context]",
+   "The device (Windows|?|chrome 66.0|?) is shared with numerous other customers, indicating a possible compromised profile. [Q05-device_context]",
+   "Prior confirmed fraud on the same card (account takeover and card‑not‑present new device) shows a pattern of misuse. [CC-1475] [CC-3216] [CC-4294]",
+   "The transaction occurred online while the customer’s recent activity was primarily in‑person, deviating from usual channel behavior. [Q02-email_domain_history]"
+  ],
+  "evidence_against": [
+   "Historical priors show alerts like this are usually legitimate: 0 of 900 similar model‑scored cases were confirmed fraud. [trigger:case_pack]",
+   "The transaction amount ($35.66) falls within the customer’s typical tolerance range and near the median of their spend. [Q03-amount_profile]",
+   "The customer’s email domain (gmail.com) has been used 681 times previously with low risk scores, suggesting normal behavior. [Q02-email_domain_history]",
+   "Recent in‑person transactions on the same day were low‑risk and consistent with the customer’s usual pattern. [Q04-customer_timeline]"
+  ],
+  "uncertainty": "It is still unknown whether the customer actually authorized the online transaction, whether they still possess the card, and whether the device is compromised. A definitive customer response to the validation request would settle the question.",
+  "memory": "Similar closed cases on this card include both confirmed fraud (CC-1475, CC-3216, CC-4294) and a cleared case after verification (CC-3761), showing that verification can change the outcome and that prior fraud history raises suspicion but does not guarantee fraud."
+ }
+}

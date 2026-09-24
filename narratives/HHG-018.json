@@ -1,0 +1,90 @@
+{
+ "caseId": "HHG-018",
+ "label": "LLM-written narrative. Verdict, probability and actions are rule-based; the model only explains them.",
+ "provider": "NVIDIA NIM",
+ "model": "nvidia/nemotron-3-super-120b-a12b",
+ "generatedAt": "2026-09-24T15:06:05.393Z",
+ "tokens": 17235,
+ "attempts": [
+  {
+   "attempt": 1,
+   "usage": {
+    "prompt_tokens": 7112,
+    "completion_tokens": 1467,
+    "total_tokens": 8579
+   },
+   "ms": 18298
+  },
+  {
+   "attempt": 2,
+   "usage": {
+    "prompt_tokens": 7155,
+    "completion_tokens": 1501,
+    "total_tokens": 8656
+   },
+   "ms": 33448
+  }
+ ],
+ "retrieval": {
+  "method": "GraphRAG-lite: graph query receipts + similar closed cases from the graph + cited policy sections (no vector index)",
+  "receipts": [
+   "Q01-seed_context",
+   "Q02-region_history",
+   "Q03-amount_profile",
+   "Q04-customer_timeline",
+   "Q05-device_context",
+   "Q06-historical_cases",
+   "Q07-shared_origin"
+  ],
+  "similarCases": [
+   "CC-0255",
+   "CC-0405",
+   "CC-0454",
+   "CC-0631",
+   "CC-1450",
+   "CC-1699",
+   "CC-2051",
+   "CC-2187",
+   "CC-2432",
+   "CC-2589",
+   "CC-3085",
+   "CC-3537",
+   "CC-3634",
+   "CC-3899",
+   "CC-4070",
+   "CC-4436",
+   "CC-4721",
+   "CC-4942",
+   "CC-5441",
+   "CC-5558"
+  ],
+  "policy": [
+   "R2",
+   "R4",
+   "R8",
+   "3a",
+   "5",
+   "6"
+  ]
+ },
+ "promptSha256": "325554b4b201c9aa293d03b096922b1f775c768594fd1f4728738791f6c0bf89",
+ "validation": "passed: all citations exist in the retrieved context; verdict and probability unchanged",
+ "output": {
+  "summary": "Customer C02354 reported not recognizing a $39.08 in‑person transaction (txn 3491361) on card C02354-K2. The graph shows the transaction is in an established region (126) and the amount matches the customer’s typical in‑person spending pattern, but the customer denies the charge. The investigation resulted in an uncertain verdict with a fraud probability of 0.5, and the case was escalated to an analyst for further review.",
+  "why_these_actions": [
+   "CREATE_CASE: R2 and section 3a – customer disputes a charge [R2][section 3a]",
+   "MONITOR_CARD: R4 – no reply within 24 hours [R4]",
+   "BLOCK_CARD: R2 – customer denied transaction, exposure under $2,500 [R2]",
+   "ESCALATE_TO_ANALYST: R8 – uncertain verdict and conflicting evidence [R8]"
+  ],
+  "evidence_for": [
+   "Customer denial of the transaction supports fraud [trigger:case_pack]"
+  ],
+  "evidence_against": [
+   "Transaction region is established for the customer, supporting legitimacy [Q02-region_history]",
+   "Transaction amount is typical for the customer’s in‑person purchases, supporting legitimacy [Q03-amount_profile]"
+  ],
+  "uncertainty": "We do not know whether the customer still possesses the card or recognizes other recent purchases, and the merchant identity is missing from the data. A customer validation response or merchant details would settle the question.",
+  "memory": "Similar closed cases for this customer show a history of confirmed fraud, often account takeover or out‑of‑region use (e.g., [CC-0255], [CC-0454], [CC-0631]), but none match the current in‑region, typical‑amount scenario, so the memory is mixed and does not strongly dictate the outcome."
+ }
+}

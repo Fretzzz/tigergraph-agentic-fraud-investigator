@@ -1,0 +1,89 @@
+{
+ "caseId": "HHG-008",
+ "label": "LLM-written narrative. Verdict, probability and actions are rule-based; the model only explains them.",
+ "provider": "NVIDIA NIM",
+ "model": "nvidia/nemotron-3-super-120b-a12b",
+ "generatedAt": "2026-09-24T15:02:37.864Z",
+ "tokens": 11058,
+ "attempts": [
+  {
+   "attempt": 1,
+   "error": "NIM returned no JSON: We need to produce JSON with keys: summary, why_these_actions, evidence_for, evidence_against, uncertainty, memory.\n\nWe must use only the context given. Must not second-guess verdict etc. Must cite so"
+  },
+  {
+   "attempt": 2,
+   "error": "NIM returned no JSON: {\n  \"summary\": \"Customer C13171 denied making the $55.68 online transaction 3558054 on card C13171-K2. The graph shows the transaction matches the customer's usual email domain and amount profile, wit"
+  },
+  {
+   "attempt": 3,
+   "usage": {
+    "prompt_tokens": 8066,
+    "completion_tokens": 2992,
+    "total_tokens": 11058
+   },
+   "ms": 33829
+  }
+ ],
+ "retrieval": {
+  "method": "GraphRAG-lite: graph query receipts + similar closed cases from the graph + cited policy sections (no vector index)",
+  "receipts": [
+   "Q01-seed_context",
+   "Q02-email_domain_history",
+   "Q03-amount_profile",
+   "Q04-customer_timeline",
+   "Q05-device_context",
+   "Q06-historical_cases",
+   "Q07-shared_origin"
+  ],
+  "similarCases": [
+   "CC-0056",
+   "CC-0467",
+   "CC-0772",
+   "CC-1293",
+   "CC-1715",
+   "CC-1925",
+   "CC-2059",
+   "CC-2244",
+   "CC-2454",
+   "CC-2716",
+   "CC-3079",
+   "CC-3422",
+   "CC-3566",
+   "CC-3728",
+   "CC-3928",
+   "CC-4163",
+   "CC-4485",
+   "CC-4819",
+   "CC-5010"
+  ],
+  "policy": [
+   "R2",
+   "R4",
+   "R8",
+   "3a",
+   "5",
+   "6"
+  ]
+ },
+ "promptSha256": "832b23d843bed670824db6fc041e88e99d687178c08ff2349b0ddfda2e7de30a",
+ "validation": "passed: all citations exist in the retrieved context; verdict and probability unchanged",
+ "output": {
+  "summary": "Customer C13171 reported not making the $55.68 online transaction 3558054 on card C13171-K2. [trigger:case_pack] The graph shows the transaction matches the customer's usual email domain and amount profile, with no shared device or region cluster evident. [Q01-seed_context] [Q02-email_domain_history] [Q03-amount_profile] [Q05-device_context] [Q07-shared_origin] The verdict is uncertain with a fraud probability of 0.65, leading to a case creation, card block, and monitoring pending customer reply. [R2] [section 3a] [R4]",
+  "why_these_actions": [
+   "CREATE_CASE: R2 and section 3a require creating a case when a customer disputes a charge. [R2] [section 3a]",
+   "MONITOR_CARD: R4 recommends monitoring when no reply within 24 hours. [R4]",
+   "BLOCK_CARD: R2 recommends blocking when customer denies transaction and exposure ≤ $2,500. [R2]"
+  ],
+  "evidence_for": [
+   "Customer C13171 denied making the transaction, which historically predicts fraud. [trigger:case_pack]",
+   "Prior closed cases for this customer show confirmed fraud with similar card-not-present-new-device patterns. [CC-0056] [CC-0467] [CC-0772] [CC-1293] [CC-1715] [CC-1925] [CC-2059] [CC-2244] [CC-2454] [CC-2716] [CC-3079] [CC-3422] [CC-3566] [CC-3728] [CC-3928] [CC-4163] [CC-4485] [CC-5010]"
+  ],
+  "evidence_against": [
+   "The transaction uses the customer's usual email domain (hotmail.com) and fits the typical amount profile. [Q02-email_domain_history] [Q03-amount_profile]",
+   "The device used (?|?|chrome 66.0|?) is not shown as shared with other customers. [Q05-device_context]",
+   "No shared device, region cluster, or other customer's fraud was identified in the graph. [Q05-device_context] [Q07-shared_origin]"
+  ],
+  "uncertainty": "We lack a customer reply to verify the disputed charge and to confirm whether the device is compromised; a customer validation would settle the question.",
+  "memory": "Similar closed cases for this customer consistently resulted in confirmed fraud, indicating a high likelihood that the current denial reflects fraudulent activity."
+ }
+}

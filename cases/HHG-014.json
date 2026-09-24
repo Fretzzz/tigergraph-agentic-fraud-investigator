@@ -1,0 +1,84 @@
+{
+  "case_id": "HHG-014",
+  "case": {
+    "status": "open",
+    "verdict": "uncertain",
+    "fraud_probability": 0.4,
+    "pattern": "none",
+    "pattern_description": "",
+    "affected_txn_ids": [
+      "3478561"
+    ],
+    "first_suspicious_txn_id": "3478561",
+    "connected_card_ids": [],
+    "connected_device_profiles": [],
+    "exposure_usd": 74.96,
+    "evidence": [
+      {
+        "claim": "Flagged 3478561: $74.96 online, region 191, 2016-11-22 16:11:00, device SM-G935F Build/NRD90M|Android 7.0|chrome 62.0 for android|1920x1080; bank risk score 0.05 used only as an input.",
+        "source": "graph",
+        "ref": "Q01-seed_context",
+        "entity_ids": [
+          "3478561",
+          "C13487-K1"
+        ]
+      },
+      {
+        "claim": "Region 191 is established for C13487: 36 prior transactions since 2016-07-04 19:14:19. This is not out-of-region use.",
+        "source": "graph",
+        "ref": "Q02-region_history",
+        "entity_ids": [
+          "3478561"
+        ]
+      },
+      {
+        "claim": "No other customer shares region 191 and email domain yahoo.com in the 48h window, and no other customer's fraud case links to this card.",
+        "source": "graph",
+        "ref": "Q08-shared_origin",
+        "entity_ids": [
+          "3478561"
+        ]
+      }
+    ],
+    "similar_prior_cases": [],
+    "summary": "Analyst review of 3478561 ($74.96 online) on C13487-K1. Against: Region 191 is established for C13487: 36 prior transactions since 2016-07-04 19:14:19. The evidence leans legitimate but is not strong enough to clear the alert, so the verdict is uncertain at 0.4. The card is monitored.",
+    "written_to_graph": true,
+    "graph_case_id": "GS_InvestigationCase:HHG-014"
+  },
+  "evidence_requests": [
+    {
+      "type": "customer_validation",
+      "asked_after_step": 8,
+      "assumed_response": "Do you still have the card, and do you recognise the other recent purchases? Assumed: No reply within 24 hours. Fixed simulator default applied to every customer request in this build; it is not chosen per case and carries no hidden label."
+    }
+  ],
+  "next_best_actions": {
+    "initial": [
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "Policy section 5 and R8: evidence conflicts; ask the customer: Do you still have the card, and do you recognise the other recent purchases?"
+      }
+    ],
+    "final": [
+      {
+        "action": "MONITOR_CARD",
+        "route": "auto",
+        "reason": "R4: no customer reply within 24 hours (simulated)"
+      }
+    ],
+    "what_changed": "The customer was asked (REQ-1); the fixed simulator assumed no reply within 24 hours, so R4 adds MONITOR_CARD. No DECLINE_TRANSACTION because pending-authorization status is not in the data (D05); exposure $74.96 is under the R4 $500 escalation threshold."
+  },
+  "sar": {
+    "file": false,
+    "reason": "No FILE_REPORT: exposure $74.96 is under $1,000, no shared device, region cluster or other customer's fraud was found, and fraud is not confirmed or strongly suspected (R2, section 3a).",
+    "narrative": "",
+    "subjects": [],
+    "total_amount_usd": 0,
+    "activity_dates": []
+  },
+  "stop_reason": "Further graph steps are unlikely to change the decision.",
+  "tool_calls": 8,
+  "tokens": 5781,
+  "latency_s": 0.012
+}

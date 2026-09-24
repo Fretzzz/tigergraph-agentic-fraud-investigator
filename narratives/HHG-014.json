@@ -1,0 +1,63 @@
+{
+ "caseId": "HHG-014",
+ "label": "LLM-written narrative. Verdict, probability and actions are rule-based; the model only explains them.",
+ "provider": "NVIDIA NIM",
+ "model": "nvidia/nemotron-3-super-120b-a12b",
+ "generatedAt": "2026-09-24T15:03:57.635Z",
+ "tokens": 5781,
+ "attempts": [
+  {
+   "attempt": 1,
+   "usage": {
+    "prompt_tokens": 3130,
+    "completion_tokens": 2651,
+    "total_tokens": 5781
+   },
+   "ms": 43387
+  }
+ ],
+ "retrieval": {
+  "method": "GraphRAG-lite: graph query receipts + similar closed cases from the graph + cited policy sections (no vector index)",
+  "receipts": [
+   "Q01-seed_context",
+   "Q02-region_history",
+   "Q03-email_domain_history",
+   "Q04-amount_profile",
+   "Q05-customer_timeline",
+   "Q06-device_context",
+   "Q07-historical_cases",
+   "Q08-shared_origin"
+  ],
+  "similarCases": [],
+  "policy": [
+   "R2",
+   "R4",
+   "R8",
+   "3a",
+   "5",
+   "6"
+  ]
+ },
+ "promptSha256": "da976d5997ab900e7abec4d804150d992b0776af9eef19f57c136f24d646c2fa",
+ "validation": "passed: all citations exist in the retrieved context; verdict and probability unchanged",
+ "output": {
+  "summary": "Transaction 3478561 on card C13487-K1 was an online purchase of $74.96 in region 191. The graph shows the customer has an established history in that region but the amount and online channel deviate from their typical profile. No shared device, fraud links, or historical cases were found. The agent returned an uncertain verdict with a fraud probability of 0.4. The next step is to monitor the card pending a customer response.",
+  "why_these_actions": [
+   "MONITOR_CARD because no customer reply within 24 hours per R4 [R4]"
+  ],
+  "evidence_for": [
+   "Region 191 is established for the customer with 36 prior transactions since July 2016 [Q02-region_history]",
+   "No device profile is shared with other customers in the slice [Q06-device_context]",
+   "No historical fraud cases are linked to this card or device [Q07-historical_cases]",
+   "Exposure of $74.96 is below the $1,000 threshold that would trigger a mandatory SAR [section 3a]"
+  ],
+  "evidence_against": [
+   "Transaction amount $74.96 falls outside the customer's typical amount tolerance (0 within tolerance) [Q04-amount_profile]",
+   "Channel is online while the customer's historical usage is predominantly in-person (69 in-person vs 2 online) [Q04-amount_profile]",
+   "Email domains show limited prior use (yahoo.com purchaser, gmail.com recipient) with only two prior uses total [Q03-email_domain_history]",
+   "Many other customers' transactions share the same region and email, indicating a possible common origin [Q08-shared_origin]"
+  ],
+  "uncertainty": "Whether the customer authorized the transaction and whether the device is compromised remains unknown; a customer reply or device authentication would settle the question.",
+  "memory": "No similar closed cases were found, so there is no prior precedent to guide the decision."
+ }
+}

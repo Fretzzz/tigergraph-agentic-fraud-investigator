@@ -1,0 +1,66 @@
+{
+ "caseId": "HHG-010",
+ "label": "LLM-written narrative. Verdict, probability and actions are rule-based; the model only explains them.",
+ "provider": "NVIDIA NIM",
+ "model": "nvidia/nemotron-3-super-120b-a12b",
+ "generatedAt": "2026-09-24T15:02:01.182Z",
+ "tokens": 6093,
+ "attempts": [
+  {
+   "attempt": 1,
+   "usage": {
+    "prompt_tokens": 3263,
+    "completion_tokens": 2830,
+    "total_tokens": 6093
+   },
+   "ms": 35407
+  }
+ ],
+ "retrieval": {
+  "method": "GraphRAG-lite: graph query receipts + similar closed cases from the graph + cited policy sections (no vector index)",
+  "receipts": [
+   "Q01-seed_context",
+   "Q02-region_history",
+   "Q03-email_domain_history",
+   "Q04-amount_profile",
+   "Q05-customer_timeline",
+   "Q06-device_context",
+   "Q07-historical_cases",
+   "Q08-shared_origin"
+  ],
+  "similarCases": [
+   "CC-0873"
+  ],
+  "policy": [
+   "R1",
+   "R2",
+   "R4",
+   "R8",
+   "3a",
+   "5",
+   "6"
+  ]
+ },
+ "promptSha256": "28aeb39143edbc9a02cc12446f76a668f7f9180eedf4b7feb6a07f567dc2b8c9",
+ "validation": "passed: all citations exist in the retrieved context; verdict and probability unchanged",
+ "output": {
+  "summary": "On 2016-12-02, transaction 3506725 for $1,000.03 was flagged by a real‑time model with a risk score of 0.9 (trigger:case_pack). The graph showed the transaction is online, from an anonymous email domain, in the customer’s established region (Q02-region_history) but the amount has no prior similar transactions (Q04-amount_profile) and the model’s historical prior suggests such scores are usually legitimate (trigger:case_pack). The agent returned an uncertain verdict with a fraud probability of 0.35. Because the verdict is uncertain and exposure exceeds $500, the final actions are to verify with the customer, monitor the card, and escalate to an analyst.",
+  "why_these_actions": [
+   "VERIFY_WITH_CUSTOMER [R1]: policy requires verification when fraud probability <0.70 and the case rests on a single signal.",
+   "MONITOR_CARD [R4]: no customer reply within 24 hours triggers monitoring and decline for pending authorizations when exposure >$500.",
+   "ESCALATE_TO_ANALYST [R8]: uncertain verdict with exposure >$500 or conflicting evidence requires escalation."
+  ],
+  "evidence_for": [
+   "Model score prior indicates such alerts are usually legitimate: 0 of 900 model‑scored closed cases were fraud (trigger:case_pack).",
+   "Region 469 is established for the customer with 24 prior transactions (Q02-region_history).",
+   "Similar closed case CC-0873 was cleared after customer verification (CC-0873)."
+  ],
+  "evidence_against": [
+   "Transaction amount $1,000.03 exceeds the $1,000 threshold for reporting and has no prior similar amounts (Q04-amount_profile shows withinTolerance 0).",
+   "Email domain is anonymous.com with only this single use (Q03-email_domain_history).",
+   "Real‑time model assigned a high risk score of 0.9 (Q01-seed_context)."
+  ],
+  "uncertainty": "Unknown whether the customer authorized the transaction and the merchant’s legitimacy; a customer reply or merchant details would settle the question.",
+  "memory": "The similar closed case CC-0873 was cleared after verification, suggesting that a customer response often resolves such alerts (CC-0873)."
+ }
+}

@@ -1,0 +1,13 @@
+{
+ "backend": "tigergraph",
+ "graph": "GraphSentinel",
+ "vertexType": "GS_InvestigationCase",
+ "vertexId": "HHG-003",
+ "writtenAt": "2026-09-24 14:31:49",
+ "readbackVerified": true,
+ "edges": [
+  "GS_INV_ON_TXN->3530164",
+  "GS_INV_ON_CARD->C08623-K2",
+  "GS_INV_ON_CUSTOMER->C08623"
+ ]
+}

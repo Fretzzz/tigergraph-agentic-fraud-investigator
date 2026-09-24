@@ -1,0 +1,179 @@
+{
+  "case_id": "HHG-018",
+  "case": {
+    "status": "escalated",
+    "verdict": "uncertain",
+    "fraud_probability": 0.5,
+    "pattern": "none",
+    "pattern_description": "",
+    "affected_txn_ids": [
+      "3491361"
+    ],
+    "first_suspicious_txn_id": "3491361",
+    "connected_card_ids": [],
+    "connected_device_profiles": [],
+    "exposure_usd": 39.08,
+    "evidence": [
+      {
+        "claim": "Flagged 3491361: $39.08 in_person, region 126, 2016-11-27 13:41:26, no device record; bank risk score 0.48 used only as an input.",
+        "source": "graph",
+        "ref": "Q01-seed_context",
+        "entity_ids": [
+          "3491361",
+          "C02354-K2"
+        ]
+      },
+      {
+        "claim": "Customer C02354 denies 3491361. In organizer history, 4656 of 4656 cardholder-reported closed cases were confirmed fraud (history only contains closed outcomes, so this is a prior, not proof).",
+        "source": "customer",
+        "ref": "trigger:case_pack",
+        "entity_ids": [
+          "3491361",
+          "C02354"
+        ]
+      },
+      {
+        "claim": "Region 126 is established for C02354: 565 prior transactions since 2016-07-02 14:10:52. This is not out-of-region use.",
+        "source": "graph",
+        "ref": "Q02-region_history",
+        "entity_ids": [
+          "3491361"
+        ]
+      },
+      {
+        "claim": "$39.08 in person is routine for C02354: 160 prior in-person purchases within $1.00. Merchant identity is absent from the data (D04), so a same-merchant recurring match cannot be confirmed.",
+        "source": "graph",
+        "ref": "Q03-amount_profile",
+        "entity_ids": [
+          "3491361"
+        ]
+      },
+      {
+        "claim": "20 prior closed cases on C02354-K2; confirmed patterns: account_takeover, out_of_region_use, card_not_present_fraud. A prior confirmed fraud transaction was billed in region 126.",
+        "source": "graph",
+        "ref": "Q06-historical_cases",
+        "entity_ids": [
+          "CC-0255",
+          "CC-0405",
+          "CC-0454",
+          "CC-0631",
+          "CC-1450",
+          "CC-1699",
+          "CC-2051",
+          "CC-2187",
+          "CC-2432",
+          "CC-2589",
+          "CC-3085",
+          "CC-3537",
+          "CC-3634",
+          "CC-3899",
+          "CC-4070",
+          "CC-4436",
+          "CC-4721",
+          "CC-4942",
+          "CC-5441",
+          "CC-5558"
+        ]
+      },
+      {
+        "claim": "No other customer shares region 126 and email domain null in the 48h window, and no other customer's fraud case links to this card.",
+        "source": "graph",
+        "ref": "Q07-shared_origin",
+        "entity_ids": [
+          "3491361"
+        ]
+      }
+    ],
+    "similar_prior_cases": [
+      "CC-0255",
+      "CC-0405",
+      "CC-0454",
+      "CC-0631",
+      "CC-1450",
+      "CC-1699",
+      "CC-2051",
+      "CC-2187",
+      "CC-2432",
+      "CC-2589",
+      "CC-3085",
+      "CC-3537",
+      "CC-3634",
+      "CC-3899",
+      "CC-4070",
+      "CC-4436",
+      "CC-4721",
+      "CC-4942",
+      "CC-5441",
+      "CC-5558"
+    ],
+    "summary": "C02354 disputes 3491361, a $39.08 card-present purchase in billing region 126. For fraud: Customer C02354 denies 3491361. Against: Region 126 is established for C02354: 565 prior transactions since 2016-07-02 14:10:52; $39.08 in person is routine for C02354: 160 prior in-person purchases within $1.00. Evidence conflicts, so the verdict is uncertain at 0.5. The card block is recommended under R2 and waits for L1 approval; the case is escalated under R8.",
+    "written_to_graph": true,
+    "graph_case_id": "GS_InvestigationCase:HHG-018"
+  },
+  "evidence_requests": [
+    {
+      "type": "customer_validation",
+      "asked_after_step": 7,
+      "assumed_response": "Do you still have the card, and do you recognise the other recent purchases? Assumed: No reply within 24 hours. Fixed simulator default applied to every customer request in this build; it is not chosen per case and carries no hidden label."
+    }
+  ],
+  "next_best_actions": {
+    "initial": [
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "R2 and section 3a: customer disputes a charge"
+      },
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "Policy section 5 and R8: evidence conflicts; ask the customer: Do you still have the card, and do you recognise the other recent purchases?"
+      },
+      {
+        "action": "BLOCK_CARD",
+        "route": "L1",
+        "reason": "R2: customer denied the transaction; exposure $39.08 is at most $2,500, so L1 approval"
+      },
+      {
+        "action": "ESCALATE_TO_ANALYST",
+        "route": "auto",
+        "reason": "R8: verdict uncertain and the evidence conflicts"
+      }
+    ],
+    "final": [
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "R2 and section 3a: customer disputes a charge"
+      },
+      {
+        "action": "MONITOR_CARD",
+        "route": "auto",
+        "reason": "R4: no customer reply within 24 hours (simulated)"
+      },
+      {
+        "action": "BLOCK_CARD",
+        "route": "L1",
+        "reason": "R2: customer denied the transaction; exposure $39.08 is at most $2,500, so L1 approval"
+      },
+      {
+        "action": "ESCALATE_TO_ANALYST",
+        "route": "auto",
+        "reason": "R8: verdict uncertain and the evidence conflicts"
+      }
+    ],
+    "what_changed": "The customer was asked (REQ-1); the fixed simulator assumed no reply within 24 hours, so R4 adds MONITOR_CARD. No DECLINE_TRANSACTION because pending-authorization status is not in the data (D05); exposure $39.08 is under the R4 $500 escalation threshold."
+  },
+  "sar": {
+    "file": false,
+    "reason": "No FILE_REPORT: exposure $39.08 is under $1,000, no shared device, region cluster or other customer's fraud was found, and fraud is not confirmed or strongly suspected (R2, section 3a).",
+    "narrative": "",
+    "subjects": [],
+    "total_amount_usd": 0,
+    "activity_dates": []
+  },
+  "stop_reason": "Further graph steps are unlikely to change the decision: region, amount, device, history and shared-origin checks are done and the remaining questions (customer's answer, merchant identity) are not in the data. Escalated to an analyst with the conflict visible (R8).",
+  "tool_calls": 7,
+  "tokens": 17235,
+  "latency_s": 0.075
+}

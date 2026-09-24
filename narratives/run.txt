@@ -1,0 +1,8 @@
+
+> graphsentinel@0.0.0 narrate /home/runner/work/tigergraph-agentic-fraud-investigator/tigergraph-agentic-fraud-investigator
+> tsx scripts/narrate.ts HHG-002
+
+probe nvidia/nemotron-3-super-120b-a12b: 200
+HHG-002: ok (6855 tokens)
+
+Done: 1 ok, 0 failed, 6855 tokens total, model nvidia/nemotron-3-super-120b-a12b.

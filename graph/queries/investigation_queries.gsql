@@ -1,0 +1,110 @@
+// GraphSentinel investigation queries (Q01-Q08) for TigerGraph, graph GraphSentinel.
+// Each query does the traversal and filtering in GSQL and returns rows/counts.
+// All edges are directed, so patterns name an edge type with a direction.
+USE GRAPH GraphSentinel
+
+CREATE OR REPLACE QUERY gs_seed_context(VERTEX<GS_Txn> txn) FOR GRAPH GraphSentinel SYNTAX v2 {
+  SetAccum<STRING> @@region, @@purchaser, @@recipient, @@customer, @@cards, @@device;
+  Seed = {txn};
+  R = SELECT v FROM Seed:s -(GS_BILLED_IN>:e)- GS_BillingRegion:v ACCUM @@region += v.region;
+  P = SELECT v FROM Seed:s -(GS_PURCHASER_EMAIL>:e)- GS_EmailDomain:v ACCUM @@purchaser += v.domain;
+  Q = SELECT v FROM Seed:s -(GS_RECIPIENT_EMAIL>:e)- GS_EmailDomain:v ACCUM @@recipient += v.domain;
+  C = SELECT v FROM Seed:s -(GS_MADE_BY>:e)- GS_Customer:v ACCUM @@customer += v.customer_id;
+  K = SELECT v FROM Seed:s -(GS_ON_CARD_TXN>:e)- GS_Card:v ACCUM @@cards += v.card_id;
+  D = SELECT v FROM Seed:s -(GS_FROM_DEVICE>:e)- GS_DeviceProfile:v ACCUM @@device += v.profile;
+  PRINT Seed, @@region AS region, @@purchaser AS purchaser_email, @@recipient AS recipient_email, @@customer AS customer, @@cards AS cards, @@device AS device;
+}
+
+// Customer's transactions with region/email/device collected from edges.
+CREATE OR REPLACE QUERY gs_customer_timeline(VERTEX<GS_Customer> customer, DATETIME from_ts, DATETIME to_ts) FOR GRAPH GraphSentinel SYNTAX v2 {
+  SetAccum<STRING> @region, @email, @remail;
+  Cust = {customer};
+  T = SELECT t FROM Cust:c -(GS_CUSTOMER_TXN>:e)- GS_Txn:t WHERE t.ts >= from_ts AND t.ts <= to_ts;
+  T2 = SELECT t FROM T:t -(GS_BILLED_IN>:e)- GS_BillingRegion:r ACCUM t.@region += r.region;
+  T3 = SELECT t FROM T:t -(GS_PURCHASER_EMAIL>:e)- GS_EmailDomain:d ACCUM t.@email += d.domain;
+  T4 = SELECT t FROM T:t -(GS_RECIPIENT_EMAIL>:e)- GS_EmailDomain:d ACCUM t.@remail += d.domain;
+  PRINT T;
+}
+
+CREATE OR REPLACE QUERY gs_region_history(VERTEX<GS_Customer> customer, STRING region, DATETIME before_ts) FOR GRAPH GraphSentinel SYNTAX v2 {
+  SumAccum<INT> @@prior;
+  MapAccum<STRING, SumAccum<INT>> @@by_region;
+  ListAccum<STRING> @@in_region_ts;
+  MapAccum<STRING, STRING> @@in_region_ids;
+  MapAccum<STRING, MinAccum<DATETIME>> @@first_seen;
+  Cust = {customer};
+  Prior = SELECT t FROM Cust:c -(GS_CUSTOMER_TXN>:e)- GS_Txn:t WHERE t.ts < before_ts ACCUM @@prior += 1;
+  X = SELECT t FROM Prior:t -(GS_BILLED_IN>:e)- GS_BillingRegion:r
+      ACCUM @@by_region += (r.region -> 1), @@first_seen += (r.region -> t.ts),
+            IF r.region == region THEN @@in_region_ids += (datetime_format(t.ts, "%Y-%m-%d %H:%M:%S") + "|" + t.txn_id -> t.txn_id) END;
+  PRINT @@prior AS prior_transactions, @@by_region AS by_region, @@first_seen AS region_first_seen, @@in_region_ids AS in_region;
+}
+
+CREATE OR REPLACE QUERY gs_email_domain_history(VERTEX<GS_Customer> customer, VERTEX<GS_EmailDomain> domain, DATETIME before_ts, DATETIME same_day_from) FOR GRAPH GraphSentinel SYNTAX v2 {
+  SumAccum<INT> @@prior_uses;
+  SetAccum<STRING> @region;
+  OrAccum @mine;
+  Dom = {domain};
+  T = SELECT t FROM Dom:d -(GS_PURCHASER_EMAIL_OF>:e)- GS_Txn:t WHERE t.ts <= before_ts;
+  Mine = SELECT t FROM T:t -(GS_MADE_BY>:e)- GS_Customer:c WHERE c == customer ACCUM t.@mine += TRUE;
+  Prior = SELECT t FROM Mine:t WHERE t.ts < same_day_from ACCUM @@prior_uses += 1;
+  SameDay = SELECT t FROM Mine:t WHERE t.ts >= same_day_from;
+  S2 = SELECT t FROM SameDay:t -(GS_BILLED_IN>:e)- GS_BillingRegion:r ACCUM t.@region += r.region;
+  PRINT @@prior_uses AS prior_uses, SameDay;
+}
+
+CREATE OR REPLACE QUERY gs_amount_profile(VERTEX<GS_Customer> customer, DOUBLE amount_usd, DATETIME before_ts, DOUBLE tolerance_usd) FOR GRAPH GraphSentinel SYNTAX v2 {
+  SumAccum<INT> @@prior, @@within, @@in_person_within;
+  MapAccum<STRING, SumAccum<INT>> @@channels;
+  ListAccum<DOUBLE> @@amounts;
+  SetAccum<STRING> @region;
+  Cust = {customer};
+  Prior = SELECT t FROM Cust:c -(GS_CUSTOMER_TXN>:e)- GS_Txn:t WHERE t.ts < before_ts
+          ACCUM @@prior += 1, @@channels += (t.channel -> 1), @@amounts += t.amount_usd;
+  Near = SELECT t FROM Prior:t WHERE abs(t.amount_usd - amount_usd) <= tolerance_usd + 0.000001
+         ACCUM @@within += 1, IF t.channel == "in_person" THEN @@in_person_within += 1 END;
+  N2 = SELECT t FROM Near:t -(GS_BILLED_IN>:e)- GS_BillingRegion:r ACCUM t.@region += r.region;
+  PRINT @@prior AS prior_transactions, @@within AS within_tolerance, @@in_person_within AS in_person_within_tolerance, @@channels AS channels, @@amounts AS amounts, Near;
+}
+
+CREATE OR REPLACE QUERY gs_device_context(VERTEX<GS_Customer> customer, DATETIME before_ts) FOR GRAPH GraphSentinel SYNTAX v2 {
+  SumAccum<INT> @uses;
+  SetAccum<STRING> @other_customers;
+  SumAccum<INT> @@identity_linked;
+  Cust = {customer};
+  Prior = SELECT t FROM Cust:c -(GS_CUSTOMER_TXN>:e)- GS_Txn:t WHERE t.ts < before_ts;
+  Dev = SELECT d FROM Prior:t -(GS_FROM_DEVICE>:e)- GS_DeviceProfile:d ACCUM d.@uses += 1, @@identity_linked += 1;
+  Shared = SELECT d FROM Dev:d -(GS_DEVICE_TXN>:e)- GS_Txn:t -(GS_MADE_BY>:e2)- GS_Customer:c
+           WHERE c != customer ACCUM d.@other_customers += c.customer_id;
+  PRINT @@identity_linked AS identity_linked, Dev;
+}
+
+CREATE OR REPLACE QUERY gs_historical_cases(VERTEX<GS_Card> card, VERTEX<GS_Customer> customer) FOR GRAPH GraphSentinel SYNTAX v2 {
+  SetAccum<STRING> @txn_ids;
+  SetAccum<STRING> @card_id, @customer_id;
+  Card = {card};
+  Cust = {customer};
+  ByCard = SELECT f FROM Card:k -(GS_CARD_CASE>:e)- GS_FraudCase:f WHERE f.outcome != "open";
+  ByCust = SELECT f FROM Cust:c -(GS_CUSTOMER_CASE>:e)- GS_FraudCase:f WHERE f.outcome != "open";
+  Cases = ByCard UNION ByCust;
+  X = SELECT f FROM Cases:f -(GS_INVOLVES>:e)- GS_Txn:t ACCUM f.@txn_ids += t.txn_id;
+  Y = SELECT f FROM Cases:f -(GS_CASE_ON_CARD>:e)- GS_Card:k ACCUM f.@card_id += k.card_id;
+  Z = SELECT f FROM Cases:f -(GS_CASE_CUSTOMER>:e)- GS_Customer:c ACCUM f.@customer_id += c.customer_id;
+  PRINT Cases;
+}
+
+CREATE OR REPLACE QUERY gs_shared_origin(VERTEX<GS_Txn> txn) FOR GRAPH GraphSentinel SYNTAX v2 {
+  SetAccum<STRING> @@seed_customer, @@seed_region, @@other_txns, @@other_cases;
+  Seed = {txn};
+  A = SELECT c FROM Seed:s -(GS_MADE_BY>:e)- GS_Customer:c ACCUM @@seed_customer += c.customer_id;
+  B = SELECT r FROM Seed:s -(GS_BILLED_IN>:e)- GS_BillingRegion:r ACCUM @@seed_region += r.region;
+  Others = SELECT o FROM Seed:s -(GS_PURCHASER_EMAIL>:e)- GS_EmailDomain:d -(GS_PURCHASER_EMAIL_OF>:e2)- GS_Txn:o
+           WHERE o != txn;
+  O2 = SELECT o FROM Others:o -(GS_MADE_BY>:e)- GS_Customer:c WHERE NOT @@seed_customer.contains(c.customer_id);
+  O3 = SELECT o FROM O2:o -(GS_BILLED_IN>:e)- GS_BillingRegion:r WHERE @@seed_region.contains(r.region) ACCUM @@other_txns += o.txn_id;
+  AllCases = {GS_FraudCase.*};
+  OC = SELECT f FROM AllCases:f -(GS_CASE_CUSTOMER>:e)- GS_Customer:c WHERE f.outcome != "open" AND NOT @@seed_customer.contains(c.customer_id) ACCUM @@other_cases += f.case_id;
+  PRINT @@other_txns AS other_customer_txns_sharing_region_and_email, @@other_cases AS other_customer_fraud_cases;
+}
+
+INSTALL QUERY gs_seed_context, gs_customer_timeline, gs_region_history, gs_email_domain_history, gs_amount_profile, gs_device_context, gs_historical_cases, gs_shared_origin

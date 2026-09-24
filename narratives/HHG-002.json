@@ -1,0 +1,65 @@
+{
+ "caseId": "HHG-002",
+ "label": "LLM-written narrative. Verdict, probability and actions are rule-based; the model only explains them.",
+ "provider": "NVIDIA NIM",
+ "model": "nvidia/nemotron-3-super-120b-a12b",
+ "generatedAt": "2026-09-24T15:15:40.233Z",
+ "tokens": 6855,
+ "attempts": [
+  {
+   "attempt": 1,
+   "usage": {
+    "prompt_tokens": 3815,
+    "completion_tokens": 3040,
+    "total_tokens": 6855
+   },
+   "ms": 42249
+  }
+ ],
+ "retrieval": {
+  "method": "GraphRAG-lite: graph query receipts + similar closed cases from the graph + cited policy sections (no vector index)",
+  "receipts": [
+   "Q01-seed_context",
+   "Q02-email_domain_history",
+   "Q03-amount_profile",
+   "Q04-customer_timeline",
+   "Q05-device_context",
+   "Q06-historical_cases",
+   "Q07-shared_origin"
+  ],
+  "similarCases": [
+   "CC-4160"
+  ],
+  "policy": [
+   "R1",
+   "R2",
+   "R4",
+   "3a",
+   "5",
+   "6"
+  ]
+ },
+ "promptSha256": "c897020b7222ef9ac42decceb787ba0b744beb4c8bae1a47c64e1690ecc16a1a",
+ "validation": "passed: all citations exist in the retrieved context; verdict and probability unchanged",
+ "output": {
+  "summary": "The transaction 3478782 ($292.36, online) triggered a risk score of 0.79 for card C11891‑K1 [Q01-seed_context]. Graph evidence shows the amount is far above the customer’s typical online spend [Q03-amount_profile], the device is shared with other users [Q05-device_context], and the same card had a prior confirmed fraud case (CC‑4160) [CC-4160]. The agent returned an uncertain verdict with a fraud probability of 0.45 and directed a verification request followed by monitoring if no reply is received.",
+  "why_these_actions": [
+   "VERIFY_WITH_CUSTOMER: R1 – weak signal, probability <0.70 [R1]",
+   "MONITOR_CARD: R4 – no reply within 24 hours [R4]"
+  ],
+  "evidence_for": [
+   "Prior confirmed fraud on same card (CC‑4160) showing card‑not‑present pattern [CC-4160]",
+   "Transaction amount ($292.36) far exceeds customer’s median online spend ($47.29) [Q03-amount_profile]",
+   "Device used is shared with other customers [Q05-device_context]",
+   "Many other customers share same region and email domain [Q07-shared_origin]"
+  ],
+  "evidence_against": [
+   "Model alerts of this score are usually legitimate (0 of 900 similar alerts were fraud) [trigger:case_pack]",
+   "Exposure ($292.36) is below the $1,000 threshold for mandatory reporting [section 3a]",
+   "No shared device or region cluster identified in the SAR rationale [section 3a]",
+   "Email domain (hotmail.com) shows only this transaction today with no same‑day prior use [Q02-email_domain_history]"
+  ],
+  "uncertainty": "Whether the customer authorized the transaction remains unknown; a customer reply to the verification request would settle the case. Additionally, confirming whether the shared device is truly linked to fraudulent activity would help.",
+  "memory": "The similar closed case CC‑4160 involved the same card and was confirmed fraud (card‑not‑present), suggesting a recurring vulnerability, though the exposure was lower [CC-4160]"
+ }
+}

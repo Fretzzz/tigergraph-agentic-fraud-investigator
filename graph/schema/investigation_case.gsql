@@ -1,0 +1,10 @@
+// Case write-back: one GS_InvestigationCase vertex per investigated case, linked to the flagged
+// transaction, card and customer when those vertices exist in TigerGraph.
+USE GRAPH GraphSentinel
+CREATE SCHEMA_CHANGE JOB gs_add_investigation_case FOR GRAPH GraphSentinel {
+  ADD VERTEX GS_InvestigationCase (PRIMARY_ID case_id STRING, run_id STRING, verdict STRING, fraud_probability DOUBLE, pattern STRING, status STRING, exposure_usd DOUBLE, sar_filed BOOL, stop_reason STRING, summary STRING, initial_actions STRING, final_actions STRING, evidence_json STRING, written_at DATETIME) WITH primary_id_as_attribute="true";
+  ADD DIRECTED EDGE GS_INV_ON_TXN (FROM GS_InvestigationCase, TO GS_Txn);
+  ADD DIRECTED EDGE GS_INV_ON_CARD (FROM GS_InvestigationCase, TO GS_Card);
+  ADD DIRECTED EDGE GS_INV_ON_CUSTOMER (FROM GS_InvestigationCase, TO GS_Customer);
+}
+RUN SCHEMA_CHANGE JOB gs_add_investigation_case
