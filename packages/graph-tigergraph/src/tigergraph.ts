@@ -5,7 +5,12 @@ import type { QueryReceipt } from "../../graph-local/src/queries.js";
 // The queries are installed GSQL queries on graph GraphSentinel (graph/queries/investigation_queries.gsql).
 // Credentials come from the environment only (TG_HOST, TG_SECRET); they are never written to disk.
 
-export interface TigerGraphConfig { host: string; graph: string; token: string }
+export interface TigerGraphConfig {
+  host: string; graph: string; token: string;
+  // Optional transport override. When set (MCP mode), installed queries run through it instead of direct REST.
+  run?: (name: string, params: Record<string, string | number>) => Promise<{ endpoint: string; results: any[] }>;
+  via?: "rest" | "mcp";
+}
 
 export async function connectTigerGraph(env: NodeJS.ProcessEnv = process.env): Promise<TigerGraphConfig> {
   const host = (env.TG_HOST ?? "").replace(/\/+$/, "");
@@ -22,6 +27,7 @@ export async function connectTigerGraph(env: NodeJS.ProcessEnv = process.env): P
 }
 
 async function runQuery(cfg: TigerGraphConfig, name: string, params: Record<string, string | number>): Promise<{ endpoint: string; results: any[] }> {
+  if (cfg.run) return cfg.run(name, params);
   const qs = new URLSearchParams(Object.entries(params).map(([k, v]) => [k, String(v)])).toString();
   const endpoint = `/restpp/query/${cfg.graph}/${name}${qs ? `?${qs}` : ""}`;
   const res = await fetch(`${cfg.host}${endpoint}`, { headers: { Authorization: `Bearer ${cfg.token}` } });

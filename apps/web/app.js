@@ -99,7 +99,7 @@ async function main() {
   document.title = `${k.id} - GraphSentinel`;
   const tg = d.graphBackend === "tigergraph" && d.tigergraph;
   const bb = document.getElementById("backend-badge");
-  if (bb) { bb.textContent = tg ? "TigerGraph (live run)" : "Local graph (not TigerGraph)"; bb.className = tg ? "badge live" : "badge warn"; bb.title = tg ? `Queries ran on TigerGraph Savanna at ${d.tigergraph.fetchedAt}. This page shows that saved run; the browser does not call TigerGraph.` : "Queries ran on the in-memory local graph."; }
+  if (bb) { bb.textContent = tg ? (d.tigergraph.via === "mcp" ? "TigerGraph via MCP (live run)" : "TigerGraph (live run)") : "Local graph (not TigerGraph)"; bb.className = tg ? "badge live" : "badge warn"; bb.title = tg ? `Queries ran on TigerGraph Savanna at ${d.tigergraph.fetchedAt}. This page shows that saved run; the browser does not call TigerGraph.` : "Queries ran on the in-memory local graph."; }
   document.getElementById("app").innerHTML = `
   <section class="panel full"><div class="casehead">
     <div><div class="id">${esc(k.id)}</div><div class="muted">${esc(k.trigger_type.replace("_", " "))} · opened ${esc(k.opened_at)} (dataset-local time)</div></div>
@@ -128,7 +128,7 @@ async function main() {
   <section class="panel"><h2>Similar prior cases (memory)</h2><table><tr><th>Case</th><th>Outcome</th><th>Pattern</th></tr>${(d.receipts.find(r => r.query === "historical_cases")?.result || []).map(h => `<tr><td>${esc(h.id)}</td><td>${esc(h.outcome)}</td><td>${esc(h.pattern)}</td></tr>`).join("")}</table></section>
 
   ${tg ? `<section class="panel full"><h2>TigerGraph run</h2>
-    <p>The 8 graph queries ran as installed GSQL queries on TigerGraph Savanna (graph <b>${esc(d.tigergraph.graph)}</b>) at ${esc(d.tigergraph.fetchedAt)} (${d.tigergraph.fetchMs} ms). This page replays that saved run; your browser does not call TigerGraph. Each result was checked against the local graph: <b>${d.tigergraph.parity.filter(p => p.match).length}/${d.tigergraph.parity.length} match</b>.</p>
+    <p>The ${d.tigergraph.parity.length} graph queries ran as installed GSQL queries on TigerGraph Savanna (graph <b>${esc(d.tigergraph.graph)}</b>)${d.tigergraph.via === "mcp" ? `, called through the official <b>tigergraph-mcp</b> server (tool <code>tigergraph__run_installed_query</code>; allowlist: ${d.tigergraph.mcp.allowedTools.map(esc).join(", ")})` : ""} at ${esc(d.tigergraph.fetchedAt)} (${d.tigergraph.fetchMs} ms). This page replays that saved run; your browser does not call TigerGraph. Each result was checked against the local graph: <b>${d.tigergraph.parity.filter(p => p.match).length}/${d.tigergraph.parity.length} match</b>.</p>
     <table><tr><th>Receipt</th><th>Installed query</th><th>Matches local</th></tr>${d.tigergraph.parity.map((p, i) => `<tr><td>${esc(p.receiptId)}</td><td><code>${esc((d.tigergraph.queries[i] || "").split("/").pop())}</code></td><td>${p.match ? "yes" : "NO"}</td></tr>`).join("")}</table>
     <p class="muted">Not in TigerGraph (kept local): ${d.tigergraph.fieldsNotInTigerGraph.map(esc).join(", ")}. Case record write-back stays local.</p></section>` : ""}
   <section class="panel"><h2>Limitations of this run</h2><ul class="lim">${d.limitations.map(l => `<li>${esc(l)}</li>`).join("")}</ul>
