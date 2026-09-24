@@ -1,0 +1,45 @@
+name: LLM narrative (NVIDIA NIM)
+# Runs scripts/narrate.ts on all 20 cases and commits the output (narratives/, apps/web/data/, cases/ token counts).
+# The NIM key comes from the repository secret NIM_API_KEY and is never written to the repo.
+# Triggers: manual (Actions tab > Run workflow, if this file is on the default branch) or a push that
+# changes narratives/REQUEST on this branch.
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/hhg-003-demo-slice]
+    paths: [narratives/REQUEST]
+permissions:
+  contents: write
+concurrency: narrate
+jobs:
+  narrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Check the key is set
+        env:
+          NIM_API_KEY: ${{ secrets.NIM_API_KEY }}
+        run: |
+          if [ -z "$NIM_API_KEY" ]; then echo "::error::Repository secret NIM_API_KEY is not set (Settings > Secrets and variables > Actions)"; exit 1; fi
+      - name: Narrate all 20 cases
+        env:
+          NIM_API_KEY: ${{ secrets.NIM_API_KEY }}
+        run: pnpm narrate 2>&1 | tee narratives/run.log
+      - name: Commit results
+        if: always()
+        run: |
+          git config user.name "graphsentinel-narrate"
+          git config user.email "actions@users.noreply.github.com"
+          git add narratives apps/web/data cases
+          if git diff --cached --quiet; then echo "Nothing to commit"; exit 0; fi
+          git commit -m "LLM narratives from NVIDIA NIM (GitHub Actions run ${{ github.run_id }})"
+          git push
