@@ -63,7 +63,7 @@ export function buildContext(d: any) {
 
 function prompt(ctx: ReturnType<typeof buildContext>) {
   const system = `You are the explanation layer of a fraud investigation agent. The investigation, the verdict, the probability and the actions were already decided by graph queries and written policy rules. Your job is to explain them to a bank fraud analyst. Rules: use ONLY the context given. Never change or second-guess the verdict, probability, pattern or actions. Cite sources inline in square brackets using the exact IDs from the context: receipt IDs like [Q04-amount_profile], rules like [R2], policy sections like [section 5], closed cases like [CC-1234], or [trigger:case_pack]. Do not invent IDs. Be concrete and short. Output JSON only.`;
-  const user = `CONTEXT (retrieved from the graph and the policy):\n${JSON.stringify({ trigger: ctx.trigger, decided: ctx.decided, evidence_factors: ctx.factors, graph_receipts: ctx.receipts, similar_closed_cases: ctx.similar, policy: ctx.policySections, pattern_description: ctx.pattern }, null, 1)}\n\nWrite JSON with exactly these keys:\n{"summary": "3-5 sentences for the case file: what happened, what the graph showed, the verdict with its probability, and the next step", "why_these_actions": ["one line per final action, citing the rule"], "evidence_for": ["..."], "evidence_against": ["..."], "uncertainty": "what is still unknown and what evidence would settle it", "memory": "what the similar closed cases suggest, or say none were relevant"}\nState the verdict as "${ctx.decided.verdict}" and the probability as ${ctx.decided.fraud_probability}.`;
+  const user = `CONTEXT (retrieved from the graph and the policy):\n${JSON.stringify({ trigger: ctx.trigger, decided: ctx.decided, evidence_factors: ctx.factors, graph_receipts: ctx.receipts, similar_closed_cases: ctx.similar, policy: ctx.policySections, pattern_description: ctx.pattern }, null, 1)}\n\nWrite JSON with exactly these keys:\n{"summary": "3-5 sentences for the case file: what happened, what the graph showed, the verdict with its probability, and the next step", "why_these_actions": ["one line per final action, citing the rule"], "evidence_for": ["..."], "evidence_against": ["..."], "uncertainty": "what is still unknown and what evidence would settle it", "memory": "what the similar closed cases suggest, or say none were relevant"}\nState the verdict as "${ctx.decided.verdict}" and the probability as ${ctx.decided.fraud_probability}.\nALLOWED CITATION IDS - put only these inside square brackets, copied exactly, one ID per bracket: ${ctx.allowed.map(x => `[${x}]`).join(" ")}. Do not put anything else in square brackets (no field names, no numbers).`;
   return { system, user };
 }
 
@@ -84,10 +84,16 @@ export function validate(ctx: ReturnType<typeof buildContext>, out: any): string
 
 async function callNim(system: string, user: string) {
   const t0 = Date.now();
-  const res = await fetch(`${endpoint}/chat/completions`, {
-    method: "POST", headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json", Accept: "application/json" },
-    body: JSON.stringify({ model, temperature: 0.2, max_tokens: 3000, messages: [{ role: "system", content: system }, { role: "user", content: user }] }),
-  });
+  let res: Response | null = null;
+  for (let i = 0; i < 4; i++) {
+    res = await fetch(`${endpoint}/chat/completions`, {
+      method: "POST", headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({ model, temperature: 0.2, max_tokens: 3000, messages: [{ role: "system", content: system }, { role: "user", content: user }] }),
+    });
+    if (res.status !== 429 && res.status < 500) break;
+    await new Promise(r => setTimeout(r, 5000 * (i + 1)));
+  }
+  res = res!;
   if (!res.ok) throw new Error(`NIM ${res.status}: ${(await res.text()).slice(0, 300)}`);
   const body: any = await res.json();
   const content: string = String(body.choices?.[0]?.message?.content ?? "").replace(/<think>[\s\S]*?<\/think>/g, "");
@@ -102,7 +108,8 @@ async function main() {
   if (!dryRun) {
     let picked = "";
     for (const m of MODEL_CANDIDATES) {
-      const r = await fetch(`${endpoint}/chat/completions`, { method: "POST", headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" }, body: JSON.stringify({ model: m, max_tokens: 5, messages: [{ role: "user", content: "Reply OK" }] }) });
+      let r = await fetch(`${endpoint}/chat/completions`, { method: "POST", headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" }, body: JSON.stringify({ model: m, max_tokens: 5, messages: [{ role: "user", content: "Reply OK" }] }) });
+      for (let i = 0; i < 2 && (r.status === 429 || r.status >= 500); i++) { await new Promise(res => setTimeout(res, 8000)); r = await fetch(`${endpoint}/chat/completions`, { method: "POST", headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" }, body: JSON.stringify({ model: m, max_tokens: 5, messages: [{ role: "user", content: "Reply OK" }] }) }); }
       console.log(`probe ${m}: ${r.status}`);
       if (r.status === 401 || r.status === 403) { console.error("NIM rejected the key (" + r.status + ")"); process.exit(1); }
       if (r.ok) { picked = m; break; }
@@ -111,22 +118,22 @@ async function main() {
     model = picked;
   }
   let ok = 0, failed = 0, tokens = 0;
-  for (const id of caseIds) {
+  const one = async (id: string) => {
     const webPath = `apps/web/data/${id}.json`;
-    if (!existsSync(webPath)) { console.error(`${id}: no run data at ${webPath}`); failed++; continue; }
+    if (!existsSync(webPath)) { console.error(`${id}: no run data at ${webPath}`); failed++; return; }
     const d = JSON.parse(readFileSync(webPath, "utf8"));
     const ctx = buildContext(d); const p = prompt(ctx);
-    if (dryRun) { console.log(`${id}: context ${p.user.length} chars; ${ctx.receipts.length} receipts, ${ctx.similar.length} similar cases, policy ${ctx.policySections.map(s => s.id).join(",")}`); if (ids.length === 1) console.log(p.system + "\n\n" + p.user); continue; }
+    if (dryRun) { console.log(`${id}: context ${p.user.length} chars; ${ctx.receipts.length} receipts, ${ctx.similar.length} similar cases, policy ${ctx.policySections.map(s => s.id).join(",")}`); if (ids.length === 1) console.log(p.system + "\n\n" + p.user); return; }
     let result: any = null; let errs: string[] = []; const attempts: any[] = [];
-    for (let attempt = 1; attempt <= 2 && !result; attempt++) {
+    for (let attempt = 1; attempt <= 3 && !result; attempt++) {
       try {
-        const r = await callNim(p.system, attempt === 1 ? p.user : `${p.user}\n\nYour previous answer was rejected: ${errs.join("; ")}. Fix it.`);
+        const r = await callNim(p.system, attempt === 1 ? p.user : `${p.user}\n\nYour previous answer was rejected: ${errs.join("; ")}. Fix it. Use only the allowed citation IDs listed above.`);
         attempts.push({ attempt, usage: r.usage, ms: r.ms });
         errs = validate(ctx, r.out);
         if (!errs.length) result = r;
       } catch (e) { errs = [String((e as Error).message)]; attempts.push({ attempt, error: errs[0] }); }
     }
-    if (!result) { console.error(`${id}: FAILED (${errs.join("; ")})`); failed++; continue; }
+    if (!result) { console.error(`${id}: FAILED (${errs.join("; ")})`); failed++; return; }
     const used = attempts.reduce((s, x) => s + (x.usage?.total_tokens ?? 0), 0); tokens += used;
     const narrative = {
       caseId: id, label: "LLM-written narrative. Verdict, probability and actions are rule-based; the model only explains them.",
@@ -140,7 +147,9 @@ async function main() {
     d.narrative = narrative; if (d.answer) d.answer.tokens = used; writeFileSync(webPath, JSON.stringify(d, null, 1) + "\n");
     const casePath = `cases/${id}.json`; const ans = JSON.parse(readFileSync(casePath, "utf8")); ans.tokens = used; writeFileSync(casePath, JSON.stringify(ans, null, 2) + "\n");
     console.log(`${id}: ok (${used} tokens)`); ok++;
-  }
+    };
+  const queue = [...caseIds]; const workers = dryRun ? 1 : Number(process.env.NARRATE_CONCURRENCY ?? 3);
+  await Promise.all(Array.from({ length: workers }, async () => { while (queue.length) await one(queue.shift()!); }));
   if (!dryRun) console.log(`\nDone: ${ok} ok, ${failed} failed, ${tokens} tokens total, model ${model}.${failed ? " Re-run the failed IDs: pnpm narrate HHG-0xx" : ""}`);
   if (failed) process.exitCode = 1;
 }
