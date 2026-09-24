@@ -69,4 +69,12 @@ async function main() {
   <section class="panel"><h2>Limitations of this run</h2><ul class="lim">${d.limitations.map(l => `<li>${esc(l)}</li>`).join("")}</ul>
     <p class="muted">Local case write ${esc(d.localCaseWrite.vertexId)}: readback ${d.localCaseWrite.readbackVerified ? "verified" : "FAILED"} (local graph only; written_to_graph=false).</p></section>`;
 }
+async function nav() {
+  const el = document.getElementById("cases"); if (!el) return;
+  try {
+    const rows = await (await fetch("data/index.json")).json();
+    el.innerHTML = `<span class="muted">Cases (${rows.length} of 20):</span> ` + rows.map(r => `<a href="?case=${encodeURIComponent(r.id)}" class="${r.id === caseId ? "on" : ""}" title="${esc(r.trigger.replace("_", " "))} · ${esc(r.verdict)} ${r.p} · ${r.backend === "tigergraph" ? "TigerGraph live run" : "local graph run"}">${esc(r.id.slice(4))}${r.backend === "tigergraph" ? "<sup>TG</sup>" : ""}</a>`).join("");
+  } catch { el.remove(); }
+}
+nav();
 main();

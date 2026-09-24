@@ -1,0 +1,3324 @@
+{
+ "case": {
+  "card_id": "C11923-K2",
+  "customer_id": "C11923",
+  "flagged_txn_id": "3583368",
+  "id": "HHG-011",
+  "opened_at": "2016-12-29 06:27:44",
+  "risk_score": null,
+  "trigger_text": "Customer C11923 message: 'I never made this $131.30 purchase. Please check my card.' Refers to 3583368.",
+  "trigger_type": "customer_report"
+ },
+ "scope": {
+  "effective_as_of": "2016-12-29 06:27:44",
+  "mode": "strict_replay",
+  "neighborhood_hours": 48,
+  "neighborhood_start": "2016-12-27 06:27:44",
+  "time_semantics": "dataset-local timestamps without timezone (D03)"
+ },
+ "runId": "demo",
+ "caseId": "HHG-011",
+ "steps": [
+  {
+   "n": 1,
+   "question": "What is the flagged transaction?",
+   "receiptId": "Q01-seed_context",
+   "finding": "3583368: $131.30 online in billing region unknown at 2016-12-29 03:27:44, purchaser email domain gmail.com, bank risk score 0.39 (input, not a verdict). Device record: SM-G610F Build/NRD90M|?|chrome 66.0 for android|?."
+  },
+  {
+   "n": 2,
+   "question": "Is purchaser email domain gmail.com new for this customer?",
+   "receiptId": "Q02-email_domain_history",
+   "finding": "3976 uses before 2016-12-29; same-day uses: 3583140 ($23.56, 01:11:19, score 0.14), 3583229 ($16.78, 01:54:34, score 0.15), 3583368 ($131.30, 03:27:44, score 0.39), 3583406 ($19.55, 04:10:46, score 0.1)."
+  },
+  {
+   "n": 3,
+   "question": "Is $131.30 typical for C11923?",
+   "receiptId": "Q03-amount_profile",
+   "finding": "11 of 10335 prior transactions were within $1.00 of $131.30 (0 in person); median prior amount $28.58."
+  },
+  {
+   "n": 4,
+   "question": "What happened on this customer in the 48 hours before the case opened?",
+   "receiptId": "Q04-customer_timeline",
+   "finding": "64 transactions (64 online); 0 online authorizations under $5 in the hour before the flagged transaction."
+  },
+  {
+   "n": 5,
+   "question": "Do this customer's device profiles connect to other customers in scope?",
+   "receiptId": "Q05-device_context",
+   "finding": "1482 device profiles on 9353 identity-linked transactions; shared with other in-scope customers: 37. The flagged transaction has device record."
+  },
+  {
+   "n": 6,
+   "question": "What prior cases exist on C11923-K2?",
+   "receiptId": "Q06-historical_cases",
+   "finding": "CC-0031 confirmed_fraud card_not_present_new_device ($20.36); CC-0290 confirmed_fraud card_testing ($144.56); CC-1056 confirmed_fraud card_not_present_new_device ($1557.95); CC-2247 confirmed_fraud card_testing ($4886.18); CC-2673 confirmed_fraud card_testing ($1334.96); CC-2799 confirmed_fraud card_not_present_new_device ($36.14); CC-3039 confirmed_fraud card_not_present_new_device ($108.85); CC-3206 confirmed_fraud card_not_present_new_device ($100.24); CC-3905 confirmed_fraud card_not_present_new_device ($1397.53); CC-4501 confirmed_fraud card_testing ($1508.58); CC-4743 cleared none ($0.00)"
+  },
+  {
+   "n": 7,
+   "question": "Does this connect to other customers or cards?",
+   "receiptId": "Q07-shared_origin",
+   "finding": "163 other-customer transactions share region null and email domain gmail.com in the 48h window (413 region transactions from 121 other customers overall); other-customer closed fraud cases linked: 0."
+  }
+ ],
+ "factors": [
+  {
+   "id": "customer_denial",
+   "direction": "supports_fraud",
+   "weight": 0.15,
+   "receiptId": "trigger:case_pack",
+   "claim": "Customer C11923 denies 3583368. In organizer history, 4656 of 4656 cardholder-reported closed cases were confirmed fraud (history only contains closed outcomes, so this is a prior, not proof)."
+  },
+  {
+   "id": "shared_origin",
+   "direction": "supports_fraud",
+   "weight": 0.15,
+   "receiptId": "Q07-shared_origin",
+   "claim": "The flagged transaction's specific device profile is shared with other in-scope customers: SM-G610F Build/NRD90M (C05595, C03938)."
+  }
+ ],
+ "receipts": [
+  {
+   "receiptId": "Q01-seed_context",
+   "query": "seed_context",
+   "params": {
+    "txnId": "3583368"
+   },
+   "result": {
+    "txn": {
+     "amount_cents": 13130,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3583368",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.39,
+     "ts": "2016-12-29 03:27:44"
+    },
+    "cards": [
+     "C11923-K2"
+    ],
+    "device": "SM-G610F Build/NRD90M|?|chrome 66.0 for android|?"
+   },
+   "coverage": {
+    "complete": true,
+    "returned": 1
+   },
+   "backend": "local-graph"
+  },
+  {
+   "receiptId": "Q02-email_domain_history",
+   "query": "email_domain_history",
+   "params": {
+    "customerId": "C11923",
+    "domain": "gmail.com",
+    "before": "2016-12-29 06:27:44",
+    "sameDayFrom": "2016-12-29 00:00:00"
+   },
+   "result": {
+    "priorUses": 3976,
+    "sameDay": [
+     {
+      "id": "3583140",
+      "ts": "2016-12-29 01:11:19",
+      "amount_cents": 2356,
+      "region": null,
+      "risk_score": 0.14,
+      "channel": "online"
+     },
+     {
+      "id": "3583229",
+      "ts": "2016-12-29 01:54:34",
+      "amount_cents": 1678,
+      "region": null,
+      "risk_score": 0.15,
+      "channel": "online"
+     },
+     {
+      "id": "3583368",
+      "ts": "2016-12-29 03:27:44",
+      "amount_cents": 13130,
+      "region": null,
+      "risk_score": 0.39,
+      "channel": "online"
+     },
+     {
+      "id": "3583406",
+      "ts": "2016-12-29 04:10:46",
+      "amount_cents": 1955,
+      "region": null,
+      "risk_score": 0.1,
+      "channel": "online"
+     }
+    ]
+   },
+   "coverage": {
+    "complete": true,
+    "returned": 3980
+   },
+   "backend": "local-graph"
+  },
+  {
+   "receiptId": "Q03-amount_profile",
+   "query": "amount_profile",
+   "params": {
+    "customerId": "C11923",
+    "cents": 13130,
+    "before": "2016-12-29 03:27:44",
+    "toleranceCents": 100
+   },
+   "result": {
+    "priorTransactions": 10335,
+    "withinTolerance": 11,
+    "inPersonWithinTolerance": 0,
+    "medianCents": 2858,
+    "channels": {
+     "online": 10335
+    },
+    "sameRegionExamples": [
+     {
+      "id": "3389542",
+      "amount_cents": 13048,
+      "region": null,
+      "ts": "2016-10-23 01:36:18"
+     },
+     {
+      "id": "3390485",
+      "amount_cents": 13060,
+      "region": null,
+      "ts": "2016-10-23 15:32:19"
+     },
+     {
+      "id": "3528954",
+      "amount_cents": 13159,
+      "region": null,
+      "ts": "2016-12-09 22:33:33"
+     },
+     {
+      "id": "3565743",
+      "amount_cents": 13057,
+      "region": null,
+      "ts": "2016-12-22 15:03:52"
+     }
+    ]
+   },
+   "coverage": {
+    "complete": true,
+    "returned": 11
+   },
+   "backend": "local-graph"
+  },
+  {
+   "receiptId": "Q04-customer_timeline",
+   "query": "customer_timeline",
+   "params": {
+    "customerId": "C11923",
+    "from": "2016-12-27 03:27:44",
+    "to": "2016-12-29 06:27:44"
+   },
+   "result": [
+    {
+     "amount_cents": 6167,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3578405",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.14,
+     "ts": "2016-12-27 03:33:30"
+    },
+    {
+     "amount_cents": 994,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3578451",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.13,
+     "ts": "2016-12-27 04:31:11"
+    },
+    {
+     "amount_cents": 9277,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3578471",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.14,
+     "ts": "2016-12-27 04:50:11"
+    },
+    {
+     "amount_cents": 9287,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3578475",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.06,
+     "ts": "2016-12-27 04:54:00"
+    },
+    {
+     "amount_cents": 9291,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3578483",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.07,
+     "ts": "2016-12-27 05:07:11"
+    },
+    {
+     "amount_cents": 9281,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3578486",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.04,
+     "ts": "2016-12-27 05:09:31"
+    },
+    {
+     "amount_cents": 513,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3578491",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.23,
+     "ts": "2016-12-27 05:19:26"
+    },
+    {
+     "amount_cents": 496,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3578496",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.03,
+     "ts": "2016-12-27 05:30:40"
+    },
+    {
+     "amount_cents": 9287,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3578506",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.06,
+     "ts": "2016-12-27 06:10:43"
+    },
+    {
+     "amount_cents": 2573,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3578817",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.01,
+     "ts": "2016-12-27 13:49:50"
+    },
+    {
+     "amount_cents": 6524,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3578995",
+     "product_cd": "C",
+     "purchaser_email_domain": "anonymous.com",
+     "recipient_email_domain": "anonymous.com",
+     "region": null,
+     "risk_score": 0.01,
+     "ts": "2016-12-27 15:06:53"
+    },
+    {
+     "amount_cents": 488,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3578997",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.28,
+     "ts": "2016-12-27 15:06:59"
+    },
+    {
+     "amount_cents": 9207,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3579400",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.03,
+     "ts": "2016-12-27 17:46:48"
+    },
+    {
+     "amount_cents": 9217,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3579407",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.14,
+     "ts": "2016-12-27 17:48:19"
+    },
+    {
+     "amount_cents": 1616,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3579576",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.13,
+     "ts": "2016-12-27 18:45:45"
+    },
+    {
+     "amount_cents": 2619,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3579597",
+     "product_cd": "C",
+     "purchaser_email_domain": "yahoo.com.mx",
+     "recipient_email_domain": "yahoo.com.mx",
+     "region": null,
+     "risk_score": 0.08,
+     "ts": "2016-12-27 18:54:32"
+    },
+    {
+     "amount_cents": 6715,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3580137",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.01,
+     "ts": "2016-12-27 21:57:18"
+    },
+    {
+     "amount_cents": 6718,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3580202",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.09,
+     "ts": "2016-12-27 22:18:19"
+    },
+    {
+     "amount_cents": 6855,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3580219",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.01,
+     "ts": "2016-12-27 22:24:42"
+    },
+    {
+     "amount_cents": 6854,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3580232",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.25,
+     "ts": "2016-12-27 22:27:19"
+    },
+    {
+     "amount_cents": 4134,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3580348",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.11,
+     "ts": "2016-12-27 23:07:25"
+    },
+    {
+     "amount_cents": 2567,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3580380",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.12,
+     "ts": "2016-12-27 23:19:57"
+    },
+    {
+     "amount_cents": 2576,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3580403",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.36,
+     "ts": "2016-12-27 23:29:12"
+    },
+    {
+     "amount_cents": 2568,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3580417",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.16,
+     "ts": "2016-12-27 23:33:11"
+    },
+    {
+     "amount_cents": 9666,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3580427",
+     "product_cd": "C",
+     "purchaser_email_domain": "yahoo.com",
+     "recipient_email_domain": "yahoo.com",
+     "region": null,
+     "risk_score": 0.02,
+     "ts": "2016-12-27 23:36:26"
+    },
+    {
+     "amount_cents": 2352,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3580478",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.32,
+     "ts": "2016-12-28 00:00:27"
+    },
+    {
+     "amount_cents": 2207,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3580544",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.68,
+     "ts": "2016-12-28 00:24:53"
+    },
+    {
+     "amount_cents": 4408,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3580712",
+     "product_cd": "C",
+     "purchaser_email_domain": "anonymous.com",
+     "recipient_email_domain": "anonymous.com",
+     "region": null,
+     "risk_score": 0.2,
+     "ts": "2016-12-28 01:26:33"
+    },
+    {
+     "amount_cents": 4012,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3580765",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.63,
+     "ts": "2016-12-28 01:53:09"
+    },
+    {
+     "amount_cents": 2508,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3580776",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.4,
+     "ts": "2016-12-28 02:00:28"
+    },
+    {
+     "amount_cents": 1521,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3580815",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.84,
+     "ts": "2016-12-28 02:28:16"
+    },
+    {
+     "amount_cents": 1517,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3580821",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.01,
+     "ts": "2016-12-28 02:32:19"
+    },
+    {
+     "amount_cents": 1617,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3580907",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.09,
+     "ts": "2016-12-28 03:33:38"
+    },
+    {
+     "amount_cents": 2378,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3580933",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.09,
+     "ts": "2016-12-28 03:57:10"
+    },
+    {
+     "amount_cents": 5217,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3580951",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.05,
+     "ts": "2016-12-28 04:21:00"
+    },
+    {
+     "amount_cents": 3978,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3580992",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.12,
+     "ts": "2016-12-28 05:30:26"
+    },
+    {
+     "amount_cents": 3708,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3581048",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.23,
+     "ts": "2016-12-28 09:02:04"
+    },
+    {
+     "amount_cents": 939,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3581345",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.06,
+     "ts": "2016-12-28 14:21:12"
+    },
+    {
+     "amount_cents": 6211,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3582082",
+     "product_cd": "C",
+     "purchaser_email_domain": "anonymous.com",
+     "recipient_email_domain": "anonymous.com",
+     "region": null,
+     "risk_score": 0.04,
+     "ts": "2016-12-28 18:54:14"
+    },
+    {
+     "amount_cents": 6206,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3582107",
+     "product_cd": "C",
+     "purchaser_email_domain": "anonymous.com",
+     "recipient_email_domain": "anonymous.com",
+     "region": null,
+     "risk_score": 0.21,
+     "ts": "2016-12-28 19:03:07"
+    },
+    {
+     "amount_cents": 415,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3582142",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.03,
+     "ts": "2016-12-28 19:13:13"
+    },
+    {
+     "amount_cents": 401,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3582175",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.12,
+     "ts": "2016-12-28 19:22:39"
+    },
+    {
+     "amount_cents": 4991,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3582178",
+     "product_cd": "C",
+     "purchaser_email_domain": "live.com",
+     "recipient_email_domain": "live.com",
+     "region": null,
+     "risk_score": 0.14,
+     "ts": "2016-12-28 19:23:22"
+    },
+    {
+     "amount_cents": 1571,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3582327",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.11,
+     "ts": "2016-12-28 20:26:44"
+    },
+    {
+     "amount_cents": 3667,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3582338",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.05,
+     "ts": "2016-12-28 20:30:19"
+    },
+    {
+     "amount_cents": 3265,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3582375",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.07,
+     "ts": "2016-12-28 20:40:44"
+    },
+    {
+     "amount_cents": 1663,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3582413",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.39,
+     "ts": "2016-12-28 20:54:06"
+    },
+    {
+     "amount_cents": 1987,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3582602",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.14,
+     "ts": "2016-12-28 21:56:53"
+    },
+    {
+     "amount_cents": 93,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3582624",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.15,
+     "ts": "2016-12-28 22:03:09"
+    },
+    {
+     "amount_cents": 9870,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3582671",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.26,
+     "ts": "2016-12-28 22:21:56"
+    },
+    {
+     "amount_cents": 5659,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3582738",
+     "product_cd": "C",
+     "purchaser_email_domain": "anonymous.com",
+     "recipient_email_domain": "anonymous.com",
+     "region": null,
+     "risk_score": 0.06,
+     "ts": "2016-12-28 22:45:49"
+    },
+    {
+     "amount_cents": 5727,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3582868",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.24,
+     "ts": "2016-12-28 23:30:58"
+    },
+    {
+     "amount_cents": 5729,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3582897",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.03,
+     "ts": "2016-12-28 23:38:48"
+    },
+    {
+     "amount_cents": 4056,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3583101",
+     "product_cd": "C",
+     "purchaser_email_domain": "outlook.es",
+     "recipient_email_domain": "outlook.es",
+     "region": null,
+     "risk_score": 0.13,
+     "ts": "2016-12-29 00:53:52"
+    },
+    {
+     "amount_cents": 2356,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3583140",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.14,
+     "ts": "2016-12-29 01:11:19"
+    },
+    {
+     "amount_cents": 4702,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3583199",
+     "product_cd": "C",
+     "purchaser_email_domain": "yahoo.com.mx",
+     "recipient_email_domain": "yahoo.com.mx",
+     "region": null,
+     "risk_score": 0.1,
+     "ts": "2016-12-29 01:37:42"
+    },
+    {
+     "amount_cents": 1678,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3583229",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.15,
+     "ts": "2016-12-29 01:54:34"
+    },
+    {
+     "amount_cents": 3457,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3583348",
+     "product_cd": "C",
+     "purchaser_email_domain": "yahoo.com.mx",
+     "recipient_email_domain": "yahoo.com.mx",
+     "region": null,
+     "risk_score": 0.16,
+     "ts": "2016-12-29 03:12:50"
+    },
+    {
+     "amount_cents": 13130,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3583368",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.39,
+     "ts": "2016-12-29 03:27:44"
+    },
+    {
+     "amount_cents": 1955,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3583406",
+     "product_cd": "C",
+     "purchaser_email_domain": "gmail.com",
+     "recipient_email_domain": "gmail.com",
+     "region": null,
+     "risk_score": 0.1,
+     "ts": "2016-12-29 04:10:46"
+    },
+    {
+     "amount_cents": 633,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3583411",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.01,
+     "ts": "2016-12-29 04:13:36"
+    },
+    {
+     "amount_cents": 639,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3583415",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.01,
+     "ts": "2016-12-29 04:16:10"
+    },
+    {
+     "amount_cents": 635,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3583417",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.07,
+     "ts": "2016-12-29 04:22:35"
+    },
+    {
+     "amount_cents": 2293,
+     "card_fields": {
+      "card1": "21363",
+      "card2": "545.0",
+      "card3": "185.0",
+      "card4": "visa",
+      "card5": "138.0",
+      "card6": "debit"
+     },
+     "channel": "online",
+     "country": null,
+     "customer_id": "C11923",
+     "dist1": null,
+     "id": "3583435",
+     "product_cd": "C",
+     "purchaser_email_domain": "hotmail.com",
+     "recipient_email_domain": "hotmail.com",
+     "region": null,
+     "risk_score": 0.18,
+     "ts": "2016-12-29 05:04:18"
+    }
+   ],
+   "coverage": {
+    "complete": true,
+    "returned": 64
+   },
+   "backend": "local-graph"
+  },
+  {
+   "receiptId": "Q05-device_context",
+   "query": "device_context",
+   "params": {
+    "customerId": "C11923",
+    "before": "2016-12-29 06:27:44"
+   },
+   "result": {
+    "onlineWithIdentity": 9353,
+    "distinctProfiles": 1482,
+    "sharedWithOtherCustomersInSlice": [
+     {
+      "device": "?|?|mobile safari 10.0|?",
+      "otherCustomers": [
+       "C11627"
+      ]
+     },
+     {
+      "device": "?|?|mobile safari 11.0|?",
+      "otherCustomers": [
+       "C02782",
+       "C05381",
+       "C08962",
+       "C06663",
+       "C10602",
+       "C05031",
+       "C07296",
+       "C09657",
+       "C08013",
+       "C07855",
+       "C00045",
+       "C06988",
+       "C06224",
+       "C11273",
+       "C05169"
+      ]
+     },
+     {
+      "device": "Trident/7.0|?|ie 11.0 for desktop|?",
+      "otherCustomers": [
+       "C00360",
+       "C01521"
+      ]
+     },
+     {
+      "device": "?|?|mobile safari 9.0|?",
+      "otherCustomers": [
+       "C00476"
+      ]
+     },
+     {
+      "device": "rv:11.0|?|ie 11.0 for desktop|?",
+      "otherCustomers": [
+       "C13305"
+      ]
+     },
+     {
+      "device": "Trident/7.0|?|ie 11.0 for tablet|?",
+      "otherCustomers": [
+       "C11919"
+      ]
+     },
+     {
+      "device": "?|?|chrome|?",
+      "otherCustomers": [
+       "C05307"
+      ]
+     },
+     {
+      "device": "?|?|chrome 64.0|?",
+      "otherCustomers": [
+       "C01521"
+      ]
+     },
+     {
+      "device": "Ilium X510 Build/MRA58K|?|chrome 49.0 for android|?",
+      "otherCustomers": [
+       "C06744",
+       "C05381"
+      ]
+     },
+     {
+      "device": "?|?|chrome 65.0|?",
+      "otherCustomers": [
+       "C05381",
+       "C06224"
+      ]
+     },
+     {
+      "device": "G3313 Build/43.0.A.5.79|?|chrome 65.0 for android|?",
+      "otherCustomers": [
+       "C07562"
+      ]
+     },
+     {
+      "device": "Windows|?|chrome 66.0|?",
+      "otherCustomers": [
+       "C10837",
+       "C12403",
+       "C08962",
+       "C04597",
+       "C03443",
+       "C05381",
+       "C08106",
+       "C10114",
+       "C06744",
+       "C01109",
+       "C09657",
+       "C11444",
+       "C04943",
+       "C08391",
+       "C11919",
+       "C13538",
+       "C03573"
+      ]
+     },
+     {
+      "device": "?|?|chrome 66.0|?",
+      "otherCustomers": [
+       "C11704",
+       "C06224",
+       "C09274",
+       "C08391",
+       "C05031",
+       "C02412",
+       "C00854",
+       "C04597",
+       "C06663",
+       "C07389",
+       "C08962",
+       "C06744"
+      ]
+     },
+     {
+      "device": "?|?|chrome 66.0 for ios|?",
+      "otherCustomers": [
+       "C05307",
+       "C05031"
+      ]
+     },
+     {
+      "device": "SM-J700M Build/MMB29K|?|chrome 66.0 for android|?",
+      "otherCustomers": [
+       "C04597",
+       "C06744"
+      ]
+     },
+     {
+      "device": "LG-K580 Build/MRA58K|?|chrome 66.0 for android|?",
+      "otherCustomers": [
+       "C09657"
+      ]
+     },
+     {
+      "device": "Moto G (5) Build/NPPS25.137-15-11|?|chrome 66.0 for android|?",
+      "otherCustomers": [
+       "C07204"
+      ]
+     },
+     {
+      "device": "RNE-L03 Build/HUAWEIRNE-L03|?|chrome 66.0 for android|?",
+      "otherCustomers": [
+       "C05031",
+       "C11444"
+      ]
+     },
+     {
+      "device": "SM-G610M Build/MMB29K|?|chrome 66.0 for android|?",
+      "otherCustomers": [
+       "C11919"
+      ]
+     },
+     {
+      "device": "SM-G532M Build/MMB29T|?|chrome 55.0 for android|?",
+      "otherCustomers": [
+       "C11844"
+      ]
+     },
+     {
+      "device": "Moto E (4) Build/NMA26.42-69|?|chrome 66.0 for android|?",
+      "otherCustomers": [
+       "C08905"
+      ]
+     },
+     {
+      "device": "M4 SS4456 Build/LMY47V|?|chrome 66.0 for android|?",
+      "otherCustomers": [
+       "C00294"
+      ]
+     },
+     {
+      "device": "SM-G950F Build/R16NW|?|chrome 66.0 for android|?",
+      "otherCustomers": [
+       "C05031"
+      ]
+     },
+     {
+      "device": "LG-X240 Build/MRA58K|?|chrome 66.0 for android|?",
+      "otherCustomers": [
+       "C09246"
+      ]
+     },
+     {
+      "device": "?|?|safari 11.0|?",
+      "otherCustomers": [
+       "C05381",
+       "C08391"
+      ]
+     },
+     {
+      "device": "rv:60.0|?|firefox 60.0|?",
+      "otherCustomers": [
+       "C09835"
+      ]
+     },
+     {
+      "device": "Moto E (4) Plus Build/NMA26.42-142|?|chrome 66.0 for android|?",
+      "otherCustomers": [
+       "C06744"
+      ]
+     },
+     {
+      "device": "5011A Build/NRD90M|?|chrome 66.0 for android|?",
+      "otherCustomers": [
+       "C00259"
+      ]
+     },
+     {
+      "device": "SM-G950F Build/NRD90M|?|chrome 66.0 for android|?",
+      "otherCustomers": [
+       "C05381"
+      ]
+     },
+     {
+      "device": "PRA-LX3 Build/HUAWEIPRA-LX3|?|chrome 66.0 for android|?",
+      "otherCustomers": [
+       "C08962"
+      ]
+     },
+     {
+      "device": "F3213 Build/36.1.A.1.86|?|chrome 66.0 for android|?",
+      "otherCustomers": [
+       "C06630"
+      ]
+     },
+     {
+      "device": "SM-G935V Build/NRD90M|?|chrome 66.0 for android|?",
+      "otherCustomers": [
+       "C09657"
+      ]
+     },
+     {
+      "device": "Windows|?|firefox 60.0|?",
+      "otherCustomers": [
+       "C03470",
+       "C02639"
+      ]
+     },
+     {
+      "device": "XT1635-02 Build/NPN26.118-22-2|?|chrome 66.0 for android|?",
+      "otherCustomers": [
+       "C05736"
+      ]
+     },
+     {
+      "device": "?|?|opera 53.0|?",
+      "otherCustomers": [
+       "C06759"
+      ]
+     },
+     {
+      "device": "HTC Desire 626s Build/LMY47O|?|chrome 66.0 for android|?",
+      "otherCustomers": [
+       "C09657",
+       "C11509"
+      ]
+     },
+     {
+      "device": "SM-G610F Build/NRD90M|?|chrome 66.0 for android|?",
+      "otherCustomers": [
+       "C05595",
+       "C03938"
+      ]
+     }
+    ]
+   },
+   "coverage": {
+    "complete": true,
+    "returned": 1482
+   },
+   "backend": "local-graph"
+  },
+  {
+   "receiptId": "Q06-historical_cases",
+   "query": "historical_cases",
+   "params": {
+    "cardId": "C11923-K2",
+    "customerId": "C11923"
+   },
+   "result": [
+    {
+     "actions_taken": [
+      "CREATE_CASE",
+      "BLOCK_CARD"
+     ],
+     "analyst_notes": "Case CC-0031: cardholder C11923 reported unrecognized activity on card C11923-K2. 1 transaction(s) between 2016-07-02 and 2016-07-02 totaling $20.36 were confirmed fraudulent. Online purchases from a device not previously seen on this account, inconsistent with the cardholder's history. Online transactions came from a Trident/7.0 on ie 11.0 for desktop. Card blocked and reissued. Customer reimbursed.",
+     "card_id": "C11923-K2",
+     "closed_at": "2016-07-07 22:23:36",
+     "connected_card_ids": [],
+     "customer_id": "C11923",
+     "exposure_cents": 2036,
+     "first_fraud_txn_id": "3001820",
+     "id": "CC-0031",
+     "opened_at": "2016-07-04 01:23:36",
+     "outcome": "confirmed_fraud",
+     "pattern": "card_not_present_new_device",
+     "report_filed": false,
+     "txn_ids": [
+      "3001820"
+     ]
+    },
+    {
+     "actions_taken": [
+      "CREATE_CASE",
+      "BLOCK_CARD"
+     ],
+     "analyst_notes": "Case CC-0290: cardholder C11923 reported unrecognized activity on card C11923-K2. 8 transaction(s) between 2016-07-05 and 2016-07-08 totaling $144.56 were confirmed fraudulent. A run of very small online authorizations followed by a larger purchase, consistent with testing a stolen card number before use. Card blocked and reissued. Customer reimbursed.",
+     "card_id": "C11923-K2",
+     "closed_at": "2016-07-10 23:59:09",
+     "connected_card_ids": [],
+     "customer_id": "C11923",
+     "exposure_cents": 14456,
+     "first_fraud_txn_id": "3009374",
+     "id": "CC-0290",
+     "opened_at": "2016-07-09 19:59:09",
+     "outcome": "confirmed_fraud",
+     "pattern": "card_testing",
+     "report_filed": false,
+     "txn_ids": [
+      "3009374",
+      "3011289",
+      "3015408",
+      "3015422",
+      "3017329",
+      "3020058",
+      "3022349",
+      "3023880"
+     ]
+    },
+    {
+     "actions_taken": [
+      "CREATE_CASE",
+      "BLOCK_CARD",
+      "FILE_REPORT"
+     ],
+     "analyst_notes": "Case CC-1056: cardholder C11923 reported unrecognized activity on card C11923-K2. 28 transaction(s) between 2016-07-11 and 2016-07-22 totaling $1,557.95 were confirmed fraudulent. Online purchases from a device not previously seen on this account, inconsistent with the cardholder's history. Card blocked and reissued. Customer reimbursed.",
+     "card_id": "C11923-K2",
+     "closed_at": "2016-07-25 23:41:55",
+     "connected_card_ids": [],
+     "customer_id": "C11923",
+     "exposure_cents": 155795,
+     "first_fraud_txn_id": "3031806",
+     "id": "CC-1056",
+     "opened_at": "2016-07-24 02:41:55",
+     "outcome": "confirmed_fraud",
+     "pattern": "card_not_present_new_device",
+     "report_filed": true,
+     "txn_ids": [
+      "3031806",
+      "3035501",
+      "3035738",
+      "3040952",
+      "3041174",
+      "3042525",
+      "3042624",
+      "3043950",
+      "3045227",
+      "3052803",
+      "3056803",
+      "3059207",
+      "3059961",
+      "3060772",
+      "3062424",
+      "3062488",
+      "3063492",
+      "3064629",
+      "3071061",
+      "3071091",
+      "3071116",
+      "3071333",
+      "3076328",
+      "3076738",
+      "3077255",
+      "3078484",
+      "3081748",
+      "3086298"
+     ]
+    },
+    {
+     "actions_taken": [
+      "CREATE_CASE",
+      "BLOCK_CARD",
+      "FILE_REPORT"
+     ],
+     "analyst_notes": "Case CC-2247: cardholder C11923 reported unrecognized activity on card C11923-K2. 71 transaction(s) between 2016-07-25 and 2016-08-16 totaling $4,886.18 were confirmed fraudulent. A run of very small online authorizations followed by a larger purchase, consistent with testing a stolen card number before use. Online transactions came from a Windows on chrome 63.0. Card blocked and reissued. Customer reimbursed.",
+     "card_id": "C11923-K2",
+     "closed_at": "2016-08-21 19:07:24",
+     "connected_card_ids": [],
+     "customer_id": "C11923",
+     "exposure_cents": 488618,
+     "first_fraud_txn_id": "3103128",
+     "id": "CC-2247",
+     "opened_at": "2016-08-17 14:07:24",
+     "outcome": "confirmed_fraud",
+     "pattern": "card_testing",
+     "report_filed": true,
+     "txn_ids": [
+      "3103128",
+      "3103840",
+      "3105307",
+      "3107103",
+      "3107222",
+      "3107272",
+      "3108201",
+      "3110562",
+      "3112024",
+      "3112443",
+      "3112469",
+      "3112492",
+      "3112619",
+      "3112633",
+      "3115350",
+      "3115368",
+      "3115540",
+      "3115541",
+      "3115556",
+      "3116598",
+      "3116633",
+      "3120105",
+      "3120848",
+      "3122525",
+      "3122913",
+      "3122940",
+      "3123793",
+      "3124057",
+      "3124062",
+      "3126430",
+      "3126462",
+      "3126630",
+      "3127810",
+      "3127879",
+      "3129905",
+      "3131142",
+      "3135973",
+      "3136623",
+      "3136967",
+      "3136983",
+      "3137009",
+      "3137056",
+      "3139688",
+      "3142913",
+      "3145228",
+      "3145244",
+      "3147966",
+      "3148124",
+      "3149626",
+      "3149704",
+      "3152296",
+      "3154589",
+      "3154618",
+      "3154621",
+      "3154637",
+      "3154869",
+      "3155100",
+      "3156116",
+      "3156137",
+      "3156171",
+      "3158070",
+      "3163015",
+      "3164850",
+      "3167028",
+      "3167097",
+      "3169089",
+      "3169102",
+      "3169155",
+      "3169159",
+      "3174243",
+      "3179879"
+     ]
+    },
+    {
+     "actions_taken": [
+      "CREATE_CASE",
+      "BLOCK_CARD",
+      "FILE_REPORT"
+     ],
+     "analyst_notes": "Case CC-2673: cardholder C11923 reported unrecognized activity on card C11923-K2. 33 transaction(s) between 2016-08-18 and 2016-08-27 totaling $1,334.96 were confirmed fraudulent. A run of very small online authorizations followed by a larger purchase, consistent with testing a stolen card number before use. Card blocked and reissued. Customer reimbursed.",
+     "card_id": "C11923-K2",
+     "closed_at": "2016-09-02 06:54:07",
+     "connected_card_ids": [],
+     "customer_id": "C11923",
+     "exposure_cents": 133496,
+     "first_fraud_txn_id": "3186138",
+     "id": "CC-2673",
+     "opened_at": "2016-08-27 18:54:07",
+     "outcome": "confirmed_fraud",
+     "pattern": "card_testing",
+     "report_filed": true,
+     "txn_ids": [
+      "3186138",
+      "3186160",
+      "3186448",
+      "3187009",
+      "3187050",
+      "3188317",
+      "3188386",
+      "3189940",
+      "3193275",
+      "3194839",
+      "3194942",
+      "3196129",
+      "3196157",
+      "3196538",
+      "3196540",
+      "3196886",
+      "3198442",
+      "3198938",
+      "3199813",
+      "3199827",
+      "3199856",
+      "3200333",
+      "3200410",
+      "3204764",
+      "3207341",
+      "3207390",
+      "3208778",
+      "3209214",
+      "3209716",
+      "3209784",
+      "3210458",
+      "3210460",
+      "3210467"
+     ]
+    },
+    {
+     "actions_taken": [
+      "CREATE_CASE",
+      "BLOCK_CARD"
+     ],
+     "analyst_notes": "Case CC-2799: cardholder C11923 reported unrecognized activity on card C11923-K2. 2 transaction(s) between 2016-08-29 and 2016-08-30 totaling $36.14 were confirmed fraudulent. Online purchases from a device not previously seen on this account, inconsistent with the cardholder's history. Online transactions came from a Windows on chrome 63.0. Card blocked and reissued. Customer reimbursed.",
+     "card_id": "C11923-K2",
+     "closed_at": "2016-09-02 01:24:37",
+     "connected_card_ids": [],
+     "customer_id": "C11923",
+     "exposure_cents": 3614,
+     "first_fraud_txn_id": "3216701",
+     "id": "CC-2799",
+     "opened_at": "2016-08-30 19:24:37",
+     "outcome": "confirmed_fraud",
+     "pattern": "card_not_present_new_device",
+     "report_filed": false,
+     "txn_ids": [
+      "3216701",
+      "3218551"
+     ]
+    },
+    {
+     "actions_taken": [
+      "CREATE_CASE",
+      "BLOCK_CARD"
+     ],
+     "analyst_notes": "Case CC-3039: cardholder C11923 reported unrecognized activity on card C11923-K2. 8 transaction(s) between 2016-09-02 and 2016-09-04 totaling $108.85 were confirmed fraudulent. Online purchases from a device not previously seen on this account, inconsistent with the cardholder's history. Card blocked and reissued. Customer reimbursed.",
+     "card_id": "C11923-K2",
+     "closed_at": "2016-09-09 01:18:26",
+     "connected_card_ids": [],
+     "customer_id": "C11923",
+     "exposure_cents": 10885,
+     "first_fraud_txn_id": "3227364",
+     "id": "CC-3039",
+     "opened_at": "2016-09-04 17:18:26",
+     "outcome": "confirmed_fraud",
+     "pattern": "card_not_present_new_device",
+     "report_filed": false,
+     "txn_ids": [
+      "3227364",
+      "3228001",
+      "3229286",
+      "3231610",
+      "3231612",
+      "3232900",
+      "3233820",
+      "3234600"
+     ]
+    },
+    {
+     "actions_taken": [
+      "CREATE_CASE",
+      "BLOCK_CARD"
+     ],
+     "analyst_notes": "Case CC-3206: cardholder C11923 reported unrecognized activity on card C11923-K2. 3 transaction(s) between 2016-09-06 and 2016-09-08 totaling $100.24 were confirmed fraudulent. Online purchases from a device not previously seen on this account, inconsistent with the cardholder's history. Online transactions came from a Windows on chrome 64.0. Card blocked and reissued. Customer reimbursed.",
+     "card_id": "C11923-K2",
+     "closed_at": "2016-09-13 02:12:22",
+     "connected_card_ids": [],
+     "customer_id": "C11923",
+     "exposure_cents": 10024,
+     "first_fraud_txn_id": "3243592",
+     "id": "CC-3206",
+     "opened_at": "2016-09-08 09:12:22",
+     "outcome": "confirmed_fraud",
+     "pattern": "card_not_present_new_device",
+     "report_filed": false,
+     "txn_ids": [
+      "3243592",
+      "3247856",
+      "3247862"
+     ]
+    },
+    {
+     "actions_taken": [
+      "CREATE_CASE",
+      "BLOCK_CARD",
+      "FILE_REPORT"
+     ],
+     "analyst_notes": "Case CC-3905: cardholder C11923 reported unrecognized activity on card C11923-K2. 44 transaction(s) between 2016-09-11 and 2016-09-23 totaling $1,397.53 were confirmed fraudulent. Online purchases from a device not previously seen on this account, inconsistent with the cardholder's history. Online transactions came from a SAMSUNG SM-G532M Build/MMB29T on Samsung/SM-G532M. Card blocked and reissued. Customer reimbursed.",
+     "card_id": "C11923-K2",
+     "closed_at": "2016-09-27 19:43:58",
+     "connected_card_ids": [],
+     "customer_id": "C11923",
+     "exposure_cents": 139753,
+     "first_fraud_txn_id": "3257020",
+     "id": "CC-3905",
+     "opened_at": "2016-09-24 21:43:58",
+     "outcome": "confirmed_fraud",
+     "pattern": "card_not_present_new_device",
+     "report_filed": true,
+     "txn_ids": [
+      "3257020",
+      "3257030",
+      "3257080",
+      "3257121",
+      "3257584",
+      "3257647",
+      "3259674",
+      "3263403",
+      "3263419",
+      "3264289",
+      "3266394",
+      "3269346",
+      "3270045",
+      "3271281",
+      "3271291",
+      "3273531",
+      "3274038",
+      "3274582",
+      "3276134",
+      "3276895",
+      "3276960",
+      "3277868",
+      "3280771",
+      "3281699",
+      "3281735",
+      "3283597",
+      "3289024",
+      "3289315",
+      "3289316",
+      "3289319",
+      "3289322",
+      "3289323",
+      "3289325",
+      "3289328",
+      "3289753",
+      "3289762",
+      "3289809",
+      "3289966",
+      "3289991",
+      "3290047",
+      "3292106",
+      "3292107",
+      "3292108",
+      "3293317"
+     ]
+    },
+    {
+     "actions_taken": [
+      "CREATE_CASE",
+      "BLOCK_CARD",
+      "FILE_REPORT"
+     ],
+     "analyst_notes": "Case CC-4501: cardholder C11923 reported unrecognized activity on card C11923-K2. 28 transaction(s) between 2016-09-26 and 2016-10-06 totaling $1,508.58 were confirmed fraudulent. A run of very small online authorizations followed by a larger purchase, consistent with testing a stolen card number before use. Card blocked and reissued. Customer reimbursed.",
+     "card_id": "C11923-K2",
+     "closed_at": "2016-10-11 15:05:47",
+     "connected_card_ids": [],
+     "customer_id": "C11923",
+     "exposure_cents": 150858,
+     "first_fraud_txn_id": "3302336",
+     "id": "CC-4501",
+     "opened_at": "2016-10-07 12:05:47",
+     "outcome": "confirmed_fraud",
+     "pattern": "card_testing",
+     "report_filed": true,
+     "txn_ids": [
+      "3302336",
+      "3308522",
+      "3308562",
+      "3308616",
+      "3308868",
+      "3309553",
+      "3310510",
+      "3310512",
+      "3313166",
+      "3315275",
+      "3317939",
+      "3317948",
+      "3317954",
+      "3317956",
+      "3317959",
+      "3318049",
+      "3319832",
+      "3319913",
+      "3326416",
+      "3332442",
+      "3334086",
+      "3336192",
+      "3337324",
+      "3337374",
+      "3338428",
+      "3338446",
+      "3338472",
+      "3338475"
+     ]
+    },
+    {
+     "actions_taken": [
+      "VERIFY_WITH_CUSTOMER",
+      "CLOSE_NO_FRAUD"
+     ],
+     "analyst_notes": "Case CC-4743: model scored a $32.09 transaction at 0.96. Cardholder confirmed the purchase from a new phone. Device added to profile. Alert cleared.",
+     "card_id": "C11923-K2",
+     "closed_at": "2016-10-14 03:17:15",
+     "connected_card_ids": [],
+     "customer_id": "C11923",
+     "exposure_cents": 0,
+     "first_fraud_txn_id": null,
+     "id": "CC-4743",
+     "opened_at": "2016-10-12 10:17:15",
+     "outcome": "cleared",
+     "pattern": "none",
+     "report_filed": false,
+     "txn_ids": [
+      "3357080"
+     ]
+    }
+   ],
+   "coverage": {
+    "complete": true,
+    "returned": 11
+   },
+   "backend": "local-graph"
+  },
+  {
+   "receiptId": "Q07-shared_origin",
+   "query": "shared_origin",
+   "params": {
+    "txnId": "3583368"
+   },
+   "result": {
+    "otherCustomerTxnsSharingRegionAndEmail": [
+     "3578516",
+     "3578528",
+     "3578981",
+     "3579017",
+     "3579098",
+     "3579138",
+     "3579142",
+     "3579286",
+     "3579341",
+     "3579371",
+     "3579439",
+     "3579450",
+     "3579465",
+     "3579466",
+     "3579477",
+     "3579497",
+     "3579584",
+     "3579598",
+     "3579610",
+     "3579671",
+     "3579692",
+     "3579744",
+     "3579839",
+     "3579849",
+     "3579878",
+     "3579906",
+     "3579923",
+     "3579924",
+     "3580001",
+     "3580089",
+     "3580134",
+     "3580140",
+     "3580151",
+     "3580173",
+     "3580187",
+     "3580251",
+     "3580260",
+     "3580263",
+     "3580292",
+     "3580310",
+     "3580314",
+     "3580402",
+     "3580407",
+     "3580476",
+     "3580505",
+     "3580678",
+     "3580686",
+     "3580695",
+     "3580718",
+     "3580733",
+     "3580766",
+     "3580768",
+     "3580774",
+     "3580780",
+     "3580793",
+     "3580795",
+     "3580804",
+     "3580824",
+     "3580848",
+     "3580850",
+     "3580876",
+     "3580902",
+     "3580904",
+     "3580923",
+     "3580940",
+     "3580948",
+     "3580953",
+     "3580959",
+     "3580965",
+     "3580985",
+     "3580993",
+     "3581003",
+     "3581004",
+     "3581006",
+     "3581014",
+     "3581016",
+     "3581018",
+     "3581024",
+     "3581031",
+     "3581101",
+     "3581144",
+     "3581172",
+     "3581202",
+     "3581226",
+     "3581274",
+     "3581294",
+     "3581301",
+     "3581302",
+     "3581363",
+     "3581388",
+     "3581435",
+     "3581468",
+     "3581470",
+     "3581515",
+     "3581530",
+     "3581544",
+     "3581570",
+     "3581687",
+     "3581709",
+     "3581714",
+     "3581843",
+     "3581851",
+     "3581882",
+     "3581893",
+     "3581906",
+     "3581915",
+     "3581935",
+     "3581955",
+     "3581999",
+     "3582007",
+     "3582025",
+     "3582028",
+     "3582035",
+     "3582057",
+     "3582073",
+     "3582076",
+     "3582079",
+     "3582105",
+     "3582144",
+     "3582164",
+     "3582317",
+     "3582421",
+     "3582450",
+     "3582488",
+     "3582532",
+     "3582535",
+     "3582564",
+     "3582565",
+     "3582603",
+     "3582642",
+     "3582719",
+     "3582730",
+     "3582750",
+     "3582851",
+     "3582899",
+     "3582990",
+     "3583031",
+     "3583036",
+     "3583062",
+     "3583179",
+     "3583202",
+     "3583238",
+     "3583241",
+     "3583288",
+     "3583292",
+     "3583314",
+     "3583316",
+     "3583319",
+     "3583322",
+     "3583330",
+     "3583333",
+     "3583339",
+     "3583354",
+     "3583385",
+     "3583403",
+     "3583423",
+     "3583429",
+     "3583436",
+     "3583437",
+     "3583439",
+     "3583441",
+     "3583445",
+     "3583461"
+    ],
+    "otherCustomerFraudCases": []
+   },
+   "coverage": {
+    "complete": true,
+    "returned": 163
+   },
+   "backend": "local-graph"
+  }
+ ],
+ "facts": {
+  "initial": {
+   "singleSignal": {
+    "fact": "false",
+    "evidenceReceiptIds": [
+     "Q01-seed_context"
+    ],
+    "requestIds": []
+   },
+   "customerDenied": {
+    "fact": "true",
+    "evidenceReceiptIds": [
+     "trigger:case_pack"
+    ],
+    "requestIds": []
+   },
+   "customerConfirmed": {
+    "fact": "false",
+    "evidenceReceiptIds": [],
+    "requestIds": []
+   },
+   "noReplyAfter24Hours": {
+    "fact": "false",
+    "evidenceReceiptIds": [],
+    "requestIds": []
+   },
+   "pendingAuthorization": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [],
+    "requestIds": []
+   },
+   "testingSequence": {
+    "fact": "false",
+    "evidenceReceiptIds": [
+     "Q04-customer_timeline"
+    ],
+    "requestIds": []
+   },
+   "purchaseOver100Cleared": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [],
+    "requestIds": []
+   },
+   "sharedOrigin": {
+    "fact": "true",
+    "evidenceReceiptIds": [
+     "Q07-shared_origin",
+     "Q05-device_context"
+    ],
+    "requestIds": []
+   },
+   "recurringPatternMatch": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [
+     "Q03-amount_profile"
+    ],
+    "requestIds": []
+   },
+   "coordinatedUndocumentedAbuse": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [
+     "Q07-shared_origin"
+    ],
+    "requestIds": []
+   },
+   "multipleCardsConfirmedFraud": {
+    "fact": "false",
+    "evidenceReceiptIds": [
+     "Q06-historical_cases"
+    ],
+    "requestIds": []
+   },
+   "credentialsConfirmedCompromised": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [
+     "Q06-historical_cases"
+    ],
+    "requestIds": []
+   },
+   "exposureCents": 13130,
+   "evidenceConflict": {
+    "fact": "false",
+    "evidenceReceiptIds": [
+     "trigger:case_pack",
+     "Q07-shared_origin"
+    ],
+    "requestIds": []
+   }
+  },
+  "final": {
+   "singleSignal": {
+    "fact": "false",
+    "evidenceReceiptIds": [
+     "Q01-seed_context"
+    ],
+    "requestIds": []
+   },
+   "customerDenied": {
+    "fact": "true",
+    "evidenceReceiptIds": [
+     "trigger:case_pack"
+    ],
+    "requestIds": []
+   },
+   "customerConfirmed": {
+    "fact": "false",
+    "evidenceReceiptIds": [],
+    "requestIds": []
+   },
+   "noReplyAfter24Hours": {
+    "fact": "true",
+    "evidenceReceiptIds": [],
+    "requestIds": [
+     "REQ-1"
+    ]
+   },
+   "pendingAuthorization": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [],
+    "requestIds": []
+   },
+   "testingSequence": {
+    "fact": "false",
+    "evidenceReceiptIds": [
+     "Q04-customer_timeline"
+    ],
+    "requestIds": []
+   },
+   "purchaseOver100Cleared": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [],
+    "requestIds": []
+   },
+   "sharedOrigin": {
+    "fact": "true",
+    "evidenceReceiptIds": [
+     "Q07-shared_origin",
+     "Q05-device_context"
+    ],
+    "requestIds": []
+   },
+   "recurringPatternMatch": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [
+     "Q03-amount_profile"
+    ],
+    "requestIds": []
+   },
+   "coordinatedUndocumentedAbuse": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [
+     "Q07-shared_origin"
+    ],
+    "requestIds": []
+   },
+   "multipleCardsConfirmedFraud": {
+    "fact": "false",
+    "evidenceReceiptIds": [
+     "Q06-historical_cases"
+    ],
+    "requestIds": []
+   },
+   "credentialsConfirmedCompromised": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [
+     "Q06-historical_cases"
+    ],
+    "requestIds": []
+   },
+   "exposureCents": 13130,
+   "evidenceConflict": {
+    "fact": "false",
+    "evidenceReceiptIds": [
+     "trigger:case_pack",
+     "Q07-shared_origin"
+    ],
+    "requestIds": []
+   }
+  }
+ },
+ "assessment": {
+  "verdict": "uncertain",
+  "fraudProbability": 0.8,
+  "pattern": "none",
+  "patternDescription": "",
+  "affectedTransactionCandidates": [
+   "3583368"
+  ],
+  "evidenceReceiptIds": [
+   "trigger:case_pack",
+   "Q07-shared_origin"
+  ],
+  "counterevidenceReceiptIds": [],
+  "unresolvedQuestions": [
+   "Did the customer make same-day transaction(s) 3583140, 3583229, 3583406?",
+   "Merchant identity is absent (D04), so a same-merchant recurring charge cannot be confirmed or ruled out.",
+   "Settlement/authorization status is absent (D05)."
+  ],
+  "suspicionBasis": "customer_denial, shared_origin",
+  "nextInvestigativeQuestion": "Ask the customer about the other same-day transaction on the new email domain.",
+  "suggestedStopReason": ""
+ },
+ "decisions": {
+  "initial": [
+   {
+    "action": "CREATE_CASE",
+    "route": "auto",
+    "reason": "R2: dataset policy obligation",
+    "ruleIds": [
+     "R2"
+    ]
+   },
+   {
+    "action": "VERIFY_WITH_CUSTOMER",
+    "route": "auto",
+    "reason": "Policy section 5 and R8: evidence conflicts; ask the customer: Did you make 3583140 ($23.56 at 01:11), 3583229 ($16.78 at 01:54), 3583406 ($19.55 at 04:10) on 2016-12-29, and do you still have the card?",
+    "ruleIds": [
+     "S5"
+    ]
+   },
+   {
+    "action": "BLOCK_CARD",
+    "route": "L1",
+    "reason": "R2: dataset policy obligation",
+    "ruleIds": [
+     "R2"
+    ]
+   },
+   {
+    "action": "MONITOR_CONNECTED_CARDS",
+    "route": "auto",
+    "reason": "R6: dataset policy obligation",
+    "ruleIds": [
+     "R6"
+    ]
+   },
+   {
+    "action": "FILE_REPORT",
+    "route": "L2",
+    "reason": "R2: dataset policy obligation",
+    "ruleIds": [
+     "R2"
+    ]
+   }
+  ],
+  "final": [
+   {
+    "action": "CREATE_CASE",
+    "route": "auto",
+    "reason": "R2: dataset policy obligation",
+    "ruleIds": [
+     "R2"
+    ]
+   },
+   {
+    "action": "MONITOR_CARD",
+    "route": "auto",
+    "reason": "R4: dataset policy obligation",
+    "ruleIds": [
+     "R4"
+    ]
+   },
+   {
+    "action": "BLOCK_CARD",
+    "route": "L1",
+    "reason": "R2: dataset policy obligation",
+    "ruleIds": [
+     "R2"
+    ]
+   },
+   {
+    "action": "MONITOR_CONNECTED_CARDS",
+    "route": "auto",
+    "reason": "R6: dataset policy obligation",
+    "ruleIds": [
+     "R6"
+    ]
+   },
+   {
+    "action": "FILE_REPORT",
+    "route": "L2",
+    "reason": "R2: dataset policy obligation",
+    "ruleIds": [
+     "R2"
+    ]
+   }
+  ],
+  "initialConflicts": [],
+  "missingPremises": [
+   "pendingAuthorization",
+   "recurringPatternMatch",
+   "coordinatedUndocumentedAbuse",
+   "multipleCardsConfirmedFraud",
+   "credentialsConfirmedCompromised"
+  ]
+ },
+ "simulated": [
+  {
+   "requestId": "REQ-1",
+   "type": "customer_validation",
+   "question": "Did you make 3583140 ($23.56 at 01:11), 3583229 ($16.78 at 01:54), 3583406 ($19.55 at 04:10) on 2016-12-29, and do you still have the card?",
+   "assumedResponse": "No reply within 24 hours. Fixed simulator default applied to every customer request in this build; it is not chosen per case and carries no hidden label.",
+   "rule": "Policy section 5"
+  }
+ ],
+ "localCaseWrite": {
+  "vertexId": "LOCAL-HHG-011-demo",
+  "readbackVerified": true,
+  "backend": "local-graph"
+ },
+ "graphBackend": "local-graph",
+ "answer": {
+  "case_id": "HHG-011",
+  "case": {
+   "status": "open",
+   "verdict": "uncertain",
+   "fraud_probability": 0.8,
+   "pattern": "none",
+   "pattern_description": "",
+   "affected_txn_ids": [
+    "3583368"
+   ],
+   "first_suspicious_txn_id": "3583368",
+   "connected_card_ids": [],
+   "connected_device_profiles": [],
+   "exposure_usd": 131.3,
+   "evidence": [
+    {
+     "claim": "Flagged 3583368: $131.30 online, region none, 2016-12-29 03:27:44, device SM-G610F Build/NRD90M|?|chrome 66.0 for android|?; bank risk score 0.39 used only as an input.",
+     "source": "graph",
+     "ref": "Q01-seed_context",
+     "entity_ids": [
+      "3583368",
+      "C11923-K2"
+     ]
+    },
+    {
+     "claim": "Customer C11923 denies 3583368. In organizer history, 4656 of 4656 cardholder-reported closed cases were confirmed fraud (history only contains closed outcomes, so this is a prior, not proof).",
+     "source": "customer",
+     "ref": "trigger:case_pack",
+     "entity_ids": [
+      "3583368",
+      "C11923"
+     ]
+    },
+    {
+     "claim": "The flagged transaction's specific device profile is shared with other in-scope customers: SM-G610F Build/NRD90M (C05595, C03938).",
+     "source": "graph",
+     "ref": "Q07-shared_origin",
+     "entity_ids": [
+      "3583368"
+     ]
+    },
+    {
+     "claim": "11 prior closed cases on C11923-K2; confirmed patterns: card_not_present_new_device, card_testing. No prior confirmed fraud transaction was billed in region null (prior fraud regions: 465, 391, 359, 161).",
+     "source": "graph",
+     "ref": "Q06-historical_cases",
+     "entity_ids": [
+      "CC-0031",
+      "CC-0290",
+      "CC-1056",
+      "CC-2247",
+      "CC-2673",
+      "CC-2799",
+      "CC-3039",
+      "CC-3206",
+      "CC-3905",
+      "CC-4501",
+      "CC-4743"
+     ]
+    }
+   ],
+   "similar_prior_cases": [
+    "CC-0031",
+    "CC-0290",
+    "CC-1056",
+    "CC-2247",
+    "CC-2673",
+    "CC-2799",
+    "CC-3039",
+    "CC-3206",
+    "CC-3905",
+    "CC-4501",
+    "CC-4743"
+   ],
+   "summary": "C11923 disputes 3583368, a $131.30 online purchase. For fraud: Customer C11923 denies 3583368; The flagged transaction's specific device profile is shared with other in-scope customers: SM-G610F Build/NRD90M (C05595, C03938). The evidence leans toward fraud but is not strong enough to confirm it, so the verdict is uncertain at 0.8. The card block is recommended under R2 and waits for L1 approval.",
+   "written_to_graph": false,
+   "graph_case_id": ""
+  },
+  "evidence_requests": [
+   {
+    "type": "customer_validation",
+    "asked_after_step": 7,
+    "assumed_response": "Did you make 3583140 ($23.56 at 01:11), 3583229 ($16.78 at 01:54), 3583406 ($19.55 at 04:10) on 2016-12-29, and do you still have the card? Assumed: No reply within 24 hours. Fixed simulator default applied to every customer request in this build; it is not chosen per case and carries no hidden label."
+   }
+  ],
+  "next_best_actions": {
+   "initial": [
+    {
+     "action": "CREATE_CASE",
+     "route": "auto",
+     "reason": "R2 and section 3a: customer disputes a charge"
+    },
+    {
+     "action": "VERIFY_WITH_CUSTOMER",
+     "route": "auto",
+     "reason": "Policy section 5 and R8: evidence conflicts; ask the customer: Did you make 3583140 ($23.56 at 01:11), 3583229 ($16.78 at 01:54), 3583406 ($19.55 at 04:10) on 2016-12-29, and do you still have the card?"
+    },
+    {
+     "action": "BLOCK_CARD",
+     "route": "L1",
+     "reason": "R2: customer denied the transaction; exposure $131.30 is at most $2,500, so L1 approval"
+    },
+    {
+     "action": "MONITOR_CONNECTED_CARDS",
+     "route": "auto",
+     "reason": "R6: dataset policy obligation"
+    },
+    {
+     "action": "FILE_REPORT",
+     "route": "L2",
+     "reason": "R2: dataset policy obligation"
+    }
+   ],
+   "final": [
+    {
+     "action": "CREATE_CASE",
+     "route": "auto",
+     "reason": "R2 and section 3a: customer disputes a charge"
+    },
+    {
+     "action": "MONITOR_CARD",
+     "route": "auto",
+     "reason": "R4: no customer reply within 24 hours (simulated)"
+    },
+    {
+     "action": "BLOCK_CARD",
+     "route": "L1",
+     "reason": "R2: customer denied the transaction; exposure $131.30 is at most $2,500, so L1 approval"
+    },
+    {
+     "action": "MONITOR_CONNECTED_CARDS",
+     "route": "auto",
+     "reason": "R6: dataset policy obligation"
+    },
+    {
+     "action": "FILE_REPORT",
+     "route": "L2",
+     "reason": "R2: dataset policy obligation"
+    }
+   ],
+   "what_changed": "The customer was asked (REQ-1); the fixed simulator assumed no reply within 24 hours, so R4 adds MONITOR_CARD. No DECLINE_TRANSACTION because pending-authorization status is not in the data (D05); exposure $131.30 is under the R4 $500 escalation threshold."
+  },
+  "sar": {
+   "file": true,
+   "reason": "R2/R6",
+   "narrative": "",
+   "subjects": [
+    "C11923",
+    "C11923-K2"
+   ],
+   "total_amount_usd": 131.3,
+   "activity_dates": [
+    "2016-12-29",
+    "2016-12-29"
+   ]
+  },
+  "stop_reason": "Further graph steps are unlikely to change the decision.",
+  "tool_calls": 7,
+  "tokens": 0,
+  "latency_s": 0.103
+ },
+ "validation": {
+  "valid": true,
+  "errors": []
+ },
+ "limitations": [
+  "Graph backend is a local in-memory graph built from the organizer CSVs, not TigerGraph (no TigerGraph instance connected).",
+  "No LLM is used in this path; reasoning is deterministic code over graph query results (tokens = 0).",
+  "Card links: only the flagged transaction (case_pack) and closed-case transactions carry canonical card IDs. The K1/K2/K3 suffix rule is not documented by the organizers (D01), so other transactions attach to the customer only.",
+  "Merchant identity (D04) and settlement/authorization status (D05) are not in the data and stay unknown.",
+  "Customer replies are simulated with one fixed default (no reply within 24h).",
+  "Probability weights are a transparent heuristic, not a trained model.",
+  "written_to_graph is false because the case was written to the local graph, not TigerGraph."
+ ],
+ "graph": {
+  "nodes": [
+   {
+    "id": "Transaction:3583368",
+    "type": "Transaction",
+    "label": "3583368"
+   },
+   {
+    "id": "Customer:C11923",
+    "type": "Customer",
+    "label": "C11923"
+   },
+   {
+    "id": "Card:C11923-K2",
+    "type": "Card",
+    "label": "C11923-K2"
+   },
+   {
+    "id": "InvestigationCase:LOCAL-HHG-011-demo",
+    "type": "InvestigationCase",
+    "label": "LOCAL-HHG-011-demo"
+   },
+   {
+    "id": "Transaction:3583140",
+    "type": "Transaction",
+    "label": "3583140"
+   },
+   {
+    "id": "Transaction:3583229",
+    "type": "Transaction",
+    "label": "3583229"
+   },
+   {
+    "id": "Transaction:3583406",
+    "type": "Transaction",
+    "label": "3583406"
+   },
+   {
+    "id": "ClosedCase:CC-0031",
+    "type": "ClosedCase",
+    "label": "CC-0031"
+   },
+   {
+    "id": "ClosedCase:CC-0290",
+    "type": "ClosedCase",
+    "label": "CC-0290"
+   },
+   {
+    "id": "ClosedCase:CC-1056",
+    "type": "ClosedCase",
+    "label": "CC-1056"
+   },
+   {
+    "id": "ClosedCase:CC-2247",
+    "type": "ClosedCase",
+    "label": "CC-2247"
+   },
+   {
+    "id": "ClosedCase:CC-2673",
+    "type": "ClosedCase",
+    "label": "CC-2673"
+   },
+   {
+    "id": "ClosedCase:CC-2799",
+    "type": "ClosedCase",
+    "label": "CC-2799"
+   },
+   {
+    "id": "ClosedCase:CC-3039",
+    "type": "ClosedCase",
+    "label": "CC-3039"
+   },
+   {
+    "id": "ClosedCase:CC-3206",
+    "type": "ClosedCase",
+    "label": "CC-3206"
+   },
+   {
+    "id": "ClosedCase:CC-3905",
+    "type": "ClosedCase",
+    "label": "CC-3905"
+   },
+   {
+    "id": "ClosedCase:CC-4501",
+    "type": "ClosedCase",
+    "label": "CC-4501"
+   },
+   {
+    "id": "ClosedCase:CC-4743",
+    "type": "ClosedCase",
+    "label": "CC-4743"
+   },
+   {
+    "id": "EmailDomain:gmail.com",
+    "type": "EmailDomain",
+    "label": "gmail.com"
+   },
+   {
+    "id": "DeviceProfile:SM-G610F Build/NRD90M|?|chrome 66.0 for android|?",
+    "type": "DeviceProfile",
+    "label": "SM-G610F Build/NRD90M|?|chrome 66.0 for android|?"
+   },
+   {
+    "id": "DeviceProfile:Moto G (5) Build/NPP25.137-93|?|chrome 66.0 for android|?",
+    "type": "DeviceProfile",
+    "label": "Moto G (5) Build/NPP25.137-93|?|chrome 66.0 for android|?"
+   },
+   {
+    "id": "DeviceProfile:LDN-LX3 Build/HUAWEILDN-LX3|?|chrome 66.0 for android|?",
+    "type": "DeviceProfile",
+    "label": "LDN-LX3 Build/HUAWEILDN-LX3|?|chrome 66.0 for android|?"
+   },
+   {
+    "id": "DeviceProfile:SM-G531H Build/LMY48B|?|chrome 64.0 for android|?",
+    "type": "DeviceProfile",
+    "label": "SM-G531H Build/LMY48B|?|chrome 64.0 for android|?"
+   }
+  ],
+  "edges": [
+   {
+    "from": "Transaction:3583140",
+    "to": "Customer:C11923",
+    "type": "MADE_BY"
+   },
+   {
+    "from": "Transaction:3583140",
+    "to": "EmailDomain:gmail.com",
+    "type": "PURCHASER_EMAIL"
+   },
+   {
+    "from": "Transaction:3583140",
+    "to": "DeviceProfile:Moto G (5) Build/NPP25.137-93|?|chrome 66.0 for android|?",
+    "type": "FROM_DEVICE"
+   },
+   {
+    "from": "Transaction:3583229",
+    "to": "Customer:C11923",
+    "type": "MADE_BY"
+   },
+   {
+    "from": "Transaction:3583229",
+    "to": "EmailDomain:gmail.com",
+    "type": "PURCHASER_EMAIL"
+   },
+   {
+    "from": "Transaction:3583229",
+    "to": "DeviceProfile:LDN-LX3 Build/HUAWEILDN-LX3|?|chrome 66.0 for android|?",
+    "type": "FROM_DEVICE"
+   },
+   {
+    "from": "Transaction:3583368",
+    "to": "Customer:C11923",
+    "type": "MADE_BY"
+   },
+   {
+    "from": "Transaction:3583368",
+    "to": "EmailDomain:gmail.com",
+    "type": "PURCHASER_EMAIL"
+   },
+   {
+    "from": "Transaction:3583368",
+    "to": "DeviceProfile:SM-G610F Build/NRD90M|?|chrome 66.0 for android|?",
+    "type": "FROM_DEVICE"
+   },
+   {
+    "from": "Transaction:3583406",
+    "to": "Customer:C11923",
+    "type": "MADE_BY"
+   },
+   {
+    "from": "Transaction:3583406",
+    "to": "EmailDomain:gmail.com",
+    "type": "PURCHASER_EMAIL"
+   },
+   {
+    "from": "Transaction:3583406",
+    "to": "DeviceProfile:SM-G531H Build/LMY48B|?|chrome 64.0 for android|?",
+    "type": "FROM_DEVICE"
+   },
+   {
+    "from": "Customer:C11923",
+    "to": "Card:C11923-K2",
+    "type": "OWNS"
+   },
+   {
+    "from": "Transaction:3583368",
+    "to": "Card:C11923-K2",
+    "type": "ON_CARD"
+   },
+   {
+    "from": "ClosedCase:CC-0031",
+    "to": "Card:C11923-K2",
+    "type": "CASE_ON_CARD"
+   },
+   {
+    "from": "ClosedCase:CC-0290",
+    "to": "Card:C11923-K2",
+    "type": "CASE_ON_CARD"
+   },
+   {
+    "from": "ClosedCase:CC-1056",
+    "to": "Card:C11923-K2",
+    "type": "CASE_ON_CARD"
+   },
+   {
+    "from": "ClosedCase:CC-2247",
+    "to": "Card:C11923-K2",
+    "type": "CASE_ON_CARD"
+   },
+   {
+    "from": "ClosedCase:CC-2673",
+    "to": "Card:C11923-K2",
+    "type": "CASE_ON_CARD"
+   },
+   {
+    "from": "ClosedCase:CC-2799",
+    "to": "Card:C11923-K2",
+    "type": "CASE_ON_CARD"
+   },
+   {
+    "from": "ClosedCase:CC-3039",
+    "to": "Card:C11923-K2",
+    "type": "CASE_ON_CARD"
+   },
+   {
+    "from": "ClosedCase:CC-3206",
+    "to": "Card:C11923-K2",
+    "type": "CASE_ON_CARD"
+   },
+   {
+    "from": "ClosedCase:CC-3905",
+    "to": "Card:C11923-K2",
+    "type": "CASE_ON_CARD"
+   },
+   {
+    "from": "ClosedCase:CC-4501",
+    "to": "Card:C11923-K2",
+    "type": "CASE_ON_CARD"
+   },
+   {
+    "from": "ClosedCase:CC-4743",
+    "to": "Card:C11923-K2",
+    "type": "CASE_ON_CARD"
+   },
+   {
+    "from": "InvestigationCase:LOCAL-HHG-011-demo",
+    "to": "Transaction:3583368",
+    "type": "INVESTIGATES"
+   }
+  ]
+ }
+}

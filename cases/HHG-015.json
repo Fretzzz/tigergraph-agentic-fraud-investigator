@@ -1,0 +1,113 @@
+{
+  "case_id": "HHG-015",
+  "case": {
+    "status": "escalated",
+    "verdict": "uncertain",
+    "fraud_probability": 0.45,
+    "pattern": "none",
+    "pattern_description": "",
+    "affected_txn_ids": [
+      "3464869"
+    ],
+    "first_suspicious_txn_id": "3464869",
+    "connected_card_ids": [],
+    "connected_device_profiles": [],
+    "exposure_usd": 599.94,
+    "evidence": [
+      {
+        "claim": "Flagged 3464869: $599.94 online, region 327, 2016-11-17 14:03:36, device Trident/7.0|Windows 8.1|ie 11.0 for desktop|1680x1050; bank risk score 0.77 used only as an input.",
+        "source": "graph",
+        "ref": "Q01-seed_context",
+        "entity_ids": [
+          "3464869",
+          "C03042-K1"
+        ]
+      },
+      {
+        "claim": "Model alerts like this one (score 0.77) are usually cleared: 0 of 900 model-scored closed cases in organizer history were confirmed fraud. This is a prior, not proof.",
+        "source": "customer",
+        "ref": "trigger:case_pack",
+        "entity_ids": [
+          "3464869"
+        ]
+      },
+      {
+        "claim": "3 prior closed cases on C03042-K1; confirmed patterns: card_not_present_new_device. No prior confirmed fraud transaction was billed in region 327 (prior fraud regions: 264, 204).",
+        "source": "graph",
+        "ref": "Q07-historical_cases",
+        "entity_ids": [
+          "CC-0615",
+          "CC-1313",
+          "CC-3886"
+        ]
+      },
+      {
+        "claim": "No other customer shares region 327 and email domain anonymous.com in the 48h window, and no other customer's fraud case links to this card.",
+        "source": "graph",
+        "ref": "Q08-shared_origin",
+        "entity_ids": [
+          "3464869"
+        ]
+      }
+    ],
+    "similar_prior_cases": [
+      "CC-0615",
+      "CC-1313",
+      "CC-3886"
+    ],
+    "summary": "The bank model scored 3464869 ($599.94 online, billing region 327) at 0.77 for C03042. Against: Model alerts like this one (score 0.77) are usually cleared: 0 of 900 model-scored closed cases in organizer history were confirmed fraud. The evidence leans legitimate but is not strong enough to clear the alert, so the verdict is uncertain at 0.45. The case is escalated under R8; the customer is asked to confirm.",
+    "written_to_graph": false,
+    "graph_case_id": ""
+  },
+  "evidence_requests": [
+    {
+      "type": "customer_validation",
+      "asked_after_step": 8,
+      "assumed_response": "Do you still have the card, and do you recognise the other recent purchases? Assumed: No reply within 24 hours. Fixed simulator default applied to every customer request in this build; it is not chosen per case and carries no hidden label."
+    }
+  ],
+  "next_best_actions": {
+    "initial": [
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "R1: dataset policy obligation"
+      },
+      {
+        "action": "ESCALATE_TO_ANALYST",
+        "route": "auto",
+        "reason": "R8: verdict uncertain and the evidence conflicts"
+      }
+    ],
+    "final": [
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "R1: dataset policy obligation"
+      },
+      {
+        "action": "MONITOR_CARD",
+        "route": "auto",
+        "reason": "R4: no customer reply within 24 hours (simulated)"
+      },
+      {
+        "action": "ESCALATE_TO_ANALYST",
+        "route": "auto",
+        "reason": "R8: verdict uncertain and the evidence conflicts"
+      }
+    ],
+    "what_changed": "The customer was asked (REQ-1); the fixed simulator assumed no reply within 24 hours, so R4 adds MONITOR_CARD. No DECLINE_TRANSACTION because pending-authorization status is not in the data (D05); exposure $599.94 is at or over the R4 $500 escalation threshold."
+  },
+  "sar": {
+    "file": false,
+    "reason": "No FILE_REPORT: exposure $599.94 is under $1,000, no shared device, region cluster or other customer's fraud was found, and fraud is not confirmed or strongly suspected (R2, section 3a).",
+    "narrative": "",
+    "subjects": [],
+    "total_amount_usd": 0,
+    "activity_dates": []
+  },
+  "stop_reason": "Further graph steps are unlikely to change the decision: region, amount, email-domain, device, history and shared-origin checks are done and the remaining questions (customer's answer, merchant identity) are not in the data. Escalated to an analyst with the conflict visible (R8).",
+  "tool_calls": 8,
+  "tokens": 0,
+  "latency_s": 0.011
+}

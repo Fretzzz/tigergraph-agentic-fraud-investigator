@@ -1,0 +1,146 @@
+{
+  "case_id": "HHG-019",
+  "case": {
+    "status": "escalated",
+    "verdict": "uncertain",
+    "fraud_probability": 0.6,
+    "pattern": "none",
+    "pattern_description": "",
+    "affected_txn_ids": [
+      "3503878"
+    ],
+    "first_suspicious_txn_id": "3503878",
+    "connected_card_ids": [],
+    "connected_device_profiles": [],
+    "exposure_usd": 99.92,
+    "evidence": [
+      {
+        "claim": "Flagged 3503878: $99.92 online, region 264, 2016-12-01 17:28:53, device Windows|other|chrome 61.0|1280x720; bank risk score 0.9 used only as an input.",
+        "source": "graph",
+        "ref": "Q01-seed_context",
+        "entity_ids": [
+          "3503878",
+          "C07987-K2"
+        ]
+      },
+      {
+        "claim": "Model alerts like this one (score 0.9) are usually cleared: 0 of 900 model-scored closed cases in organizer history were confirmed fraud. This is a prior, not proof.",
+        "source": "customer",
+        "ref": "trigger:case_pack",
+        "entity_ids": [
+          "3503878"
+        ]
+      },
+      {
+        "claim": "1 other-customer transaction(s) share region 264 and the uncommon email domain verizon.net in the 48h window: 3504742.",
+        "source": "graph",
+        "ref": "Q08-shared_origin",
+        "entity_ids": [
+          "3503878"
+        ]
+      },
+      {
+        "claim": "4 prior closed cases on C07987-K2; confirmed patterns: out_of_region_use, card_not_present_fraud. No prior confirmed fraud transaction was billed in region 264 (prior fraud regions: 448, 272, 184).",
+        "source": "graph",
+        "ref": "Q07-historical_cases",
+        "entity_ids": [
+          "CC-2011",
+          "CC-2087",
+          "CC-2860",
+          "CC-5026"
+        ]
+      }
+    ],
+    "similar_prior_cases": [
+      "CC-2011",
+      "CC-2087",
+      "CC-2860",
+      "CC-5026"
+    ],
+    "summary": "The bank model scored 3503878 ($99.92 online, billing region 264) at 0.9 for C07987. For fraud: 1 other-customer transaction(s) share region 264 and the uncommon email domain verizon.net in the 48h window: 3504742. Against: Model alerts like this one (score 0.9) are usually cleared: 0 of 900 model-scored closed cases in organizer history were confirmed fraud. Evidence conflicts, so the verdict is uncertain at 0.6. The case is escalated under R8.",
+    "written_to_graph": false,
+    "graph_case_id": ""
+  },
+  "evidence_requests": [
+    {
+      "type": "customer_validation",
+      "asked_after_step": 8,
+      "assumed_response": "Do you still have the card, and do you recognise the other recent purchases? Assumed: No reply within 24 hours. Fixed simulator default applied to every customer request in this build; it is not chosen per case and carries no hidden label."
+    }
+  ],
+  "next_best_actions": {
+    "initial": [
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "R6: dataset policy obligation"
+      },
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "Policy section 5 and R8: evidence conflicts; ask the customer: Do you still have the card, and do you recognise the other recent purchases?"
+      },
+      {
+        "action": "MONITOR_CONNECTED_CARDS",
+        "route": "auto",
+        "reason": "R6: dataset policy obligation"
+      },
+      {
+        "action": "ESCALATE_TO_ANALYST",
+        "route": "auto",
+        "reason": "R8: verdict uncertain and the evidence conflicts"
+      },
+      {
+        "action": "FILE_REPORT",
+        "route": "L2",
+        "reason": "R6: dataset policy obligation"
+      }
+    ],
+    "final": [
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "R6: dataset policy obligation"
+      },
+      {
+        "action": "MONITOR_CARD",
+        "route": "auto",
+        "reason": "R4: no customer reply within 24 hours (simulated)"
+      },
+      {
+        "action": "MONITOR_CONNECTED_CARDS",
+        "route": "auto",
+        "reason": "R6: dataset policy obligation"
+      },
+      {
+        "action": "ESCALATE_TO_ANALYST",
+        "route": "auto",
+        "reason": "R8: verdict uncertain and the evidence conflicts"
+      },
+      {
+        "action": "FILE_REPORT",
+        "route": "L2",
+        "reason": "R6: dataset policy obligation"
+      }
+    ],
+    "what_changed": "The customer was asked (REQ-1); the fixed simulator assumed no reply within 24 hours, so R4 adds MONITOR_CARD. No DECLINE_TRANSACTION because pending-authorization status is not in the data (D05); exposure $99.92 is under the R4 $500 escalation threshold."
+  },
+  "sar": {
+    "file": true,
+    "reason": "R2/R6",
+    "narrative": "",
+    "subjects": [
+      "C07987",
+      "C07987-K2"
+    ],
+    "total_amount_usd": 99.92,
+    "activity_dates": [
+      "2016-12-01",
+      "2016-12-01"
+    ]
+  },
+  "stop_reason": "Further graph steps are unlikely to change the decision: region, amount, email-domain, device, history and shared-origin checks are done and the remaining questions (customer's answer, merchant identity) are not in the data. Escalated to an analyst with the conflict visible (R8).",
+  "tool_calls": 8,
+  "tokens": 0,
+  "latency_s": 0.014
+}

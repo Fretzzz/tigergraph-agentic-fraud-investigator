@@ -1,0 +1,259 @@
+[
+ {
+  "id": "HHG-001",
+  "trigger": "risk_score",
+  "verdict": "uncertain",
+  "p": 0.3,
+  "status": "open",
+  "backend": "local-graph",
+  "final": [
+   "VERIFY_WITH_CUSTOMER",
+   "MONITOR_CARD"
+  ]
+ },
+ {
+  "id": "HHG-002",
+  "trigger": "risk_score",
+  "verdict": "uncertain",
+  "p": 0.45,
+  "status": "open",
+  "backend": "local-graph",
+  "final": [
+   "VERIFY_WITH_CUSTOMER",
+   "MONITOR_CARD"
+  ]
+ },
+ {
+  "id": "HHG-003",
+  "trigger": "customer_report",
+  "verdict": "uncertain",
+  "p": 0.55,
+  "status": "escalated",
+  "backend": "tigergraph",
+  "final": [
+   "CREATE_CASE",
+   "MONITOR_CARD",
+   "BLOCK_CARD",
+   "ESCALATE_TO_ANALYST"
+  ]
+ },
+ {
+  "id": "HHG-004",
+  "trigger": "customer_report",
+  "verdict": "uncertain",
+  "p": 0.65,
+  "status": "open",
+  "backend": "local-graph",
+  "final": [
+   "CREATE_CASE",
+   "MONITOR_CARD",
+   "BLOCK_CARD"
+  ]
+ },
+ {
+  "id": "HHG-005",
+  "trigger": "risk_score",
+  "verdict": "uncertain",
+  "p": 0.35,
+  "status": "open",
+  "backend": "local-graph",
+  "final": [
+   "VERIFY_WITH_CUSTOMER",
+   "MONITOR_CARD"
+  ]
+ },
+ {
+  "id": "HHG-006",
+  "trigger": "customer_report",
+  "verdict": "uncertain",
+  "p": 0.55,
+  "status": "escalated",
+  "backend": "local-graph",
+  "final": [
+   "CREATE_CASE",
+   "MONITOR_CARD",
+   "BLOCK_CARD",
+   "ESCALATE_TO_ANALYST"
+  ]
+ },
+ {
+  "id": "HHG-007",
+  "trigger": "risk_score",
+  "verdict": "uncertain",
+  "p": 0.35,
+  "status": "open",
+  "backend": "local-graph",
+  "final": [
+   "VERIFY_WITH_CUSTOMER",
+   "MONITOR_CARD"
+  ]
+ },
+ {
+  "id": "HHG-008",
+  "trigger": "customer_report",
+  "verdict": "uncertain",
+  "p": 0.65,
+  "status": "open",
+  "backend": "local-graph",
+  "final": [
+   "CREATE_CASE",
+   "MONITOR_CARD",
+   "BLOCK_CARD"
+  ]
+ },
+ {
+  "id": "HHG-009",
+  "trigger": "customer_report",
+  "verdict": "uncertain",
+  "p": 0.65,
+  "status": "open",
+  "backend": "local-graph",
+  "final": [
+   "CREATE_CASE",
+   "MONITOR_CARD",
+   "BLOCK_CARD"
+  ]
+ },
+ {
+  "id": "HHG-010",
+  "trigger": "risk_score",
+  "verdict": "uncertain",
+  "p": 0.35,
+  "status": "escalated",
+  "backend": "local-graph",
+  "final": [
+   "VERIFY_WITH_CUSTOMER",
+   "MONITOR_CARD",
+   "ESCALATE_TO_ANALYST"
+  ]
+ },
+ {
+  "id": "HHG-011",
+  "trigger": "customer_report",
+  "verdict": "uncertain",
+  "p": 0.8,
+  "status": "open",
+  "backend": "local-graph",
+  "final": [
+   "CREATE_CASE",
+   "MONITOR_CARD",
+   "BLOCK_CARD",
+   "MONITOR_CONNECTED_CARDS",
+   "FILE_REPORT"
+  ]
+ },
+ {
+  "id": "HHG-012",
+  "trigger": "risk_score",
+  "verdict": "uncertain",
+  "p": 0.3,
+  "status": "open",
+  "backend": "local-graph",
+  "final": [
+   "VERIFY_WITH_CUSTOMER",
+   "MONITOR_CARD"
+  ]
+ },
+ {
+  "id": "HHG-013",
+  "trigger": "risk_score",
+  "verdict": "uncertain",
+  "p": 0.45,
+  "status": "open",
+  "backend": "local-graph",
+  "final": [
+   "VERIFY_WITH_CUSTOMER",
+   "MONITOR_CARD"
+  ]
+ },
+ {
+  "id": "HHG-014",
+  "trigger": "analyst_request",
+  "verdict": "uncertain",
+  "p": 0.4,
+  "status": "open",
+  "backend": "local-graph",
+  "final": [
+   "MONITOR_CARD"
+  ]
+ },
+ {
+  "id": "HHG-015",
+  "trigger": "risk_score",
+  "verdict": "uncertain",
+  "p": 0.45,
+  "status": "escalated",
+  "backend": "local-graph",
+  "final": [
+   "VERIFY_WITH_CUSTOMER",
+   "MONITOR_CARD",
+   "ESCALATE_TO_ANALYST"
+  ]
+ },
+ {
+  "id": "HHG-016",
+  "trigger": "customer_report",
+  "verdict": "uncertain",
+  "p": 0.65,
+  "status": "open",
+  "backend": "local-graph",
+  "final": [
+   "CREATE_CASE",
+   "MONITOR_CARD",
+   "BLOCK_CARD"
+  ]
+ },
+ {
+  "id": "HHG-017",
+  "trigger": "risk_score",
+  "verdict": "uncertain",
+  "p": 0.45,
+  "status": "open",
+  "backend": "local-graph",
+  "final": [
+   "VERIFY_WITH_CUSTOMER",
+   "MONITOR_CARD"
+  ]
+ },
+ {
+  "id": "HHG-018",
+  "trigger": "customer_report",
+  "verdict": "uncertain",
+  "p": 0.5,
+  "status": "escalated",
+  "backend": "local-graph",
+  "final": [
+   "CREATE_CASE",
+   "MONITOR_CARD",
+   "BLOCK_CARD",
+   "ESCALATE_TO_ANALYST"
+  ]
+ },
+ {
+  "id": "HHG-019",
+  "trigger": "risk_score",
+  "verdict": "uncertain",
+  "p": 0.6,
+  "status": "escalated",
+  "backend": "local-graph",
+  "final": [
+   "CREATE_CASE",
+   "MONITOR_CARD",
+   "MONITOR_CONNECTED_CARDS",
+   "ESCALATE_TO_ANALYST",
+   "FILE_REPORT"
+  ]
+ },
+ {
+  "id": "HHG-020",
+  "trigger": "risk_score",
+  "verdict": "uncertain",
+  "p": 0.35,
+  "status": "open",
+  "backend": "local-graph",
+  "final": [
+   "VERIFY_WITH_CUSTOMER",
+   "MONITOR_CARD"
+  ]
+ }
+]

@@ -1,0 +1,105 @@
+{
+  "case_id": "HHG-016",
+  "case": {
+    "status": "open",
+    "verdict": "uncertain",
+    "fraud_probability": 0.65,
+    "pattern": "none",
+    "pattern_description": "",
+    "affected_txn_ids": [
+      "3534820"
+    ],
+    "first_suspicious_txn_id": "3534820",
+    "connected_card_ids": [],
+    "connected_device_profiles": [],
+    "exposure_usd": 59.67,
+    "evidence": [
+      {
+        "claim": "Flagged 3534820: $59.67 online, region none, 2016-12-11 22:39:08, device Windows|?|edge 16.0|?; bank risk score 0.37 used only as an input.",
+        "source": "graph",
+        "ref": "Q01-seed_context",
+        "entity_ids": [
+          "3534820",
+          "C09988-K1"
+        ]
+      },
+      {
+        "claim": "Customer C09988 denies 3534820. In organizer history, 4656 of 4656 cardholder-reported closed cases were confirmed fraud (history only contains closed outcomes, so this is a prior, not proof).",
+        "source": "customer",
+        "ref": "trigger:case_pack",
+        "entity_ids": [
+          "3534820",
+          "C09988"
+        ]
+      },
+      {
+        "claim": "No other customer shares region null and email domain hotmail.com in the 48h window, and no other customer's fraud case links to this card.",
+        "source": "graph",
+        "ref": "Q07-shared_origin",
+        "entity_ids": [
+          "3534820"
+        ]
+      }
+    ],
+    "similar_prior_cases": [],
+    "summary": "C09988 disputes 3534820, a $59.67 online purchase. For fraud: Customer C09988 denies 3534820. The evidence leans toward fraud but is not strong enough to confirm it, so the verdict is uncertain at 0.65. The card block is recommended under R2 and waits for L1 approval.",
+    "written_to_graph": false,
+    "graph_case_id": ""
+  },
+  "evidence_requests": [
+    {
+      "type": "customer_validation",
+      "asked_after_step": 7,
+      "assumed_response": "Do you still have the card, and do you recognise the other recent purchases? Assumed: No reply within 24 hours. Fixed simulator default applied to every customer request in this build; it is not chosen per case and carries no hidden label."
+    }
+  ],
+  "next_best_actions": {
+    "initial": [
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "R2 and section 3a: customer disputes a charge"
+      },
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "Policy section 5 and R8: evidence conflicts; ask the customer: Do you still have the card, and do you recognise the other recent purchases?"
+      },
+      {
+        "action": "BLOCK_CARD",
+        "route": "L1",
+        "reason": "R2: customer denied the transaction; exposure $59.67 is at most $2,500, so L1 approval"
+      }
+    ],
+    "final": [
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "R2 and section 3a: customer disputes a charge"
+      },
+      {
+        "action": "MONITOR_CARD",
+        "route": "auto",
+        "reason": "R4: no customer reply within 24 hours (simulated)"
+      },
+      {
+        "action": "BLOCK_CARD",
+        "route": "L1",
+        "reason": "R2: customer denied the transaction; exposure $59.67 is at most $2,500, so L1 approval"
+      }
+    ],
+    "what_changed": "The customer was asked (REQ-1); the fixed simulator assumed no reply within 24 hours, so R4 adds MONITOR_CARD. No DECLINE_TRANSACTION because pending-authorization status is not in the data (D05); exposure $59.67 is under the R4 $500 escalation threshold."
+  },
+  "sar": {
+    "file": false,
+    "reason": "No FILE_REPORT: exposure $59.67 is under $1,000, no shared device, region cluster or other customer's fraud was found, and fraud is not confirmed or strongly suspected (R2, section 3a).",
+    "narrative": "",
+    "subjects": [],
+    "total_amount_usd": 0,
+    "activity_dates": []
+  },
+  "stop_reason": "Further graph steps are unlikely to change the decision.",
+  "tool_calls": 7,
+  "tokens": 0,
+  "latency_s": 0.011
+}

@@ -1,0 +1,838 @@
+{
+ "runId": "demo",
+ "caseId": "HHG-017",
+ "steps": [
+  {
+   "n": 1,
+   "question": "What is the flagged transaction?",
+   "receiptId": "Q01-seed_context",
+   "finding": "3450629: $100.09 online in billing region 204 at 2016-11-11 23:46:24, purchaser email domain anonymous.com, bank risk score 0.57 (input, not a verdict). Device record: Windows|Windows 10|chrome 65.0|1920x1080."
+  },
+  {
+   "n": 2,
+   "question": "Has C04570 used billing region 204 before?",
+   "receiptId": "Q02-region_history",
+   "finding": "5 of 52 prior transactions were in region 204 (rank 5 of 16 regions), first 2016-07-28 18:12:47, last 2016-11-11 22:58:57."
+  },
+  {
+   "n": 3,
+   "question": "Is purchaser email domain anonymous.com new for this customer?",
+   "receiptId": "Q03-email_domain_history",
+   "finding": "26 uses before 2016-11-11; same-day uses: 3450436 ($100.09, 22:36:50, score 0.05), 3450503 ($99.96, 22:58:57, score 0.1), 3450629 ($100.09, 23:46:24, score 0.57)."
+  },
+  {
+   "n": 4,
+   "question": "Is $100.09 typical for C04570?",
+   "receiptId": "Q04-amount_profile",
+   "finding": "10 of 52 prior transactions were within $1.00 of $100.09 (0 in person); median prior amount $200.00."
+  },
+  {
+   "n": 5,
+   "question": "What happened on this customer in the 48 hours before the case opened?",
+   "receiptId": "Q05-customer_timeline",
+   "finding": "3 transactions (3 online); 0 online authorizations under $5 in the hour before the flagged transaction."
+  },
+  {
+   "n": 6,
+   "question": "Do this customer's device profiles connect to other customers in scope?",
+   "receiptId": "Q06-device_context",
+   "finding": "19 device profiles on 34 identity-linked transactions; shared with other in-scope customers: 0. The flagged transaction has device record."
+  },
+  {
+   "n": 7,
+   "question": "What prior cases exist on C04570-K1?",
+   "receiptId": "Q07-historical_cases",
+   "finding": "CC-1383 cleared none ($0.00)"
+  },
+  {
+   "n": 8,
+   "question": "Does this connect to other customers or cards?",
+   "receiptId": "Q08-shared_origin",
+   "finding": "24 other-customer transactions share region 204 and email domain anonymous.com in the 48h window (364 region transactions from 148 other customers overall); other-customer closed fraud cases linked: 0."
+  }
+ ],
+ "factors": [
+  {
+   "id": "model_score_prior",
+   "direction": "supports_legitimate",
+   "weight": 0.05,
+   "receiptId": "trigger:case_pack",
+   "claim": "Model alerts like this one (score 0.57) are usually cleared: 0 of 900 model-scored closed cases in organizer history were confirmed fraud. This is a prior, not proof."
+  }
+ ],
+ "receipts": [
+  {
+   "receiptId": "Q01-seed_context",
+   "query": "seed_context",
+   "params": {
+    "txnId": "3450629"
+   },
+   "result": {
+    "txn": {
+     "amount_cents": 10009,
+     "card_fields": {
+      "card1": "20749",
+      "card2": "583.0",
+      "card3": "150.0",
+      "card4": "mastercard",
+      "card5": "135.0",
+      "card6": "credit"
+     },
+     "channel": "online",
+     "country": "87",
+     "customer_id": "C04570",
+     "dist1": null,
+     "id": "3450629",
+     "product_cd": "R",
+     "purchaser_email_domain": "anonymous.com",
+     "recipient_email_domain": "anonymous.com",
+     "region": "204",
+     "risk_score": 0.57,
+     "ts": "2016-11-11 23:46:24"
+    },
+    "cards": [
+     "C04570-K1"
+    ],
+    "device": "Windows|Windows 10|chrome 65.0|1920x1080"
+   },
+   "coverage": {
+    "complete": true,
+    "returned": 1
+   },
+   "backend": "local-graph"
+  },
+  {
+   "receiptId": "Q02-region_history",
+   "query": "region_history",
+   "params": {
+    "customerId": "C04570",
+    "region": "204",
+    "before": "2016-11-11 23:46:24"
+   },
+   "result": {
+    "priorTransactions": 52,
+    "inRegion": 5,
+    "distinctRegions": 16,
+    "regionRank": 5,
+    "firstSeen": "2016-07-28 18:12:47",
+    "lastSeen": "2016-11-11 22:58:57",
+    "sampleIds": [
+     "3117007",
+     "3118964",
+     "3346639",
+     "3450436",
+     "3450503"
+    ]
+   },
+   "coverage": {
+    "complete": true,
+    "returned": 5
+   },
+   "backend": "local-graph"
+  },
+  {
+   "receiptId": "Q03-email_domain_history",
+   "query": "email_domain_history",
+   "params": {
+    "customerId": "C04570",
+    "domain": "anonymous.com",
+    "before": "2016-11-12 00:46:24",
+    "sameDayFrom": "2016-11-11 00:00:00"
+   },
+   "result": {
+    "priorUses": 26,
+    "sameDay": [
+     {
+      "id": "3450436",
+      "ts": "2016-11-11 22:36:50",
+      "amount_cents": 10009,
+      "region": "204",
+      "risk_score": 0.05,
+      "channel": "online"
+     },
+     {
+      "id": "3450503",
+      "ts": "2016-11-11 22:58:57",
+      "amount_cents": 9996,
+      "region": "204",
+      "risk_score": 0.1,
+      "channel": "online"
+     },
+     {
+      "id": "3450629",
+      "ts": "2016-11-11 23:46:24",
+      "amount_cents": 10009,
+      "region": "204",
+      "risk_score": 0.57,
+      "channel": "online"
+     }
+    ]
+   },
+   "coverage": {
+    "complete": true,
+    "returned": 29
+   },
+   "backend": "local-graph"
+  },
+  {
+   "receiptId": "Q04-amount_profile",
+   "query": "amount_profile",
+   "params": {
+    "customerId": "C04570",
+    "cents": 10009,
+    "before": "2016-11-11 23:46:24",
+    "toleranceCents": 100
+   },
+   "result": {
+    "priorTransactions": 52,
+    "withinTolerance": 10,
+    "inPersonWithinTolerance": 0,
+    "medianCents": 20000,
+    "channels": {
+     "online": 35,
+     "in_person": 17
+    },
+    "sameRegionExamples": [
+     {
+      "id": "3189958",
+      "amount_cents": 10008,
+      "region": "264",
+      "ts": "2016-08-20 01:08:00"
+     },
+     {
+      "id": "3403833",
+      "amount_cents": 9994,
+      "region": "420",
+      "ts": "2016-10-27 21:32:25"
+     },
+     {
+      "id": "3450436",
+      "amount_cents": 10009,
+      "region": "204",
+      "ts": "2016-11-11 22:36:50"
+     },
+     {
+      "id": "3450503",
+      "amount_cents": 9996,
+      "region": "204",
+      "ts": "2016-11-11 22:58:57"
+     }
+    ]
+   },
+   "coverage": {
+    "complete": true,
+    "returned": 10
+   },
+   "backend": "local-graph"
+  },
+  {
+   "receiptId": "Q05-customer_timeline",
+   "query": "customer_timeline",
+   "params": {
+    "customerId": "C04570",
+    "from": "2016-11-09 23:46:24",
+    "to": "2016-11-12 00:46:24"
+   },
+   "result": [
+    {
+     "amount_cents": 10009,
+     "card_fields": {
+      "card1": "20749",
+      "card2": "583.0",
+      "card3": "150.0",
+      "card4": "mastercard",
+      "card5": "135.0",
+      "card6": "credit"
+     },
+     "channel": "online",
+     "country": "87",
+     "customer_id": "C04570",
+     "dist1": null,
+     "id": "3450436",
+     "product_cd": "R",
+     "purchaser_email_domain": "anonymous.com",
+     "recipient_email_domain": "anonymous.com",
+     "region": "204",
+     "risk_score": 0.05,
+     "ts": "2016-11-11 22:36:50"
+    },
+    {
+     "amount_cents": 9996,
+     "card_fields": {
+      "card1": "20749",
+      "card2": "583.0",
+      "card3": "150.0",
+      "card4": "mastercard",
+      "card5": "135.0",
+      "card6": "credit"
+     },
+     "channel": "online",
+     "country": "87",
+     "customer_id": "C04570",
+     "dist1": null,
+     "id": "3450503",
+     "product_cd": "R",
+     "purchaser_email_domain": "anonymous.com",
+     "recipient_email_domain": "anonymous.com",
+     "region": "204",
+     "risk_score": 0.1,
+     "ts": "2016-11-11 22:58:57"
+    },
+    {
+     "amount_cents": 10009,
+     "card_fields": {
+      "card1": "20749",
+      "card2": "583.0",
+      "card3": "150.0",
+      "card4": "mastercard",
+      "card5": "135.0",
+      "card6": "credit"
+     },
+     "channel": "online",
+     "country": "87",
+     "customer_id": "C04570",
+     "dist1": null,
+     "id": "3450629",
+     "product_cd": "R",
+     "purchaser_email_domain": "anonymous.com",
+     "recipient_email_domain": "anonymous.com",
+     "region": "204",
+     "risk_score": 0.57,
+     "ts": "2016-11-11 23:46:24"
+    }
+   ],
+   "coverage": {
+    "complete": true,
+    "returned": 3
+   },
+   "backend": "local-graph"
+  },
+  {
+   "receiptId": "Q06-device_context",
+   "query": "device_context",
+   "params": {
+    "customerId": "C04570",
+    "before": "2016-11-12 00:46:24"
+   },
+   "result": {
+    "onlineWithIdentity": 34,
+    "distinctProfiles": 19,
+    "sharedWithOtherCustomersInSlice": []
+   },
+   "coverage": {
+    "complete": true,
+    "returned": 19
+   },
+   "backend": "local-graph"
+  },
+  {
+   "receiptId": "Q07-historical_cases",
+   "query": "historical_cases",
+   "params": {
+    "cardId": "C04570-K1",
+    "customerId": "C04570"
+   },
+   "result": [
+    {
+     "actions_taken": [
+      "VERIFY_WITH_CUSTOMER",
+      "CLOSE_NO_FRAUD"
+     ],
+     "analyst_notes": "Case CC-1383: model scored a $99.98 transaction at 0.91. Cardholder confirmed travel to the billing region in question. Alert cleared.",
+     "card_id": "C04570-K1",
+     "closed_at": "2016-08-01 00:30:41",
+     "connected_card_ids": [],
+     "customer_id": "C04570",
+     "exposure_cents": 0,
+     "first_fraud_txn_id": null,
+     "id": "CC-1383",
+     "opened_at": "2016-07-29 01:30:41",
+     "outcome": "cleared",
+     "pattern": "none",
+     "report_filed": false,
+     "txn_ids": [
+      "3118964"
+     ]
+    }
+   ],
+   "coverage": {
+    "complete": true,
+    "returned": 1
+   },
+   "backend": "local-graph"
+  },
+  {
+   "receiptId": "Q08-shared_origin",
+   "query": "shared_origin",
+   "params": {
+    "txnId": "3450629"
+   },
+   "result": {
+    "otherCustomerTxnsSharingRegionAndEmail": [
+     "3445585",
+     "3445658",
+     "3445852",
+     "3446373",
+     "3446663",
+     "3446738",
+     "3446747",
+     "3446806",
+     "3446910",
+     "3446984",
+     "3447081",
+     "3447473",
+     "3447560",
+     "3447585",
+     "3447602",
+     "3447669",
+     "3447941",
+     "3448588",
+     "3448954",
+     "3448966",
+     "3448996",
+     "3449012",
+     "3449023",
+     "3449746"
+    ],
+    "otherCustomerFraudCases": []
+   },
+   "coverage": {
+    "complete": true,
+    "returned": 24
+   },
+   "backend": "local-graph"
+  }
+ ],
+ "facts": {
+  "initial": {
+   "singleSignal": {
+    "fact": "true",
+    "evidenceReceiptIds": [
+     "Q01-seed_context"
+    ],
+    "requestIds": []
+   },
+   "customerDenied": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [
+     "trigger:case_pack"
+    ],
+    "requestIds": []
+   },
+   "customerConfirmed": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [],
+    "requestIds": []
+   },
+   "noReplyAfter24Hours": {
+    "fact": "false",
+    "evidenceReceiptIds": [],
+    "requestIds": []
+   },
+   "pendingAuthorization": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [],
+    "requestIds": []
+   },
+   "testingSequence": {
+    "fact": "false",
+    "evidenceReceiptIds": [
+     "Q05-customer_timeline"
+    ],
+    "requestIds": []
+   },
+   "purchaseOver100Cleared": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [],
+    "requestIds": []
+   },
+   "sharedOrigin": {
+    "fact": "false",
+    "evidenceReceiptIds": [
+     "Q08-shared_origin",
+     "Q06-device_context"
+    ],
+    "requestIds": []
+   },
+   "recurringPatternMatch": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [
+     "Q04-amount_profile"
+    ],
+    "requestIds": []
+   },
+   "coordinatedUndocumentedAbuse": {
+    "fact": "false",
+    "evidenceReceiptIds": [
+     "Q08-shared_origin"
+    ],
+    "requestIds": []
+   },
+   "multipleCardsConfirmedFraud": {
+    "fact": "false",
+    "evidenceReceiptIds": [
+     "Q07-historical_cases"
+    ],
+    "requestIds": []
+   },
+   "credentialsConfirmedCompromised": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [
+     "Q07-historical_cases"
+    ],
+    "requestIds": []
+   },
+   "exposureCents": 10009,
+   "evidenceConflict": {
+    "fact": "false",
+    "evidenceReceiptIds": [
+     "trigger:case_pack"
+    ],
+    "requestIds": []
+   }
+  },
+  "final": {
+   "singleSignal": {
+    "fact": "true",
+    "evidenceReceiptIds": [
+     "Q01-seed_context"
+    ],
+    "requestIds": []
+   },
+   "customerDenied": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [
+     "trigger:case_pack"
+    ],
+    "requestIds": []
+   },
+   "customerConfirmed": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [],
+    "requestIds": []
+   },
+   "noReplyAfter24Hours": {
+    "fact": "true",
+    "evidenceReceiptIds": [],
+    "requestIds": [
+     "REQ-1"
+    ]
+   },
+   "pendingAuthorization": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [],
+    "requestIds": []
+   },
+   "testingSequence": {
+    "fact": "false",
+    "evidenceReceiptIds": [
+     "Q05-customer_timeline"
+    ],
+    "requestIds": []
+   },
+   "purchaseOver100Cleared": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [],
+    "requestIds": []
+   },
+   "sharedOrigin": {
+    "fact": "false",
+    "evidenceReceiptIds": [
+     "Q08-shared_origin",
+     "Q06-device_context"
+    ],
+    "requestIds": []
+   },
+   "recurringPatternMatch": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [
+     "Q04-amount_profile"
+    ],
+    "requestIds": []
+   },
+   "coordinatedUndocumentedAbuse": {
+    "fact": "false",
+    "evidenceReceiptIds": [
+     "Q08-shared_origin"
+    ],
+    "requestIds": []
+   },
+   "multipleCardsConfirmedFraud": {
+    "fact": "false",
+    "evidenceReceiptIds": [
+     "Q07-historical_cases"
+    ],
+    "requestIds": []
+   },
+   "credentialsConfirmedCompromised": {
+    "fact": "unknown",
+    "evidenceReceiptIds": [
+     "Q07-historical_cases"
+    ],
+    "requestIds": []
+   },
+   "exposureCents": 10009,
+   "evidenceConflict": {
+    "fact": "false",
+    "evidenceReceiptIds": [
+     "trigger:case_pack"
+    ],
+    "requestIds": []
+   }
+  }
+ },
+ "assessment": {
+  "verdict": "uncertain",
+  "fraudProbability": 0.45,
+  "pattern": "none",
+  "patternDescription": "",
+  "affectedTransactionCandidates": [
+   "3450629"
+  ],
+  "evidenceReceiptIds": [],
+  "counterevidenceReceiptIds": [
+   "trigger:case_pack"
+  ],
+  "unresolvedQuestions": [
+   "Did the customer make same-day transaction(s) 3450436, 3450503?",
+   "Merchant identity is absent (D04), so a same-merchant recurring charge cannot be confirmed or ruled out.",
+   "Settlement/authorization status is absent (D05)."
+  ],
+  "suspicionBasis": "",
+  "nextInvestigativeQuestion": "Ask the customer about the other same-day transaction on the new email domain.",
+  "suggestedStopReason": ""
+ },
+ "decisions": {
+  "initial": [
+   {
+    "action": "VERIFY_WITH_CUSTOMER",
+    "route": "auto",
+    "reason": "R1: dataset policy obligation",
+    "ruleIds": [
+     "R1"
+    ]
+   }
+  ],
+  "final": [
+   {
+    "action": "VERIFY_WITH_CUSTOMER",
+    "route": "auto",
+    "reason": "R1: dataset policy obligation",
+    "ruleIds": [
+     "R1"
+    ]
+   },
+   {
+    "action": "MONITOR_CARD",
+    "route": "auto",
+    "reason": "R4: dataset policy obligation",
+    "ruleIds": [
+     "R4"
+    ]
+   }
+  ],
+  "initialConflicts": [],
+  "missingPremises": [
+   "customerDenied",
+   "customerConfirmed",
+   "pendingAuthorization",
+   "recurringPatternMatch",
+   "multipleCardsConfirmedFraud",
+   "credentialsConfirmedCompromised"
+  ]
+ },
+ "simulated": [
+  {
+   "requestId": "REQ-1",
+   "type": "customer_validation",
+   "question": "Did you make 3450436 ($100.09 at 22:36), 3450503 ($99.96 at 22:58) on 2016-11-11, and do you still have the card?",
+   "assumedResponse": "No reply within 24 hours. Fixed simulator default applied to every customer request in this build; it is not chosen per case and carries no hidden label.",
+   "rule": "Policy section 5"
+  }
+ ],
+ "localCaseWrite": {
+  "vertexId": "LOCAL-HHG-017-demo",
+  "readbackVerified": true,
+  "backend": "local-graph"
+ },
+ "graphBackend": "local-graph",
+ "validation": {
+  "valid": true,
+  "errors": []
+ },
+ "limitations": [
+  "Graph backend is a local in-memory graph built from the organizer CSVs, not TigerGraph (no TigerGraph instance connected).",
+  "No LLM is used in this path; reasoning is deterministic code over graph query results (tokens = 0).",
+  "Card links: only the flagged transaction (case_pack) and closed-case transactions carry canonical card IDs. The K1/K2/K3 suffix rule is not documented by the organizers (D01), so other transactions attach to the customer only.",
+  "Merchant identity (D04) and settlement/authorization status (D05) are not in the data and stay unknown.",
+  "Customer replies are simulated with one fixed default (no reply within 24h).",
+  "Probability weights are a transparent heuristic, not a trained model.",
+  "written_to_graph is false because the case was written to the local graph, not TigerGraph."
+ ],
+ "graph": {
+  "nodes": [
+   {
+    "id": "Transaction:3450629",
+    "type": "Transaction",
+    "label": "3450629"
+   },
+   {
+    "id": "Customer:C04570",
+    "type": "Customer",
+    "label": "C04570"
+   },
+   {
+    "id": "Card:C04570-K1",
+    "type": "Card",
+    "label": "C04570-K1"
+   },
+   {
+    "id": "InvestigationCase:LOCAL-HHG-017-demo",
+    "type": "InvestigationCase",
+    "label": "LOCAL-HHG-017-demo"
+   },
+   {
+    "id": "Transaction:3450436",
+    "type": "Transaction",
+    "label": "3450436"
+   },
+   {
+    "id": "Transaction:3450503",
+    "type": "Transaction",
+    "label": "3450503"
+   },
+   {
+    "id": "ClosedCase:CC-1383",
+    "type": "ClosedCase",
+    "label": "CC-1383"
+   },
+   {
+    "id": "BillingRegion:204",
+    "type": "BillingRegion",
+    "label": "region 204"
+   },
+   {
+    "id": "EmailDomain:anonymous.com",
+    "type": "EmailDomain",
+    "label": "anonymous.com"
+   },
+   {
+    "id": "DeviceProfile:Windows|Windows 10|chrome 65.0|1920x1080",
+    "type": "DeviceProfile",
+    "label": "Windows|Windows 10|chrome 65.0|1920x1080"
+   }
+  ],
+  "edges": [
+   {
+    "from": "Transaction:3450436",
+    "to": "Customer:C04570",
+    "type": "MADE_BY"
+   },
+   {
+    "from": "Transaction:3450436",
+    "to": "BillingRegion:204",
+    "type": "BILLED_IN"
+   },
+   {
+    "from": "Transaction:3450436",
+    "to": "EmailDomain:anonymous.com",
+    "type": "PURCHASER_EMAIL"
+   },
+   {
+    "from": "Transaction:3450436",
+    "to": "DeviceProfile:Windows|Windows 10|chrome 65.0|1920x1080",
+    "type": "FROM_DEVICE"
+   },
+   {
+    "from": "Transaction:3450503",
+    "to": "Customer:C04570",
+    "type": "MADE_BY"
+   },
+   {
+    "from": "Transaction:3450503",
+    "to": "BillingRegion:204",
+    "type": "BILLED_IN"
+   },
+   {
+    "from": "Transaction:3450503",
+    "to": "EmailDomain:anonymous.com",
+    "type": "PURCHASER_EMAIL"
+   },
+   {
+    "from": "Transaction:3450503",
+    "to": "DeviceProfile:Windows|Windows 10|chrome 65.0|1920x1080",
+    "type": "FROM_DEVICE"
+   },
+   {
+    "from": "Transaction:3450629",
+    "to": "Customer:C04570",
+    "type": "MADE_BY"
+   },
+   {
+    "from": "Transaction:3450629",
+    "to": "BillingRegion:204",
+    "type": "BILLED_IN"
+   },
+   {
+    "from": "Transaction:3450629",
+    "to": "EmailDomain:anonymous.com",
+    "type": "PURCHASER_EMAIL"
+   },
+   {
+    "from": "Transaction:3450629",
+    "to": "DeviceProfile:Windows|Windows 10|chrome 65.0|1920x1080",
+    "type": "FROM_DEVICE"
+   },
+   {
+    "from": "Customer:C04570",
+    "to": "Card:C04570-K1",
+    "type": "OWNS"
+   },
+   {
+    "from": "Transaction:3450629",
+    "to": "Card:C04570-K1",
+    "type": "ON_CARD"
+   },
+   {
+    "from": "ClosedCase:CC-1383",
+    "to": "Card:C04570-K1",
+    "type": "CASE_ON_CARD"
+   },
+   {
+    "from": "InvestigationCase:LOCAL-HHG-017-demo",
+    "to": "Transaction:3450629",
+    "type": "INVESTIGATES"
+   }
+  ]
+ },
+ "manifest": {
+  "card_link_rule": "Only the seed transaction (case_pack) and closed-case transactions carry canonical card IDs; no K-suffix inference (D01 unresolved).",
+  "closed_cases_hidden_as_future": 0,
+  "quarantined_rows": 0,
+  "sources": {
+   "case_pack.csv": {
+    "bytes": 3548,
+    "sha256": "353494638b6ec2f07af67257b90ab85a1f1d537a0f015089abd9b54cfc7596e4"
+   },
+   "closed_cases_history.csv": {
+    "bytes": 2706417,
+    "sha256": "840613948d023fc3ddbfcb3291d5be250ee328e6eba1d2810b010fca5a757854"
+   },
+   "identity.csv": {
+    "bytes": 26716154,
+    "sha256": "9ebd6740ecb7e2afd392b5082a6f349907e871144659f622f5302ecd4ca39fad"
+   },
+   "transactions.csv": {
+    "bytes": 707936515,
+    "sha256": "dd084e58d7c33e7fd5a59c7b992ba9d6f62b0bd443fb19d4a5d5212e0246bb2b"
+   }
+  }
+ },
+ "scope": {
+  "effective_as_of": "2016-11-12 00:46:24",
+  "mode": "strict_replay",
+  "neighborhood_hours": 48,
+  "neighborhood_start": "2016-11-10 00:46:24",
+  "time_semantics": "dataset-local timestamps without timezone (D03)"
+ }
+}

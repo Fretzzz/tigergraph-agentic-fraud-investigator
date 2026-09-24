@@ -1,0 +1,117 @@
+{
+  "case_id": "HHG-012",
+  "case": {
+    "status": "open",
+    "verdict": "uncertain",
+    "fraud_probability": 0.3,
+    "pattern": "none",
+    "pattern_description": "",
+    "affected_txn_ids": [
+      "3553342"
+    ],
+    "first_suspicious_txn_id": "3553342",
+    "connected_card_ids": [],
+    "connected_device_profiles": [],
+    "exposure_usd": 30.91,
+    "evidence": [
+      {
+        "claim": "Flagged 3553342: $30.91 in_person, region 494, 2016-12-18 04:00:31, no device record; bank risk score 0.55 used only as an input.",
+        "source": "graph",
+        "ref": "Q01-seed_context",
+        "entity_ids": [
+          "3553342",
+          "C05876-K2"
+        ]
+      },
+      {
+        "claim": "Model alerts like this one (score 0.55) are usually cleared: 0 of 900 model-scored closed cases in organizer history were confirmed fraud. This is a prior, not proof.",
+        "source": "customer",
+        "ref": "trigger:case_pack",
+        "entity_ids": [
+          "3553342"
+        ]
+      },
+      {
+        "claim": "Region 494 is established for C05876: 21 prior transactions since 2016-07-05 01:43:06. This is not out-of-region use.",
+        "source": "graph",
+        "ref": "Q02-region_history",
+        "entity_ids": [
+          "3553342"
+        ]
+      },
+      {
+        "claim": "$30.91 in person is routine for C05876: 34 prior in-person purchases within $1.00. Merchant identity is absent from the data (D04), so a same-merchant recurring match cannot be confirmed.",
+        "source": "graph",
+        "ref": "Q04-amount_profile",
+        "entity_ids": [
+          "3553342"
+        ]
+      },
+      {
+        "claim": "2 prior closed cases on C05876-K2; confirmed patterns: card_not_present_fraud. No prior confirmed fraud transaction was billed in region 494 (prior fraud regions: 272).",
+        "source": "graph",
+        "ref": "Q07-historical_cases",
+        "entity_ids": [
+          "CC-0003",
+          "CC-2370"
+        ]
+      },
+      {
+        "claim": "No other customer shares region 494 and email domain gmail.com in the 48h window, and no other customer's fraud case links to this card.",
+        "source": "graph",
+        "ref": "Q08-shared_origin",
+        "entity_ids": [
+          "3553342"
+        ]
+      }
+    ],
+    "similar_prior_cases": [
+      "CC-0003",
+      "CC-2370"
+    ],
+    "summary": "The bank model scored 3553342 ($30.91 card-present, billing region 494) at 0.55 for C05876. Against: Model alerts like this one (score 0.55) are usually cleared: 0 of 900 model-scored closed cases in organizer history were confirmed fraud; Region 494 is established for C05876: 21 prior transactions since 2016-07-05 01:43:06; $30.91 in person is routine for C05876: 34 prior in-person purchases within $1.00. The evidence leans legitimate but is not strong enough to clear the alert, so the verdict is uncertain at 0.3. The customer is asked to confirm.",
+    "written_to_graph": false,
+    "graph_case_id": ""
+  },
+  "evidence_requests": [
+    {
+      "type": "customer_validation",
+      "asked_after_step": 8,
+      "assumed_response": "Do you still have the card, and do you recognise the other recent purchases? Assumed: No reply within 24 hours. Fixed simulator default applied to every customer request in this build; it is not chosen per case and carries no hidden label."
+    }
+  ],
+  "next_best_actions": {
+    "initial": [
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "R1: dataset policy obligation"
+      }
+    ],
+    "final": [
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "R1: dataset policy obligation"
+      },
+      {
+        "action": "MONITOR_CARD",
+        "route": "auto",
+        "reason": "R4: no customer reply within 24 hours (simulated)"
+      }
+    ],
+    "what_changed": "The customer was asked (REQ-1); the fixed simulator assumed no reply within 24 hours, so R4 adds MONITOR_CARD. No DECLINE_TRANSACTION because pending-authorization status is not in the data (D05); exposure $30.91 is under the R4 $500 escalation threshold."
+  },
+  "sar": {
+    "file": false,
+    "reason": "No FILE_REPORT: exposure $30.91 is under $1,000, no shared device, region cluster or other customer's fraud was found, and fraud is not confirmed or strongly suspected (R2, section 3a).",
+    "narrative": "",
+    "subjects": [],
+    "total_amount_usd": 0,
+    "activity_dates": []
+  },
+  "stop_reason": "Further graph steps are unlikely to change the decision.",
+  "tool_calls": 8,
+  "tokens": 0,
+  "latency_s": 0.023
+}

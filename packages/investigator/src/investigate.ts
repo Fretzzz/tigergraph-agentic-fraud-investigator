@@ -62,6 +62,14 @@ export function investigate(slice: CaseSlice, opts: { runId: string; startedAtMs
     factors.push({ id: "customer_denial", direction: "supports_fraud", weight: 0.15, receiptId: "trigger:case_pack", claim: `Customer ${c.customer_id} denies ${seed.id}. In organizer history, ${rep.confirmed_fraud} of ${rep.confirmed_fraud + rep.cleared} cardholder-reported closed cases were confirmed fraud (history only contains closed outcomes, so this is a prior, not proof).` });
   }
 
+  if (c.trigger_type === "risk_score" && c.risk_score !== null) {
+    const ms = hist.model_scored; const tot = ms.confirmed_fraud + ms.cleared;
+    if (tot > 0) {
+      const rate = ms.confirmed_fraud / tot;
+      factors.push({ id: "model_score_prior", direction: rate >= 0.5 ? "supports_fraud" : "supports_legitimate", weight: 0.05, receiptId: "trigger:case_pack", claim: `Model alerts like this one (score ${c.risk_score}) are ${rate >= 0.5 ? "usually confirmed" : "usually cleared"}: ${ms.confirmed_fraud} of ${tot} model-scored closed cases in organizer history were confirmed fraud. This is a prior, not proof.` });
+    }
+  }
+
   // 3. Is the billing region part of the customer's own history?
   if (seed.region) {
     const rr = q.regionHistory(c.customer_id, seed.region, seed.ts);
@@ -104,9 +112,19 @@ export function investigate(slice: CaseSlice, opts: { runId: string; startedAtMs
 
   // 9. Shared origin: other customers sharing region and email domain in the window, or other customers' fraud.
   const sr = q.sharedOrigin(seed.id);
-  const shared = sr.result.otherCustomerTxnsSharingRegionAndEmail.length > 0 || sr.result.otherCustomerFraudCases.length > 0 || dr.result.sharedWithOtherCustomersInSlice.length > 0;
+  // Only a small, specific overlap counts as a shared origin. Large groups on a common region or a mass email
+  // provider (or a missing region) are background noise, not a link between customers.
+  const COMMON_EMAIL = new Set(["gmail.com", "yahoo.com", "hotmail.com", "anonymous.com", "outlook.com", "aol.com", "live.com", "icloud.com", "comcast.net", "msn.com"]);
+  const regionEmailLink = !!seed.region && !!seed.purchaser_email_domain && !COMMON_EMAIL.has(seed.purchaser_email_domain)
+    && sr.result.otherCustomerTxnsSharingRegionAndEmail.length > 0 && sr.result.otherCustomerTxnsSharingRegionAndEmail.length <= 5;
+  // A device link counts only if the flagged transaction's own device is shared, and the profile is specific
+  // (generic OS/browser strings such as "Windows" or "iOS Device" are shared by many unrelated people).
+  const GENERIC_DEVICE = /^(\?|Windows|iOS Device|MacOS|Trident\/7\.0|rv:[\d.]+|Linux|)$/;
+  const linkedDevices = dr.result.sharedWithOtherCustomersInSlice.filter(d => d.device === seedR.result.device && d.otherCustomers.length <= 3 && !GENERIC_DEVICE.test(d.device.split("|")[0] ?? ""));
+  const deviceLink = linkedDevices.length > 0;
+  const shared = regionEmailLink || sr.result.otherCustomerFraudCases.length > 0 || deviceLink;
   step("Does this connect to other customers or cards?", sr, `${sr.result.otherCustomerTxnsSharingRegionAndEmail.length} other-customer transactions share region ${seed.region} and email domain ${seed.purchaser_email_domain} in the ${slice.scope.neighborhood_hours}h window (${slice.region_window.transactions} region transactions from ${slice.region_window.other_customers} other customers overall); other-customer closed fraud cases linked: ${sr.result.otherCustomerFraudCases.length}.`);
-  if (shared) factors.push({ id: "shared_origin", direction: "supports_fraud", weight: 0.15, receiptId: sr.receiptId, claim: "Activity connects to other customers through a shared region, email domain or device." });
+  if (shared) factors.push({ id: "shared_origin", direction: "supports_fraud", weight: 0.15, receiptId: sr.receiptId, claim: sr.result.otherCustomerFraudCases.length ? `Activity links to other customers' confirmed fraud cases: ${sr.result.otherCustomerFraudCases.join(", ")}.` : regionEmailLink ? `${sr.result.otherCustomerTxnsSharingRegionAndEmail.length} other-customer transaction(s) share region ${seed.region} and the uncommon email domain ${seed.purchaser_email_domain} in the ${slice.scope.neighborhood_hours}h window: ${sr.result.otherCustomerTxnsSharingRegionAndEmail.join(", ")}.` : `The flagged transaction's specific device profile is shared with other in-scope customers: ${linkedDevices.map(d => `${d.device.split("|")[0]} (${d.otherCustomers.join(", ")})`).join("; ")}.` });
 
   // Assessment.
   const raw = 0.5 + factors.reduce((s, f) => s + (f.direction === "supports_fraud" ? f.weight : -f.weight), 0);
@@ -159,7 +177,7 @@ export function investigate(slice: CaseSlice, opts: { runId: string; startedAtMs
       ? `Did you make ${sameDayOthers.map(t => `${t.id} (${usd(t.amount_cents)} at ${t.ts.slice(11, 16)})`).join(", ")} on ${day(seed.ts)}, and do you still have the card?`
       : "Do you still have the card, and do you recognise the other recent purchases?";
     simulated.push({ requestId: "REQ-1", type: "customer_validation", question, assumedResponse: SIMULATOR_DEFAULT, rule: "Policy section 5" });
-    initialActions.push({ action: "VERIFY_WITH_CUSTOMER", route: "auto", reason: `Policy section 5 and R8: evidence conflicts; ask the customer: ${question}`, ruleIds: ["S5"] });
+    if (!initialActions.some(a => a.action === "VERIFY_WITH_CUSTOMER")) initialActions.push({ action: "VERIFY_WITH_CUSTOMER", route: "auto", reason: `Policy section 5 and R8: evidence conflicts; ask the customer: ${question}`, ruleIds: ["S5"] });
   }
   const initial = orderActions(initialActions);
 
@@ -174,19 +192,48 @@ export function investigate(slice: CaseSlice, opts: { runId: string; startedAtMs
   g.link("INVESTIGATES", ck, `Transaction:${seed.id}`, "graphsentinel");
   const readbackVerified = g.get("InvestigationCase", vertexId)?.props["verdict"] === verdict && g.outgoing(ck, "INVESTIGATES").length === 1;
 
-  const reasons = (a: DecisionAction[]) => a.map(x => ({ action: x.action, route: x.route, reason: reasonText(x, exposureCents) }));
+  const reasons = (a: DecisionAction[]) => a.map(x => ({ action: x.action, route: x.route, reason: reasonText(x, exposureCents, c.trigger_type) }));
   const status = final.some(a => a.action === "ESCALATE_TO_ANALYST") ? "escalated" : final.some(a => a.action === "CLOSE_NO_FRAUD") ? "closed_legitimate" : "open";
   const files = final.some(a => a.action === "FILE_REPORT");
   const whatChanged = simulated.length
-    ? `The customer was asked (${simulated[0]!.requestId}); the fixed simulator assumed no reply within 24 hours, so R4 adds MONITOR_CARD. No DECLINE_TRANSACTION because pending-authorization status is not in the data (D05); exposure ${usd(exposureCents)} is under the R4 $500 escalation threshold.`
+    ? `The customer was asked (${simulated[0]!.requestId}); the fixed simulator assumed no reply within 24 hours, so R4 adds MONITOR_CARD. No DECLINE_TRANSACTION because pending-authorization status is not in the data (D05); exposure ${usd(exposureCents)} is ${exposureCents < 50000 ? "under" : "at or over"} the R4 $500 escalation threshold.`
     : "nothing";
 
   const evidence: Answer["case"]["evidence"] = [
-    { claim: `Flagged ${seed.id}: ${usd(seed.amount_cents)} ${seed.channel}, region ${seed.region}, ${seed.ts}, no device record; bank risk score ${seed.risk_score} used only as an input.`, source: "graph" as const, ref: seedR.receiptId, entity_ids: [seed.id, c.card_id] },
+    { claim: `Flagged ${seed.id}: ${usd(seed.amount_cents)} ${seed.channel}, region ${seed.region ?? "none"}, ${seed.ts}, ${seedR.result.device ? `device ${seedR.result.device}` : "no device record"}; bank risk score ${seed.risk_score} used only as an input.`, source: "graph" as const, ref: seedR.receiptId, entity_ids: [seed.id, c.card_id] },
     ...factors.map(f => ({ claim: f.claim, source: (f.receiptId.startsWith("trigger") ? "customer" : "graph") as "customer" | "graph", ref: f.receiptId, entity_ids: entityIdsFor(f, seed.id, c.customer_id, sameDayOthers.map(t => t.id)) })),
     ...(hr.result.length ? [{ claim: `${hr.result.length} prior closed cases on ${c.card_id}; confirmed patterns: ${confirmedPatterns.join(", ") || "none"}. ${priorFraudRegions.has(seed.region ?? "") ? `A prior confirmed fraud transaction was billed in region ${seed.region}.` : `No prior confirmed fraud transaction was billed in region ${seed.region} (prior fraud regions: ${[...priorFraudRegions].join(", ") || "none"}).`}`, source: "graph" as const, ref: hr.receiptId, entity_ids: hr.result.map(h => h.id) }] : []),
     { claim: `No other customer shares region ${seed.region} and email domain ${seed.purchaser_email_domain} in the ${slice.scope.neighborhood_hours}h window, and no other customer's fraud case links to this card.`, source: "graph" as const, ref: sr.receiptId, entity_ids: [seed.id] },
   ].filter(e => shared ? !e.claim.startsWith("No other customer") : true);
+
+  function summaryText(): string {
+    const fits: string[] = [];
+    if (factors.some(f => f.id === "established_region")) fits.push("region");
+    if (factors.some(f => f.id === "typical_amount")) fits.push("amount");
+    const newEmail = factors.some(f => f.id === "new_email_domain_pair");
+    const opener = c.trigger_type === "customer_report"
+      ? `${c.customer_id} disputes ${seed.id}, a ${usd(seed.amount_cents)} ${seed.channel === "in_person" ? "card-present" : seed.channel} purchase${seed.region ? ` in billing region ${seed.region}` : ""}.`
+      : c.trigger_type === "risk_score"
+        ? `The bank model scored ${seed.id} (${usd(seed.amount_cents)} ${seed.channel === "in_person" ? "card-present" : seed.channel}${seed.region ? `, billing region ${seed.region}` : ""}) at ${c.risk_score} for ${c.customer_id}.`
+        : `Analyst review of ${seed.id} (${usd(seed.amount_cents)} ${seed.channel}) on ${c.card_id}.`;
+    let middle = "";
+    if (fits.length && newEmail) middle = ` The ${fits.join(" and ")} fit the customer's own history, but the purchaser email domain ${seed.purchaser_email_domain} is new that day and also sits on ${sameDayOthers.map(t => t.id).join(", ") || "no other transaction"}.`;
+    else {
+      const first = (x: string) => x.split(". ")[0]!.replace(/[.:]$/, ""); const sup = supporting.map(f => first(f.claim)); const ag = against.map(f => first(f.claim));
+      if (sup.length) middle += ` For fraud: ${sup.join("; ")}.`;
+      if (ag.length) middle += ` Against: ${ag.join("; ")}.`;
+      if (!sup.length && !ag.length) middle = " The graph checks found no strong signal either way.";
+    }
+    const verdictLine = verdict === "uncertain" ? (conflict ? ` Evidence conflicts, so the verdict is uncertain at ${p}.` : supporting.length === 0 && against.length ? ` The evidence leans legitimate but is not strong enough to clear the alert, so the verdict is uncertain at ${p}.` : supporting.length && !against.length ? ` The evidence leans toward fraud but is not strong enough to confirm it, so the verdict is uncertain at ${p}.` : ` Evidence is thin, so the verdict is uncertain at ${p}.`) : ` Verdict ${verdict} at ${p}.`;
+    const acts: string[] = [];
+    const blk = final.find(a => a.action === "BLOCK_CARD");
+    if (blk) acts.push(blk.route === "auto" ? "the card block is recommended" : `the card block is recommended${c.trigger_type === "customer_report" ? " under R2" : ""} and waits for ${blk.route} approval`);
+    if (final.some(a => a.action === "ESCALATE_TO_ANALYST")) acts.push("the case is escalated under R8");
+    if (!blk && final.some(a => a.action === "VERIFY_WITH_CUSTOMER")) acts.push("the customer is asked to confirm");
+    if (final.some(a => a.action === "MONITOR_CARD") && !acts.length) acts.push("the card is monitored");
+    const actLine = acts.length ? ` ${acts.join("; ").replace(/^./, x => x.toUpperCase())}.` : "";
+    return `${opener}${middle}${verdictLine}${actLine}`;
+  }
 
   const snapshot: Answer = {
     case_id: c.id,
@@ -195,7 +242,7 @@ export function investigate(slice: CaseSlice, opts: { runId: string; startedAtMs
       affected_txn_ids: affected, first_suspicious_txn_id: affected[0] ?? "", connected_card_ids: [], connected_device_profiles: [],
       exposure_usd: exposureCents / 100, evidence,
       similar_prior_cases: hr.result.map(h => h.id),
-      summary: `${c.customer_id} disputes ${seed.id}, a ${usd(seed.amount_cents)} card-present purchase in billing region ${seed.region}. The region and amount fit the customer's own history, but the purchaser email domain ${seed.purchaser_email_domain} is new that day and also sits on ${sameDayOthers.map(t => t.id).join(", ") || "no other transaction"}. Evidence conflicts, so the verdict is uncertain at ${p}. The card block is recommended under R2 and waits for L1 approval; the case is escalated under R8.`,
+      summary: summaryText(),
       written_to_graph: false, graph_case_id: "",
     },
     evidence_requests: simulated.map((s, i) => ({ type: s.type, asked_after_step: steps.length + i, assumed_response: `${s.question} Assumed: ${s.assumedResponse}` })),
@@ -203,7 +250,7 @@ export function investigate(slice: CaseSlice, opts: { runId: string; startedAtMs
     sar: files
       ? { file: true, reason: "R2/R6", narrative: "", subjects: [c.customer_id, c.card_id], total_amount_usd: exposureCents / 100, activity_dates: [day(seed.ts), day(seed.ts)] }
       : { file: false, reason: `No FILE_REPORT: exposure ${usd(exposureCents)} is under $1,000, no shared device, region cluster or other customer's fraud was found, and fraud is not confirmed or strongly suspected (R2, section 3a).`, narrative: "", subjects: [], total_amount_usd: 0, activity_dates: [] },
-    stop_reason: `Further graph steps are unlikely to change the decision: region, amount, email-domain, device, history and shared-origin checks are done and the remaining questions (customer's answer, merchant identity) are not in the data. Escalated to an analyst with the conflict visible (R8).`,
+    stop_reason: `Further graph steps are unlikely to change the decision: ${[seed.region ? "region" : "", "amount", seed.purchaser_email_domain ? "email-domain" : "", "device", "history", "shared-origin"].filter(Boolean).join(", ").replace(/, ([^,]*)$/, " and $1")} checks are done and the remaining questions (customer's answer, merchant identity) are not in the data. Escalated to an analyst with the conflict visible (R8).`,
     tool_calls: 0, tokens: 0, latency_s: 0,
   };
   if (status !== "escalated") snapshot.stop_reason = "Further graph steps are unlikely to change the decision.";
@@ -245,7 +292,8 @@ function entityIdsFor(f: Factor, seedId: string, customerId: string, sameDay: st
   return [seedId];
 }
 
-function reasonText(a: DecisionAction, exposureCents: number): string {
+function reasonText(a: DecisionAction, exposureCents: number, trigger = "customer_report"): string {
+  if (trigger !== "customer_report" && (a.action === "BLOCK_CARD" || a.action === "CREATE_CASE")) return a.reason;
   if (a.action === "BLOCK_CARD") return `R2: customer denied the transaction; exposure ${usd(exposureCents)} is at most $2,500, so L1 approval`;
   if (a.action === "CREATE_CASE") return "R2 and section 3a: customer disputes a charge";
   if (a.action === "ESCALATE_TO_ANALYST") return "R8: verdict uncertain and the evidence conflicts";

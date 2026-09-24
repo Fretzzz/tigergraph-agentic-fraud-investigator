@@ -1,0 +1,161 @@
+{
+  "case_id": "HHG-011",
+  "case": {
+    "status": "open",
+    "verdict": "uncertain",
+    "fraud_probability": 0.8,
+    "pattern": "none",
+    "pattern_description": "",
+    "affected_txn_ids": [
+      "3583368"
+    ],
+    "first_suspicious_txn_id": "3583368",
+    "connected_card_ids": [],
+    "connected_device_profiles": [],
+    "exposure_usd": 131.3,
+    "evidence": [
+      {
+        "claim": "Flagged 3583368: $131.30 online, region none, 2016-12-29 03:27:44, device SM-G610F Build/NRD90M|?|chrome 66.0 for android|?; bank risk score 0.39 used only as an input.",
+        "source": "graph",
+        "ref": "Q01-seed_context",
+        "entity_ids": [
+          "3583368",
+          "C11923-K2"
+        ]
+      },
+      {
+        "claim": "Customer C11923 denies 3583368. In organizer history, 4656 of 4656 cardholder-reported closed cases were confirmed fraud (history only contains closed outcomes, so this is a prior, not proof).",
+        "source": "customer",
+        "ref": "trigger:case_pack",
+        "entity_ids": [
+          "3583368",
+          "C11923"
+        ]
+      },
+      {
+        "claim": "The flagged transaction's specific device profile is shared with other in-scope customers: SM-G610F Build/NRD90M (C05595, C03938).",
+        "source": "graph",
+        "ref": "Q07-shared_origin",
+        "entity_ids": [
+          "3583368"
+        ]
+      },
+      {
+        "claim": "11 prior closed cases on C11923-K2; confirmed patterns: card_not_present_new_device, card_testing. No prior confirmed fraud transaction was billed in region null (prior fraud regions: 465, 391, 359, 161).",
+        "source": "graph",
+        "ref": "Q06-historical_cases",
+        "entity_ids": [
+          "CC-0031",
+          "CC-0290",
+          "CC-1056",
+          "CC-2247",
+          "CC-2673",
+          "CC-2799",
+          "CC-3039",
+          "CC-3206",
+          "CC-3905",
+          "CC-4501",
+          "CC-4743"
+        ]
+      }
+    ],
+    "similar_prior_cases": [
+      "CC-0031",
+      "CC-0290",
+      "CC-1056",
+      "CC-2247",
+      "CC-2673",
+      "CC-2799",
+      "CC-3039",
+      "CC-3206",
+      "CC-3905",
+      "CC-4501",
+      "CC-4743"
+    ],
+    "summary": "C11923 disputes 3583368, a $131.30 online purchase. For fraud: Customer C11923 denies 3583368; The flagged transaction's specific device profile is shared with other in-scope customers: SM-G610F Build/NRD90M (C05595, C03938). The evidence leans toward fraud but is not strong enough to confirm it, so the verdict is uncertain at 0.8. The card block is recommended under R2 and waits for L1 approval.",
+    "written_to_graph": false,
+    "graph_case_id": ""
+  },
+  "evidence_requests": [
+    {
+      "type": "customer_validation",
+      "asked_after_step": 7,
+      "assumed_response": "Did you make 3583140 ($23.56 at 01:11), 3583229 ($16.78 at 01:54), 3583406 ($19.55 at 04:10) on 2016-12-29, and do you still have the card? Assumed: No reply within 24 hours. Fixed simulator default applied to every customer request in this build; it is not chosen per case and carries no hidden label."
+    }
+  ],
+  "next_best_actions": {
+    "initial": [
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "R2 and section 3a: customer disputes a charge"
+      },
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "Policy section 5 and R8: evidence conflicts; ask the customer: Did you make 3583140 ($23.56 at 01:11), 3583229 ($16.78 at 01:54), 3583406 ($19.55 at 04:10) on 2016-12-29, and do you still have the card?"
+      },
+      {
+        "action": "BLOCK_CARD",
+        "route": "L1",
+        "reason": "R2: customer denied the transaction; exposure $131.30 is at most $2,500, so L1 approval"
+      },
+      {
+        "action": "MONITOR_CONNECTED_CARDS",
+        "route": "auto",
+        "reason": "R6: dataset policy obligation"
+      },
+      {
+        "action": "FILE_REPORT",
+        "route": "L2",
+        "reason": "R2: dataset policy obligation"
+      }
+    ],
+    "final": [
+      {
+        "action": "CREATE_CASE",
+        "route": "auto",
+        "reason": "R2 and section 3a: customer disputes a charge"
+      },
+      {
+        "action": "MONITOR_CARD",
+        "route": "auto",
+        "reason": "R4: no customer reply within 24 hours (simulated)"
+      },
+      {
+        "action": "BLOCK_CARD",
+        "route": "L1",
+        "reason": "R2: customer denied the transaction; exposure $131.30 is at most $2,500, so L1 approval"
+      },
+      {
+        "action": "MONITOR_CONNECTED_CARDS",
+        "route": "auto",
+        "reason": "R6: dataset policy obligation"
+      },
+      {
+        "action": "FILE_REPORT",
+        "route": "L2",
+        "reason": "R2: dataset policy obligation"
+      }
+    ],
+    "what_changed": "The customer was asked (REQ-1); the fixed simulator assumed no reply within 24 hours, so R4 adds MONITOR_CARD. No DECLINE_TRANSACTION because pending-authorization status is not in the data (D05); exposure $131.30 is under the R4 $500 escalation threshold."
+  },
+  "sar": {
+    "file": true,
+    "reason": "R2/R6",
+    "narrative": "",
+    "subjects": [
+      "C11923",
+      "C11923-K2"
+    ],
+    "total_amount_usd": 131.3,
+    "activity_dates": [
+      "2016-12-29",
+      "2016-12-29"
+    ]
+  },
+  "stop_reason": "Further graph steps are unlikely to change the decision.",
+  "tool_calls": 7,
+  "tokens": 0,
+  "latency_s": 0.103
+}

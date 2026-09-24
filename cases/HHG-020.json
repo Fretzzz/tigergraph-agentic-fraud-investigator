@@ -1,0 +1,109 @@
+{
+  "case_id": "HHG-020",
+  "case": {
+    "status": "open",
+    "verdict": "uncertain",
+    "fraud_probability": 0.35,
+    "pattern": "none",
+    "pattern_description": "",
+    "affected_txn_ids": [
+      "3509359"
+    ],
+    "first_suspicious_txn_id": "3509359",
+    "connected_card_ids": [],
+    "connected_device_profiles": [],
+    "exposure_usd": 125.08,
+    "evidence": [
+      {
+        "claim": "Flagged 3509359: $125.08 online, region 264, 2016-12-03 06:04:26, device Trident/7.0|Windows 10|ie 11.0 for desktop|1920x1080; bank risk score 0.52 used only as an input.",
+        "source": "graph",
+        "ref": "Q01-seed_context",
+        "entity_ids": [
+          "3509359",
+          "C12265-K2"
+        ]
+      },
+      {
+        "claim": "Model alerts like this one (score 0.52) are usually cleared: 0 of 900 model-scored closed cases in organizer history were confirmed fraud. This is a prior, not proof.",
+        "source": "customer",
+        "ref": "trigger:case_pack",
+        "entity_ids": [
+          "3509359"
+        ]
+      },
+      {
+        "claim": "Region 264 is established for C12265: 83 prior transactions since 2016-07-06 03:27:13. This is not out-of-region use.",
+        "source": "graph",
+        "ref": "Q02-region_history",
+        "entity_ids": [
+          "3509359"
+        ]
+      },
+      {
+        "claim": "2 prior closed cases on C12265-K2; confirmed patterns: account_takeover. A prior confirmed fraud transaction was billed in region 264.",
+        "source": "graph",
+        "ref": "Q07-historical_cases",
+        "entity_ids": [
+          "CC-2277",
+          "CC-2447"
+        ]
+      },
+      {
+        "claim": "No other customer shares region 264 and email domain yahoo.com in the 48h window, and no other customer's fraud case links to this card.",
+        "source": "graph",
+        "ref": "Q08-shared_origin",
+        "entity_ids": [
+          "3509359"
+        ]
+      }
+    ],
+    "similar_prior_cases": [
+      "CC-2277",
+      "CC-2447"
+    ],
+    "summary": "The bank model scored 3509359 ($125.08 online, billing region 264) at 0.52 for C12265. Against: Model alerts like this one (score 0.52) are usually cleared: 0 of 900 model-scored closed cases in organizer history were confirmed fraud; Region 264 is established for C12265: 83 prior transactions since 2016-07-06 03:27:13. The evidence leans legitimate but is not strong enough to clear the alert, so the verdict is uncertain at 0.35. The customer is asked to confirm.",
+    "written_to_graph": false,
+    "graph_case_id": ""
+  },
+  "evidence_requests": [
+    {
+      "type": "customer_validation",
+      "asked_after_step": 8,
+      "assumed_response": "Do you still have the card, and do you recognise the other recent purchases? Assumed: No reply within 24 hours. Fixed simulator default applied to every customer request in this build; it is not chosen per case and carries no hidden label."
+    }
+  ],
+  "next_best_actions": {
+    "initial": [
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "R1: dataset policy obligation"
+      }
+    ],
+    "final": [
+      {
+        "action": "VERIFY_WITH_CUSTOMER",
+        "route": "auto",
+        "reason": "R1: dataset policy obligation"
+      },
+      {
+        "action": "MONITOR_CARD",
+        "route": "auto",
+        "reason": "R4: no customer reply within 24 hours (simulated)"
+      }
+    ],
+    "what_changed": "The customer was asked (REQ-1); the fixed simulator assumed no reply within 24 hours, so R4 adds MONITOR_CARD. No DECLINE_TRANSACTION because pending-authorization status is not in the data (D05); exposure $125.08 is under the R4 $500 escalation threshold."
+  },
+  "sar": {
+    "file": false,
+    "reason": "No FILE_REPORT: exposure $125.08 is under $1,000, no shared device, region cluster or other customer's fraud was found, and fraud is not confirmed or strongly suspected (R2, section 3a).",
+    "narrative": "",
+    "subjects": [],
+    "total_amount_usd": 0,
+    "activity_dates": []
+  },
+  "stop_reason": "Further graph steps are unlikely to change the decision.",
+  "tool_calls": 8,
+  "tokens": 0,
+  "latency_s": 0.012
+}
