@@ -20,7 +20,8 @@
     "case:slice": "uv run --project pipelines python -m fraud_data.case_slice",
     "case:run": "tsx scripts/run-case.ts",
     "web": "python3 -m http.server 8765 --directory apps/web",
-    "narrate": "tsx scripts/narrate.ts"
+    "narrate": "tsx scripts/narrate.ts",
+    "case:write-back": "tsx scripts/write-back.ts"
   },
   "devDependencies": {
     "@types/node": "22.18.6",
