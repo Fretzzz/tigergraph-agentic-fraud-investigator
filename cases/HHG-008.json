@@ -33,7 +33,7 @@
         ]
       },
       {
-        "claim": "19 prior closed cases on C13171-K2; confirmed patterns: card_not_present_new_device, card_not_present_fraud. No prior confirmed fraud transaction was billed in region null (prior fraud regions: 508, 242, 465, 511).",
+        "claim": "19 prior closed cases on C13171-K2; confirmed patterns: card_not_present_new_device, card_not_present_fraud. No prior confirmed fraud transaction was billed in region (none recorded) (prior fraud regions: 508, 242, 465, 511).",
         "source": "graph",
         "ref": "Q06-historical_cases",
         "entity_ids": [
@@ -59,7 +59,7 @@
         ]
       },
       {
-        "claim": "No other customer shares region null and email domain hotmail.com in the 48h window, and no other customer's fraud case links to this card.",
+        "claim": "No other customer shares the missing billing region and email domain hotmail.com in the 48h window, and no other customer's fraud case links to this card.",
         "source": "graph",
         "ref": "Q07-shared_origin",
         "entity_ids": [
@@ -147,5 +147,5 @@
   "stop_reason": "Further graph steps are unlikely to change the decision.",
   "tool_calls": 7,
   "tokens": 0,
-  "latency_s": 0.025
+  "latency_s": 0.027
 }

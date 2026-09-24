@@ -59,7 +59,7 @@
    "n": 7,
    "question": "Does this connect to other customers or cards?",
    "receiptId": "Q07-shared_origin",
-   "finding": "163 other-customer transactions share region null and email domain gmail.com in the 48h window (413 region transactions from 121 other customers overall); other-customer closed fraud cases linked: 0."
+   "finding": "163 other-customer transactions also have no billing region and share email domain gmail.com in the 48h window (413 region transactions from 121 other customers overall); other-customer closed fraud cases linked: 0."
   }
  ],
  "factors": [
@@ -2939,7 +2939,7 @@
      ]
     },
     {
-     "claim": "11 prior closed cases on C11923-K2; confirmed patterns: card_not_present_new_device, card_testing. No prior confirmed fraud transaction was billed in region null (prior fraud regions: 465, 391, 359, 161).",
+     "claim": "11 prior closed cases on C11923-K2; confirmed patterns: card_not_present_new_device, card_testing. No prior confirmed fraud transaction was billed in region (none recorded) (prior fraud regions: 465, 391, 359, 161).",
      "source": "graph",
      "ref": "Q06-historical_cases",
      "entity_ids": [
@@ -3055,7 +3055,7 @@
   "stop_reason": "Further graph steps are unlikely to change the decision.",
   "tool_calls": 7,
   "tokens": 0,
-  "latency_s": 0.103
+  "latency_s": 0.129
  },
  "validation": {
   "valid": true,

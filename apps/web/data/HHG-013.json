@@ -59,7 +59,7 @@
    "n": 7,
    "question": "Does this connect to other customers or cards?",
    "receiptId": "Q07-shared_origin",
-   "finding": "238 other-customer transactions share region null and email domain gmail.com in the 48h window (605 region transactions from 143 other customers overall); other-customer closed fraud cases linked: 0."
+   "finding": "238 other-customer transactions also have no billing region and share email domain gmail.com in the 48h window (605 region transactions from 143 other customers overall); other-customer closed fraud cases linked: 0."
   }
  ],
  "factors": [
@@ -1496,7 +1496,7 @@
      ]
     },
     {
-     "claim": "4 prior closed cases on C07671-K2; confirmed patterns: account_takeover, card_not_present_new_device. No prior confirmed fraud transaction was billed in region null (prior fraud regions: 264).",
+     "claim": "4 prior closed cases on C07671-K2; confirmed patterns: account_takeover, card_not_present_new_device. No prior confirmed fraud transaction was billed in region (none recorded) (prior fraud regions: 264).",
      "source": "graph",
      "ref": "Q06-historical_cases",
      "entity_ids": [
@@ -1507,7 +1507,7 @@
      ]
     },
     {
-     "claim": "No other customer shares region null and email domain gmail.com in the 48h window, and no other customer's fraud case links to this card.",
+     "claim": "No other customer shares the missing billing region and email domain gmail.com in the 48h window, and no other customer's fraud case links to this card.",
      "source": "graph",
      "ref": "Q07-shared_origin",
      "entity_ids": [
@@ -1565,7 +1565,7 @@
   "stop_reason": "Further graph steps are unlikely to change the decision.",
   "tool_calls": 7,
   "tokens": 0,
-  "latency_s": 0.028
+  "latency_s": 0.027
  },
  "validation": {
   "valid": true,

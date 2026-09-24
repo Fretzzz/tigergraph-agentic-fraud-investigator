@@ -42,7 +42,7 @@
    "n": 7,
    "question": "Does this connect to other customers or cards?",
    "receiptId": "Q07-shared_origin",
-   "finding": "163 other-customer transactions share region null and email domain gmail.com in the 48h window (413 region transactions from 121 other customers overall); other-customer closed fraud cases linked: 0."
+   "finding": "163 other-customer transactions also have no billing region and share email domain gmail.com in the 48h window (413 region transactions from 121 other customers overall); other-customer closed fraud cases linked: 0."
   }
  ],
  "factors": [
