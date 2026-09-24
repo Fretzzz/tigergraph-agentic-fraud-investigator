@@ -6,6 +6,7 @@ GraphSentinel takes a fraud case, asks the graph eight specific questions, weigh
 
 - **Live demo (analyst view, all 20 cases):** https://graphsentinel-five.vercel.app
 - **TigerGraph live run:** [HHG-003](https://graphsentinel-five.vercel.app/?case=HHG-003) (8 installed GSQL queries on Savanna, 8/8 parity with the local graph)
+- **Playback:** press "Watch the investigation" on any case page (or add `&play=1`, e.g. https://graphsentinel-five.vercel.app/?case=HHG-003&play=1) to replay the saved run step by step: each query and its receipt, the case graph building up as evidence lands, then the assessment and actions. It replays saved data; nothing is queried live.
 - **Answer files:** [`cases/HHG-001.json`](cases/HHG-001.json) … [`cases/HHG-020.json`](cases/HHG-020.json)
 
 ![GraphSentinel analyst view for case HHG-003](docs/demo/hhg-003-analyst-view.png)

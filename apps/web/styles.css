@@ -21,3 +21,12 @@ ul.lim{margin:0;padding-left:18px}ul.lim li{margin-bottom:4px;color:#c9d4df}
 @media (max-width:1000px){main{grid-template-columns:1fr}.cols{grid-template-columns:1fr}}
 
 .cases{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:8px 20px;border-bottom:1px solid var(--line)}.cases a{padding:2px 8px;border:1px solid var(--line);border-radius:6px;color:inherit;text-decoration:none;font-size:13px}.cases a.on{border-color:#4aa3ff;color:#4aa3ff}.cases sup{color:#3ecf8e;font-size:9px;margin-left:2px}
+.pb{width:100%;margin-top:10px;display:flex;gap:12px;align-items:center}
+.pb button{background:#2563eb;color:#fff;border:0;border-radius:6px;padding:7px 14px;font-weight:600;cursor:pointer}
+.playing .pb button{opacity:.5;pointer-events:none}
+.pb-hidden{display:none}
+.pb-off{opacity:0}
+.steps li,.factor,.gnode,.gedge{transition:opacity .6s ease}
+.pb-now{background:rgba(37,99,235,.18);border-radius:6px}
+.meter>div{transition:width 1.4s ease}
+#pb-status code{color:#9ecbff}
