@@ -1121,13 +1121,13 @@
   "errors": []
  },
  "limitations": [
-  "Graph queries ran live on TigerGraph Savanna (graph GraphSentinel, 8 installed GSQL queries). The case subgraph drawing and prior-fraud regions still come from the local slice, and the case record is written to the local graph only.",
-  "No LLM is used in this path; reasoning is deterministic code over graph query results (tokens = 0).",
+  "Graph queries ran live on TigerGraph Savanna (graph GraphSentinel, 8 installed GSQL queries). The case subgraph drawing and prior-fraud regions still come from the local slice. The case record is written back to TigerGraph Savanna.",
+  "Decisions use no LLM: the reasoning is deterministic code over graph query results. After the decision, an LLM (NVIDIA NIM, nemotron-3-super-120b-a12b) writes the case narrative only; the token count is from that step.",
   "Card links: only the flagged transaction (case_pack) and closed-case transactions carry canonical card IDs. The K1/K2/K3 suffix rule is not documented by the organizers (D01), so other transactions attach to the customer only.",
   "Merchant identity (D04) and settlement/authorization status (D05) are not in the data and stay unknown.",
   "Customer replies are simulated with one fixed default (no reply within 24h).",
   "Probability weights are a transparent heuristic, not a trained model.",
-  "written_to_graph is false because the case was written to the local graph, not TigerGraph."
+  "The case record was written to TigerGraph Savanna (GS_InvestigationCase:HHG-003) and read back, so written_to_graph=true."
  ],
  "graph": {
   "nodes": [

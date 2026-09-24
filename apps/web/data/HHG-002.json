@@ -824,12 +824,12 @@
  },
  "limitations": [
   "Graph backend is a local in-memory graph built from the organizer CSVs, not TigerGraph (no TigerGraph instance connected).",
-  "No LLM is used in this path; reasoning is deterministic code over graph query results (tokens = 0).",
+  "No LLM is used in this path; reasoning is deterministic code over graph query results. The LLM narrative for this case failed validation and is not shown.",
   "Card links: only the flagged transaction (case_pack) and closed-case transactions carry canonical card IDs. The K1/K2/K3 suffix rule is not documented by the organizers (D01), so other transactions attach to the customer only.",
   "Merchant identity (D04) and settlement/authorization status (D05) are not in the data and stay unknown.",
   "Customer replies are simulated with one fixed default (no reply within 24h).",
   "Probability weights are a transparent heuristic, not a trained model.",
-  "written_to_graph is false because the case was written to the local graph, not TigerGraph."
+  "The case record was written to TigerGraph Savanna (GS_InvestigationCase:HHG-002) and read back, so written_to_graph=true."
  ],
  "graph": {
   "nodes": [
